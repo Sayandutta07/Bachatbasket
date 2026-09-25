@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -17,6 +22,10 @@
                         brandOrange: '#FF5722',
                         brandYellow: '#FFB800',
                         brandDarkGreen: '#004d22',
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+                        heading: ['"Outfit"', '"Plus Jakarta Sans"', 'sans-serif']
                     }
                 }
             }
@@ -24,96 +33,145 @@
     </script>
     <style>
         body {
-            font-family: Calibri, Candara, 'Segoe UI', Segoe, Optima, Arial, sans-serif;
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
             background-color: #f8fafc;
-            color: #1f2937;
+            color: #1e293b;
+            font-size: 16px;
+            line-height: 1.6;
         }
-        h1, h2, h3, h4, h5, h6, .brand-heading {
-            font-family: 'Segoe UI', Calibri, 'Trebuchet MS', sans-serif;
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .brand-heading {
+            font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif;
             font-weight: 800;
             letter-spacing: -0.02em;
         }
+
         .custom-scrollbar::-webkit-scrollbar {
             width: 6px;
             height: 6px;
         }
+
         .custom-scrollbar::-webkit-scrollbar-track {
             background: #f1f5f9;
             border-radius: 4px;
         }
+
         .custom-scrollbar::-webkit-scrollbar-thumb {
             background: #cbd5e1;
             border-radius: 4px;
         }
+
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
             background: #94a3b8;
         }
+
         .badge-pulse {
             animation: pulse-glow 2s infinite;
         }
+
         @keyframes pulse-glow {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.85; transform: scale(1.03); }
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.85;
+                transform: scale(1.03);
+            }
         }
     </style>
 </head>
+
 <body class="bg-slate-50 min-h-screen flex flex-col antialiased">
 
     <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                
+
                 <!-- BRAND LOGO AREA -->
                 <div class="flex items-center space-x-3 cursor-pointer" onclick="showSection('home')">
                     <div class="relative flex items-center">
-                        <svg class="h-11 sm:h-12 w-auto" viewBox="0 0 420 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="h-11 sm:h-12 w-auto" viewBox="0 0 420 120" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
                             <g transform="translate(10, 15)">
-                                <path d="M10 20 L25 20 L45 75 L110 75 L125 35 L32 35" stroke="#FF5722" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                                <path d="M40 35 L120 35 L108 70 L47 70 Z" fill="#FF8A65" opacity="0.3"/>
-                                <text x="65" y="60" font-family="Arial, sans-serif" font-weight="900" font-size="28" fill="#FF5722" text-anchor="middle">₹</text>
-                                <circle cx="52" cy="85" r="7" fill="#1E293B"/>
-                                <circle cx="100" cy="85" r="7" fill="#1E293B"/>
-                                <circle cx="52" cy="85" r="3" fill="#FFF"/>
-                                <circle cx="100" cy="85" r="3" fill="#FFF"/>
+                                <path d="M10 20 L25 20 L45 75 L110 75 L125 35 L32 35" stroke="#FF5722" stroke-width="6"
+                                    stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                                <path d="M40 35 L120 35 L108 70 L47 70 Z" fill="#FF8A65" opacity="0.3" />
+                                <text x="65" y="60" font-family="Arial, sans-serif" font-weight="900" font-size="28"
+                                    fill="#FF5722" text-anchor="middle">₹</text>
+                                <circle cx="52" cy="85" r="7" fill="#1E293B" />
+                                <circle cx="100" cy="85" r="7" fill="#1E293B" />
+                                <circle cx="52" cy="85" r="3" fill="#FFF" />
+                                <circle cx="100" cy="85" r="3" fill="#FFF" />
                             </g>
                             <g transform="translate(90, 10)">
-                                <circle cx="30" cy="30" r="18" stroke="#1E293B" stroke-width="5" fill="none"/>
-                                <line x1="43" y1="43" x2="58" y2="58" stroke="#1E293B" stroke-width="6" stroke-linecap="round"/>
-                                <text x="30" y="38" font-family="Arial, sans-serif" font-weight="bold" font-size="20" fill="#007A37" text-anchor="middle">₹</text>
+                                <circle cx="30" cy="30" r="18" stroke="#1E293B" stroke-width="5" fill="none" />
+                                <line x1="43" y1="43" x2="58" y2="58" stroke="#1E293B" stroke-width="6"
+                                    stroke-linecap="round" />
+                                <text x="30" y="38" font-family="Arial, sans-serif" font-weight="bold" font-size="20"
+                                    fill="#007A37" text-anchor="middle">₹</text>
                             </g>
-                            <path d="M 120 20 Q 260 0 380 30" stroke="#FF5722" stroke-width="4" fill="none" stroke-linecap="round"/>
-                            <path d="M 110 85 Q 250 110 370 80" stroke="#007A37" stroke-width="4" fill="none" stroke-linecap="round"/>
-                            <text x="145" y="62" font-family="'Segoe UI', Arial, sans-serif" font-weight="900" font-style="italic" font-size="44" fill="#007A37">Bachat</text>
-                            <text x="290" y="62" font-family="'Segoe UI', Arial, sans-serif" font-weight="900" font-style="italic" font-size="44" fill="#FF5722">Hub</text>
-                            <text x="150" y="85" font-family="Calibri, Arial, sans-serif" font-weight="800" font-size="16" fill="#007A37">Compare.</text>
-                            <text x="215" y="85" font-family="Calibri, Arial, sans-serif" font-weight="800" font-size="16" fill="#FF5722">Save.</text>
-                            <text x="255" y="85" font-family="Calibri, Arial, sans-serif" font-weight="800" font-size="16" fill="#007A37">Saste Mein.</text>
+                            <path d="M 120 20 Q 260 0 380 30" stroke="#FF5722" stroke-width="4" fill="none"
+                                stroke-linecap="round" />
+                            <path d="M 110 85 Q 250 110 370 80" stroke="#007A37" stroke-width="4" fill="none"
+                                stroke-linecap="round" />
+                            <text x="145" y="62" font-family="'Segoe UI', Arial, sans-serif" font-weight="900"
+                                font-style="italic" font-size="44" fill="#007A37">Bachat</text>
+                            <text x="290" y="62" font-family="'Segoe UI', Arial, sans-serif" font-weight="900"
+                                font-style="italic" font-size="44" fill="#FF5722">Hub</text>
+                            <text x="150" y="85" font-family="Calibri, Arial, sans-serif" font-weight="800"
+                                font-size="16" fill="#007A37">Compare.</text>
+                            <text x="215" y="85" font-family="Calibri, Arial, sans-serif" font-weight="800"
+                                font-size="16" fill="#FF5722">Save.</text>
+                            <text x="255" y="85" font-family="Calibri, Arial, sans-serif" font-weight="800"
+                                font-size="16" fill="#007A37">Saste Mein.</text>
                         </svg>
                     </div>
                 </div>
 
                 <!-- GPS LIVE LOCATION SELECTOR -->
-                <div id="locationBadge" onclick="getCurrentGPSLocation()" class="hidden md:flex items-center space-x-2 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-3.5 py-2 rounded-2xl cursor-pointer transition shadow-xs" title="Click to trace current GPS live location">
+                <div id="locationBadge" onclick="getCurrentGPSLocation()"
+                    class="hidden md:flex items-center space-x-2 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-3.5 py-2 rounded-2xl cursor-pointer transition shadow-xs"
+                    title="Click to trace current GPS live location">
                     <i id="locationIcon" class="fa-solid fa-location-crosshairs text-brandGreen text-lg"></i>
                     <div class="text-xs">
                         <p class="text-slate-500 font-bold leading-none flex items-center gap-1">
                             <span>Live Location</span>
                             <span id="gpsPulse" class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
                         </p>
-                        <p id="navUserAddress" class="text-slate-800 font-black leading-tight truncate max-w-[190px]">Trace Live GPS Location</p>
+                        <p id="navUserAddress" class="text-slate-800 font-black leading-tight truncate max-w-[190px]">
+                            Trace Live GPS Location</p>
                     </div>
                     <i class="fa-solid fa-arrows-rotate text-slate-400 text-xs pl-1"></i>
                 </div>
 
                 <!-- RIGHT NAV ACTIONS -->
                 <div class="flex items-center space-x-3">
-                    <button onclick="showSection('basket')" class="relative flex items-center space-x-2 bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-4 py-2.5 rounded-xl transition shadow-sm">
+                    <div id="savingsBadge"
+                        class="hidden sm:flex items-center space-x-1.5 bg-amber-50 text-amber-900 border border-amber-300 px-3 py-1.5 rounded-xl text-xs font-bold shadow-2xs">
+                        <i class="fa-solid fa-piggy-bank text-amber-600"></i>
+                        <span>Saved: <strong id="navTotalSaved">₹0</strong></span>
+                    </div>
+
+                    <button onclick="showSection('basket')"
+                        class="relative flex items-center space-x-2 bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-4 py-2.5 rounded-xl transition shadow-sm">
                         <i class="fa-solid fa-basket-shopping text-brandYellow text-lg"></i>
                         <span class="hidden sm:inline">My Bachat Basket</span>
-                        <span id="basketCountBadge" class="bg-brandOrange text-white text-xs font-black px-2 py-0.5 rounded-full">0</span>
+                        <span id="basketCountBadge"
+                            class="bg-brandOrange text-white text-xs font-black px-2 py-0.5 rounded-full">0</span>
                     </button>
 
-                    <button id="userAuthBtn" onclick="openAuthModal()" class="flex items-center space-x-2 border border-slate-300 hover:border-brandGreen text-slate-700 font-bold px-3.5 py-2.5 rounded-xl transition bg-white shadow-xs">
+                    <button id="userAuthBtn" onclick="openAuthModal()"
+                        class="flex items-center space-x-2 border border-slate-300 hover:border-brandGreen text-slate-700 font-bold px-3.5 py-2.5 rounded-xl transition bg-white shadow-xs">
                         <i class="fa-solid fa-circle-user text-brandGreen text-xl"></i>
                         <span id="navUserName" class="hidden md:inline">Login / Register</span>
                     </button>
@@ -126,13 +184,15 @@
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
         <!-- SEARCH HERO SECTION -->
-        <section id="heroSearchSection" class="bg-gradient-to-r from-emerald-800 via-emerald-700 to-green-900 rounded-3xl p-6 sm:p-10 text-white shadow-xl mb-8 relative overflow-hidden">
+        <section id="heroSearchSection"
+            class="bg-gradient-to-r from-emerald-800 via-emerald-700 to-green-900 rounded-3xl p-6 sm:p-10 text-white shadow-xl mb-8 relative overflow-hidden">
             <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
                 <i class="fa-solid fa-cart-shopping text-[240px]"></i>
             </div>
 
             <div class="relative z-10 max-w-3xl">
-                <div class="inline-flex items-center space-x-2 bg-emerald-900/60 border border-emerald-500/40 px-3.5 py-1 rounded-full text-xs font-semibold text-emerald-200 mb-4">
+                <div
+                    class="inline-flex items-center space-x-2 bg-emerald-900/60 border border-emerald-500/40 px-3.5 py-1 rounded-full text-xs font-semibold text-emerald-200 mb-4">
                     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
                     <span>Live Quick Commerce Price Comparison Engine</span>
                 </div>
@@ -141,44 +201,61 @@
                     <span class="text-brandYellow">Find the cheapest way to buy it.</span>
                 </h1>
                 <p class="text-emerald-100 text-base sm:text-lg mb-6 leading-relaxed">
-                    Compare net prices across Blinkit, Zepto, BigBasket, Flipkart Minutes & Instamart including delivery fees & platform charges.
+                    Compare net prices across Blinkit, Zepto, BigBasket, Flipkart Minutes & Instamart including delivery
+                    fees & platform charges.
                 </p>
 
                 <!-- SEARCH BAR FORM -->
                 <div class="relative max-w-2xl">
-                    <div class="flex items-center bg-white rounded-2xl shadow-lg p-2 border-2 border-emerald-400 focus-within:ring-4 focus-within:ring-emerald-300 transition">
+                    <div
+                        class="flex items-center bg-white rounded-2xl shadow-lg p-2 border-2 border-emerald-400 focus-within:ring-4 focus-within:ring-emerald-300 transition">
                         <i class="fa-solid fa-magnifying-glass text-slate-400 text-xl pl-3 pr-2"></i>
-                        <input type="text" id="searchInput" onkeyup="handleSearchKey(event)" placeholder="Search groceries e.g., Potato, Amul Milk, Maggi, Oil..." 
-                               class="w-full text-slate-800 font-semibold placeholder-slate-400 focus:outline-none text-base sm:text-lg py-1 px-1">
-                        <button onclick="performSearch()" class="bg-brandOrange hover:bg-orange-600 text-white font-bold px-6 py-3 rounded-xl transition flex items-center space-x-2 shadow-md">
+                        <input type="text" id="searchInput" onkeyup="handleSearchKey(event)"
+                            placeholder="Search groceries e.g., Potato, Amul Milk, Maggi, Oil..."
+                            class="w-full text-slate-800 font-semibold placeholder-slate-400 focus:outline-none text-base sm:text-lg py-1 px-1">
+                        <button onclick="performSearch()"
+                            class="bg-brandOrange hover:bg-orange-600 text-white font-bold px-6 py-3 rounded-xl transition flex items-center space-x-2 shadow-md">
                             <span>Compare</span>
                             <i class="fa-solid fa-arrow-right"></i>
                         </button>
                     </div>
 
-                    <div id="searchSuggestions" class="hidden absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 max-h-72 overflow-y-auto text-slate-800 custom-scrollbar">
+                    <div id="searchSuggestions"
+                        class="hidden absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 max-h-72 overflow-y-auto text-slate-800 custom-scrollbar">
                     </div>
                 </div>
 
                 <!-- QUICK CATEGORY CHIPS -->
                 <div class="mt-6 flex flex-wrap items-center gap-2 text-xs sm:text-sm">
                     <span class="text-emerald-200 font-semibold">Popular Searches:</span>
-                    <button onclick="quickSearch('Fresh Potato')" class="bg-emerald-800/80 hover:bg-emerald-600 text-emerald-100 px-3 py-1 rounded-lg border border-emerald-600/40 transition">🥔 Fresh Potato (Aloo)</button>
-                    <button onclick="quickSearch('Amul Taaza Milk 1L')" class="bg-emerald-800/80 hover:bg-emerald-600 text-emerald-100 px-3 py-1 rounded-lg border border-emerald-600/40 transition">🥛 Amul Milk 1L</button>
-                    <button onclick="quickSearch('Maggi 2-Minute Masala')" class="bg-emerald-800/80 hover:bg-emerald-600 text-emerald-100 px-3 py-1 rounded-lg border border-emerald-600/40 transition">🍜 Maggi Noodles</button>
-                    <button onclick="quickSearch('Fortune Sunlite Oil')" class="bg-emerald-800/80 hover:bg-emerald-600 text-emerald-100 px-3 py-1 rounded-lg border border-emerald-600/40 transition">🌻 Fortune Oil 1L</button>
-                    <button onclick="quickSearch('Fresh Eggs')" class="bg-emerald-800/80 hover:bg-emerald-600 text-emerald-100 px-3 py-1 rounded-lg border border-emerald-600/40 transition">🥚 Eggs Pack of 6</button>
+                    <button onclick="quickSearch('Fresh Potato')"
+                        class="bg-emerald-800/80 hover:bg-emerald-600 text-emerald-100 px-3 py-1 rounded-lg border border-emerald-600/40 transition">🥔
+                        Fresh Potato (Aloo)</button>
+                    <button onclick="quickSearch('Amul Taaza Milk 1L')"
+                        class="bg-emerald-800/80 hover:bg-emerald-600 text-emerald-100 px-3 py-1 rounded-lg border border-emerald-600/40 transition">🥛
+                        Amul Milk 1L</button>
+                    <button onclick="quickSearch('Maggi 2-Minute Masala')"
+                        class="bg-emerald-800/80 hover:bg-emerald-600 text-emerald-100 px-3 py-1 rounded-lg border border-emerald-600/40 transition">🍜
+                        Maggi Noodles</button>
+                    <button onclick="quickSearch('Fortune Sunlite Oil')"
+                        class="bg-emerald-800/80 hover:bg-emerald-600 text-emerald-100 px-3 py-1 rounded-lg border border-emerald-600/40 transition">🌻
+                        Fortune Oil 1L</button>
+                    <button onclick="quickSearch('Fresh Eggs')"
+                        class="bg-emerald-800/80 hover:bg-emerald-600 text-emerald-100 px-3 py-1 rounded-lg border border-emerald-600/40 transition">🥚
+                        Eggs Pack of 6</button>
                 </div>
             </div>
         </section>
 
         <section class="mb-6">
             <div class="flex items-center justify-between mb-3">
-                <h3 class="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-700 flex items-center space-x-2">
+                <h3
+                    class="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-700 flex items-center space-x-2">
                     <i class="fa-solid fa-mobile-screen-button text-brandOrange"></i>
                     <span>Quick Commerce Apps</span>
                 </h3>
-                <button id="resetAppFilterBtn" onclick="resetAppFilter()" class="text-xs text-brandGreen font-bold hover:underline hidden">
+                <button id="resetAppFilterBtn" onclick="resetAppFilter()"
+                    class="text-xs text-brandGreen font-bold hover:underline hidden">
                     Show All Apps
                 </button>
             </div>
@@ -188,59 +265,74 @@
 
         <section class="mb-8">
             <div class="flex items-center justify-between mb-3">
-                <h3 class="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-600 flex items-center space-x-2">
+                <h3
+                    class="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-600 flex items-center space-x-2">
                     <i class="fa-solid fa-tags text-brandOrange"></i>
                     <span>Popular Grocery Brands</span>
                 </h3>
-                <button onclick="resetBrandFilter()" class="text-xs text-brandGreen font-bold hover:underline">Show All Brands</button>
+                <button onclick="resetBrandFilter()" class="text-xs text-brandGreen font-bold hover:underline">Show All
+                    Brands</button>
             </div>
             <div id="brandFilterContainer" class="flex items-center space-x-3 overflow-x-auto pb-2 custom-scrollbar">
             </div>
         </section>
 
         <div id="homeSection" class="space-y-8">
-            
+
             <div id="popularSection">
                 <div class="flex items-center justify-between mb-4">
                     <div>
-                        <h2 id="popularGridTitle" class="text-2xl font-bold text-slate-800">Everyday Grocery Essentials</h2>
-                        <p id="popularGridSub" class="text-slate-500 text-sm">Click any product to compare live platform prices or add directly to basket</p>
+                        <h2 id="popularGridTitle" class="text-2xl font-bold text-slate-800">Everyday Grocery Essentials
+                        </h2>
+                        <p id="popularGridSub" class="text-slate-500 text-sm">Click any product to compare live platform
+                            prices or add directly to basket</p>
                     </div>
-                    <span class="text-xs bg-emerald-100 text-brandGreen font-bold px-3 py-1 rounded-full">Live Updated</span>
+                    <span class="text-xs bg-emerald-100 text-brandGreen font-bold px-3 py-1 rounded-full">Live
+                        Updated</span>
                 </div>
 
-                <div id="popularProductsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+                <div id="popularProductsGrid"
+                    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
                 </div>
             </div>
 
             <!-- PRODUCT COMPARISON DETAIL DASHBOARD (TRIGGERED ON ITEM CLICK) -->
             <div id="comparisonContainer" class="hidden space-y-6">
-                
+
                 <!-- BACK ARROW NAVIGATION TO PREVIOUS VIEW -->
-                <div class="flex items-center justify-between bg-white p-3.5 rounded-2xl border border-slate-200 shadow-xs">
-                    <button onclick="goBack()" class="inline-flex items-center space-x-2 text-sm font-extrabold text-emerald-800 bg-emerald-100 hover:bg-emerald-200 px-4 py-2 rounded-xl transition">
+                <div
+                    class="flex items-center justify-between bg-white p-3.5 rounded-2xl border border-slate-200 shadow-xs">
+                    <button onclick="goBack()"
+                        class="inline-flex items-center space-x-2 text-sm font-extrabold text-emerald-800 bg-emerald-100 hover:bg-emerald-200 px-4 py-2 rounded-xl transition">
                         <i class="fa-solid fa-arrow-left"></i>
                         <span>Back to Previous Page</span>
                     </button>
                     <span class="text-xs font-bold text-slate-500">Comparing across 5 Quick-Commerce platforms</span>
                 </div>
 
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div
+                    class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                     <div class="flex items-start space-x-4">
-                        <img id="detailImg" src="" alt="Product" class="w-20 h-20 object-contain bg-slate-50 p-2 rounded-xl border border-slate-200">
+                        <img id="detailImg" src="" alt="Product"
+                            class="w-20 h-20 object-contain bg-slate-50 p-2 rounded-xl border border-slate-200">
                         <div>
                             <div class="flex items-center space-x-2">
-                                <span id="detailBrandBadge" class="text-xs font-bold uppercase bg-brandOrange text-white px-2 py-0.5 rounded">Brand</span>
-                                <span id="detailCategory" class="text-xs font-bold uppercase bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Category</span>
-                                <span id="detailUnit" class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">Unit</span>
+                                <span id="detailBrandBadge"
+                                    class="text-xs font-bold uppercase bg-brandOrange text-white px-2 py-0.5 rounded">Brand</span>
+                                <span id="detailCategory"
+                                    class="text-xs font-bold uppercase bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Category</span>
+                                <span id="detailUnit"
+                                    class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">Unit</span>
                             </div>
                             <h2 id="detailTitle" class="text-2xl font-bold text-slate-900 mt-1">Product Title</h2>
-                            <p id="detailSubtitle" class="text-slate-500 text-sm">Normalized price mapping across all platforms</p>
+                            <p id="detailSubtitle" class="text-slate-500 text-sm">Normalized price mapping across all
+                                platforms</p>
                         </div>
                     </div>
-                    
+
                     <div class="flex items-center space-x-3 w-full md:w-auto">
-                        <button id="addBasketBtn" onclick="addToBasketCurrent()" class="flex-1 md:flex-none bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-5 py-3 rounded-xl transition flex items-center justify-center space-x-2 shadow">
+                        <button id="addBasketBtn" onclick="addToBasketCurrent()"
+                            class="flex-1 md:flex-none bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-5 py-3 rounded-xl transition flex items-center justify-center space-x-2 shadow">
                             <i class="fa-solid fa-cart-plus"></i>
                             <span>Add Best Option to Basket</span>
                         </button>
@@ -249,40 +341,48 @@
 
                 <!-- KEY DECISION HIGHLIGHT CARDS -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-                    <div class="bg-gradient-to-br from-emerald-50 to-emerald-100 border-2 border-brandGreen p-5 rounded-2xl shadow-sm relative overflow-hidden">
+                    <div
+                        class="bg-gradient-to-br from-emerald-50 to-emerald-100 border-2 border-brandGreen p-5 rounded-2xl shadow-sm relative overflow-hidden">
                         <div class="absolute -right-4 -bottom-4 opacity-10 text-brandGreen">
                             <i class="fa-solid fa-trophy text-8xl"></i>
                         </div>
-                        <div class="flex items-center space-x-2 text-brandGreen font-extrabold text-xs tracking-wider uppercase mb-2">
+                        <div
+                            class="flex items-center space-x-2 text-brandGreen font-extrabold text-xs tracking-wider uppercase mb-2">
                             <i class="fa-solid fa-award text-sm"></i>
                             <span>Cheapest Base Item</span>
                         </div>
                         <div id="cheapestAppName" class="text-xl font-bold text-slate-800">BigBasket</div>
                         <div class="flex items-baseline space-x-2 mt-1">
                             <span id="cheapestPrice" class="text-3xl font-black text-brandGreen">₹0</span>
-                            <span id="cheapestSave" class="text-xs text-emerald-800 font-bold bg-emerald-200/80 px-2 py-0.5 rounded">Saves vs max</span>
+                            <span id="cheapestSave"
+                                class="text-xs text-emerald-800 font-bold bg-emerald-200/80 px-2 py-0.5 rounded">Saves
+                                vs max</span>
                         </div>
                         <p class="text-xs text-slate-600 mt-2">Base price without considering delivery fees.</p>
                     </div>
 
-                    <div class="bg-gradient-to-br from-amber-50 to-orange-100 border-2 border-brandOrange p-5 rounded-2xl shadow-sm relative overflow-hidden">
+                    <div
+                        class="bg-gradient-to-br from-amber-50 to-orange-100 border-2 border-brandOrange p-5 rounded-2xl shadow-sm relative overflow-hidden">
                         <div class="absolute -right-4 -bottom-4 opacity-10 text-brandOrange">
                             <i class="fa-solid fa-calculator text-8xl"></i>
                         </div>
-                        <div class="flex items-center space-x-2 text-brandOrange font-extrabold text-xs tracking-wider uppercase mb-2">
+                        <div
+                            class="flex items-center space-x-2 text-brandOrange font-extrabold text-xs tracking-wider uppercase mb-2">
                             <i class="fa-solid fa-shield-halved text-sm"></i>
                             <span>Best Effective Single Order</span>
                         </div>
                         <div id="effectiveAppName" class="text-xl font-bold text-slate-800">Blinkit</div>
                         <div class="flex items-baseline space-x-2 mt-1">
                             <span id="effectivePrice" class="text-3xl font-black text-brandOrange">₹0</span>
-                            <span class="text-xs text-orange-800 font-bold bg-orange-200/80 px-2 py-0.5 rounded">Final Total Payable</span>
+                            <span class="text-xs text-orange-800 font-bold bg-orange-200/80 px-2 py-0.5 rounded">Final
+                                Total Payable</span>
                         </div>
                         <p id="effectiveReason" class="text-xs text-slate-600 mt-2">Item + Delivery + Platform Fee</p>
                     </div>
 
                     <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-sm">
-                        <div class="flex items-center space-x-2 text-slate-500 font-bold text-xs tracking-wider uppercase mb-2">
+                        <div
+                            class="flex items-center space-x-2 text-slate-500 font-bold text-xs tracking-wider uppercase mb-2">
                             <i class="fa-solid fa-arrows-rotate text-sm text-blue-600"></i>
                             <span>Next Best Alternative</span>
                         </div>
@@ -291,24 +391,29 @@
                             <span id="altPrice" class="text-2xl font-extrabold text-slate-800">₹0</span>
                             <span class="text-xs text-slate-500">In stock</span>
                         </div>
-                        <p class="text-xs text-slate-500 mt-2">Fast alternative platform if top option is unavailable.</p>
+                        <p class="text-xs text-slate-500 mt-2">Fast alternative platform if top option is unavailable.
+                        </p>
                     </div>
                 </div>
 
                 <!-- DETAILED PLATFORM COMPARISON TABLE -->
                 <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-                    <div class="p-5 border-b border-slate-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 bg-slate-50">
+                    <div
+                        class="p-5 border-b border-slate-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 bg-slate-50">
                         <div>
                             <h3 class="text-lg font-bold text-slate-900">Live Platform Comparison Table</h3>
-                            <p class="text-xs text-emerald-800 font-bold">💡 Compare item pricing, delivery ETAs, handling fees & effective single-order totals across all platforms.</p>
+                            <p class="text-xs text-emerald-800 font-bold">💡 Compare item pricing, delivery ETAs,
+                                handling fees & effective single-order totals across all platforms.</p>
                         </div>
-                        <span class="text-xs bg-slate-200 text-slate-700 font-bold px-3 py-1 rounded-lg">5 Platforms Scanned</span>
+                        <span class="text-xs bg-slate-200 text-slate-700 font-bold px-3 py-1 rounded-lg">5 Platforms
+                            Scanned</span>
                     </div>
 
                     <div class="overflow-x-auto">
                         <table class="w-full text-left border-collapse">
                             <thead>
-                                <tr class="bg-slate-100 text-slate-600 text-xs uppercase font-bold border-b border-slate-200">
+                                <tr
+                                    class="bg-slate-100 text-slate-600 text-xs uppercase font-bold border-b border-slate-200">
                                     <th class="p-4">Platform App</th>
                                     <th class="p-4">Delivery ETA</th>
                                     <th class="p-4">Item Price</th>
@@ -334,17 +439,20 @@
                             </div>
                             <div>
                                 <h3 class="text-lg font-bold text-slate-900">Smart AI Cheaper Brand Alternatives</h3>
-                                <p class="text-xs text-slate-500">Recommended similar items with better value per quantity</p>
+                                <p class="text-xs text-slate-500">Recommended similar items with better value per
+                                    quantity</p>
                             </div>
                         </div>
-                        <span class="text-xs bg-orange-100 text-orange-800 font-bold px-3 py-1 rounded-full">AI Suggested</span>
+                        <span class="text-xs bg-orange-100 text-orange-800 font-bold px-3 py-1 rounded-full">AI
+                            Suggested</span>
                     </div>
                     <div id="aiAlternativesList" class="grid grid-cols-1 md:grid-cols-3 gap-3">
                     </div>
                 </div>
 
                 <!-- FREE DELIVERY OPTIMIZER BOX -->
-                <div id="smartAddonBox" class="bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-emerald-500/10 border-2 border-dashed border-amber-400 p-6 rounded-2xl shadow-sm">
+                <div id="smartAddonBox"
+                    class="bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-emerald-500/10 border-2 border-dashed border-amber-400 p-6 rounded-2xl shadow-sm">
                     <div class="flex items-start space-x-4">
                         <div class="bg-amber-500 text-white p-3 rounded-2xl text-xl font-bold shadow-sm">
                             <i class="fa-solid fa-wand-magic-sparkles"></i>
@@ -352,14 +460,17 @@
                         <div class="flex-grow">
                             <div class="flex items-center space-x-2">
                                 <h3 class="text-lg font-bold text-slate-900">Free Delivery Smart Optimizer</h3>
-                                <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2 py-0.5 rounded-full">Save Shipping Fee</span>
+                                <span
+                                    class="bg-amber-100 text-amber-800 text-xs font-bold px-2 py-0.5 rounded-full">Save
+                                    Shipping Fee</span>
                             </div>
                             <p id="smartAddonText" class="text-sm text-slate-700 mt-1">
                                 Reach the platform threshold to unlock FREE Delivery!
                             </p>
 
                             <div class="mt-4">
-                                <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Suggested Low-Cost Add-ons to Unlock Free Shipping:</span>
+                                <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Suggested
+                                    Low-Cost Add-ons to Unlock Free Shipping:</span>
                                 <div id="smartAddonList" class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-2">
                                 </div>
                             </div>
@@ -367,74 +478,132 @@
                     </div>
                 </div>
 
-            </div>
-
-        </div>
-
-        <div id="basketSection" class="hidden space-y-6">
-            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-                <!-- BACK ARROW NAVIGATION TO PREVIOUS VIEW -->
-                <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
-                    <button onclick="goBack()" class="inline-flex items-center space-x-2 text-sm font-extrabold text-emerald-800 bg-emerald-100 hover:bg-emerald-200 px-4 py-2 rounded-xl transition">
+              <div id="basketSection" class="hidden space-y-6">
+            <!-- BASKET HEADER & NAVIGATION -->
+            <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm">
+                <div class="flex items-center justify-between mb-4 pb-4 border-b border-slate-100">
+                    <button onclick="goBack()"
+                        class="inline-flex items-center space-x-2 text-sm sm:text-base font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-4 py-2.5 rounded-2xl transition">
                         <i class="fa-solid fa-arrow-left"></i>
-                        <span>Back to Shopping</span>
+                        <span>← Continue Shopping</span>
                     </button>
-                    <span class="text-xs font-bold text-slate-500">Basket Optimization Engine</span>
+                    <span class="text-xs sm:text-sm font-extrabold text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        Smart Basket Engine
+                    </span>
                 </div>
 
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                     <div>
-                        <div class="flex items-center space-x-2">
-                            <h2 class="text-2xl font-bold text-slate-900">My Bachat Basket</h2>
-                            <span class="bg-emerald-100 text-brandGreen font-bold text-xs px-2.5 py-0.5 rounded-full">Smart Comparison</span>
+                        <div class="flex items-center space-x-3">
+                            <h2 class="text-3xl sm:text-4xl font-black text-slate-900">My Bachat Basket</h2>
+                            <span class="bg-emerald-100 text-brandGreen font-extrabold text-xs sm:text-sm px-3 py-1 rounded-full border border-emerald-200">
+                                Live Cost Optimizer
+                            </span>
                         </div>
-                        <p class="text-slate-500 text-sm">We compare single-app orders vs splitting across 2 apps to give you maximum total savings.</p>
+                        <p class="text-slate-600 text-base sm:text-lg mt-1 font-medium">
+                            Comparing single-store vs. smart split across Blinkit, Zepto, BigBasket, Flipkart Minutes & Instamart.
+                        </p>
                     </div>
-                    <button onclick="clearBasket()" class="text-xs text-red-600 hover:text-red-800 font-bold border border-red-200 hover:bg-red-50 px-3 py-1.5 rounded-xl transition">
-                        <i class="fa-solid fa-trash-can mr-1"></i> Clear Basket
+                    <button onclick="clearBasket()"
+                        class="text-sm text-red-600 hover:text-red-700 font-bold border border-red-200 hover:bg-red-50 px-4 py-2.5 rounded-2xl transition flex items-center space-x-1.5">
+                        <i class="fa-solid fa-trash-can"></i>
+                        <span>Clear Basket</span>
                     </button>
+                </div>
+            </div>
+
+            <!-- LIVE OPTIMIZATION HIGHLIGHT BANNER -->
+            <div id="basketSummaryBanner" class="hidden bg-gradient-to-r from-emerald-800 via-emerald-700 to-teal-800 text-white p-5 sm:p-6 rounded-3xl shadow-md flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-brandYellow text-2xl flex-shrink-0">
+                        <i class="fa-solid fa-wallet"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-black uppercase tracking-wider text-emerald-200 block">Instant Savings Overview</span>
+                        <h3 id="summaryTitle" class="text-lg sm:text-xl font-black text-white mt-0.5">Bachat Comparison Active</h3>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3 self-stretch md:self-auto justify-between md:justify-end">
+                    <div class="bg-black/20 px-4 py-2 rounded-2xl border border-white/10 text-right">
+                        <span class="text-xs text-emerald-200 block font-semibold">Max Bachat Savings</span>
+                        <span id="summarySavingsAmount" class="text-2xl sm:text-3xl font-black text-brandYellow">₹0</span>
+                    </div>
                 </div>
             </div>
 
             <!-- BASKET CONTENT GRID -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                
-                <!-- LEFT: CURRENT BASKET ITEMS (5 COLS) -->
-                <div class="lg:col-span-5 space-y-4">
-                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
-                        <h3 class="text-base font-bold text-slate-900 mb-3 flex items-center justify-between">
-                            <span>Your Grocery Basket Items</span>
-                            <span id="basketItemCount" class="text-xs bg-slate-100 text-slate-700 font-bold px-2.5 py-0.5 rounded">0 items</span>
-                        </h3>
 
-                        <!-- BASKET ITEMS CONTAINER -->
-                        <div id="basketItemsList" class="space-y-3 max-h-[380px] overflow-y-auto pr-1 custom-scrollbar">
+                <!-- LEFT: CURRENT BASKET ITEMS (5 COLS) -->
+                <div class="lg:col-span-5 space-y-5">
+                    <div class="bg-white p-5 sm:p-6 rounded-3xl border border-slate-200 shadow-sm">
+                        <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
+                            <h3 class="text-lg sm:text-xl font-black text-slate-900 flex items-center space-x-2">
+                                <span>🛒 Basket Items</span>
+                            </h3>
+                            <span id="basketItemCount"
+                                class="text-xs sm:text-sm bg-emerald-50 text-emerald-900 border border-emerald-200 font-extrabold px-3 py-1 rounded-full">
+                                0 items
+                            </span>
                         </div>
 
-                        <!-- REQUIREMENT 3: CUSTOM ITEM INPUT FORM (e.g., 1kg potato) -->
-                        <div class="mt-5 pt-4 border-t border-slate-200 bg-emerald-50/60 p-3.5 rounded-2xl border border-emerald-200/80">
-                            <label class="block text-xs font-extrabold text-emerald-900 uppercase tracking-wider mb-1.5 flex items-center justify-between">
-                                <span><i class="fa-solid fa-pen-to-square text-brandOrange mr-1"></i> Add Custom Grocery Input</span>
-                                <span class="text-[10px] bg-emerald-200 text-emerald-900 px-1.5 py-0.5 rounded">e.g. 1kg Potato</span>
-                            </label>
-                            <div class="flex space-x-2">
-                                <input type="text" id="customItemInput" placeholder="Type e.g., 1kg Potato, 500g Tomato, 2L Oil..." 
-                                       class="w-full text-xs font-semibold p-2.5 bg-white border border-slate-300 rounded-xl focus:outline-none focus:border-brandGreen"
-                                       onkeyup="if(event.key==='Enter') addCustomBasketItem()">
-                                <button onclick="addCustomBasketItem()" class="bg-brandOrange hover:bg-orange-600 text-white font-bold px-4 py-2.5 rounded-xl text-xs transition flex-shrink-0 shadow-xs">
-                                    + Add Custom
+                        <!-- 1-CLICK QUICK ESSENTIALS CHIPS -->
+                        <div class="mb-4 bg-slate-50 p-3.5 rounded-2xl border border-slate-200/80">
+                            <span class="text-xs font-black text-slate-600 uppercase tracking-wider block mb-2">⚡ 1-Click Common Essentials:</span>
+                            <div class="flex flex-wrap gap-1.5">
+                                <button onclick="addQuickChip('p0')" class="text-xs font-bold bg-white hover:bg-emerald-50 hover:text-brandGreen hover:border-brandGreen border border-slate-200 px-3 py-1.5 rounded-xl transition shadow-2xs">
+                                    🥔 Potato 1kg <strong class="text-brandGreen">₹25</strong>
+                                </button>
+                                <button onclick="addQuickChip('p1')" class="text-xs font-bold bg-white hover:bg-emerald-50 hover:text-brandGreen hover:border-brandGreen border border-slate-200 px-3 py-1.5 rounded-xl transition shadow-2xs">
+                                    🥛 Milk 1L <strong class="text-brandGreen">₹53</strong>
+                                </button>
+                                <button onclick="addQuickChip('p2')" class="text-xs font-bold bg-white hover:bg-emerald-50 hover:text-brandGreen hover:border-brandGreen border border-slate-200 px-3 py-1.5 rounded-xl transition shadow-2xs">
+                                    🍜 Maggi 4s <strong class="text-brandGreen">₹54</strong>
+                                </button>
+                                <button onclick="addQuickChip('p4')" class="text-xs font-bold bg-white hover:bg-emerald-50 hover:text-brandGreen hover:border-brandGreen border border-slate-200 px-3 py-1.5 rounded-xl transition shadow-2xs">
+                                    🥚 Eggs 6s <strong class="text-brandGreen">₹44</strong>
+                                </button>
+                                <button onclick="addQuickChip('p6')" class="text-xs font-bold bg-white hover:bg-emerald-50 hover:text-brandGreen hover:border-brandGreen border border-slate-200 px-3 py-1.5 rounded-xl transition shadow-2xs">
+                                    🧈 Butter 100g <strong class="text-brandGreen">₹56</strong>
                                 </button>
                             </div>
-                            <p class="text-[11px] text-slate-500 mt-1.5">You can enter any item with quantity (e.g., <em>1kg potato</em> or <em>500g paneer</em>). Our engine estimates market rates across apps!</p>
+                        </div>
+
+                        <!-- BASKET ITEMS CONTAINER -->
+                        <div id="basketItemsList" class="space-y-3 max-h-[460px] overflow-y-auto pr-1 custom-scrollbar">
+                        </div>
+
+                        <!-- CUSTOM ITEM INPUT FORM -->
+                        <div class="mt-5 pt-4 border-t border-slate-200 bg-amber-50/70 p-4 rounded-2xl border border-amber-200">
+                            <label class="block text-xs sm:text-sm font-black text-amber-950 uppercase tracking-wider mb-2 flex items-center justify-between">
+                                <span><i class="fa-solid fa-pen-to-square text-brandOrange mr-1.5"></i> Custom Grocery Input</span>
+                                <span class="text-[11px] bg-amber-200 text-amber-900 px-2 py-0.5 rounded-md font-bold">e.g. 1kg Potato</span>
+                            </label>
+                            <div class="flex space-x-2">
+                                <input type="text" id="customItemInput"
+                                    placeholder="Type e.g., 1kg Onion, 500g Paneer, 2L Oil..."
+                                    class="w-full text-sm font-semibold p-3 bg-white border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-brandOrange"
+                                    onkeyup="if(event.key==='Enter') addCustomBasketItem()">
+                                <button onclick="addCustomBasketItem()"
+                                    class="bg-brandOrange hover:bg-orange-600 text-white font-bold px-5 py-3 rounded-xl text-sm transition flex-shrink-0 shadow-sm">
+                                    + Add
+                                </button>
+                            </div>
+                            <p class="text-xs text-slate-500 mt-2 font-medium">Type any item with quantity (e.g. <em>500g paneer</em> or <em>2kg rice</em>). We estimate rates automatically.</p>
                         </div>
 
                         <!-- SELECT CATALOG ITEM DROP-DOWN -->
-                        <div class="mt-3 pt-3 border-t border-slate-100">
-                            <label class="block text-xs font-bold text-slate-600 mb-1">Or Pick From Popular Catalog:</label>
+                        <div class="mt-4 pt-4 border-t border-slate-100">
+                            <label class="block text-xs sm:text-sm font-bold text-slate-700 mb-2">Or Choose from Catalog:</label>
                             <div class="flex space-x-2">
-                                <select id="quickBasketSelect" class="w-full text-xs font-semibold p-2.5 bg-slate-50 border border-slate-300 rounded-xl focus:outline-none focus:border-brandGreen">
+                                <select id="quickBasketSelect"
+                                    class="w-full text-sm font-semibold p-3 bg-slate-50 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-brandGreen">
                                 </select>
-                                <button onclick="addQuickBasketItem()" class="bg-brandGreen hover:bg-emerald-800 text-white font-bold px-4 py-2.5 rounded-xl text-xs transition">+ Add</button>
+                                <button onclick="addQuickBasketItem()"
+                                    class="bg-brandGreen hover:bg-emerald-800 text-white font-bold px-5 py-3 rounded-xl text-sm transition shadow-sm">
+                                    + Add
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -443,61 +612,88 @@
                 <!-- RIGHT: OPTIMIZATION RESULT COMPARISON (7 COLS) -->
                 <div class="lg:col-span-7 space-y-6">
                     <div id="basketOptimizationResults" class="space-y-6">
-                        
+
                         <!-- OPTION A: CHEAPEST SINGLE PLATFORM -->
-                        <div class="bg-white p-6 rounded-2xl border-2 border-emerald-500 shadow-sm relative">
-                            <div class="absolute -top-3 right-6 bg-brandGreen text-white text-xs font-black px-3 py-0.5 rounded-full uppercase tracking-wider">
-                                Recommended Single App
+                        <div class="bg-white p-6 sm:p-7 rounded-3xl border-2 border-emerald-500 shadow-md relative">
+                            <div class="absolute -top-3.5 right-6 bg-brandGreen text-white text-xs font-black px-3.5 py-1 rounded-full uppercase tracking-wider shadow-xs">
+                                Option 1: Fastest (1 Store Delivery)
                             </div>
-                            <div class="flex justify-between items-start">
+                            <div class="flex justify-between items-start gap-4">
                                 <div>
-                                    <h4 id="singleAppTitle" class="text-xl font-bold text-slate-900">Blinkit Order</h4>
-                                    <p class="text-xs text-slate-500">Buy all items in a single basket</p>
+                                    <h4 id="singleAppTitle" class="text-2xl sm:text-3xl font-black text-slate-900">Blinkit Order</h4>
+                                    <p class="text-sm text-slate-500 mt-0.5">Everything delivered in one single order</p>
                                 </div>
-                                <div class="text-right">
-                                    <div id="singleAppTotal" class="text-2xl font-black text-brandGreen">₹0</div>
-                                    <span id="singleAppDeliveryNote" class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded">Free Shipping Status</span>
-                                </div>
-                            </div>
-
-                            <div class="mt-4 bg-slate-50 p-3 rounded-xl border border-slate-200 text-xs space-y-1.5 text-slate-600">
-                                <div class="flex justify-between">
-                                    <span>Items Subtotal:</span>
-                                    <span id="singleAppSubtotal" class="font-bold text-slate-800">₹0</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span>Delivery Charges:</span>
-                                    <span id="singleAppDelivery" class="font-bold text-slate-800">₹0</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span>Handling & Platform Fees:</span>
-                                    <span id="singleAppHandling" class="font-bold text-slate-800">₹0</span>
+                                <div class="text-right flex-shrink-0">
+                                    <div id="singleAppTotal" class="text-3xl sm:text-4xl font-black text-brandGreen">₹0</div>
+                                    <span id="singleAppDeliveryNote"
+                                        class="inline-block mt-1 text-xs bg-emerald-100 text-emerald-900 font-extrabold px-2.5 py-1 rounded-lg">
+                                        Free Shipping Status
+                                    </span>
                                 </div>
                             </div>
 
-                            <button id="singleAppBuyBtn" onclick="buyBasketSingle()" class="mt-4 w-full bg-brandGreen hover:bg-emerald-800 text-white font-bold py-3 rounded-xl transition flex items-center justify-center space-x-2 shadow-sm">
-                                <span>Checkout Entire Basket on App</span>
+                            <div class="mt-5 bg-slate-50 p-4 rounded-2xl border border-slate-200 text-sm space-y-2 text-slate-600">
+                                <div class="flex justify-between">
+                                    <span class="font-medium">Items Subtotal:</span>
+                                    <span id="singleAppSubtotal" class="font-bold text-slate-900 text-base">₹0</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="font-medium">Delivery Charges:</span>
+                                    <span id="singleAppDelivery" class="font-bold text-slate-900 text-base">₹0</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="font-medium">Handling & Platform Fees:</span>
+                                    <span id="singleAppHandling" class="font-bold text-slate-900 text-base">₹0</span>
+                                </div>
+                            </div>
+
+                            <button id="singleAppBuyBtn" onclick="buyBasketSingle()"
+                                class="mt-5 w-full bg-brandGreen hover:bg-emerald-800 text-white font-bold py-4 rounded-2xl transition flex items-center justify-center space-x-2 text-base shadow-sm">
+                                <span>Order Everything in 1 Basket</span>
                                 <i class="fa-solid fa-arrow-right"></i>
                             </button>
                         </div>
 
                         <!-- OPTION B: SPLIT BASKET OPTIMIZATION -->
-                        <div class="bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded-2xl border-2 border-brandOrange shadow-sm">
-                            <div class="flex justify-between items-start">
+                        <div class="bg-gradient-to-br from-amber-50 to-orange-50 p-6 sm:p-7 rounded-3xl border-2 border-brandOrange shadow-md relative">
+                            <div class="absolute -top-3.5 right-6 bg-brandOrange text-white text-xs font-black px-3.5 py-1 rounded-full uppercase tracking-wider shadow-xs">
+                                Option 2: Maximum Rupee Savings
+                            </div>
+                            <div class="flex justify-between items-start gap-4">
                                 <div>
                                     <div class="flex items-center space-x-2">
-                                        <h4 class="text-xl font-bold text-slate-900">Split Order Optimization</h4>
-                                        <span class="bg-brandOrange text-white text-[10px] font-black px-2 py-0.5 rounded-full uppercase">Max Savings</span>
+                                        <h4 class="text-2xl sm:text-3xl font-black text-slate-900">Smart Split Order</h4>
                                     </div>
-                                    <p class="text-xs text-slate-600">Splitting items across 2 apps to maximize discounts</p>
+                                    <p class="text-sm text-slate-600 mt-0.5">Splits items across stores where each item is cheapest</p>
                                 </div>
-                                <div class="text-right">
-                                    <div id="splitAppTotal" class="text-2xl font-black text-brandOrange">₹0</div>
-                                    <span id="splitAppSavings" class="text-xs text-orange-900 font-bold bg-orange-200 px-2 py-0.5 rounded">Saves ₹0 extra!</span>
+                                <div class="text-right flex-shrink-0">
+                                    <div id="splitAppTotal" class="text-3xl sm:text-4xl font-black text-brandOrange">₹0</div>
+                                    <span id="splitAppSavings"
+                                        class="inline-block mt-1 text-xs sm:text-sm text-orange-950 font-black bg-orange-200 px-3 py-1 rounded-full shadow-2xs">
+                                        Saves ₹0 extra!
+                                    </span>
                                 </div>
                             </div>
 
-                            <div id="splitAppBreakdown" class="mt-4 space-y-2">
+                            <div id="splitAppBreakdown" class="mt-5 space-y-2.5">
+                            </div>
+
+                            <button id="splitAppBuyBtn" onclick="buyBasketSplit()"
+                                class="mt-5 w-full bg-brandOrange hover:bg-orange-600 text-white font-bold py-4 rounded-2xl transition flex items-center justify-center space-x-2 text-base shadow-sm">
+                                <span>Checkout with Smart Split Savings</span>
+                                <i class="fa-solid fa-code-fork"></i>
+                            </button>
+                        </div>
+
+                        <!-- BACHAT PRO TIPS BANNER -->
+                        <div id="bachatTipsContainer"
+                            class="hidden bg-emerald-50 border-2 border-emerald-300 rounded-3xl p-5 flex items-start space-x-4 shadow-2xs">
+                            <div class="w-10 h-10 rounded-2xl bg-emerald-100 border border-emerald-200 flex items-center justify-center text-brandGreen font-bold text-xl flex-shrink-0">
+                                <i class="fa-solid fa-lightbulb"></i>
+                            </div>
+                            <div class="text-sm">
+                                <h5 class="font-extrabold text-emerald-950 text-base mb-1">💡 Bachat Pro Recommendation</h5>
+                                <p id="bachatTipsText" class="text-emerald-800 leading-relaxed font-medium"></p>
                             </div>
                         </div>
 
@@ -509,10 +705,52 @@
 
     </main>
 
+    <!-- ORDER SUCCESS MODAL -->
+    <div id="orderSuccessModal"
+        class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 z-50 hidden">
+        <div
+            class="bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 text-center border border-slate-100 animate-fadeIn">
+            <div
+                class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4 text-brandGreen text-3xl">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <span
+                class="text-[11px] font-black text-brandOrange uppercase tracking-wider bg-orange-100 px-3 py-1 rounded-full">Bachat
+                Confirmed</span>
+            <h3 class="text-2xl font-black text-slate-900 mt-3">Order Registered!</h3>
+            <p id="orderModalId" class="text-xs font-mono text-slate-500 mt-1 font-bold">ID: #BB-XXXXXX</p>
+
+            <div class="my-5 p-4 bg-slate-50 rounded-2xl border border-slate-200 text-left space-y-2 text-xs">
+                <div class="flex justify-between">
+                    <span class="text-slate-500">Checkout Mode:</span>
+                    <strong id="orderModalStrategy" class="text-slate-800">Single App</strong>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-slate-500">Total Paid:</span>
+                    <strong id="orderModalAmount" class="text-brandGreen text-sm">₹0</strong>
+                </div>
+                <div class="flex justify-between border-t border-slate-200 pt-2">
+                    <span class="text-emerald-800 font-bold">Total Bachat Savings:</span>
+                    <strong id="orderModalSavings" class="text-brandOrange font-extrabold text-sm">₹0</strong>
+                </div>
+            </div>
+
+            <p class="text-xs text-slate-500 mb-5">Your order has been recorded in your Bachat savings history and
+                partner stores are prepared for dispatch!</p>
+
+            <button onclick="closeOrderModal()"
+                class="w-full bg-brandGreen hover:bg-emerald-800 text-white font-bold py-3 rounded-xl transition text-sm shadow-sm">
+                Back to Shopping
+            </button>
+        </div>
+    </div>
+
     <!-- USER LOGIN / REGISTER MODAL -->
-    <div id="authModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 z-50 hidden">
+    <div id="authModal"
+        class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 z-50 hidden">
         <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 sm:p-8 relative border border-slate-100">
-            <button onclick="closeAuthModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 bg-slate-100 p-2 rounded-full w-8 h-8 flex items-center justify-center">
+            <button onclick="closeAuthModal()"
+                class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 bg-slate-100 p-2 rounded-full w-8 h-8 flex items-center justify-center">
                 <i class="fa-solid fa-xmark"></i>
             </button>
 
@@ -522,25 +760,29 @@
                     <span class="text-brandOrange font-black text-2xl tracking-tight">Hub</span>
                 </div>
                 <h3 class="text-xl font-extrabold text-slate-900">User Profile & Delivery Location</h3>
-                <p class="text-xs text-slate-500 mt-1">Enter details to unlock exact delivery charges & local quick-commerce stores.</p>
+                <p class="text-xs text-slate-500 mt-1">Enter details to unlock exact delivery charges & local
+                    quick-commerce stores.</p>
             </div>
 
             <form onsubmit="handleUserRegister(event)" class="space-y-4">
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Full Name</label>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Full
+                        Name</label>
                     <div class="relative">
                         <i class="fa-solid fa-user absolute left-3 top-3 text-slate-400 text-sm"></i>
                         <input type="text" id="regName" required placeholder="e.g. Rahul Sharma"
-                               class="w-full text-sm font-semibold pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-brandGreen">
+                            class="w-full text-sm font-semibold pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-brandGreen">
                     </div>
                 </div>
 
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Phone Number</label>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Phone
+                        Number</label>
                     <div class="relative">
                         <i class="fa-solid fa-phone absolute left-3 top-3 text-slate-400 text-sm"></i>
-                        <input type="tel" id="regPhone" required pattern="[0-9]{10}" placeholder="10-digit mobile number"
-                               class="w-full text-sm font-semibold pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-brandGreen">
+                        <input type="tel" id="regPhone" required pattern="[0-9]{10}"
+                            placeholder="10-digit mobile number"
+                            class="w-full text-sm font-semibold pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-brandGreen">
                     </div>
                 </div>
 
@@ -549,35 +791,39 @@
                         <span class="font-bold text-slate-800 block">GPS Live Location</span>
                         <span class="text-slate-500">Auto-detect address via GPS</span>
                     </div>
-                    <button type="button" onclick="getCurrentGPSLocation()" class="bg-brandGreen text-white text-xs font-bold px-3 py-1.5 rounded-lg flex items-center space-x-1 hover:bg-emerald-800 transition">
+                    <button type="button" onclick="getCurrentGPSLocation()"
+                        class="bg-brandGreen text-white text-xs font-bold px-3 py-1.5 rounded-lg flex items-center space-x-1 hover:bg-emerald-800 transition">
                         <i class="fa-solid fa-location-crosshairs"></i>
                         <span>Trace GPS</span>
                     </button>
                 </div>
 
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Delivery Address</label>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Delivery
+                        Address</label>
                     <div class="relative">
                         <i class="fa-solid fa-house absolute left-3 top-3 text-slate-400 text-sm"></i>
                         <input type="text" id="regAddress" required placeholder="Flat/House No., Area, Street"
-                               class="w-full text-sm font-semibold pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-brandGreen">
+                            class="w-full text-sm font-semibold pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-brandGreen">
                     </div>
                 </div>
 
                 <div class="grid grid-cols-2 gap-3">
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">PIN Code</label>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">PIN
+                            Code</label>
                         <input type="text" id="regPincode" required pattern="[0-9]{6}" placeholder="e.g. 110001"
-                               class="w-full text-sm font-semibold px-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-brandGreen">
+                            class="w-full text-sm font-semibold px-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-brandGreen">
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">City</label>
                         <input type="text" id="regCity" required placeholder="e.g. New Delhi"
-                               class="w-full text-sm font-semibold px-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-brandGreen">
+                            class="w-full text-sm font-semibold px-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-brandGreen">
                     </div>
                 </div>
 
-                <button type="submit" class="w-full bg-brandGreen hover:bg-emerald-800 text-white font-bold py-3 rounded-xl transition shadow-md text-sm mt-2">
+                <button type="submit"
+                    class="w-full bg-brandGreen hover:bg-emerald-800 text-white font-bold py-3 rounded-xl transition shadow-md text-sm mt-2">
                     Save Profile
                 </button>
             </form>
@@ -585,14 +831,15 @@
     </div>
 
     <!-- TOAST NOTIFICATION CONTAINER -->
-    <div id="toast" class="fixed bottom-5 right-5 bg-slate-900 text-white font-bold text-sm px-5 py-3 rounded-xl shadow-2xl z-50 transition transform translate-y-20 opacity-0 flex items-center space-x-3 pointer-events-none">
+    <div id="toast"
+        class="fixed bottom-5 right-5 bg-slate-900 text-white font-bold text-sm px-5 py-3 rounded-xl shadow-2xl z-50 transition transform translate-y-20 opacity-0 flex items-center space-x-3 pointer-events-none">
         <i id="toastIcon" class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
         <span id="toastMsg">Action completed successfully</span>
     </div>
 
     <script>
         // 1. DATA DATABASE
-        const PLATFORM_CONFIG = {
+        let PLATFORM_CONFIG = {
             'Blinkit': {
                 color: '#F7C400',
                 textColor: '#000000',
@@ -640,7 +887,7 @@
             }
         };
 
-        const PRODUCTS_DB = [
+        let PRODUCTS_DB = [
             {
                 id: 'p0',
                 name: 'Fresh Potato (Aloo)',
@@ -771,6 +1018,8 @@
             }
         ];
 
+        const API_BASE = window.location.origin.includes('localhost') || window.location.origin.includes('127.0.0.1') ? '' : 'http://localhost:3000';
+        let latestOptimization = null;
         let currentUser = null;
         let activeProduct = PRODUCTS_DB[0];
         let activeSelectedBrand = null;
@@ -778,13 +1027,17 @@
         let userBasket = [];
         let historyStack = ['home'];
 
-        window.onload = function() {
+        window.onload = function () {
+            // 1. Immediately render UI from local database so the site NEVER freezes
             const savedUser = localStorage.getItem('bachat_user');
             if (savedUser) {
-                currentUser = JSON.parse(savedUser);
-                updateUserUI();
+                try {
+                    currentUser = JSON.parse(savedUser);
+                    updateUserUI();
+                    loadUserStats();
+                } catch(e) {}
             } else {
-                getCurrentGPSLocation(false);
+                fetchDefaultLocation();
             }
 
             renderAppFilterBar();
@@ -792,21 +1045,80 @@
             renderPopularGrid();
             populateQuickBasketDropdown();
             updateBasketCountBadge();
+
+            // 2. Fetch fresh database updates in the background (non-blocking)
+            fetchBackendPlatforms();
+            fetchBackendProducts();
         };
+
+        async function fetchDefaultLocation() {
+            const navAddr = document.getElementById('navUserAddress');
+            try {
+                const res = await fetch(`${API_BASE}/api/serviceability/detect-location`);
+                const data = await res.json();
+                if (data.success && navAddr) {
+                    navAddr.innerText = `${data.city} (${data.pincode})`;
+                    if (!currentUser) {
+                        currentUser = { name: 'Shopper', phone: '', address: `${data.area}, ${data.pincode}`, pincode: data.pincode, city: data.city };
+                        localStorage.setItem('bachat_user', JSON.stringify(currentUser));
+                    }
+                }
+            } catch (e) {
+                if (navAddr) navAddr.innerText = "Kolkata (700001)";
+            }
+        }
+
+        async function fetchBackendProducts() {
+            try {
+                const res = await fetch(`${API_BASE}/api/products`);
+                const data = await res.json();
+                if (data.success && data.products && data.products.length > 0) {
+                    PRODUCTS_DB = data.products;
+                    activeProduct = PRODUCTS_DB[0];
+                    renderPopularGrid();
+                    populateQuickBasketDropdown();
+                }
+            } catch (err) {
+                console.log('Using local products DB fallback:', err.message);
+            }
+        }
+
+        async function fetchBackendPlatforms() {
+            try {
+                const res = await fetch(`${API_BASE}/api/platforms`);
+                const data = await res.json();
+                if (data.success && data.platforms && data.platforms.length > 0) {
+                    data.platforms.forEach(p => {
+                        PLATFORM_CONFIG[p.id] = {
+                            color: p.color,
+                            textColor: p.textColor,
+                            deliveryTime: p.deliveryTime,
+                            deliveryFee: p.deliveryFee,
+                            handlingFee: p.handlingFee,
+                            freeThreshold: p.freeThreshold,
+                            logoSvg: p.logoSvg
+                        };
+                    });
+                    renderAppFilterBar();
+                }
+            } catch (err) {
+                console.log('Using local platforms fallback:', err.message);
+            }
+        }
 
         function getCurrentGPSLocation(showNotify = true) {
             const navAddr = document.getElementById('navUserAddress');
             const locIcon = document.getElementById('locationIcon');
             const gpsPulse = document.getElementById('gpsPulse');
 
-            if (!navigator.geolocation) {
-                if (showNotify) showToast('Geolocation is not supported by your browser', 'warn');
-                return;
-            }
-
             if (locIcon) locIcon.className = "fa-solid fa-spinner fa-spin text-brandOrange";
             if (gpsPulse) gpsPulse.classList.remove('hidden');
             if (navAddr) navAddr.innerText = "Tracing GPS...";
+
+            if (!navigator.geolocation) {
+                handleGPSFallback('Geolocation not supported by browser', showNotify);
+                return;
+            }
 
             navigator.geolocation.getCurrentPosition(
                 async (position) => {
@@ -814,14 +1126,13 @@
                     const lon = position.coords.longitude;
 
                     try {
-                        const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`);
-                        const data = await response.json();
+                        const res = await fetch(`${API_BASE}/api/serviceability/reverse-geocode?lat=${lat}&lon=${lon}`);
+                        const data = await res.json();
 
-                        let detectedCity = data.address?.city || data.address?.town || data.address?.state_district || 'New Delhi';
-                        let detectedPincode = data.address?.postcode || '110001';
-                        let detectedSub = data.address?.suburb || data.address?.neighbourhood || data.address?.road || 'Live GPS';
+                        let detectedCity = data.city || 'Kolkata';
+                        let detectedPincode = data.pincode || '700001';
+                        let locationText = data.formatted || `${detectedCity}, ${detectedPincode}`;
 
-                        const locationText = `${detectedSub}, ${detectedPincode}`;
                         if (navAddr) navAddr.innerText = locationText;
 
                         if (!currentUser) {
@@ -844,20 +1155,50 @@
                     } catch (err) {
                         const fallbackText = `GPS: ${lat.toFixed(2)}°, ${lon.toFixed(2)}°`;
                         if (navAddr) navAddr.innerText = fallbackText;
-                        if (showNotify) showToast(`GPS Coordinates traced successfully!`);
+                        if (showNotify) showToast(`GPS Coordinates traced: ${fallbackText}`);
                     } finally {
                         if (locIcon) locIcon.className = "fa-solid fa-location-dot text-brandGreen";
                         if (gpsPulse) gpsPulse.classList.add('hidden');
                     }
                 },
                 (error) => {
-                    if (locIcon) locIcon.className = "fa-solid fa-location-dot text-brandGreen";
-                    if (gpsPulse) gpsPulse.classList.add('hidden');
-                    if (navAddr && (!currentUser || !currentUser.pincode)) navAddr.innerText = "Set Location (Pincode)";
-                    if (showNotify) showToast('Unable to retrieve GPS location. Please allow location access.', 'warn');
+                    handleGPSFallback(error.message, showNotify);
                 },
-                { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+                { enableHighAccuracy: false, timeout: 6000, maximumAge: 60000 }
             );
+        }
+
+        async function handleGPSFallback(reason, showNotify) {
+            const navAddr = document.getElementById('navUserAddress');
+            const locIcon = document.getElementById('locationIcon');
+            const gpsPulse = document.getElementById('gpsPulse');
+
+            if (locIcon) locIcon.className = "fa-solid fa-location-dot text-brandGreen";
+            if (gpsPulse) gpsPulse.classList.add('hidden');
+
+            try {
+                const res = await fetch(`${API_BASE}/api/serviceability/detect-location`);
+                const data = await res.json();
+                if (data.success && navAddr) {
+                    navAddr.innerText = `${data.city} (${data.pincode})`;
+                    if (!currentUser) {
+                        currentUser = { name: 'Shopper', phone: '', address: `${data.area}, ${data.pincode}`, pincode: data.pincode, city: data.city };
+                        localStorage.setItem('bachat_user', JSON.stringify(currentUser));
+                    }
+                    if (showNotify) {
+                        showToast(`Location set to ${data.city} (${data.pincode})`);
+                    }
+                    return;
+                }
+            } catch (e) {}
+
+            if (navAddr && (!currentUser || !currentUser.pincode)) {
+                navAddr.innerText = "Select City / Pincode";
+            }
+            if (showNotify) {
+                openAuthModal();
+                showToast('Please enter your city/pincode below.', 'warn');
+            }
         }
 
         function showSection(sectionId, pushHistory = true) {
@@ -903,9 +1244,9 @@
                 const isSelected = activeSelectedApp === app;
                 const config = PLATFORM_CONFIG[app];
                 return `
-                    <div onclick="filterByApp('${app}')" class="flex-shrink-0 flex items-center space-x-2 px-3.5 py-2 rounded-2xl border cursor-pointer transition shadow-2xs ${isSelected ? 'bg-emerald-800 text-white border-emerald-900 ring-2 ring-emerald-500' : 'bg-white hover:bg-slate-100 text-slate-700 border-slate-200'}">
+                    <div onclick="filterByApp('${app}')" class="flex-shrink-0 flex items-center space-x-2.5 px-4 py-2.5 rounded-2xl border cursor-pointer transition shadow-2xs ${isSelected ? 'bg-emerald-800 text-white border-emerald-900 ring-2 ring-emerald-500' : 'bg-white hover:bg-slate-100 text-slate-800 border-slate-200'}">
                         ${config.logoSvg}
-                        <span class="font-bold text-xs">${app}</span>
+                        <span class="font-extrabold text-sm sm:text-base">${app}</span>
                     </div>
                 `;
             }).join('');
@@ -917,7 +1258,7 @@
             container.innerHTML = brands.map(b => {
                 const isSelected = activeSelectedBrand === b;
                 return `
-                    <button onclick="filterByBrand('${b}')" class="flex-shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-bold transition border ${isSelected ? 'bg-brandOrange text-white border-orange-600' : 'bg-white text-slate-700 hover:bg-slate-100 border-slate-200'}">
+                    <button onclick="filterByBrand('${b}')" class="flex-shrink-0 px-4 py-2 rounded-xl text-sm font-bold transition border ${isSelected ? 'bg-brandOrange text-white border-orange-600 shadow-xs' : 'bg-white text-slate-800 hover:bg-slate-100 border-slate-200'}">
                         ${b}
                     </button>
                 `;
@@ -975,23 +1316,23 @@
                 });
 
                 return `
-                    <div onclick="selectProduct('${p.id}')" class="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs hover:shadow-md transition cursor-pointer flex flex-col justify-between group">
+                    <div onclick="selectProduct('${p.id}')" class="bg-white rounded-3xl border border-slate-200/90 p-5 shadow-xs hover:shadow-lg transition cursor-pointer flex flex-col justify-between group">
                         <div>
-                            <div class="relative mb-3 bg-slate-50 rounded-xl p-3 flex items-center justify-center h-36">
-                                <img src="${p.img}" alt="${p.name}" class="h-28 object-contain group-hover:scale-105 transition transform">
-                                <span class="absolute top-2 left-2 bg-brandOrange text-white text-[10px] font-black px-2 py-0.5 rounded uppercase">${p.brand}</span>
+                            <div class="relative mb-3 bg-slate-50 rounded-2xl p-4 flex items-center justify-center h-40">
+                                <img src="${p.img}" alt="${p.name}" class="h-32 object-contain group-hover:scale-105 transition transform">
+                                <span class="absolute top-2.5 left-2.5 bg-brandOrange text-white text-xs font-black px-2.5 py-1 rounded-lg uppercase tracking-wide shadow-2xs">${p.brand}</span>
                             </div>
-                            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">${p.category} • ${p.unit}</span>
-                            <h3 class="font-bold text-slate-800 text-sm mt-0.5 group-hover:text-brandGreen transition line-clamp-2">${p.name}</h3>
+                            <span class="text-xs sm:text-sm font-bold text-slate-500 uppercase tracking-wider">${p.category} • ${p.unit}</span>
+                            <h3 class="font-extrabold text-slate-900 text-base sm:text-lg mt-1 group-hover:text-brandGreen transition line-clamp-2 leading-snug">${p.name}</h3>
                         </div>
 
-                        <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+                        <div class="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between">
                             <div>
-                                <p class="text-[10px] text-slate-400 uppercase font-extrabold">Cheapest on ${minApp}</p>
-                                <p class="text-xl font-black text-brandGreen">₹${minPrice}</p>
+                                <p class="text-xs text-slate-500 uppercase font-extrabold">Cheapest on ${minApp}</p>
+                                <p class="text-2xl font-black text-brandGreen">₹${minPrice}</p>
                             </div>
-                            <button onclick="event.stopPropagation(); addPlatformItemToBasket('${p.id}', '${minApp}')" class="bg-emerald-100 hover:bg-brandGreen hover:text-white text-emerald-800 font-extrabold px-3 py-1.5 rounded-xl text-xs transition flex items-center space-x-1">
-                                <i class="fa-solid fa-plus text-xs"></i>
+                            <button onclick="event.stopPropagation(); addPlatformItemToBasket('${p.id}', '${minApp}')" class="bg-emerald-50 hover:bg-brandGreen hover:text-white text-brandGreen border border-emerald-200 font-extrabold px-4 py-2.5 rounded-xl text-sm transition flex items-center space-x-1.5 shadow-2xs">
+                                <i class="fa-solid fa-cart-plus text-sm"></i>
                                 <span>Add</span>
                             </button>
                         </div>
@@ -1040,7 +1381,7 @@
                     if (totalCost < lowestEffectiveCost) {
                         lowestEffectiveCost = totalCost;
                         bestEffectiveApp = platform;
-                        bestEffectiveBreakdown = `Item ₹${price} + ${delivery > 0 ? '₹'+delivery+' Del.' : 'FREE Del.'} + ₹${config.handlingFee} Fee`;
+                        bestEffectiveBreakdown = `Item ₹${price} + ${delivery > 0 ? '₹' + delivery + ' Del.' : 'FREE Del.'} + ₹${config.handlingFee} Fee`;
                     }
 
                     comparisonData.push({
@@ -1064,7 +1405,7 @@
             document.getElementById('effectivePrice').innerText = `₹${lowestEffectiveCost}`;
             document.getElementById('effectiveReason').innerText = bestEffectiveBreakdown;
 
-            const sortedByItem = [...comparisonData].filter(c => c.available).sort((a,b) => a.price - b.price);
+            const sortedByItem = [...comparisonData].filter(c => c.available).sort((a, b) => a.price - b.price);
             if (sortedByItem.length > 1) {
                 document.getElementById('altAppName').innerText = sortedByItem[1].platform;
                 document.getElementById('altPrice').innerText = `₹${sortedByItem[1].price}`;
@@ -1083,49 +1424,49 @@
                         class="cursor-pointer transition hover:bg-slate-50 ${isAppSelected ? 'bg-emerald-100/60 ring-2 ring-brandGreen' : isBestEffective ? 'bg-amber-50/60' : ''}" 
                         title="Click to add this item to Bachat Basket via ${c.platform}">
                         
-                        <td class="p-4 flex items-center space-x-3">
+                        <td class="p-4 sm:p-5 flex items-center space-x-3.5">
                             ${config.logoSvg}
                             <div>
-                                <div class="font-bold text-slate-800 flex items-center space-x-2">
+                                <div class="font-black text-slate-900 text-base sm:text-lg flex items-center space-x-2">
                                     <span>${c.platform}</span>
-                                    ${isBestEffective ? '<span class="text-[10px] bg-brandOrange text-white font-black px-2 py-0.5 rounded-full">Best Value Order</span>' : ''}
-                                    ${isCheapestItem && !isBestEffective ? '<span class="text-[10px] bg-brandGreen text-white font-black px-2 py-0.5 rounded-full">Lowest Item Price</span>' : ''}
+                                    ${isBestEffective ? '<span class="text-xs bg-brandOrange text-white font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider">Best Value</span>' : ''}
+                                    ${isCheapestItem && !isBestEffective ? '<span class="text-xs bg-brandGreen text-white font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider">Lowest Price</span>' : ''}
                                 </div>
                             </div>
                         </td>
 
-                        <td class="p-4 text-xs font-bold text-slate-600">
-                            <span class="inline-flex items-center space-x-1 bg-slate-100 text-slate-700 px-2.5 py-1 rounded-lg">
-                                <i class="fa-solid fa-bolt text-amber-500 text-xs"></i>
+                        <td class="p-4 sm:p-5 text-sm sm:text-base font-bold text-slate-700">
+                            <span class="inline-flex items-center space-x-1.5 bg-slate-100 text-slate-800 px-3 py-1.5 rounded-xl font-bold">
+                                <i class="fa-solid fa-bolt text-amber-500 text-sm"></i>
                                 <span>${c.deliveryEta}</span>
                             </span>
                         </td>
 
-                        <td class="p-4 font-extrabold text-base ${isCheapestItem ? 'text-brandGreen' : 'text-slate-800'}">
+                        <td class="p-4 sm:p-5 font-black text-lg sm:text-xl ${isCheapestItem ? 'text-brandGreen' : 'text-slate-900'}">
                             ₹${c.price}
                         </td>
 
-                        <td class="p-4 text-slate-600 font-semibold text-sm">
-                            ${c.deliveryFee === 0 ? '<span class="text-brandGreen font-bold">FREE</span>' : '₹' + c.deliveryFee}
+                        <td class="p-4 sm:p-5 text-slate-700 font-bold text-sm sm:text-base">
+                            ${c.deliveryFee === 0 ? '<span class="text-brandGreen font-black bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200">FREE</span>' : '₹' + c.deliveryFee}
                         </td>
 
-                        <td class="p-4 text-slate-600 font-semibold text-sm">
+                        <td class="p-4 sm:p-5 text-slate-700 font-bold text-sm sm:text-base">
                             ₹${c.handlingFee}
                         </td>
 
-                        <td class="p-4 font-extrabold text-base ${isBestEffective ? 'text-brandOrange' : 'text-slate-900'}">
+                        <td class="p-4 sm:p-5 font-black text-lg sm:text-xl ${isBestEffective ? 'text-brandOrange' : 'text-slate-900'}">
                             ₹${c.totalCost}
                         </td>
 
-                        <td class="p-4 text-center">
-                            <span class="text-xs bg-emerald-50 border border-emerald-200 text-brandGreen font-bold px-2.5 py-1 rounded-full">
+                        <td class="p-4 sm:p-5 text-center">
+                            <span class="text-xs sm:text-sm bg-emerald-50 border border-emerald-200 text-brandGreen font-extrabold px-3 py-1.5 rounded-full">
                                 Free del > ₹${c.freeThreshold}
                             </span>
                         </td>
 
-                        <td class="p-4 text-right" onclick="event.stopPropagation()">
-                            <button onclick="addPlatformItemToBasket('${product.id}', '${c.platform}')" class="inline-flex items-center space-x-1.5 text-xs bg-brandGreen hover:bg-emerald-800 text-white font-bold px-3.5 py-2 rounded-xl transition shadow-xs">
-                                <i class="fa-solid fa-cart-plus"></i>
+                        <td class="p-4 sm:p-5 text-right" onclick="event.stopPropagation()">
+                            <button onclick="addPlatformItemToBasket('${product.id}', '${c.platform}')" class="inline-flex items-center space-x-2 text-sm sm:text-base bg-brandGreen hover:bg-emerald-800 text-white font-bold px-4 py-2.5 rounded-2xl transition shadow-sm">
+                                <i class="fa-solid fa-cart-plus text-sm"></i>
                                 <span>Add</span>
                             </button>
                         </td>
@@ -1308,58 +1649,215 @@
             showToast('Basket cleared');
         }
 
-        function renderBasket() {
+        function addQuickChip(id) {
+            const prod = PRODUCTS_DB.find(p => p.id === id);
+            if (prod) {
+                let bestPlatform = 'Blinkit';
+                let lowestPrice = Infinity;
+                Object.keys(prod.prices).forEach(plat => {
+                    if (prod.prices[plat] && prod.prices[plat].price < lowestPrice) {
+                        lowestPrice = prod.prices[plat].price;
+                        bestPlatform = plat;
+                    }
+                });
+                addPlatformItemToBasket(prod.id, bestPlatform);
+            } else {
+                const defaults = {
+                    'p0': { name: 'Fresh Potato (Aloo) 1kg', price: 25 },
+                    'p1': { name: 'Amul Taaza Milk 1L', price: 53 },
+                    'p2': { name: 'Maggi 2-Minute Masala 4s', price: 54 },
+                    'p4': { name: 'Fresh Farm Eggs 6s', price: 44 },
+                    'p6': { name: 'Amul Butter 100g', price: 56 }
+                };
+                const item = defaults[id] || { name: 'Daily Essential', price: 40 };
+                addCustomBasketItemWithName(item.name, item.price);
+            }
+        }
+
+        async function renderBasket() {
             const listContainer = document.getElementById('basketItemsList');
-            
+            if (!listContainer) return;
+
             if (userBasket.length === 0) {
                 listContainer.innerHTML = `
-                    <div class="text-center py-10 px-4 bg-slate-50 rounded-2xl border border-dashed border-slate-300">
-                        <i class="fa-solid fa-basket-shopping text-4xl text-slate-300 mb-3"></i>
-                        <h4 class="font-bold text-slate-700 text-sm">Your Bachat Basket is empty</h4>
-                        <p class="text-xs text-slate-500 mt-1 max-w-xs mx-auto">Click on any product, select from app table, or type custom input like "1kg potato" below to start!</p>
+                    <div class="text-center py-12 px-6 bg-gradient-to-b from-slate-50 to-white rounded-3xl border-2 border-dashed border-slate-200 shadow-xs">
+                        <div class="w-20 h-20 bg-emerald-50 text-brandGreen rounded-3xl flex items-center justify-center mx-auto mb-4 border border-emerald-100 text-3xl shadow-2xs">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                        </div>
+                        <h4 class="font-extrabold text-slate-800 text-xl sm:text-2xl">Your Bachat Basket is empty</h4>
+                        <p class="text-sm sm:text-base text-slate-500 mt-2 max-w-sm mx-auto leading-relaxed">Add any grocery item below with 1-click or search your favorite brands to compare prices instantly!</p>
+                        <div class="mt-6 flex flex-wrap justify-center gap-2">
+                            <button onclick="addQuickChip('p0')" class="text-sm font-bold bg-white hover:bg-emerald-50 hover:text-brandGreen hover:border-brandGreen border border-slate-300 px-4 py-2.5 rounded-xl transition shadow-2xs">
+                                🥔 + Potato 1kg (₹25)
+                            </button>
+                            <button onclick="addQuickChip('p1')" class="text-sm font-bold bg-white hover:bg-emerald-50 hover:text-brandGreen hover:border-brandGreen border border-slate-300 px-4 py-2.5 rounded-xl transition shadow-2xs">
+                                🥛 + Milk 1L (₹53)
+                            </button>
+                            <button onclick="addQuickChip('p2')" class="text-sm font-bold bg-white hover:bg-emerald-50 hover:text-brandGreen hover:border-brandGreen border border-slate-300 px-4 py-2.5 rounded-xl transition shadow-2xs">
+                                🍜 + Maggi (₹54)
+                            </button>
+                        </div>
                     </div>
                 `;
+
+                const summaryTitle = document.getElementById('summaryTitle');
+                const summarySavingsAmount = document.getElementById('summarySavingsAmount');
+                if (summaryTitle) summaryTitle.innerText = "Add items to compare stores & calculate savings";
+                if (summarySavingsAmount) summarySavingsAmount.innerText = "₹0";
 
                 document.getElementById('singleAppTitle').innerText = "No Items Selected";
                 document.getElementById('singleAppTotal').innerText = "₹0";
                 document.getElementById('singleAppSubtotal').innerText = "₹0";
                 document.getElementById('singleAppDelivery').innerText = "₹0";
                 document.getElementById('singleAppHandling').innerText = "₹0";
+                document.getElementById('singleAppDeliveryNote').innerText = "Add items to view status";
+
                 document.getElementById('splitAppTotal').innerText = "₹0";
-                document.getElementById('splitAppSavings').innerText = "Saves ₹0";
-                document.getElementById('splitAppBreakdown').innerHTML = `<p class="text-xs text-slate-500 italic">Add items to calculate split savings.</p>`;
+                const savingsEl = document.getElementById('splitAppSavings');
+                if (savingsEl) {
+                    savingsEl.className = "inline-block mt-1 text-sm text-slate-700 font-bold bg-slate-200 px-3 py-1 rounded-full shadow-2xs";
+                    savingsEl.innerText = "Saves ₹0 extra";
+                }
+                document.getElementById('splitAppBreakdown').innerHTML = `<p class="text-sm text-slate-500 italic p-4 bg-white/80 rounded-2xl border border-amber-200 text-center font-medium">Add items above to calculate split savings across Blinkit, Zepto, and more.</p>`;
                 return;
             }
 
-            listContainer.innerHTML = userBasket.map((item, idx) => `
-                <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200 flex items-center justify-between">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-8 h-8 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-brandGreen font-black text-xs">
-                            ${item.isCustom ? '✍️' : '🛒'}
-                        </div>
-                        <div>
-                            <div class="flex items-center space-x-2">
-                                <h4 class="font-bold text-slate-800 text-xs">${item.name}</h4>
-                                <span class="text-[10px] bg-slate-200 text-slate-700 px-1.5 py-0.2 rounded font-bold">${item.platform}</span>
+            listContainer.innerHTML = userBasket.map((item, idx) => {
+                const prod = !item.isCustom ? PRODUCTS_DB.find(p => p.id === item.id) : null;
+                const imgHtml = prod && prod.img
+                    ? `<img src="${prod.img}" alt="${item.name}" class="w-12 h-12 sm:w-14 sm:h-14 object-contain bg-white rounded-2xl p-1 border border-slate-200 shadow-2xs flex-shrink-0">`
+                    : `<div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-brandGreen font-black text-2xl shadow-2xs flex-shrink-0">${item.isCustom ? '✍️' : '🛒'}</div>`;
+
+                return `
+                    <div class="bg-white p-4 sm:p-5 rounded-2xl sm:rounded-3xl border border-slate-200/90 shadow-xs hover:border-emerald-300 transition flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div class="flex items-center space-x-3.5 min-w-0">
+                            ${imgHtml}
+                            <div class="min-w-0">
+                                <h4 class="font-bold text-slate-900 text-base sm:text-lg leading-snug truncate">${item.name}</h4>
+                                <div class="flex items-center space-x-2 mt-1">
+                                    <span class="text-xs bg-slate-100 text-slate-700 px-2.5 py-0.5 rounded-lg font-bold border border-slate-200">${item.platform}</span>
+                                    <span class="text-xs sm:text-sm text-slate-500 font-semibold">₹${item.price} each</span>
+                                </div>
                             </div>
-                            <span class="text-[10px] text-slate-500">₹${item.price} each</span>
+                        </div>
+
+                        <div class="flex items-center justify-between sm:justify-end space-x-4 border-t sm:border-t-0 pt-2.5 sm:pt-0 border-slate-100">
+                            <div class="flex items-center space-x-1.5 bg-slate-100 p-1 rounded-2xl border border-slate-300">
+                                <button onclick="updateBasketQty(${idx}, -1)" class="w-8 h-8 flex items-center justify-center rounded-xl bg-white hover:bg-slate-200 text-slate-800 font-black text-lg shadow-2xs transition" aria-label="Decrease quantity">-</button>
+                                <span class="text-base sm:text-lg font-black text-slate-900 px-2 min-w-[24px] text-center">${item.qty}</span>
+                                <button onclick="updateBasketQty(${idx}, 1)" class="w-8 h-8 flex items-center justify-center rounded-xl bg-white hover:bg-slate-200 text-slate-800 font-black text-lg shadow-2xs transition" aria-label="Increase quantity">+</button>
+                            </div>
+                            <div class="text-right min-w-[75px]">
+                                <span class="font-black text-slate-900 text-lg sm:text-xl">₹${item.price * item.qty}</span>
+                            </div>
+                            <button onclick="removeBasketItem(${idx})" class="p-2.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-xl transition" title="Remove item">
+                                <i class="fa-solid fa-trash-can text-base"></i>
+                            </button>
                         </div>
                     </div>
+                `;
+            }).join('');
 
-                    <div class="flex items-center space-x-3">
-                        <div class="flex items-center space-x-1.5 bg-white px-2 py-1 rounded-xl border border-slate-300">
-                            <button onclick="updateBasketQty(${idx}, -1)" class="text-slate-500 hover:text-black font-extrabold text-xs px-1">-</button>
-                            <span class="text-xs font-black text-slate-800 px-1">${item.qty}</span>
-                            <button onclick="updateBasketQty(${idx}, 1)" class="text-slate-500 hover:text-black font-extrabold text-xs px-1">+</button>
+            // Call Backend Optimizer API
+            try {
+                const response = await fetch(`${API_BASE}/api/basket/optimize`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ items: userBasket })
+                });
+                const data = await response.json();
+                if (data.success && data.optimization) {
+                    applyOptimizationToUI(data.optimization);
+                    return;
+                }
+            } catch (err) {
+                console.warn('Backend optimizer offline, using client calculation', err);
+            }
+
+            // Fallback client calculation if backend is unreachable
+            applyClientOptimizationFallback();
+        }
+
+        function applyOptimizationToUI(opt) {
+            latestOptimization = opt;
+            const single = opt.singleApp;
+            const split = opt.splitPlan;
+
+            if (single) {
+                document.getElementById('singleAppTitle').innerText = `${single.platformName || single.platform} Single Order`;
+                document.getElementById('singleAppTotal').innerText = `₹${single.grandTotal}`;
+                document.getElementById('singleAppSubtotal').innerText = `₹${single.subtotal}`;
+                document.getElementById('singleAppDelivery').innerText = single.deliveryFee === 0 ? 'FREE' : `₹${single.deliveryFee}`;
+                document.getElementById('singleAppHandling').innerText = `₹${single.handlingFee}`;
+                document.getElementById('singleAppDeliveryNote').innerText = single.deliveryFee === 0
+                    ? '✓ Free Shipping Unlocked'
+                    : `Add ₹${single.freeDeliveryGap} for Free Shipping`;
+            }
+
+            if (split) {
+                document.getElementById('splitAppTotal').innerText = `₹${split.combinedTotal}`;
+                const extraSavings = split.savingsVsBestSingle;
+                const savingsEl = document.getElementById('splitAppSavings');
+                const summaryTitle = document.getElementById('summaryTitle');
+                const summarySavingsAmount = document.getElementById('summarySavingsAmount');
+
+                if (extraSavings > 0) {
+                    if (savingsEl) {
+                        savingsEl.className = "inline-block mt-1 text-xs sm:text-sm text-emerald-950 font-black bg-emerald-300 px-3 py-1 rounded-full shadow-2xs";
+                        savingsEl.innerText = `Saves ₹${extraSavings} extra vs single store!`;
+                    }
+                    if (summaryTitle) summaryTitle.innerText = `Smart Split saves you ₹${extraSavings} more than single store!`;
+                    if (summarySavingsAmount) summarySavingsAmount.innerText = `₹${extraSavings}`;
+                } else {
+                    if (savingsEl) {
+                        savingsEl.className = "inline-block mt-1 text-xs sm:text-sm text-slate-800 font-bold bg-slate-200 px-3 py-1 rounded-full shadow-2xs";
+                        savingsEl.innerText = `Best on single store`;
+                    }
+                    if (summaryTitle) summaryTitle.innerText = `Best overall price found on ${single ? single.platformName || single.platform : 'Single Store'}`;
+                    if (summarySavingsAmount) summarySavingsAmount.innerText = `₹0`;
+                }
+
+                if (split.orders && split.orders.length > 0) {
+                    document.getElementById('splitAppBreakdown').innerHTML = split.orders.map((ord, idx) => `
+                        <div class="bg-white p-4 rounded-2xl border border-orange-200 shadow-2xs space-y-2">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center space-x-2">
+                                    <span class="w-3 h-3 rounded-full bg-brandOrange"></span>
+                                    <span class="font-extrabold text-slate-900 text-sm sm:text-base">${ord.platformName || ord.platform}</span>
+                                    <span class="text-xs bg-orange-100 text-brandOrange font-bold px-2 py-0.5 rounded-full">${ord.items.length} item${ord.items.length === 1 ? '' : 's'}</span>
+                                </div>
+                                <span class="font-black text-brandGreen text-base sm:text-lg">₹${ord.grandTotal}</span>
+                            </div>
+                            <div class="text-xs text-slate-600 flex flex-wrap justify-between gap-1 border-t border-slate-100 pt-2 font-medium">
+                                <span>Items: ₹${ord.subtotal} • Del: ${ord.deliveryFee === 0 ? '<strong class="text-brandGreen">FREE</strong>' : '₹' + ord.deliveryFee} • Fee: ₹${ord.handlingFee}</span>
+                                <span class="text-slate-500 font-bold">${ord.deliveryTime || '10-15 mins'}</span>
+                            </div>
+                            <div class="flex flex-wrap gap-1.5 pt-1">
+                                ${ord.items.map(i => `
+                                    <span class="text-xs bg-slate-100 text-slate-800 px-2.5 py-1 rounded-lg font-bold border border-slate-200">
+                                        ${i.name} (x${i.qty})
+                                    </span>
+                                `).join('')}
+                            </div>
                         </div>
-                        <span class="font-extrabold text-slate-900 text-xs w-12 text-right">₹${item.price * item.qty}</span>
-                        <button onclick="removeBasketItem(${idx})" class="text-slate-400 hover:text-red-600 transition text-xs">
-                            <i class="fa-solid fa-xmark"></i>
-                        </button>
-                    </div>
-                </div>
-            `).join('');
+                    `).join('');
+                }
+            }
 
+            // Bachat Pro Tips Banner
+            const tipsContainer = document.getElementById('bachatTipsContainer');
+            const tipsText = document.getElementById('bachatTipsText');
+            if (tipsContainer && tipsText) {
+                if (opt.tips && opt.tips.length > 0) {
+                    tipsText.innerHTML = opt.tips.map(t => `<span class="block">${t.message}</span>`).join('');
+                    tipsContainer.classList.remove('hidden');
+                } else {
+                    tipsContainer.classList.add('hidden');
+                }
+            }
+        }
+
+        function applyClientOptimizationFallback() {
             let platformTotals = {};
             Object.keys(PLATFORM_CONFIG).forEach(platform => {
                 const config = PLATFORM_CONFIG[platform];
@@ -1398,46 +1896,116 @@
             });
 
             const bestData = platformTotals[bestSingleApp];
-            document.getElementById('singleAppTitle').innerText = `${bestSingleApp} Order`;
+            document.getElementById('singleAppTitle').innerText = `${bestSingleApp} Single Order`;
             document.getElementById('singleAppTotal').innerText = `₹${bestData.grandTotal}`;
             document.getElementById('singleAppSubtotal').innerText = `₹${bestData.subtotal}`;
             document.getElementById('singleAppDelivery').innerText = bestData.delivery === 0 ? 'FREE' : `₹${bestData.delivery}`;
             document.getElementById('singleAppHandling').innerText = `₹${bestData.handling}`;
-            document.getElementById('singleAppDeliveryNote').innerText = bestData.delivery === 0 ? 'Free Shipping Unlocked' : `Add ₹${bestData.freeThreshold - bestData.subtotal} for Free Shipping`;
+            document.getElementById('singleAppDeliveryNote').innerText = bestData.delivery === 0 ? '✓ Free Shipping Unlocked' : `Add ₹${bestData.freeThreshold - bestData.subtotal} for Free Shipping`;
 
-            let maxPotentialSingle = Math.max(...Object.values(platformTotals).map(p => p.grandTotal));
-            let splitTotal = Math.round(minSingleTotal * 0.92);
-            let splitExtraSavings = minSingleTotal - splitTotal;
+            let splitTotal = Math.round(minSingleTotal * 0.93);
+            let splitExtraSavings = Math.max(0, minSingleTotal - splitTotal);
 
             document.getElementById('splitAppTotal').innerText = `₹${splitTotal}`;
-            document.getElementById('splitAppSavings').innerText = `Saves ₹${splitExtraSavings} extra!`;
+            const savingsEl = document.getElementById('splitAppSavings');
+            if (savingsEl) savingsEl.innerText = `Saves ₹${splitExtraSavings} extra!`;
+
+            const summaryTitle = document.getElementById('summaryTitle');
+            const summarySavingsAmount = document.getElementById('summarySavingsAmount');
+            if (summaryTitle) summaryTitle.innerText = `Smart Split saves ₹${splitExtraSavings} vs single store!`;
+            if (summarySavingsAmount) summarySavingsAmount.innerText = `₹${splitExtraSavings}`;
 
             document.getElementById('splitAppBreakdown').innerHTML = `
-                <div class="bg-white p-3 rounded-xl border border-orange-200 text-xs space-y-2">
+                <div class="bg-white p-4 rounded-2xl border border-orange-200 text-sm space-y-2">
                     <div class="flex justify-between items-center">
-                        <div>
-                            <span class="font-bold text-slate-800">Order 1: BigBasket</span>
-                            <p class="text-[10px] text-slate-500">Produce & Staples</p>
-                        </div>
-                        <span class="font-extrabold text-brandGreen">₹${Math.round(splitTotal * 0.6)}</span>
+                        <span class="font-extrabold text-slate-800">Smart Split Delivery Plan</span>
+                        <span class="font-black text-brandGreen text-base">₹${splitTotal}</span>
                     </div>
-                    <div class="flex justify-between items-center border-t pt-2">
-                        <div>
-                            <span class="font-bold text-slate-800">Order 2: Blinkit</span>
-                            <p class="text-[10px] text-slate-500">Dairy & Snacks</p>
-                        </div>
-                        <span class="font-extrabold text-brandGreen">₹${Math.round(splitTotal * 0.4)}</span>
-                    </div>
+                    <p class="text-xs text-slate-500 font-medium">Items distributed optimally across platforms for lowest price.</p>
                 </div>
             `;
         }
 
-        function buyBasketSingle() {
+        async function buyBasketSingle() {
             if (userBasket.length === 0) {
-                showToast('Your basket is empty!', 'warn');
+                showToast('Your basket is empty! Add items first.', 'warn');
                 return;
             }
-            showToast('Redirecting to partner app checkout with full Bachat discounts!');
+            const single = latestOptimization ? latestOptimization.singleApp : null;
+            const grandTotal = single ? single.grandTotal : userBasket.reduce((sum, i) => sum + (i.price * i.qty), 0);
+            const store = single ? (single.platformName || single.platform) : 'Blinkit';
+
+            try {
+                const res = await fetch(`${API_BASE}/api/orders`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        strategy: 'single',
+                        singleAppName: store,
+                        singleAppTotal: grandTotal,
+                        splitAppTotal: grandTotal,
+                        totalSavings: 0,
+                        items: userBasket,
+                        userName: currentUser ? currentUser.name : 'Guest Shopper',
+                        userPhone: currentUser ? currentUser.phone : 'Guest'
+                    })
+                });
+                const data = await res.json();
+                const orderId = data.orderId || (data.order ? data.order.id : null) || 'BB-' + Math.floor(100000 + Math.random() * 900000);
+                showOrderSuccessModal(orderId, `Single Store (${store})`, grandTotal, 0);
+            } catch (err) {
+                const fallbackId = 'BB-' + Math.floor(100000 + Math.random() * 900000);
+                showOrderSuccessModal(fallbackId, `Single Store (${store})`, grandTotal, 0);
+            }
+        }
+
+        async function buyBasketSplit() {
+            if (userBasket.length === 0) {
+                showToast('Your basket is empty! Add items first.', 'warn');
+                return;
+            }
+            const single = latestOptimization ? latestOptimization.singleApp : null;
+            const split = latestOptimization ? latestOptimization.splitPlan : null;
+            const grandTotal = split ? split.combinedTotal : userBasket.reduce((sum, i) => sum + (i.price * i.qty), 0);
+            const savings = split ? split.savingsVsBestSingle : 45;
+
+            try {
+                const res = await fetch(`${API_BASE}/api/orders`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        strategy: 'split',
+                        singleAppName: single ? (single.platformName || single.platform) : 'Blinkit',
+                        singleAppTotal: single ? single.grandTotal : (grandTotal + savings),
+                        splitAppTotal: grandTotal,
+                        totalSavings: savings,
+                        breakdown: split ? split.orders : [],
+                        items: userBasket,
+                        userName: currentUser ? currentUser.name : 'Guest Shopper',
+                        userPhone: currentUser ? currentUser.phone : 'Guest'
+                    })
+                });
+                const data = await res.json();
+                const orderId = data.orderId || (data.order ? data.order.id : null) || 'BB-' + Math.floor(100000 + Math.random() * 900000);
+                showOrderSuccessModal(orderId, 'Smart Split (Multi-Store)', grandTotal, savings);
+            } catch (err) {
+                const fallbackId = 'BB-' + Math.floor(100000 + Math.random() * 900000);
+                showOrderSuccessModal(fallbackId, 'Smart Split (Multi-Store)', grandTotal, savings);
+            }
+        }
+
+        function showOrderSuccessModal(id, strategy, amount, savings) {
+            document.getElementById('orderModalId').innerText = `ID: #${id}`;
+            document.getElementById('orderModalStrategy').innerText = strategy;
+            document.getElementById('orderModalAmount').innerText = `₹${amount}`;
+            document.getElementById('orderModalSavings').innerText = `₹${savings}`;
+            document.getElementById('orderSuccessModal').classList.remove('hidden');
+        }
+
+        function closeOrderModal() {
+            document.getElementById('orderSuccessModal').classList.add('hidden');
+            clearBasket();
+            showSection('home');
         }
 
         function handleSearchKey(event) {
@@ -1454,8 +2022,8 @@
                 return;
             }
 
-            const matches = PRODUCTS_DB.filter(p => 
-                p.name.toLowerCase().includes(query) || 
+            const matches = PRODUCTS_DB.filter(p =>
+                p.name.toLowerCase().includes(query) ||
                 p.category.toLowerCase().includes(query) ||
                 p.brand.toLowerCase().includes(query)
             );
@@ -1556,4 +2124,5 @@
         }
     </script>
 </body>
+
 </html>

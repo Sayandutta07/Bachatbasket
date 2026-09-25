@@ -1603,7 +1603,7 @@
             showToast('Basket cleared');
         }
 
-        function renderBasket() {
+        async function renderBasket() {
             const listContainer = document.getElementById('basketItemsList');
 
             if (userBasket.length === 0) {

@@ -139,19 +139,22 @@
                 </div>
 
                 <!-- GPS LIVE LOCATION SELECTOR -->
-                <div id="locationBadge" onclick="getCurrentGPSLocation()"
-                    class="hidden md:flex items-center space-x-2 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-3.5 py-2 rounded-2xl cursor-pointer transition shadow-xs"
+                <div id="locationBadge" onclick="getCurrentGPSLocation(true)"
+                    class="flex items-center space-x-2.5 bg-gradient-to-r from-emerald-50 to-teal-50 hover:from-emerald-100 hover:to-teal-100 border border-emerald-300 px-3.5 py-2 rounded-2xl cursor-pointer transition shadow-xs group"
                     title="Click to trace current GPS live location">
-                    <i id="locationIcon" class="fa-solid fa-location-crosshairs text-brandGreen text-lg"></i>
-                    <div class="text-xs">
-                        <p class="text-slate-500 font-bold leading-none flex items-center gap-1">
-                            <span>Live Location</span>
-                            <span id="gpsPulse" class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
-                        </p>
-                        <p id="navUserAddress" class="text-slate-800 font-black leading-tight truncate max-w-[190px]">
-                            Trace Live GPS Location</p>
+                    <div class="w-8 h-8 rounded-xl bg-emerald-100 group-hover:bg-emerald-200 flex items-center justify-center text-brandGreen flex-shrink-0">
+                        <i id="locationIcon" class="fa-solid fa-location-crosshairs text-base"></i>
                     </div>
-                    <i class="fa-solid fa-arrows-rotate text-slate-400 text-xs pl-1"></i>
+                    <div class="text-xs">
+                        <div class="text-slate-500 font-bold leading-none flex items-center gap-1.5 mb-0.5">
+                            <span>Live Location</span>
+                            <span id="gpsPulse" class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                        </div>
+                        <p id="navUserAddress" class="text-slate-900 font-black leading-tight truncate max-w-[190px] sm:max-w-[220px]">
+                            Auto-detecting GPS...
+                        </p>
+                    </div>
+                    <i class="fa-solid fa-arrows-rotate text-emerald-600 text-xs pl-1 group-hover:rotate-180 transition-transform duration-500"></i>
                 </div>
 
                 <!-- RIGHT NAV ACTIONS -->
@@ -181,6 +184,27 @@
         </div>
     </header>
 
+    <!-- LIVE LOCATION STATUS NOTIFICATION BAR -->
+    <div id="liveLocationBanner" class="bg-gradient-to-r from-emerald-900 via-teal-900 to-slate-900 text-white border-b border-emerald-800/80 py-2.5 px-4 sm:px-6 lg:px-8 text-xs font-semibold shadow-inner">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+            <div class="flex items-center space-x-2.5 text-center sm:text-left">
+                <span class="inline-flex items-center px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-[11px] font-black uppercase tracking-wider">
+                    <i class="fa-solid fa-satellite-dish mr-1 text-emerald-400 animate-pulse"></i> Live GPS
+                </span>
+                <span class="text-slate-200">Delivering to: <strong id="heroUserAddress" class="text-white font-extrabold underline decoration-emerald-400 underline-offset-2">Auto-detecting your address...</strong></span>
+            </div>
+            <div class="flex items-center space-x-3 text-emerald-200 text-[11px]">
+                <span class="hidden md:inline-flex items-center gap-1.5 text-slate-300 font-medium">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> 5 Dark Stores Online (Blinkit 10m • Zepto 8m • BB 15m)
+                </span>
+                <button onclick="getCurrentGPSLocation(true)" class="bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold px-3 py-1 rounded-lg border border-emerald-400 transition flex items-center space-x-1.5 shadow-2xs">
+                    <i class="fa-solid fa-crosshairs text-xs"></i>
+                    <span>Recalculate Location</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
         <!-- SEARCH HERO SECTION -->
@@ -205,43 +229,67 @@
                     fees & platform charges.
                 </p>
 
-                <!-- SEARCH BAR FORM -->
+                <!-- SEARCH BAR FORM WITH POPULAR / MOST SEARCHED DROPDOWN -->
                 <div class="relative max-w-2xl">
                     <div
                         class="flex items-center bg-white rounded-2xl shadow-lg p-2 border-2 border-emerald-400 focus-within:ring-4 focus-within:ring-emerald-300 transition">
                         <i class="fa-solid fa-magnifying-glass text-slate-400 text-xl pl-3 pr-2"></i>
-                        <input type="text" id="searchInput" onkeyup="handleSearchKey(event)"
-                            placeholder="Search groceries e.g., Potato, Amul Milk, Maggi, Oil..."
-                            class="w-full text-slate-800 font-semibold placeholder-slate-400 focus:outline-none text-base sm:text-lg py-1 px-1">
+                        <input type="text" id="searchInput"
+                            onfocus="openSearchSuggestions()"
+                            onclick="openSearchSuggestions()"
+                            oninput="showSearchSuggestions()"
+                            onkeyup="handleSearchKey(event)"
+                            placeholder="Search groceries e.g., Potato, Amul Milk, Maggi, Atta, Oil..."
+                            class="w-full text-slate-800 font-semibold placeholder-slate-400 focus:outline-none text-base sm:text-lg py-1 px-1"
+                            autocomplete="off">
+                        
+                        <button onclick="filterByMostSearched()" type="button"
+                            class="hidden sm:flex items-center space-x-1.5 bg-amber-100 hover:bg-amber-200 text-amber-900 font-extrabold px-3 py-2 rounded-xl text-xs border border-amber-300 transition mr-2 flex-shrink-0"
+                            title="Show Most Searched Items">
+                            <i class="fa-solid fa-fire text-brandOrange"></i>
+                            <span>Most Searched</span>
+                        </button>
+
                         <button onclick="performSearch()"
-                            class="bg-brandOrange hover:bg-orange-600 text-white font-bold px-6 py-3 rounded-xl transition flex items-center space-x-2 shadow-md">
+                            class="bg-brandOrange hover:bg-orange-600 text-white font-bold px-5 sm:px-6 py-3 rounded-xl transition flex items-center space-x-2 shadow-md flex-shrink-0">
                             <span>Compare</span>
                             <i class="fa-solid fa-arrow-right"></i>
                         </button>
                     </div>
 
+                    <!-- SEARCH SUGGESTIONS & "MOST SEARCHED" INTERACTIVE PANEL -->
                     <div id="searchSuggestions"
-                        class="hidden absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 max-h-72 overflow-y-auto text-slate-800 custom-scrollbar">
+                        class="hidden absolute top-full left-0 right-0 mt-2 bg-white rounded-3xl shadow-2xl border border-slate-200 z-50 max-h-96 overflow-y-auto text-slate-800 custom-scrollbar p-3 divide-y divide-slate-100">
                     </div>
                 </div>
 
-                <!-- QUICK CATEGORY CHIPS -->
+                <!-- QUICK CATEGORY CHIPS WITH MOST SEARCHED PILL -->
                 <div class="mt-6 flex flex-wrap items-center gap-2 text-xs sm:text-sm">
-                    <span class="text-emerald-200 font-semibold">Popular Searches:</span>
-                    <button onclick="quickSearch('Fresh Potato')"
-                        class="bg-emerald-800/80 hover:bg-emerald-600 text-emerald-100 px-3 py-1 rounded-lg border border-emerald-600/40 transition">🥔
-                        Fresh Potato (Aloo)</button>
+                    <span class="text-emerald-200 font-bold flex items-center gap-1">
+                        <i class="fa-solid fa-bolt text-brandYellow"></i> Quick Find:
+                    </span>
+                    <button onclick="filterByMostSearched()"
+                        class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-black px-3.5 py-1.5 rounded-xl transition shadow-xs flex items-center gap-1.5">
+                        <i class="fa-solid fa-fire"></i>
+                        <span>🔥 Most Searched (Top 10)</span>
+                    </button>
                     <button onclick="quickSearch('Amul Taaza Milk 1L')"
-                        class="bg-emerald-800/80 hover:bg-emerald-600 text-emerald-100 px-3 py-1 rounded-lg border border-emerald-600/40 transition">🥛
+                        class="bg-emerald-800/80 hover:bg-emerald-600 text-emerald-100 px-3 py-1.5 rounded-xl border border-emerald-600/40 transition">🥛
                         Amul Milk 1L</button>
-                    <button onclick="quickSearch('Maggi 2-Minute Masala')"
-                        class="bg-emerald-800/80 hover:bg-emerald-600 text-emerald-100 px-3 py-1 rounded-lg border border-emerald-600/40 transition">🍜
-                        Maggi Noodles</button>
-                    <button onclick="quickSearch('Fortune Sunlite Oil')"
-                        class="bg-emerald-800/80 hover:bg-emerald-600 text-emerald-100 px-3 py-1 rounded-lg border border-emerald-600/40 transition">🌻
+                    <button onclick="quickSearch('Fresh Potato')"
+                        class="bg-emerald-800/80 hover:bg-emerald-600 text-emerald-100 px-3 py-1.5 rounded-xl border border-emerald-600/40 transition">🥔
+                        Potato 1kg</button>
+                    <button onclick="quickSearch('Maggi 2-Minute')"
+                        class="bg-emerald-800/80 hover:bg-emerald-600 text-emerald-100 px-3 py-1.5 rounded-xl border border-emerald-600/40 transition">🍜
+                        Maggi 4-Pack</button>
+                    <button onclick="quickSearch('Aashirvaad')"
+                        class="bg-emerald-800/80 hover:bg-emerald-600 text-emerald-100 px-3 py-1.5 rounded-xl border border-emerald-600/40 transition">🌾
+                        Aashirvaad Atta 5kg</button>
+                    <button onclick="quickSearch('Fortune Sunlite')"
+                        class="bg-emerald-800/80 hover:bg-emerald-600 text-emerald-100 px-3 py-1.5 rounded-xl border border-emerald-600/40 transition">🌻
                         Fortune Oil 1L</button>
                     <button onclick="quickSearch('Fresh Eggs')"
-                        class="bg-emerald-800/80 hover:bg-emerald-600 text-emerald-100 px-3 py-1 rounded-lg border border-emerald-600/40 transition">🥚
+                        class="bg-emerald-800/80 hover:bg-emerald-600 text-emerald-100 px-3 py-1.5 rounded-xl border border-emerald-600/40 transition">🥚
                         Eggs Pack of 6</button>
                 </div>
             </div>
@@ -252,7 +300,7 @@
                 <h3
                     class="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-700 flex items-center space-x-2">
                     <i class="fa-solid fa-mobile-screen-button text-brandOrange"></i>
-                    <span>Quick Commerce Apps</span>
+                    <span>Quick Commerce Apps Filter</span>
                 </h3>
                 <button id="resetAppFilterBtn" onclick="resetAppFilter()"
                     class="text-xs text-brandGreen font-bold hover:underline hidden">
@@ -263,7 +311,7 @@
             </div>
         </section>
 
-        <section id="brandFilterSection" class="mb-8">
+        <section id="brandFilterSection" class="mb-6">
             <div class="flex items-center justify-between mb-3">
                 <h3
                     class="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-600 flex items-center space-x-2">
@@ -280,12 +328,43 @@
         <!-- HOME SECTION -->
         <div id="homeSection" class="space-y-8">
             <div id="popularSection">
+                <!-- CATEGORY TABS -->
+                <div class="flex items-center space-x-2 overflow-x-auto pb-3 custom-scrollbar mb-4" id="categoryTabsContainer">
+                    <button onclick="filterByCategory('all')" id="catTab-all" class="category-tab active-cat-tab flex-shrink-0 px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold transition border bg-brandGreen text-white border-emerald-700 shadow-xs">
+                        ✨ All Essentials (26)
+                    </button>
+                    <button onclick="filterByCategory('most_searched')" id="catTab-most_searched" class="category-tab flex-shrink-0 px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold transition border bg-white text-slate-700 hover:bg-slate-100 border-slate-200 shadow-2xs">
+                        🔥 Most Searched
+                    </button>
+                    <button onclick="filterByCategory('Vegetables')" id="catTab-Vegetables" class="category-tab flex-shrink-0 px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold transition border bg-white text-slate-700 hover:bg-slate-100 border-slate-200 shadow-2xs">
+                        🥦 Fresh Veggies & Fruits
+                    </button>
+                    <button onclick="filterByCategory('Dairy')" id="catTab-Dairy" class="category-tab flex-shrink-0 px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold transition border bg-white text-slate-700 hover:bg-slate-100 border-slate-200 shadow-2xs">
+                        🥛 Dairy, Bread & Eggs
+                    </button>
+                    <button onclick="filterByCategory('Atta & Rice')" id="catTab-Atta" class="category-tab flex-shrink-0 px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold transition border bg-white text-slate-700 hover:bg-slate-100 border-slate-200 shadow-2xs">
+                        🌾 Atta, Rice & Dals
+                    </button>
+                    <button onclick="filterByCategory('Oils & Ghee')" id="catTab-Oils" class="category-tab flex-shrink-0 px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold transition border bg-white text-slate-700 hover:bg-slate-100 border-slate-200 shadow-2xs">
+                        🌻 Cooking Oils & Ghee
+                    </button>
+                    <button onclick="filterByCategory('Snacks')" id="catTab-Snacks" class="category-tab flex-shrink-0 px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold transition border bg-white text-slate-700 hover:bg-slate-100 border-slate-200 shadow-2xs">
+                        🍜 Snacks & Munchies
+                    </button>
+                    <button onclick="filterByCategory('Beverages')" id="catTab-Beverages" class="category-tab flex-shrink-0 px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold transition border bg-white text-slate-700 hover:bg-slate-100 border-slate-200 shadow-2xs">
+                        🧃 Cold Drinks & Coffee
+                    </button>
+                    <button onclick="filterByCategory('Household')" id="catTab-Household" class="category-tab flex-shrink-0 px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold transition border bg-white text-slate-700 hover:bg-slate-100 border-slate-200 shadow-2xs">
+                        🧼 Cleaning & Hygiene
+                    </button>
+                </div>
+
                 <div class="flex items-center justify-between mb-4">
                     <div>
-                        <h2 id="popularGridTitle" class="text-2xl font-bold text-slate-800">Everyday Grocery Essentials</h2>
+                        <h2 id="popularGridTitle" class="text-2xl font-black text-slate-900">Everyday Grocery Essentials</h2>
                         <p id="popularGridSub" class="text-slate-500 text-sm">Click any product to compare live platform prices or add directly to basket</p>
                     </div>
-                    <span class="text-xs bg-emerald-100 text-brandGreen font-bold px-3 py-1 rounded-full">Live Updated</span>
+                    <span class="text-xs bg-emerald-100 text-brandGreen font-bold px-3 py-1 rounded-full border border-emerald-200">Live 5-App Sync</span>
                 </div>
 
                 <div id="popularProductsGrid"
@@ -502,14 +581,27 @@
                         <i class="fa-solid fa-wallet"></i>
                     </div>
                     <div>
-                        <span class="text-xs font-black uppercase tracking-wider text-emerald-200 block">Instant Price Comparison</span>
-                        <h3 id="summaryTitle" class="text-lg sm:text-xl font-black text-white mt-0.5">Calculating lowest net price across all stores...</h3>
-                        <p id="summarySubtitle" class="text-xs text-emerald-100 mt-0.5 font-medium">Includes item prices + delivery fee + platform handling fee</p>
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs font-black uppercase tracking-wider text-emerald-200">Live Bachat Price Engine</span>
+                            <span class="text-[11px] bg-emerald-900/80 text-brandYellow border border-emerald-500/50 px-2 py-0.5 rounded-md font-bold">
+                                Formula: Max Price - Buying Price
+                            </span>
+                        </div>
+                        <h3 id="summaryTitle" class="text-lg sm:text-xl font-black text-white mt-1">Calculating lowest net price across all stores...</h3>
+                        <p id="summarySubtitle" class="text-xs text-emerald-100 mt-0.5 font-medium">Comparing Blinkit, Zepto, BigBasket, Flipkart Minutes & Instamart</p>
                     </div>
                 </div>
-                <div class="flex items-center space-x-3 self-stretch md:self-auto justify-between md:justify-end">
-                    <div class="bg-black/20 px-4 py-2 rounded-2xl border border-white/10 text-right">
-                        <span class="text-xs text-emerald-200 block font-semibold">Max Bachat Savings</span>
+                <div class="flex flex-wrap items-center gap-2.5 self-stretch md:self-auto justify-between md:justify-end">
+                    <div class="bg-black/25 px-3.5 py-2 rounded-2xl border border-white/10 text-left sm:text-right">
+                        <span class="text-[11px] text-emerald-200 block font-semibold">Max Market Total</span>
+                        <span id="summaryMaxMarketAmount" class="text-lg sm:text-xl font-black text-slate-200 line-through">₹0</span>
+                    </div>
+                    <div class="bg-black/25 px-3.5 py-2 rounded-2xl border border-white/10 text-left sm:text-right">
+                        <span class="text-[11px] text-emerald-200 block font-semibold">Our Buying Price</span>
+                        <span id="summaryBuyingAmount" class="text-lg sm:text-xl font-black text-emerald-300">₹0</span>
+                    </div>
+                    <div class="bg-emerald-900/90 px-4 py-2 rounded-2xl border border-brandYellow/40 text-left sm:text-right shadow-sm">
+                        <span class="text-[11px] text-brandYellow uppercase tracking-wider block font-black">Your Total Savings</span>
                         <span id="summarySavingsAmount" class="text-2xl sm:text-3xl font-black text-brandYellow">₹0</span>
                     </div>
                 </div>
@@ -870,14 +962,19 @@
             }
         };
 
+        let activeSelectedCategory = 'all';
+
         let PRODUCTS_DB = [
             {
                 id: 'p0',
-                name: 'Fresh Potato (Aloo)',
+                name: 'Fresh Potato (Aloo / Jyoti)',
                 brand: 'Farm Fresh',
                 category: 'Vegetables',
                 unit: '1 kg',
                 img: 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=300&auto=format&fit=crop&q=80',
+                isMostSearched: true,
+                searchRank: 1,
+                searchVolume: '48.5k searches today',
                 prices: {
                     'Blinkit': { price: 28, available: true },
                     'Zepto': { price: 30, available: true },
@@ -885,15 +982,18 @@
                     'Flipkart Minutes': { price: 27, available: true },
                     'Instamart': { price: 29, available: true }
                 },
-                alternatives: ['Fresh Onion 1kg - ₹32', 'Fresh Tomato 1kg - ₹26']
+                alternatives: ['Fresh Red Potato 1kg - ₹32', 'Organic Potato 1kg - ₹38']
             },
             {
                 id: 'p1',
-                name: 'Amul Taaza Toned Milk',
+                name: 'Amul Taaza Homogenised Toned Milk',
                 brand: 'Amul',
                 category: 'Dairy',
-                unit: '1 L',
+                unit: '1 L Pouch',
                 img: 'https://images.unsplash.com/photo-1563636619-e9143da7973b?w=300&auto=format&fit=crop&q=80',
+                isMostSearched: true,
+                searchRank: 2,
+                searchVolume: '53.2k searches today',
                 prices: {
                     'Blinkit': { price: 54, available: true },
                     'Zepto': { price: 54, available: true },
@@ -901,15 +1001,18 @@
                     'Flipkart Minutes': { price: 54, available: true },
                     'Instamart': { price: 55, available: true }
                 },
-                alternatives: ['Mother Dairy Toned Milk 1L - ₹53', 'Country Delight Milk 1L - ₹60']
+                alternatives: ['Mother Dairy Toned Milk 1L - ₹54', 'Amul Gold Full Cream 1L - ₹66']
             },
             {
                 id: 'p2',
-                name: 'Maggi 2-Minute Masala Noodles',
+                name: 'Maggi 2-Minute Masala Instant Noodles',
                 brand: 'Nestle',
                 category: 'Snacks',
                 unit: 'Pack of 4 (280g)',
                 img: 'https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=300&auto=format&fit=crop&q=80',
+                isMostSearched: true,
+                searchRank: 3,
+                searchVolume: '42.1k searches today',
                 prices: {
                     'Blinkit': { price: 58, available: true },
                     'Zepto': { price: 56, available: true },
@@ -917,15 +1020,18 @@
                     'Flipkart Minutes': { price: 54, available: true },
                     'Instamart': { price: 58, available: true }
                 },
-                alternatives: ['Yippee Masala Noodles 280g - ₹48', 'Top Ramen Curry 280g - ₹50']
+                alternatives: ['Yippee Magic Masala Noodles 280g - ₹48', 'Top Ramen Curry Noodles - ₹50']
             },
             {
                 id: 'p3',
-                name: 'Fortune Sunlite Sunflower Oil',
+                name: 'Fortune Sunlite Refined Sunflower Oil',
                 brand: 'Fortune',
                 category: 'Oils & Ghee',
                 unit: '1 L Pouch',
                 img: 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=300&auto=format&fit=crop&q=80',
+                isMostSearched: true,
+                searchRank: 4,
+                searchVolume: '36.8k searches today',
                 prices: {
                     'Blinkit': { price: 142, available: true },
                     'Zepto': { price: 139, available: true },
@@ -933,15 +1039,18 @@
                     'Flipkart Minutes': { price: 138, available: true },
                     'Instamart': { price: 145, available: true }
                 },
-                alternatives: ['Saffola Gold Oil 1L - ₹155', 'Dhara Sunflower Oil 1L - ₹132']
+                alternatives: ['Saffola Gold Pro Healthy Oil 1L - ₹155', 'Dhara Sunflower Oil 1L - ₹132']
             },
             {
                 id: 'p4',
-                name: 'Farm Fresh White Eggs',
+                name: 'Farm Fresh White Table Eggs',
                 brand: 'Eggoz',
-                category: 'Dairy & Eggs',
+                category: 'Dairy',
                 unit: 'Pack of 6',
                 img: 'white_eggs.jpg',
+                isMostSearched: true,
+                searchRank: 5,
+                searchVolume: '39.4k searches today',
                 prices: {
                     'Blinkit': { price: 48, available: true },
                     'Zepto': { price: 46, available: true },
@@ -949,15 +1058,18 @@
                     'Flipkart Minutes': { price: 45, available: true },
                     'Instamart': { price: 49, available: true }
                 },
-                alternatives: ['Local Brown Eggs Pack of 6 - ₹55', 'Table Eggs Pack of 10 - ₹72']
+                alternatives: ['Farm Fresh Eggs Pack of 12 - ₹88', 'Brown Organic Eggs Pack of 6 - ₹65']
             },
             {
                 id: 'p5',
-                name: 'Aashirvaad Shuddh Chakki Atta',
+                name: 'Aashirvaad Superior MP Shuddh Chakki Atta',
                 brand: 'Aashirvaad',
                 category: 'Atta & Rice',
-                unit: '5 kg',
+                unit: '5 kg Bag',
                 img: 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&auto=format&fit=crop&q=80',
+                isMostSearched: true,
+                searchRank: 6,
+                searchVolume: '33.5k searches today',
                 prices: {
                     'Blinkit': { price: 245, available: true },
                     'Zepto': { price: 240, available: true },
@@ -965,15 +1077,18 @@
                     'Flipkart Minutes': { price: 235, available: true },
                     'Instamart': { price: 248, available: true }
                 },
-                alternatives: ['Fortune Chakki Fresh Atta 5kg - ₹220', 'Pillsbury Atta 5kg - ₹230']
+                alternatives: ['Fortune Chakki Fresh Atta 5kg - ₹219', 'Pillsbury Chakki Fresh Atta 5kg - ₹228']
             },
             {
                 id: 'p6',
-                name: 'Amul Pasteurised Butter',
+                name: 'Amul Pasteurised Salted Butter',
                 brand: 'Amul',
                 category: 'Dairy',
-                unit: '100 g',
+                unit: '100 g Block',
                 img: 'https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=300&auto=format&fit=crop&q=80',
+                isMostSearched: true,
+                searchRank: 7,
+                searchVolume: '28.9k searches today',
                 prices: {
                     'Blinkit': { price: 58, available: true },
                     'Zepto': { price: 58, available: true },
@@ -981,15 +1096,18 @@
                     'Flipkart Minutes': { price: 58, available: true },
                     'Instamart': { price: 58, available: true }
                 },
-                alternatives: ['Mother Dairy Butter 100g - ₹56', 'Delicious Table Butter 100g - ₹52']
+                alternatives: ['Mother Dairy Butter 100g - ₹56', 'Amul Butter 500g - ₹275']
             },
             {
                 id: 'p7',
-                name: 'Coca-Cola Original Taste',
+                name: 'Coca-Cola Original Refreshing Taste',
                 brand: 'Coca-Cola',
                 category: 'Beverages',
                 unit: '750 ml Bottle',
                 img: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&auto=format&fit=crop&q=80',
+                isMostSearched: true,
+                searchRank: 8,
+                searchVolume: '24.2k searches today',
                 prices: {
                     'Blinkit': { price: 40, available: true },
                     'Zepto': { price: 38, available: true },
@@ -997,7 +1115,317 @@
                     'Flipkart Minutes': { price: 37, available: true },
                     'Instamart': { price: 40, available: true }
                 },
-                alternatives: ['Pepsi 750ml - ₹38', 'Thums Up 750ml - ₹40']
+                alternatives: ['Thums Up 750ml - ₹40', 'Pepsi 750ml - ₹38', 'Sprite 750ml - ₹40']
+            },
+            {
+                id: 'p8',
+                name: 'Fresh Hybrid Red Tomatoes (Tamatar)',
+                brand: 'Farm Fresh',
+                category: 'Vegetables',
+                unit: '1 kg',
+                img: 'https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=300&auto=format&fit=crop&q=80',
+                isMostSearched: true,
+                searchRank: 9,
+                searchVolume: '44.8k searches today',
+                prices: {
+                    'Blinkit': { price: 26, available: true },
+                    'Zepto': { price: 28, available: true },
+                    'BigBasket': { price: 22, available: true },
+                    'Flipkart Minutes': { price: 24, available: true },
+                    'Instamart': { price: 27, available: true }
+                },
+                alternatives: ['Fresh Desi Tomato 1kg - ₹30', 'Cherry Tomatoes 250g - ₹45']
+            },
+            {
+                id: 'p9',
+                name: 'Fresh Red Onion (Pyaz)',
+                brand: 'Farm Fresh',
+                category: 'Vegetables',
+                unit: '1 kg',
+                img: 'https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?w=300&auto=format&fit=crop&q=80',
+                isMostSearched: true,
+                searchRank: 10,
+                searchVolume: '49.1k searches today',
+                prices: {
+                    'Blinkit': { price: 36, available: true },
+                    'Zepto': { price: 35, available: true },
+                    'BigBasket': { price: 32, available: true },
+                    'Flipkart Minutes': { price: 34, available: true },
+                    'Instamart': { price: 38, available: true }
+                },
+                alternatives: ['Sambhar Onion / Shallots 500g - ₹40', 'White Onion 1kg - ₹48']
+            },
+            {
+                id: 'p10',
+                name: 'Amul Masti Dahi / Plain Curd',
+                brand: 'Amul',
+                category: 'Dairy',
+                unit: '400 g Pouch',
+                img: 'https://images.unsplash.com/photo-1571212515416-fef01fc43637?w=300&auto=format&fit=crop&q=80',
+                isMostSearched: false,
+                prices: {
+                    'Blinkit': { price: 35, available: true },
+                    'Zepto': { price: 35, available: true },
+                    'BigBasket': { price: 34, available: true },
+                    'Flipkart Minutes': { price: 34, available: true },
+                    'Instamart': { price: 35, available: true }
+                },
+                alternatives: ['Mother Dairy Dahi 400g - ₹35', 'Milky Mist Set Curd 400g - ₹42']
+            },
+            {
+                id: 'p11',
+                name: 'Britannia 100% Whole Wheat Bread',
+                brand: 'Britannia',
+                category: 'Dairy',
+                unit: '400 g Pack',
+                img: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=300&auto=format&fit=crop&q=80',
+                isMostSearched: false,
+                prices: {
+                    'Blinkit': { price: 50, available: true },
+                    'Zepto': { price: 50, available: true },
+                    'BigBasket': { price: 48, available: true },
+                    'Flipkart Minutes': { price: 49, available: true },
+                    'Instamart': { price: 52, available: true }
+                },
+                alternatives: ['English Oven Brown Bread 400g - ₹55', 'Modern White Bread 400g - ₹42']
+            },
+            {
+                id: 'p12',
+                name: 'Tata Salt Vacuum Evaporated Iodised Salt',
+                brand: 'Tata',
+                category: 'Atta & Rice',
+                unit: '1 kg',
+                img: 'https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?w=300&auto=format&fit=crop&q=80',
+                isMostSearched: false,
+                prices: {
+                    'Blinkit': { price: 28, available: true },
+                    'Zepto': { price: 28, available: true },
+                    'BigBasket': { price: 26, available: true },
+                    'Flipkart Minutes': { price: 27, available: true },
+                    'Instamart': { price: 28, available: true }
+                },
+                alternatives: ['Tata Salt Lite (Low Sodium) 1kg - ₹42', 'Aashirvaad Iodised Salt 1kg - ₹26']
+            },
+            {
+                id: 'p13',
+                name: 'Tata Sampann Unpolished Toor Dal',
+                brand: 'Tata',
+                category: 'Atta & Rice',
+                unit: '1 kg Bag',
+                img: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=300&auto=format&fit=crop&q=80',
+                isMostSearched: false,
+                prices: {
+                    'Blinkit': { price: 168, available: true },
+                    'Zepto': { price: 165, available: true },
+                    'BigBasket': { price: 158, available: true },
+                    'Flipkart Minutes': { price: 162, available: true },
+                    'Instamart': { price: 170, available: true }
+                },
+                alternatives: ['Fortune Unpolished Toor Dal 1kg - ₹159', 'Tata Sampann Moong Dal 1kg - ₹145']
+            },
+            {
+                id: 'p14',
+                name: "Lay's India's Magic Masala Potato Chips",
+                brand: "Lay's",
+                category: 'Snacks',
+                unit: '50 g Pack',
+                img: 'https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=300&auto=format&fit=crop&q=80',
+                isMostSearched: false,
+                prices: {
+                    'Blinkit': { price: 20, available: true },
+                    'Zepto': { price: 20, available: true },
+                    'BigBasket': { price: 19, available: true },
+                    'Flipkart Minutes': { price: 19, available: true },
+                    'Instamart': { price: 20, available: true }
+                },
+                alternatives: ["Lay's Classic Salted 50g - ₹20", 'Bingo Mad Angles 66g - ₹20']
+            },
+            {
+                id: 'p15',
+                name: "Haldiram's Nagpur Bhujia Sev",
+                brand: "Haldiram's",
+                category: 'Snacks',
+                unit: '400 g Pack',
+                img: 'https://images.unsplash.com/photo-1599490659213-e2b9527bd087?w=300&auto=format&fit=crop&q=80',
+                isMostSearched: false,
+                prices: {
+                    'Blinkit': { price: 115, available: true },
+                    'Zepto': { price: 110, available: true },
+                    'BigBasket': { price: 105, available: true },
+                    'Flipkart Minutes': { price: 108, available: true },
+                    'Instamart': { price: 118, available: true }
+                },
+                alternatives: ["Haldiram's Aloo Bhujia 400g - ₹115", 'Bikaji Bhujia 400g - ₹105']
+            },
+            {
+                id: 'p16',
+                name: 'Amul Fresh Malai Paneer Block',
+                brand: 'Amul',
+                category: 'Dairy',
+                unit: '200 g Pack',
+                img: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=300&auto=format&fit=crop&q=80',
+                isMostSearched: false,
+                prices: {
+                    'Blinkit': { price: 90, available: true },
+                    'Zepto': { price: 92, available: true },
+                    'BigBasket': { price: 86, available: true },
+                    'Flipkart Minutes': { price: 88, available: true },
+                    'Instamart': { price: 92, available: true }
+                },
+                alternatives: ['Mother Dairy Paneer 200g - ₹89', 'Milky Mist Paneer 200g - ₹95']
+            },
+            {
+                id: 'p17',
+                name: 'Fresh Green Coriander (Dhaniya Patta)',
+                brand: 'Farm Fresh',
+                category: 'Vegetables',
+                unit: '100 g Bunch',
+                img: 'https://images.unsplash.com/photo-1589634749258-294b46c65e8d?w=300&auto=format&fit=crop&q=80',
+                isMostSearched: false,
+                prices: {
+                    'Blinkit': { price: 12, available: true },
+                    'Zepto': { price: 10, available: true },
+                    'BigBasket': { price: 8, available: true },
+                    'Flipkart Minutes': { price: 9, available: true },
+                    'Instamart': { price: 11, available: true }
+                },
+                alternatives: ['Fresh Mint (Pudina) 100g - ₹12', 'Fresh Curry Leaves 50g - ₹8']
+            },
+            {
+                id: 'p18',
+                name: 'Fresh Juicy Yellow Lemon (Nimbu)',
+                brand: 'Farm Fresh',
+                category: 'Vegetables',
+                unit: 'Pack of 4',
+                img: 'https://images.unsplash.com/photo-1582979512210-99b6a53386f9?w=300&auto=format&fit=crop&q=80',
+                isMostSearched: false,
+                prices: {
+                    'Blinkit': { price: 22, available: true },
+                    'Zepto': { price: 20, available: true },
+                    'BigBasket': { price: 18, available: true },
+                    'Flipkart Minutes': { price: 19, available: true },
+                    'Instamart': { price: 24, available: true }
+                },
+                alternatives: ['Seedless Lemon 250g - ₹35', 'Fresh Green Chilli 100g - ₹12']
+            },
+            {
+                id: 'p19',
+                name: 'Fresh Robusta Ripe Bananas (Kela)',
+                brand: 'Farm Fresh',
+                category: 'Vegetables',
+                unit: '500 g (4-5 pcs)',
+                img: 'https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=300&auto=format&fit=crop&q=80',
+                isMostSearched: false,
+                prices: {
+                    'Blinkit': { price: 35, available: true },
+                    'Zepto': { price: 36, available: true },
+                    'BigBasket': { price: 32, available: true },
+                    'Flipkart Minutes': { price: 34, available: true },
+                    'Instamart': { price: 38, available: true }
+                },
+                alternatives: ['Elaichi Banana 500g - ₹48', 'Shimla Royal Apple 500g - ₹95']
+            },
+            {
+                id: 'p20',
+                name: 'Nescafe Classic 100% Pure Instant Coffee',
+                brand: 'Nestle',
+                category: 'Beverages',
+                unit: '50 g Glass Jar',
+                img: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=300&auto=format&fit=crop&q=80',
+                isMostSearched: false,
+                prices: {
+                    'Blinkit': { price: 175, available: true },
+                    'Zepto': { price: 172, available: true },
+                    'BigBasket': { price: 165, available: true },
+                    'Flipkart Minutes': { price: 168, available: true },
+                    'Instamart': { price: 175, available: true }
+                },
+                alternatives: ['Bru Instant Coffee 50g - ₹145', 'Tata Coffee Grand 50g - ₹130']
+            },
+            {
+                id: 'p21',
+                name: 'Surf Excel Easy Wash Detergent Powder',
+                brand: 'Surf Excel',
+                category: 'Household',
+                unit: '1 kg Pouch',
+                img: 'https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=300&auto=format&fit=crop&q=80',
+                isMostSearched: false,
+                prices: {
+                    'Blinkit': { price: 145, available: true },
+                    'Zepto': { price: 142, available: true },
+                    'BigBasket': { price: 136, available: true },
+                    'Flipkart Minutes': { price: 139, available: true },
+                    'Instamart': { price: 148, available: true }
+                },
+                alternatives: ['Tide Plus Double Power 1kg - ₹125', 'Ariel Complete Powder 1kg - ₹158']
+            },
+            {
+                id: 'p22',
+                name: 'Vim Dishwash Liquid Gel Lemon Fragrance',
+                brand: 'Vim',
+                category: 'Household',
+                unit: '500 ml Bottle',
+                img: 'https://images.unsplash.com/photo-1585670270608-b4b1a43a6d25?w=300&auto=format&fit=crop&q=80',
+                isMostSearched: false,
+                prices: {
+                    'Blinkit': { price: 115, available: true },
+                    'Zepto': { price: 112, available: true },
+                    'BigBasket': { price: 105, available: true },
+                    'Flipkart Minutes': { price: 108, available: true },
+                    'Instamart': { price: 118, available: true }
+                },
+                alternatives: ['Pril Dishwash Gel 425ml - ₹105', 'Vim Dishwash Bar 300g (Pack of 3) - ₹55']
+            },
+            {
+                id: 'p23',
+                name: 'Dettol Original Germ Protection Handwash',
+                brand: 'Dettol',
+                category: 'Household',
+                unit: '675 ml Refill Pack',
+                img: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=300&auto=format&fit=crop&q=80',
+                isMostSearched: false,
+                prices: {
+                    'Blinkit': { price: 105, available: true },
+                    'Zepto': { price: 102, available: true },
+                    'BigBasket': { price: 95, available: true },
+                    'Flipkart Minutes': { price: 99, available: true },
+                    'Instamart': { price: 109, available: true }
+                },
+                alternatives: ['Lifebuoy Total Handwash 750ml - ₹98', 'Savlon Moisture Handwash 725ml - ₹92']
+            },
+            {
+                id: 'p24',
+                name: 'Colgate MaxFresh Spicy Fresh Red Gel Toothpaste',
+                brand: 'Colgate',
+                category: 'Household',
+                unit: '150 g Tube',
+                img: 'https://images.unsplash.com/photo-1559591937-e1032d665b17?w=300&auto=format&fit=crop&q=80',
+                isMostSearched: false,
+                prices: {
+                    'Blinkit': { price: 102, available: true },
+                    'Zepto': { price: 100, available: true },
+                    'BigBasket': { price: 95, available: true },
+                    'Flipkart Minutes': { price: 98, available: true },
+                    'Instamart': { price: 105, available: true }
+                },
+                alternatives: ['Close Up Ever Fresh 150g - ₹98', 'Sensodyne Fresh Gel 75g - ₹145']
+            },
+            {
+                id: 'p25',
+                name: 'Mother Dairy Fresh Pasteurized Cow Milk',
+                brand: 'Mother Dairy',
+                category: 'Dairy',
+                unit: '1 L Pouch',
+                img: 'https://images.unsplash.com/photo-1527153857715-3908f2ae5e81?w=300&auto=format&fit=crop&q=80',
+                isMostSearched: false,
+                prices: {
+                    'Blinkit': { price: 56, available: true },
+                    'Zepto': { price: 56, available: true },
+                    'BigBasket': { price: 54, available: true },
+                    'Flipkart Minutes': { price: 55, available: true },
+                    'Instamart': { price: 57, available: true }
+                },
+                alternatives: ['Amul Cow Milk 1L - ₹56', 'Country Delight Cow Milk 1L - ₹64']
             }
         ];
 
@@ -1023,7 +1451,21 @@
             updateBasketCountBadge();
             updateFloatingBasketBar();
 
-            // 3. Fetch background data updates (non-blocking)
+            // 3. Trigger initial high-accuracy Geolocation API check
+            if (navigator.geolocation && (!currentUser || !currentUser.address || currentUser.address.includes('Auto-detecting'))) {
+                getCurrentGPSLocation(false);
+            }
+
+            // 4. Close search suggestions when clicking anywhere outside
+            document.addEventListener('click', function(e) {
+                const searchContainer = document.getElementById('heroSearchSection');
+                if (searchContainer && !searchContainer.contains(e.target)) {
+                    const suggestionsEl = document.getElementById('searchSuggestions');
+                    if (suggestionsEl) suggestionsEl.classList.add('hidden');
+                }
+            });
+
+            // 5. Fetch background data updates (non-blocking)
             fetchBackendPlatforms();
             fetchBackendProducts();
         };
@@ -1064,11 +1506,14 @@
 
         async function fetchDefaultLocation() {
             const navAddr = document.getElementById('navUserAddress');
+            const heroAddr = document.getElementById('heroUserAddress');
             try {
                 const res = await fetch(`${API_BASE}/api/serviceability/detect-location`);
                 const data = await res.json();
-                if (data.success && navAddr) {
-                    navAddr.innerText = `${data.city} (${data.pincode})`;
+                if (data.success) {
+                    const text = `${data.city} (${data.pincode})`;
+                    if (navAddr) navAddr.innerText = text;
+                    if (heroAddr) heroAddr.innerText = `${data.area}, ${data.city} - ${data.pincode}`;
                     if (!currentUser) {
                         currentUser = { name: 'Shopper', phone: '', address: `${data.area}, ${data.pincode}`, pincode: data.pincode, city: data.city };
                         localStorage.setItem('bachat_user', JSON.stringify(currentUser));
@@ -1076,6 +1521,7 @@
                 }
             } catch (e) {
                 if (navAddr) navAddr.innerText = "Kolkata (700001)";
+                if (heroAddr) heroAddr.innerText = "Park Street, Kolkata - 700001";
             }
         }
 
@@ -1093,7 +1539,7 @@
                     }
                 }
             } catch (err) {
-                console.log('Using local products DB fallback:', err.message);
+                console.log('Using rich local products DB fallback:', err.message);
             }
         }
 
@@ -1123,17 +1569,20 @@
             }
         }
 
+        // GEOLOCATION API - HIGH ACCURACY LIVE GPS WITH REVERSE GEOCODING
         function getCurrentGPSLocation(showNotify = true) {
             const navAddr = document.getElementById('navUserAddress');
+            const heroAddr = document.getElementById('heroUserAddress');
             const locIcon = document.getElementById('locationIcon');
             const gpsPulse = document.getElementById('gpsPulse');
 
             if (locIcon) locIcon.className = "fa-solid fa-spinner fa-spin text-brandOrange";
             if (gpsPulse) gpsPulse.classList.remove('hidden');
-            if (navAddr) navAddr.innerText = "Tracing GPS...";
+            if (navAddr) navAddr.innerText = "Tracing live GPS...";
+            if (heroAddr) heroAddr.innerText = "Locating via device satellite GPS...";
 
             if (!navigator.geolocation) {
-                handleGPSFallback('Geolocation not supported by browser', showNotify);
+                handleGPSFallback('Geolocation is not supported by your browser', showNotify);
                 return;
             }
 
@@ -1142,51 +1591,84 @@
                     const lat = position.coords.latitude;
                     const lon = position.coords.longitude;
 
+                    let detectedCity = 'Bengaluru';
+                    let detectedPincode = '560001';
+                    let detectedArea = 'Live Location';
+                    let formattedLocation = '';
+
                     try {
-                        const res = await fetch(`${API_BASE}/api/serviceability/reverse-geocode?lat=${lat}&lon=${lon}`);
-                        const data = await res.json();
-
-                        let detectedCity = data.city || 'Kolkata';
-                        let detectedPincode = data.pincode || '700001';
-                        let locationText = data.formatted || `${detectedCity}, ${detectedPincode}`;
-
-                        if (navAddr) navAddr.innerText = locationText;
-
-                        if (!currentUser) {
-                            currentUser = { name: 'GPS User', phone: '', address: locationText, pincode: detectedPincode, city: detectedCity };
-                        } else {
-                            currentUser.pincode = detectedPincode;
-                            currentUser.city = detectedCity;
-                            currentUser.address = locationText;
+                        // 1. Try OpenStreetMap Nominatim reverse geocode for exact locality and postal code
+                        const osmRes = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=18&addressdetails=1`, {
+                            headers: { 'Accept-Language': 'en' }
+                        });
+                        if (osmRes.ok) {
+                            const osmData = await osmRes.json();
+                            const addr = osmData.address || {};
+                            detectedArea = addr.suburb || addr.neighbourhood || addr.residential || addr.road || addr.village || addr.subdistrict || 'Current Area';
+                            detectedCity = addr.city || addr.town || addr.city_district || addr.state_district || addr.state || 'City';
+                            detectedPincode = addr.postcode || '700001';
+                            formattedLocation = `${detectedArea}, ${detectedCity} (${detectedPincode})`;
                         }
-                        localStorage.setItem('bachat_user', JSON.stringify(currentUser));
-
-                        const regPin = document.getElementById('regPincode');
-                        const regAddress = document.getElementById('regAddress');
-                        const regCity = document.getElementById('regCity');
-                        if (regPin) regPin.value = detectedPincode;
-                        if (regAddress) regAddress.value = locationText;
-                        if (regCity) regCity.value = detectedCity;
-
-                        if (showNotify) showToast(`GPS Located: ${locationText}`);
                     } catch (err) {
-                        const fallbackText = `GPS: ${lat.toFixed(2)}°, ${lon.toFixed(2)}°`;
-                        if (navAddr) navAddr.innerText = fallbackText;
-                        if (showNotify) showToast(`GPS Coordinates traced: ${fallbackText}`);
-                    } finally {
-                        if (locIcon) locIcon.className = "fa-solid fa-location-dot text-brandGreen";
-                        if (gpsPulse) gpsPulse.classList.add('hidden');
+                        console.log('OSM Geocode fallback:', err.message);
+                    }
+
+                    if (!formattedLocation) {
+                        try {
+                            // 2. Try BigDataCloud Reverse Geocode
+                            const bdcRes = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`);
+                            if (bdcRes.ok) {
+                                const bdcData = await bdcRes.json();
+                                detectedCity = bdcData.city || bdcData.locality || 'City';
+                                detectedPincode = bdcData.postcode || '700001';
+                                detectedArea = bdcData.locality || bdcData.principalSubdivision || 'Current Area';
+                                formattedLocation = `${detectedArea}, ${detectedCity} (${detectedPincode})`;
+                            }
+                        } catch (e) {
+                            console.log('BigDataCloud fallback:', e.message);
+                        }
+                    }
+
+                    if (!formattedLocation) {
+                        formattedLocation = `GPS: ${lat.toFixed(3)}°N, ${lon.toFixed(3)}°E`;
+                    }
+
+                    if (navAddr) navAddr.innerText = formattedLocation;
+                    if (heroAddr) heroAddr.innerText = formattedLocation;
+
+                    if (!currentUser) {
+                        currentUser = { name: 'GPS Shopper', phone: '', address: formattedLocation, pincode: detectedPincode, city: detectedCity };
+                    } else {
+                        currentUser.pincode = detectedPincode;
+                        currentUser.city = detectedCity;
+                        currentUser.address = formattedLocation;
+                    }
+                    localStorage.setItem('bachat_user', JSON.stringify(currentUser));
+
+                    const regPin = document.getElementById('regPincode');
+                    const regAddress = document.getElementById('regAddress');
+                    const regCity = document.getElementById('regCity');
+                    if (regPin) regPin.value = detectedPincode;
+                    if (regAddress) regAddress.value = formattedLocation;
+                    if (regCity) regCity.value = detectedCity;
+
+                    if (locIcon) locIcon.className = "fa-solid fa-location-dot text-brandGreen";
+                    if (gpsPulse) gpsPulse.classList.add('hidden');
+
+                    if (showNotify) {
+                        showToast(`📍 Live GPS Verified: ${formattedLocation}`);
                     }
                 },
                 (error) => {
                     handleGPSFallback(error.message, showNotify);
                 },
-                { enableHighAccuracy: false, timeout: 6000, maximumAge: 60000 }
+                { enableHighAccuracy: true, timeout: 8000, maximumAge: 30000 }
             );
         }
 
         async function handleGPSFallback(reason, showNotify) {
             const navAddr = document.getElementById('navUserAddress');
+            const heroAddr = document.getElementById('heroUserAddress');
             const locIcon = document.getElementById('locationIcon');
             const gpsPulse = document.getElementById('gpsPulse');
 
@@ -1196,10 +1678,12 @@
             try {
                 const res = await fetch(`${API_BASE}/api/serviceability/detect-location`);
                 const data = await res.json();
-                if (data.success && navAddr) {
-                    navAddr.innerText = `${data.city} (${data.pincode})`;
+                if (data.success) {
+                    const fullAddr = `${data.area}, ${data.city} (${data.pincode})`;
+                    if (navAddr) navAddr.innerText = fullAddr;
+                    if (heroAddr) heroAddr.innerText = fullAddr;
                     if (!currentUser) {
-                        currentUser = { name: 'Shopper', phone: '', address: `${data.area}, ${data.pincode}`, pincode: data.pincode, city: data.city };
+                        currentUser = { name: 'Shopper', phone: '', address: fullAddr, pincode: data.pincode, city: data.city };
                         localStorage.setItem('bachat_user', JSON.stringify(currentUser));
                     }
                     if (showNotify) {
@@ -1212,9 +1696,12 @@
             if (navAddr && (!currentUser || !currentUser.pincode)) {
                 navAddr.innerText = "Select City / Pincode";
             }
+            if (heroAddr && (!currentUser || !currentUser.address)) {
+                heroAddr.innerText = "Click to set your delivery location";
+            }
             if (showNotify) {
                 openAuthModal();
-                showToast('Please enter your city/pincode below.', 'warn');
+                showToast('Please enter your city/pincode to calculate live delivery fees.', 'warn');
             }
         }
 
@@ -1269,6 +1756,28 @@
             }
         }
 
+        function filterByCategory(category) {
+            activeSelectedCategory = category;
+            
+            // Update active tab styles
+            document.querySelectorAll('.category-tab').forEach(tab => {
+                tab.className = "category-tab flex-shrink-0 px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold transition border bg-white text-slate-700 hover:bg-slate-100 border-slate-200 shadow-2xs";
+            });
+            const activeTab = document.getElementById(`catTab-${category}`);
+            if (activeTab) {
+                activeTab.className = "category-tab active-cat-tab flex-shrink-0 px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold transition border bg-brandGreen text-white border-emerald-700 shadow-xs";
+            }
+
+            renderPopularGrid();
+        }
+
+        function filterByMostSearched() {
+            filterByCategory('most_searched');
+            showSection('home');
+            const target = document.getElementById('popularSection');
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
+        }
+
         function renderAppFilterBar() {
             const container = document.getElementById('appFilterContainer');
             if (!container) return;
@@ -1287,11 +1796,11 @@
         function renderBrandFilterBar() {
             const container = document.getElementById('brandFilterContainer');
             if (!container) return;
-            const brands = ['Amul', 'Nestle', 'Fortune', 'Eggoz', 'Aashirvaad', 'Coca-Cola', 'Farm Fresh'];
+            const brands = ['Amul', 'Nestle', 'Fortune', 'Eggoz', 'Aashirvaad', 'Tata', "Lay's", "Haldiram's", 'Surf Excel', 'Dettol', 'Colgate', 'Coca-Cola', 'Farm Fresh'];
             container.innerHTML = brands.map(b => {
                 const isSelected = activeSelectedBrand === b;
                 return `
-                    <button onclick="filterByBrand('${b}')" class="flex-shrink-0 px-4 py-2 rounded-xl text-sm font-bold transition border ${isSelected ? 'bg-brandOrange text-white border-orange-600 shadow-xs' : 'bg-white text-slate-800 hover:bg-slate-100 border-slate-200'}">
+                    <button onclick="filterByBrand('${b}')" class="flex-shrink-0 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition border ${isSelected ? 'bg-brandOrange text-white border-orange-600 shadow-xs' : 'bg-white text-slate-800 hover:bg-slate-100 border-slate-200'}">
                         ${b}
                     </button>
                 `;
@@ -1334,14 +1843,65 @@
         function renderPopularGrid() {
             const grid = document.getElementById('popularProductsGrid');
             if (!grid) return;
+
             let filtered = PRODUCTS_DB.filter(p => {
                 if (activeSelectedBrand && p.brand !== activeSelectedBrand) return false;
+                if (activeSelectedCategory === 'most_searched') return p.isMostSearched === true;
+                if (activeSelectedCategory && activeSelectedCategory !== 'all') {
+                    if (activeSelectedCategory === 'Vegetables' && (p.category === 'Vegetables' || p.category === 'Fruits')) return true;
+                    if (activeSelectedCategory === 'Dairy' && (p.category === 'Dairy' || p.category === 'Dairy & Eggs' || p.category === 'Dairy & Breakfast')) return true;
+                    if (activeSelectedCategory === 'Atta & Rice' && (p.category === 'Atta & Rice' || p.category === 'Staples & Spices')) return true;
+                    if (activeSelectedCategory === 'Household' && (p.category === 'Household' || p.category === 'Personal Care')) return true;
+                    return p.category === activeSelectedCategory;
+                }
                 return true;
             });
 
+            // If Most Searched category is active, sort by rank
+            if (activeSelectedCategory === 'most_searched') {
+                filtered.sort((a, b) => (a.searchRank || 99) - (b.searchRank || 99));
+            }
+
+            const titleEl = document.getElementById('popularGridTitle');
+            if (titleEl) {
+                if (activeSelectedCategory === 'most_searched') {
+                    titleEl.innerText = "🔥 Most Searched on Blinkit, Zepto & BigBasket";
+                } else if (activeSelectedCategory === 'Vegetables') {
+                    titleEl.innerText = "🥦 Fresh Farm Vegetables & Daily Greens";
+                } else if (activeSelectedCategory === 'Dairy') {
+                    titleEl.innerText = "🥛 Milk, Butter, Paneer & Fresh Eggs";
+                } else if (activeSelectedCategory === 'Atta & Rice') {
+                    titleEl.innerText = "🌾 Chakki Atta, Dals & Cooking Staples";
+                } else if (activeSelectedCategory === 'Oils & Ghee') {
+                    titleEl.innerText = "🌻 Refined Cooking Oils & Ghee";
+                } else if (activeSelectedCategory === 'Snacks') {
+                    titleEl.innerText = "🍜 Instant Noodles, Chips & Namkeen";
+                } else if (activeSelectedCategory === 'Beverages') {
+                    titleEl.innerText = "🧃 Cold Drinks, Pure Coffee & Beverages";
+                } else if (activeSelectedCategory === 'Household') {
+                    titleEl.innerText = "🧼 Home Cleaning, Detergents & Personal Care";
+                } else {
+                    titleEl.innerText = "Everyday Grocery Essentials";
+                }
+            }
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-12 bg-white rounded-3xl border border-slate-200 p-8">
+                        <i class="fa-solid fa-box-open text-4xl text-slate-300 mb-3"></i>
+                        <h4 class="font-extrabold text-slate-800 text-lg">No products found in this category</h4>
+                        <p class="text-sm text-slate-500 mt-1">Try selecting another category or view all essentials</p>
+                        <button onclick="filterByCategory('all')" class="mt-4 bg-brandGreen text-white font-bold px-4 py-2 rounded-xl text-sm">
+                            View All Essentials
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
             grid.innerHTML = filtered.map(p => {
                 let minPrice = Infinity;
-                let minApp = '';
+                let minApp = 'Blinkit';
                 Object.keys(p.prices).forEach(app => {
                     if (p.prices[app] && p.prices[app].price < minPrice) {
                         minPrice = p.prices[app].price;
@@ -1367,17 +1927,25 @@
 
                 return `
                     <div onclick="selectProduct('${p.id}')" class="bg-white rounded-3xl border border-slate-200/90 p-5 shadow-xs hover:shadow-lg transition cursor-pointer flex flex-col justify-between group relative">
-                        ${currentQty > 0 ? `<span class="absolute top-3 right-3 bg-emerald-600 text-white text-[11px] font-black px-2.5 py-0.5 rounded-full shadow-xs">In Basket: ${currentQty}</span>` : ''}
+                        ${p.isMostSearched ? `
+                            <span class="absolute top-3 left-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wide shadow-2xs flex items-center gap-1 z-10">
+                                <i class="fa-solid fa-fire text-[9px]"></i> #${p.searchRank || 'Top'} Most Searched
+                            </span>
+                        ` : ''}
+
+                        ${currentQty > 0 ? `<span class="absolute top-3 right-3 bg-emerald-600 text-white text-[11px] font-black px-2.5 py-0.5 rounded-full shadow-xs z-10">In Basket: ${currentQty}</span>` : ''}
+                        
                         <div>
-                            <div class="relative mb-3 bg-slate-50 rounded-2xl p-4 flex items-center justify-center h-40">
-                                <img src="${p.img}" alt="${p.name}" class="h-32 object-contain group-hover:scale-105 transition transform">
-                                <span class="absolute top-2.5 left-2.5 bg-brandOrange text-white text-xs font-black px-2.5 py-1 rounded-lg uppercase tracking-wide shadow-2xs">${p.brand}</span>
+                            <div class="relative mb-3 bg-slate-50 rounded-2xl p-4 flex items-center justify-center h-44">
+                                <img src="${p.img}" alt="${p.name}" class="h-36 object-contain group-hover:scale-105 transition transform">
+                                <span class="absolute bottom-2.5 right-2.5 bg-slate-800/80 text-white text-[11px] font-bold px-2 py-0.5 rounded-lg shadow-2xs">${p.brand}</span>
                             </div>
-                            <span class="text-xs sm:text-sm font-bold text-slate-500 uppercase tracking-wider">${p.category} • ${p.unit}</span>
-                            <h3 class="font-extrabold text-slate-900 text-base sm:text-lg mt-1 group-hover:text-brandGreen transition line-clamp-2 leading-snug">${p.name}</h3>
+                            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">${p.category} • ${p.unit}</span>
+                            <h3 class="font-extrabold text-slate-900 text-base mt-1 group-hover:text-brandGreen transition line-clamp-2 leading-snug">${p.name}</h3>
+                            ${p.searchVolume ? `<p class="text-[11px] text-amber-700 font-bold mt-0.5"><i class="fa-solid fa-arrow-trend-up text-amber-500 mr-1"></i>${p.searchVolume}</p>` : ''}
                         </div>
 
-                        <div class="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between">
+                        <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
                             <div>
                                 <p class="text-[11px] text-slate-500 uppercase font-extrabold">Cheapest on ${minApp}</p>
                                 <p class="text-2xl font-black text-brandGreen">₹${minPrice}</p>
@@ -1718,8 +2286,9 @@
             document.getElementById('floatingStoreTotal').innerText = `Best: ₹${calc.bestSingle.grandTotal} on ${calc.bestSingle.platformName}`;
             
             const savingsTag = document.getElementById('floatingSavingsTag');
-            if (calc.savingsVsWorst > 0) {
-                savingsTag.innerText = `Saves ₹${calc.savingsVsWorst}`;
+            const totalSavings = calc.bestSingle.savingsVsMaxMarket || calc.totalItemLevelSavings || calc.savingsVsWorst;
+            if (totalSavings > 0) {
+                savingsTag.innerText = `Saves ₹${totalSavings} (Max - Buy)`;
                 savingsTag.classList.remove('hidden');
             } else {
                 savingsTag.classList.add('hidden');
@@ -1792,21 +2361,45 @@
 
                 let minP = Infinity;
                 let minPlat = platforms[0];
+                let maxP = -Infinity;
+                let maxPlat = platforms[0];
+
                 platforms.forEach(pId => {
-                    if (prices[pId] < minP) {
-                        minP = prices[pId];
+                    const p = prices[pId];
+                    if (p < minP) {
+                        minP = p;
                         minPlat = pId;
                     }
+                    if (p > maxP) {
+                        maxP = p;
+                        maxPlat = pId;
+                    }
                 });
+
+                const unitSavings = Math.max(0, maxP - minP);
+                const itemMaxTotal = maxP * bItem.qty;
+                const itemCheapestTotal = minP * bItem.qty;
+                const itemSavings = unitSavings * bItem.qty;
 
                 return {
                     ...bItem,
                     prod,
                     prices,
                     cheapestPlatform: minPlat,
-                    cheapestPrice: minP
+                    cheapestPrice: minP,
+                    highestPlatform: maxPlat,
+                    highestPrice: maxP,
+                    unitSavings,
+                    itemMaxTotal,
+                    itemCheapestTotal,
+                    itemSavings
                 };
             });
+
+            // Overall market max across all items
+            const totalMarketMaxSubtotal = resolvedItems.reduce((sum, item) => sum + item.itemMaxTotal, 0);
+            const totalCheapestItemsSubtotal = resolvedItems.reduce((sum, item) => sum + item.itemCheapestTotal, 0);
+            const totalItemLevelSavings = totalMarketMaxSubtotal - totalCheapestItemsSubtotal;
 
             const platformResults = platforms.map(pId => {
                 const config = PLATFORM_CONFIG[pId];
@@ -1817,17 +2410,23 @@
                     const unitPrice = item.prices[pId] || 50;
                     const total = unitPrice * item.qty;
                     subtotal += total;
+                    const itemMax = (item.highestPrice || unitPrice) * item.qty;
+                    const savingOnItem = Math.max(0, itemMax - total);
                     itemBreakdown.push({
                         name: item.name,
                         qty: item.qty,
                         unitPrice,
-                        total
+                        total,
+                        maxPrice: item.highestPrice,
+                        savingOnItem
                     });
                 });
 
                 const deliveryFee = subtotal >= config.freeThreshold ? 0 : config.deliveryFee;
                 const grandTotal = subtotal + deliveryFee + config.handlingFee;
                 const freeDeliveryGap = Math.max(0, config.freeThreshold - subtotal);
+                // Formula: Maximum market price of all products across all apps - Buying subtotal on this platform
+                const savingsVsMaxMarket = Math.max(0, totalMarketMaxSubtotal - subtotal);
 
                 return {
                     platform: pId,
@@ -1841,6 +2440,8 @@
                     freeDeliveryGap,
                     subtotal,
                     grandTotal,
+                    savingsVsMaxMarket,
+                    totalMarketMaxSubtotal,
                     logoSvg: config.logoSvg,
                     itemBreakdown
                 };
@@ -1905,6 +2506,7 @@
             });
 
             const splitSavingsVsBestSingle = bestSingle.grandTotal - combinedSplitGrandTotal;
+            const splitSavingsVsMaxMarket = Math.max(0, totalMarketMaxSubtotal - combinedSplitSubtotal);
             const isSplitRecommended = splitSavingsVsBestSingle > 0 && splitOrders.length > 1;
 
             const tips = [];
@@ -1932,6 +2534,9 @@
                 bestSingle,
                 worstSingle,
                 savingsVsWorst,
+                totalMarketMaxSubtotal,
+                totalCheapestItemsSubtotal,
+                totalItemLevelSavings,
                 splitPlan: {
                     isSplitRecommended,
                     combinedTotal: combinedSplitGrandTotal,
@@ -1939,6 +2544,7 @@
                     combinedDelivery: combinedSplitDelivery,
                     combinedHandling: combinedSplitHandling,
                     savingsVsBestSingle: Math.max(0, splitSavingsVsBestSingle),
+                    savingsVsMaxMarket: splitSavingsVsMaxMarket,
                     orders: splitOrders
                 },
                 tips
@@ -1976,6 +2582,10 @@
 
                 document.getElementById('summaryTitle').innerText = "Add items above to calculate live savings";
                 document.getElementById('summarySubtitle').innerText = "We scan Blinkit, Zepto, BigBasket, Flipkart Minutes & Instamart in real-time";
+                const maxMarketEl = document.getElementById('summaryMaxMarketAmount');
+                if (maxMarketEl) maxMarketEl.innerText = "₹0";
+                const buyingEl = document.getElementById('summaryBuyingAmount');
+                if (buyingEl) buyingEl.innerText = "₹0";
                 document.getElementById('summarySavingsAmount').innerText = "₹0";
 
                 const platformsCards = document.getElementById('allPlatformsPriceCards');
@@ -2019,14 +2629,19 @@
                 const priceComparisonPills = Object.keys(PLATFORM_CONFIG).map(pId => {
                     const price = item.prices[pId];
                     const isMin = pId === item.cheapestPlatform;
+                    const isMax = pId === item.highestPlatform;
+                    let badgeClass = 'bg-slate-100 text-slate-600';
+                    if (isMin) badgeClass = 'bg-emerald-100 text-brandGreen font-black border border-emerald-300';
+                    else if (isMax) badgeClass = 'bg-rose-50 text-rose-700 font-bold border border-rose-200';
                     return `
-                        <span class="text-[11px] px-2 py-0.5 rounded-md font-bold ${isMin ? 'bg-emerald-100 text-brandGreen border border-emerald-300' : 'bg-slate-100 text-slate-600'}">
-                            ${pId}: ₹${price}
+                        <span class="text-[11px] px-2 py-0.5 rounded-md ${badgeClass}">
+                            ${pId}: ₹${price} ${isMin ? '✨ Min' : (isMax ? '🔺 Max' : '')}
                         </span>
                     `;
                 }).join('');
 
                 const itemSubtotal = item.cheapestPrice * item.qty;
+                const itemMaxSubtotal = item.highestPrice * item.qty;
 
                 return `
                     <div class="bg-white p-4 sm:p-5 rounded-2xl sm:rounded-3xl border border-slate-200/90 shadow-xs hover:border-emerald-300 transition space-y-3">
@@ -2037,7 +2652,7 @@
                                     <h4 class="font-bold text-slate-900 text-base leading-snug truncate">${item.name}</h4>
                                     <div class="flex items-center space-x-2 mt-1">
                                         <span class="text-xs bg-emerald-100 text-brandGreen px-2.5 py-0.5 rounded-lg font-black border border-emerald-200">
-                                            Cheapest on ${item.cheapestPlatform}: ₹${item.cheapestPrice}
+                                            Buy: ₹${item.cheapestPrice} (${item.cheapestPlatform})
                                         </span>
                                         <span class="text-xs text-slate-400 font-semibold">${item.unit || '1 Unit'}</span>
                                     </div>
@@ -2047,6 +2662,21 @@
                             <button onclick="removeBasketItem(${idx})" class="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-xl transition flex-shrink-0" title="Remove item">
                                 <i class="fa-solid fa-trash-can text-sm"></i>
                             </button>
+                        </div>
+
+                        <!-- PRICE FORMULA BADGE: (Max Price - Buy Price) * Qty -->
+                        <div class="bg-emerald-50/80 border border-emerald-200/80 p-2.5 rounded-xl flex items-center justify-between text-xs">
+                            <div>
+                                <span class="text-slate-600 font-semibold block text-[11px]">
+                                    Formula: <strong class="text-rose-700">₹${item.highestPrice} Max</strong> - <strong class="text-brandGreen">₹${item.cheapestPrice} Buy</strong>
+                                </span>
+                                <span class="text-emerald-900 font-extrabold text-xs">
+                                    Save ₹${item.unitSavings}/unit × ${item.qty} = <span class="text-brandGreen font-black">₹${item.itemSavings} Total Saving</span>
+                                </span>
+                            </div>
+                            <span class="bg-brandGreen text-white text-[11px] font-black px-2.5 py-1 rounded-lg shadow-2xs flex-shrink-0">
+                                -₹${item.itemSavings}
+                            </span>
                         </div>
 
                         <div class="flex flex-wrap gap-1.5 pt-1 border-t border-slate-100">
@@ -2060,20 +2690,28 @@
                                 <button onclick="updateBasketQty(${idx}, 1)" class="w-8 h-8 flex items-center justify-center rounded-xl bg-white hover:bg-slate-200 text-slate-800 font-black text-lg shadow-2xs transition">+</button>
                             </div>
                             <div class="text-right">
-                                <span class="text-xs text-slate-400 block font-semibold">Subtotal</span>
-                                <span class="font-black text-slate-900 text-xl">₹${itemSubtotal}</span>
+                                <div class="flex items-baseline space-x-1.5 justify-end">
+                                    <span class="text-xs text-slate-400 line-through font-semibold">₹${itemMaxSubtotal}</span>
+                                    <span class="font-black text-slate-900 text-xl">₹${itemSubtotal}</span>
+                                </div>
+                                <span class="text-[11px] text-brandGreen font-bold block">Saves ₹${item.itemSavings}</span>
                             </div>
                         </div>
                     </div>
                 `;
             }).join('');
 
-            // 2. UPDATE TOP SAVINGS BANNER
-            document.getElementById('summaryTitle').innerText = `Cheapest Overall: ₹${calc.bestSingle.grandTotal} on ${calc.bestSingle.platformName}`;
-            document.getElementById('summarySubtitle').innerText = calc.savingsVsWorst > 0
-                ? `You save ₹${calc.savingsVsWorst} compared to ${calc.worstSingle.platformName} (₹${calc.worstSingle.grandTotal})`
-                : `All 5 platforms evaluated for delivery and platform fees`;
-            document.getElementById('summarySavingsAmount').innerText = `₹${calc.savingsVsWorst}`;
+            // 2. UPDATE TOP SAVINGS BANNER (FORMULA: Total Max Market Price - Our Buying Price)
+            const maxMarketEl = document.getElementById('summaryMaxMarketAmount');
+            if (maxMarketEl) maxMarketEl.innerText = `₹${calc.totalMarketMaxSubtotal}`;
+
+            const buyingEl = document.getElementById('summaryBuyingAmount');
+            if (buyingEl) buyingEl.innerText = `₹${calc.bestSingle.grandTotal}`;
+
+            const primarySavings = Math.max(calc.bestSingle.savingsVsMaxMarket, calc.totalItemLevelSavings);
+            document.getElementById('summaryTitle').innerText = `Best Store: ₹${calc.bestSingle.grandTotal} on ${calc.bestSingle.platformName}`;
+            document.getElementById('summarySubtitle').innerText = `Formula: Max Market Price (₹${calc.totalMarketMaxSubtotal}) - Buying Subtotal (₹${calc.bestSingle.subtotal}) = ₹${calc.bestSingle.savingsVsMaxMarket} Savings on items!`;
+            document.getElementById('summarySavingsAmount').innerText = `₹${primarySavings}`;
 
             // 3. RENDER ALL 5 PLATFORMS PRICE BREAKDOWN CARDS
             const platformsContainer = document.getElementById('allPlatformsPriceCards');
@@ -2123,8 +2761,21 @@
                             </div>
                         </div>
 
+                        <!-- SAVINGS CALLOUT USING USER FORMULA: MAX MARKET PRICE - BUYING PRICE -->
+                        <div class="mt-3 bg-emerald-50 border border-emerald-200 p-2.5 rounded-2xl flex flex-wrap items-center justify-between text-xs gap-2">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-2 h-2 rounded-full bg-brandGreen"></span>
+                                <span class="text-slate-700 font-semibold">
+                                    Savings on Items: <strong class="text-brandGreen font-black">₹${p.savingsVsMaxMarket}</strong>
+                                </span>
+                            </div>
+                            <span class="text-emerald-900 font-bold text-[11px] bg-emerald-100/80 px-2 py-0.5 rounded-md border border-emerald-300">
+                                Formula: ₹${calc.totalMarketMaxSubtotal} Max - ₹${p.subtotal} Buy = ₹${p.savingsVsMaxMarket}
+                            </span>
+                        </div>
+
                         <!-- ITEMISED FEE BREAKDOWN -->
-                        <div class="mt-4 pt-3 border-t border-slate-200/70 grid grid-cols-3 gap-2 text-center sm:text-left text-xs sm:text-sm bg-slate-50/80 p-3 rounded-2xl border border-slate-200/60">
+                        <div class="mt-3 pt-3 border-t border-slate-200/70 grid grid-cols-3 gap-2 text-center sm:text-left text-xs sm:text-sm bg-slate-50/80 p-3 rounded-2xl border border-slate-200/60">
                             <div>
                                 <span class="text-slate-500 font-medium block">Items Total</span>
                                 <strong class="text-slate-900 text-base font-extrabold">₹${p.subtotal}</strong>
@@ -2217,7 +2868,7 @@
             const calc = calculateBasketTotals();
             const targetPlatform = calc.allSingleApps.find(p => p.platform === platformId) || calc.bestSingle;
             const grandTotal = targetPlatform.grandTotal;
-            const savings = Math.max(0, calc.worstSingle.grandTotal - grandTotal);
+            const savings = Math.max(targetPlatform.savingsVsMaxMarket, calc.worstSingle.grandTotal - grandTotal);
             const store = targetPlatform.platformName;
 
             const orderId = 'BB-' + Math.floor(100000 + Math.random() * 900000);
@@ -2251,7 +2902,7 @@
             const calc = calculateBasketTotals();
             const split = calc.splitPlan;
             const grandTotal = split.combinedTotal;
-            const savings = Math.max(0, calc.worstSingle.grandTotal - grandTotal);
+            const savings = Math.max(split.savingsVsMaxMarket, calc.worstSingle.grandTotal - grandTotal);
 
             const orderId = 'BB-' + Math.floor(100000 + Math.random() * 900000);
 
@@ -2291,8 +2942,93 @@
         }
 
         function handleSearchKey(event) {
-            if (event.key === 'Enter') performSearch();
-            else showSearchSuggestions();
+            if (event.key === 'Enter') {
+                performSearch();
+            } else if (event.key === 'Escape') {
+                const suggestionsEl = document.getElementById('searchSuggestions');
+                if (suggestionsEl) suggestionsEl.classList.add('hidden');
+            } else {
+                showSearchSuggestions();
+            }
+        }
+
+        function openSearchSuggestions() {
+            const query = document.getElementById('searchInput').value.trim();
+            if (!query) {
+                renderMostSearchedDropdown();
+            } else {
+                showSearchSuggestions();
+            }
+        }
+
+        function renderMostSearchedDropdown() {
+            const suggestionsEl = document.getElementById('searchSuggestions');
+            if (!suggestionsEl) return;
+
+            const topSearched = PRODUCTS_DB.filter(p => p.isMostSearched).sort((a, b) => (a.searchRank || 99) - (b.searchRank || 99)).slice(0, 8);
+
+            suggestionsEl.innerHTML = `
+                <div class="p-2 pb-3">
+                    <div class="flex items-center justify-between px-2 py-1 mb-2">
+                        <span class="text-xs font-black uppercase tracking-wider text-amber-700 flex items-center gap-1.5">
+                            <i class="fa-solid fa-fire text-brandOrange animate-bounce"></i>
+                            <span>🔥 Most Searched on Blinkit & Zepto Today</span>
+                        </span>
+                        <span class="text-[11px] font-bold text-slate-400">Live Trend Index</span>
+                    </div>
+
+                    <div class="space-y-1.5">
+                        ${topSearched.map(m => {
+                            let minPrice = Infinity;
+                            let minApp = 'Blinkit';
+                            Object.keys(m.prices || {}).forEach(app => {
+                                if (m.prices[app] && m.prices[app].price < minPrice) {
+                                    minPrice = m.prices[app].price;
+                                    minApp = app;
+                                }
+                            });
+
+                            return `
+                                <div onclick="selectProduct('${m.id}'); document.getElementById('searchSuggestions').classList.add('hidden');" 
+                                    class="p-2.5 hover:bg-emerald-50/80 rounded-2xl flex items-center justify-between cursor-pointer transition border border-transparent hover:border-emerald-200 group">
+                                    <div class="flex items-center space-x-3 min-w-0">
+                                        <span class="w-6 h-6 rounded-full bg-amber-100 text-amber-800 font-black text-xs flex items-center justify-center flex-shrink-0">
+                                            #${m.searchRank || '•'}
+                                        </span>
+                                        <img src="${m.img}" class="w-10 h-10 object-contain rounded-xl bg-slate-50 p-1 border border-slate-100 flex-shrink-0">
+                                        <div class="min-w-0">
+                                            <p class="font-extrabold text-sm text-slate-900 group-hover:text-brandGreen truncate leading-snug">${m.name}</p>
+                                            <div class="flex items-center space-x-2 text-xs text-slate-500 font-semibold mt-0.5">
+                                                <span>${m.brand} • ${m.unit}</span>
+                                                <span class="text-amber-600 font-bold">• ${m.searchVolume || 'Trending'}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-right flex-shrink-0 pl-2 flex items-center space-x-2">
+                                        <div>
+                                            <span class="text-[10px] text-slate-400 block font-bold uppercase">From</span>
+                                            <span class="text-sm font-black text-brandGreen">₹${minPrice}</span>
+                                        </div>
+                                        <button onclick="event.stopPropagation(); addPlatformItemToBasket('${m.id}', '${minApp}'); document.getElementById('searchSuggestions').classList.add('hidden');" 
+                                            class="bg-emerald-100 hover:bg-brandGreen hover:text-white text-brandGreen p-2 rounded-xl text-xs font-black transition" title="Add to Bachat Basket">
+                                            <i class="fa-solid fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+
+                    <div class="mt-3 pt-2 border-t border-slate-100 text-center">
+                        <button onclick="filterByMostSearched(); document.getElementById('searchSuggestions').classList.add('hidden');" 
+                            class="text-xs font-extrabold text-brandGreen hover:underline inline-flex items-center gap-1">
+                            <span>View all 10+ Most Searched Items</span>
+                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+            suggestionsEl.classList.remove('hidden');
         }
 
         function showSearchSuggestions() {
@@ -2300,35 +3036,70 @@
             const suggestionsEl = document.getElementById('searchSuggestions');
 
             if (!query) {
-                suggestionsEl.classList.add('hidden');
+                renderMostSearchedDropdown();
                 return;
             }
 
             const matches = PRODUCTS_DB.filter(p =>
                 p.name.toLowerCase().includes(query) ||
                 p.category.toLowerCase().includes(query) ||
-                p.brand.toLowerCase().includes(query)
+                p.brand.toLowerCase().includes(query) ||
+                (p.alternatives && p.alternatives.some(a => a.toLowerCase().includes(query)))
             );
 
             if (matches.length > 0) {
-                suggestionsEl.innerHTML = matches.map(m => {
-                    const price = (m.prices && m.prices.Blinkit ? m.prices.Blinkit.price : (Object.values(m.prices || {})[0]?.price || 30));
-                    return `
-                        <div onclick="selectProduct('${m.id}'); document.getElementById('searchSuggestions').classList.add('hidden');" class="p-3 hover:bg-slate-50 border-b border-slate-100 flex items-center justify-between cursor-pointer">
-                            <div class="flex items-center space-x-3">
-                                <img src="${m.img}" class="w-8 h-8 object-contain">
-                                <div>
-                                    <p class="font-bold text-xs text-slate-800">${m.name}</p>
-                                    <span class="text-[10px] text-slate-400">${m.brand} • ${m.unit}</span>
-                                </div>
-                            </div>
-                            <span class="text-xs font-black text-brandGreen">₹${price}</span>
+                suggestionsEl.innerHTML = `
+                    <div class="p-2">
+                        <div class="px-2 py-1 mb-2 text-xs font-bold text-slate-400 uppercase tracking-wider flex justify-between">
+                            <span>Matches for "${query}" (${matches.length})</span>
+                            <span>Click to compare prices</span>
                         </div>
-                    `;
-                }).join('');
+                        <div class="space-y-1">
+                            ${matches.map(m => {
+                                let minPrice = Infinity;
+                                let minApp = 'Blinkit';
+                                Object.keys(m.prices || {}).forEach(app => {
+                                    if (m.prices[app] && m.prices[app].price < minPrice) {
+                                        minPrice = m.prices[app].price;
+                                        minApp = app;
+                                    }
+                                });
+
+                                return `
+                                    <div onclick="selectProduct('${m.id}'); document.getElementById('searchSuggestions').classList.add('hidden');" 
+                                        class="p-2.5 hover:bg-emerald-50 rounded-2xl flex items-center justify-between cursor-pointer transition border border-transparent hover:border-emerald-200">
+                                        <div class="flex items-center space-x-3 min-w-0">
+                                            <img src="${m.img}" class="w-10 h-10 object-contain rounded-xl bg-slate-50 p-1 border border-slate-100 flex-shrink-0">
+                                            <div class="min-w-0">
+                                                <p class="font-bold text-sm text-slate-900 truncate leading-snug">${m.name}</p>
+                                                <div class="flex items-center space-x-2 text-xs text-slate-500 font-semibold mt-0.5">
+                                                    <span>${m.brand} • ${m.unit}</span>
+                                                    ${m.isMostSearched ? '<span class="text-amber-600 font-bold bg-amber-50 px-1.5 py-0.2 rounded text-[10px]">🔥 Popular</span>' : ''}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="text-right flex-shrink-0 pl-2">
+                                            <span class="text-[10px] text-slate-400 block font-bold uppercase">Lowest on ${minApp}</span>
+                                            <span class="text-base font-black text-brandGreen">₹${minPrice}</span>
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+                `;
                 suggestionsEl.classList.remove('hidden');
             } else {
-                suggestionsEl.classList.add('hidden');
+                suggestionsEl.innerHTML = `
+                    <div class="p-4 text-center">
+                        <p class="text-sm font-bold text-slate-700">No exact match found for "${query}"</p>
+                        <p class="text-xs text-slate-400 mt-1">Press "Compare" to search all platforms for custom item pricing!</p>
+                        <button onclick="performSearch()" class="mt-3 bg-brandOrange text-white font-bold text-xs px-4 py-2 rounded-xl">
+                            Search & Compare Across All Stores
+                        </button>
+                    </div>
+                `;
+                suggestionsEl.classList.remove('hidden');
             }
         }
 

@@ -922,6 +922,7 @@
                 deliveryFee: 15,
                 handlingFee: 4,
                 freeThreshold: 199,
+                websiteUrl: 'https://blinkit.com/',
                 logoSvg: `<img src="images/blinkit.png" alt="Blinkit" class="w-8 h-8 rounded-lg object-contain shadow-xs">`
             },
             'Zepto': {
@@ -931,6 +932,7 @@
                 deliveryFee: 15,
                 handlingFee: 5,
                 freeThreshold: 149,
+                websiteUrl: 'https://www.zepto.com/',
                 logoSvg: `<img src="images/zepto.png" alt="Zepto" class="w-8 h-8 rounded-lg object-contain shadow-xs">`
             },
             'BigBasket': {
@@ -940,6 +942,7 @@
                 deliveryFee: 20,
                 handlingFee: 2,
                 freeThreshold: 299,
+                websiteUrl: 'https://www.bigbasket.com/',
                 logoSvg: `<img src="images/bigbasket.png" alt="BigBasket" class="w-8 h-8 rounded-lg object-contain bg-white shadow-xs">`
             },
             'Flipkart Minutes': {
@@ -949,6 +952,7 @@
                 deliveryFee: 10,
                 handlingFee: 3,
                 freeThreshold: 99,
+                websiteUrl: 'https://www.flipkart.com/flipkart-minutes-store?marketplace=HYPERLOCAL',
                 logoSvg: `<img src="images/flipkart.svg" alt="Flipkart Minutes" class="w-8 h-8 rounded-lg object-contain shadow-xs">`
             },
             'Instamart': {
@@ -958,6 +962,7 @@
                 deliveryFee: 15,
                 handlingFee: 5,
                 freeThreshold: 199,
+                websiteUrl: 'https://www.swiggy.com/instamart',
                 logoSvg: `<img src="images/instamart.png" alt="Instamart" class="w-8 h-8 rounded-lg object-contain shadow-xs">`
             }
         };
@@ -1550,6 +1555,7 @@
                 if (data.success && data.platforms && data.platforms.length > 0) {
                     data.platforms.forEach(p => {
                         PLATFORM_CONFIG[p.id] = {
+                            ...(PLATFORM_CONFIG[p.id] || {}),
                             color: p.color,
                             textColor: p.textColor,
                             deliveryTime: p.deliveryTime,
@@ -1782,13 +1788,13 @@
             const container = document.getElementById('appFilterContainer');
             if (!container) return;
             container.innerHTML = Object.keys(PLATFORM_CONFIG).map(app => {
-                const isSelected = activeSelectedApp === app;
                 const config = PLATFORM_CONFIG[app];
                 return `
-                    <div onclick="filterByApp('${app}')" class="flex-shrink-0 flex items-center space-x-2.5 px-4 py-2.5 rounded-2xl border cursor-pointer transition shadow-2xs ${isSelected ? 'bg-emerald-800 text-white border-emerald-900 ring-2 ring-emerald-500' : 'bg-white hover:bg-slate-100 text-slate-800 border-slate-200'}">
+                    <a href="${config.websiteUrl || '#'}" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 flex items-center space-x-2.5 px-4 py-2.5 rounded-2xl border cursor-pointer transition shadow-2xs hover:shadow-md hover:scale-[1.03] bg-white hover:bg-slate-50 text-slate-800 border-slate-200 group" title="Visit ${app} Official Website (${config.websiteUrl})">
                         ${config.logoSvg}
-                        <span class="font-extrabold text-sm sm:text-base">${app}</span>
-                    </div>
+                        <span class="font-extrabold text-sm sm:text-base group-hover:text-brandGreen transition">${app}</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-400 group-hover:text-brandGreen transition"></i>
+                    </a>
                 `;
             }).join('');
         }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
 
 <head>
     <meta charset="UTF-8">
@@ -247,7 +247,7 @@
             </div>
         </section>
 
-        <section class="mb-6">
+        <section id="quickAppsSection" class="mb-6">
             <div class="flex items-center justify-between mb-3">
                 <h3
                     class="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-700 flex items-center space-x-2">
@@ -263,7 +263,7 @@
             </div>
         </section>
 
-        <section class="mb-8">
+        <section id="brandFilterSection" class="mb-8">
             <div class="flex items-center justify-between mb-3">
                 <h3
                     class="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-600 flex items-center space-x-2">
@@ -277,208 +277,190 @@
             </div>
         </section>
 
+        <!-- HOME SECTION -->
         <div id="homeSection" class="space-y-8">
-
             <div id="popularSection">
                 <div class="flex items-center justify-between mb-4">
                     <div>
-                        <h2 id="popularGridTitle" class="text-2xl font-bold text-slate-800">Everyday Grocery Essentials
-                        </h2>
-                        <p id="popularGridSub" class="text-slate-500 text-sm">Click any product to compare live platform
-                            prices or add directly to basket</p>
+                        <h2 id="popularGridTitle" class="text-2xl font-bold text-slate-800">Everyday Grocery Essentials</h2>
+                        <p id="popularGridSub" class="text-slate-500 text-sm">Click any product to compare live platform prices or add directly to basket</p>
                     </div>
-                    <span class="text-xs bg-emerald-100 text-brandGreen font-bold px-3 py-1 rounded-full">Live
-                        Updated</span>
+                    <span class="text-xs bg-emerald-100 text-brandGreen font-bold px-3 py-1 rounded-full">Live Updated</span>
                 </div>
 
                 <div id="popularProductsGrid"
                     class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
                 </div>
             </div>
+        </div>
 
-            <!-- PRODUCT COMPARISON DETAIL DASHBOARD (TRIGGERED ON ITEM CLICK) -->
-            <div id="comparisonContainer" class="hidden space-y-6">
+        <!-- PRODUCT COMPARISON DETAIL DASHBOARD (TRIGGERED ON ITEM CLICK) -->
+        <div id="comparisonContainer" class="hidden space-y-6">
 
-                <!-- BACK ARROW NAVIGATION TO PREVIOUS VIEW -->
-                <div
-                    class="flex items-center justify-between bg-white p-3.5 rounded-2xl border border-slate-200 shadow-xs">
-                    <button onclick="goBack()"
-                        class="inline-flex items-center space-x-2 text-sm font-extrabold text-emerald-800 bg-emerald-100 hover:bg-emerald-200 px-4 py-2 rounded-xl transition">
-                        <i class="fa-solid fa-arrow-left"></i>
-                        <span>Back to Previous Page</span>
+            <!-- BACK ARROW NAVIGATION TO PREVIOUS VIEW -->
+            <div class="flex items-center justify-between bg-white p-3.5 rounded-2xl border border-slate-200 shadow-xs">
+                <button onclick="goBack()"
+                    class="inline-flex items-center space-x-2 text-sm font-extrabold text-emerald-800 bg-emerald-100 hover:bg-emerald-200 px-4 py-2 rounded-xl transition">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>Back to Previous Page</span>
+                </button>
+                <span class="text-xs font-bold text-slate-500">Comparing across 5 Quick-Commerce platforms</span>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div class="flex items-start space-x-4">
+                    <img id="detailImg" src="" alt="Product"
+                        class="w-20 h-20 object-contain bg-slate-50 p-2 rounded-xl border border-slate-200">
+                    <div>
+                        <div class="flex items-center space-x-2">
+                            <span id="detailBrandBadge"
+                                class="text-xs font-bold uppercase bg-brandOrange text-white px-2 py-0.5 rounded">Brand</span>
+                            <span id="detailCategory"
+                                class="text-xs font-bold uppercase bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Category</span>
+                            <span id="detailUnit"
+                                class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">Unit</span>
+                        </div>
+                        <h2 id="detailTitle" class="text-2xl font-bold text-slate-900 mt-1">Product Title</h2>
+                        <p id="detailSubtitle" class="text-slate-500 text-sm">Normalized price mapping across all platforms</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-3 w-full md:w-auto">
+                    <button id="addBasketBtn" onclick="addToBasketCurrent()"
+                        class="flex-1 md:flex-none bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-5 py-3 rounded-xl transition flex items-center justify-center space-x-2 shadow">
+                        <i class="fa-solid fa-cart-plus"></i>
+                        <span>Add Best Option to Basket</span>
                     </button>
-                    <span class="text-xs font-bold text-slate-500">Comparing across 5 Quick-Commerce platforms</span>
+                </div>
+            </div>
+
+            <!-- KEY DECISION HIGHLIGHT CARDS -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <div
+                    class="bg-gradient-to-br from-emerald-50 to-emerald-100 border-2 border-brandGreen p-5 rounded-2xl shadow-sm relative overflow-hidden">
+                    <div class="absolute -right-4 -bottom-4 opacity-10 text-brandGreen">
+                        <i class="fa-solid fa-trophy text-8xl"></i>
+                    </div>
+                    <div class="flex items-center space-x-2 text-brandGreen font-extrabold text-xs tracking-wider uppercase mb-2">
+                        <i class="fa-solid fa-award text-sm"></i>
+                        <span>Cheapest Base Item</span>
+                    </div>
+                    <div id="cheapestAppName" class="text-xl font-bold text-slate-800">BigBasket</div>
+                    <div class="flex items-baseline space-x-2 mt-1">
+                        <span id="cheapestPrice" class="text-3xl font-black text-brandGreen">₹0</span>
+                        <span id="cheapestSave"
+                            class="text-xs text-emerald-800 font-bold bg-emerald-200/80 px-2 py-0.5 rounded">Saves vs max</span>
+                    </div>
+                    <p class="text-xs text-slate-600 mt-2">Base price without considering delivery fees.</p>
                 </div>
 
                 <div
-                    class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                    <div class="flex items-start space-x-4">
-                        <img id="detailImg" src="" alt="Product"
-                            class="w-20 h-20 object-contain bg-slate-50 p-2 rounded-xl border border-slate-200">
-                        <div>
-                            <div class="flex items-center space-x-2">
-                                <span id="detailBrandBadge"
-                                    class="text-xs font-bold uppercase bg-brandOrange text-white px-2 py-0.5 rounded">Brand</span>
-                                <span id="detailCategory"
-                                    class="text-xs font-bold uppercase bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Category</span>
-                                <span id="detailUnit"
-                                    class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">Unit</span>
-                            </div>
-                            <h2 id="detailTitle" class="text-2xl font-bold text-slate-900 mt-1">Product Title</h2>
-                            <p id="detailSubtitle" class="text-slate-500 text-sm">Normalized price mapping across all
-                                platforms</p>
-                        </div>
+                    class="bg-gradient-to-br from-amber-50 to-orange-100 border-2 border-brandOrange p-5 rounded-2xl shadow-sm relative overflow-hidden">
+                    <div class="absolute -right-4 -bottom-4 opacity-10 text-brandOrange">
+                        <i class="fa-solid fa-calculator text-8xl"></i>
                     </div>
-
-                    <div class="flex items-center space-x-3 w-full md:w-auto">
-                        <button id="addBasketBtn" onclick="addToBasketCurrent()"
-                            class="flex-1 md:flex-none bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-5 py-3 rounded-xl transition flex items-center justify-center space-x-2 shadow">
-                            <i class="fa-solid fa-cart-plus"></i>
-                            <span>Add Best Option to Basket</span>
-                        </button>
+                    <div class="flex items-center space-x-2 text-brandOrange font-extrabold text-xs tracking-wider uppercase mb-2">
+                        <i class="fa-solid fa-shield-halved text-sm"></i>
+                        <span>Best Effective Single Order</span>
                     </div>
+                    <div id="effectiveAppName" class="text-xl font-bold text-slate-800">Blinkit</div>
+                    <div class="flex items-baseline space-x-2 mt-1">
+                        <span id="effectivePrice" class="text-3xl font-black text-brandOrange">₹0</span>
+                        <span class="text-xs text-orange-800 font-bold bg-orange-200/80 px-2 py-0.5 rounded">Final Total Payable</span>
+                    </div>
+                    <p id="effectiveReason" class="text-xs text-slate-600 mt-2">Item + Delivery + Platform Fee</p>
                 </div>
 
-                <!-- KEY DECISION HIGHLIGHT CARDS -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-                    <div
-                        class="bg-gradient-to-br from-emerald-50 to-emerald-100 border-2 border-brandGreen p-5 rounded-2xl shadow-sm relative overflow-hidden">
-                        <div class="absolute -right-4 -bottom-4 opacity-10 text-brandGreen">
-                            <i class="fa-solid fa-trophy text-8xl"></i>
-                        </div>
-                        <div
-                            class="flex items-center space-x-2 text-brandGreen font-extrabold text-xs tracking-wider uppercase mb-2">
-                            <i class="fa-solid fa-award text-sm"></i>
-                            <span>Cheapest Base Item</span>
-                        </div>
-                        <div id="cheapestAppName" class="text-xl font-bold text-slate-800">BigBasket</div>
-                        <div class="flex items-baseline space-x-2 mt-1">
-                            <span id="cheapestPrice" class="text-3xl font-black text-brandGreen">₹0</span>
-                            <span id="cheapestSave"
-                                class="text-xs text-emerald-800 font-bold bg-emerald-200/80 px-2 py-0.5 rounded">Saves
-                                vs max</span>
-                        </div>
-                        <p class="text-xs text-slate-600 mt-2">Base price without considering delivery fees.</p>
+                <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-sm">
+                    <div class="flex items-center space-x-2 text-slate-500 font-bold text-xs tracking-wider uppercase mb-2">
+                        <i class="fa-solid fa-arrows-rotate text-sm text-blue-600"></i>
+                        <span>Next Best Alternative</span>
                     </div>
-
-                    <div
-                        class="bg-gradient-to-br from-amber-50 to-orange-100 border-2 border-brandOrange p-5 rounded-2xl shadow-sm relative overflow-hidden">
-                        <div class="absolute -right-4 -bottom-4 opacity-10 text-brandOrange">
-                            <i class="fa-solid fa-calculator text-8xl"></i>
-                        </div>
-                        <div
-                            class="flex items-center space-x-2 text-brandOrange font-extrabold text-xs tracking-wider uppercase mb-2">
-                            <i class="fa-solid fa-shield-halved text-sm"></i>
-                            <span>Best Effective Single Order</span>
-                        </div>
-                        <div id="effectiveAppName" class="text-xl font-bold text-slate-800">Blinkit</div>
-                        <div class="flex items-baseline space-x-2 mt-1">
-                            <span id="effectivePrice" class="text-3xl font-black text-brandOrange">₹0</span>
-                            <span class="text-xs text-orange-800 font-bold bg-orange-200/80 px-2 py-0.5 rounded">Final
-                                Total Payable</span>
-                        </div>
-                        <p id="effectiveReason" class="text-xs text-slate-600 mt-2">Item + Delivery + Platform Fee</p>
+                    <div id="altAppName" class="text-xl font-bold text-slate-800">Zepto</div>
+                    <div class="flex items-baseline space-x-2 mt-1">
+                        <span id="altPrice" class="text-2xl font-extrabold text-slate-800">₹0</span>
+                        <span class="text-xs text-slate-500">In stock</span>
                     </div>
+                    <p class="text-xs text-slate-500 mt-2">Fast alternative platform if top option is unavailable.</p>
+                </div>
+            </div>
 
-                    <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-sm">
-                        <div
-                            class="flex items-center space-x-2 text-slate-500 font-bold text-xs tracking-wider uppercase mb-2">
-                            <i class="fa-solid fa-arrows-rotate text-sm text-blue-600"></i>
-                            <span>Next Best Alternative</span>
+            <!-- DETAILED PLATFORM COMPARISON TABLE -->
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                <div class="p-5 border-b border-slate-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 bg-slate-50">
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900">Live Platform Comparison Table</h3>
+                        <p class="text-xs text-emerald-800 font-bold">💡 Compare item pricing, delivery ETAs, handling fees & effective single-order totals across all platforms.</p>
+                    </div>
+                    <span class="text-xs bg-slate-200 text-slate-700 font-bold px-3 py-1 rounded-lg">5 Platforms Scanned</span>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-100 text-slate-600 text-xs uppercase font-bold border-b border-slate-200">
+                                <th class="p-4">Platform App</th>
+                                <th class="p-4">Delivery ETA</th>
+                                <th class="p-4">Item Price</th>
+                                <th class="p-4">Delivery Fee</th>
+                                <th class="p-4">Handling Fee</th>
+                                <th class="p-4">Effective Order Total</th>
+                                <th class="p-4 text-center">Free Shipping Target</th>
+                                <th class="p-4 text-right">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="platformTableBody" class="divide-y divide-slate-100 text-sm">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- AI SMART ALTERNATIVES SECTION -->
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="bg-orange-500 text-white p-2.5 rounded-xl text-lg font-bold">
+                            <i class="fa-solid fa-brain"></i>
                         </div>
-                        <div id="altAppName" class="text-xl font-bold text-slate-800">Zepto</div>
-                        <div class="flex items-baseline space-x-2 mt-1">
-                            <span id="altPrice" class="text-2xl font-extrabold text-slate-800">₹0</span>
-                            <span class="text-xs text-slate-500">In stock</span>
+                        <div>
+                            <h3 class="text-lg font-bold text-slate-900">Smart AI Cheaper Brand Alternatives</h3>
+                            <p class="text-xs text-slate-500">Recommended similar items with better value per quantity</p>
                         </div>
-                        <p class="text-xs text-slate-500 mt-2">Fast alternative platform if top option is unavailable.
+                    </div>
+                    <span class="text-xs bg-orange-100 text-orange-800 font-bold px-3 py-1 rounded-full">AI Suggested</span>
+                </div>
+                <div id="aiAlternativesList" class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                </div>
+            </div>
+
+            <!-- FREE DELIVERY OPTIMIZER BOX -->
+            <div id="smartAddonBox"
+                class="bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-emerald-500/10 border-2 border-dashed border-amber-400 p-6 rounded-2xl shadow-sm">
+                <div class="flex items-start space-x-4">
+                    <div class="bg-amber-500 text-white p-3 rounded-2xl text-xl font-bold shadow-sm">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex items-center space-x-2">
+                            <h3 class="text-lg font-bold text-slate-900">Free Delivery Smart Optimizer</h3>
+                            <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2 py-0.5 rounded-full">Save Shipping Fee</span>
+                        </div>
+                        <p id="smartAddonText" class="text-sm text-slate-700 mt-1">
+                            Reach the platform threshold to unlock FREE Delivery!
                         </p>
-                    </div>
-                </div>
 
-                <!-- DETAILED PLATFORM COMPARISON TABLE -->
-                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-                    <div
-                        class="p-5 border-b border-slate-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 bg-slate-50">
-                        <div>
-                            <h3 class="text-lg font-bold text-slate-900">Live Platform Comparison Table</h3>
-                            <p class="text-xs text-emerald-800 font-bold">💡 Compare item pricing, delivery ETAs,
-                                handling fees & effective single-order totals across all platforms.</p>
-                        </div>
-                        <span class="text-xs bg-slate-200 text-slate-700 font-bold px-3 py-1 rounded-lg">5 Platforms
-                            Scanned</span>
-                    </div>
-
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left border-collapse">
-                            <thead>
-                                <tr
-                                    class="bg-slate-100 text-slate-600 text-xs uppercase font-bold border-b border-slate-200">
-                                    <th class="p-4">Platform App</th>
-                                    <th class="p-4">Delivery ETA</th>
-                                    <th class="p-4">Item Price</th>
-                                    <th class="p-4">Delivery Fee</th>
-                                    <th class="p-4">Handling Fee</th>
-                                    <th class="p-4">Effective Order Total</th>
-                                    <th class="p-4 text-center">Free Shipping Target</th>
-                                    <th class="p-4 text-right">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody id="platformTableBody" class="divide-y divide-slate-100 text-sm">
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- AI SMART ALTERNATIVES SECTION -->
-                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="flex items-center space-x-3">
-                            <div class="bg-orange-500 text-white p-2.5 rounded-xl text-lg font-bold">
-                                <i class="fa-solid fa-brain"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-bold text-slate-900">Smart AI Cheaper Brand Alternatives</h3>
-                                <p class="text-xs text-slate-500">Recommended similar items with better value per
-                                    quantity</p>
-                            </div>
-                        </div>
-                        <span class="text-xs bg-orange-100 text-orange-800 font-bold px-3 py-1 rounded-full">AI
-                            Suggested</span>
-                    </div>
-                    <div id="aiAlternativesList" class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                    </div>
-                </div>
-
-                <!-- FREE DELIVERY OPTIMIZER BOX -->
-                <div id="smartAddonBox"
-                    class="bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-emerald-500/10 border-2 border-dashed border-amber-400 p-6 rounded-2xl shadow-sm">
-                    <div class="flex items-start space-x-4">
-                        <div class="bg-amber-500 text-white p-3 rounded-2xl text-xl font-bold shadow-sm">
-                            <i class="fa-solid fa-wand-magic-sparkles"></i>
-                        </div>
-                        <div class="flex-grow">
-                            <div class="flex items-center space-x-2">
-                                <h3 class="text-lg font-bold text-slate-900">Free Delivery Smart Optimizer</h3>
-                                <span
-                                    class="bg-amber-100 text-amber-800 text-xs font-bold px-2 py-0.5 rounded-full">Save
-                                    Shipping Fee</span>
-                            </div>
-                            <p id="smartAddonText" class="text-sm text-slate-700 mt-1">
-                                Reach the platform threshold to unlock FREE Delivery!
-                            </p>
-
-                            <div class="mt-4">
-                                <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Suggested
-                                    Low-Cost Add-ons to Unlock Free Shipping:</span>
-                                <div id="smartAddonList" class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-2">
-                                </div>
+                        <div class="mt-4">
+                            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Suggested Low-Cost Add-ons to Unlock Free Shipping:</span>
+                            <div id="smartAddonList" class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-2">
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
 
-              <div id="basketSection" class="hidden space-y-6">
+        <!-- BASKET SECTION (TOP LEVEL SEPARATE CONTAINER) -->
+        <div id="basketSection" class="hidden space-y-6">
             <!-- BASKET HEADER & NAVIGATION -->
             <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm">
                 <div class="flex items-center justify-between mb-4 pb-4 border-b border-slate-100">
@@ -489,7 +471,7 @@
                     </button>
                     <span class="text-xs sm:text-sm font-extrabold text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
                         <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                        Smart Basket Engine
+                        Live Net Price Optimizer
                     </span>
                 </div>
 
@@ -497,16 +479,16 @@
                     <div>
                         <div class="flex items-center space-x-3">
                             <h2 class="text-3xl sm:text-4xl font-black text-slate-900">My Bachat Basket</h2>
-                            <span class="bg-emerald-100 text-brandGreen font-extrabold text-xs sm:text-sm px-3 py-1 rounded-full border border-emerald-200">
-                                Live Cost Optimizer
+                            <span id="basketActiveBadge" class="bg-emerald-100 text-brandGreen font-extrabold text-xs sm:text-sm px-3 py-1 rounded-full border border-emerald-200">
+                                0 Items
                             </span>
                         </div>
                         <p class="text-slate-600 text-base sm:text-lg mt-1 font-medium">
-                            Comparing single-store vs. smart split across Blinkit, Zepto, BigBasket, Flipkart Minutes & Instamart.
+                            Full price breakdown including delivery fees & platform handling charges across all 5 quick-commerce apps.
                         </p>
                     </div>
                     <button onclick="clearBasket()"
-                        class="text-sm text-red-600 hover:text-red-700 font-bold border border-red-200 hover:bg-red-50 px-4 py-2.5 rounded-2xl transition flex items-center space-x-1.5">
+                        class="text-sm text-red-600 hover:text-red-700 font-bold border border-red-200 hover:bg-red-50 px-4 py-2.5 rounded-2xl transition flex items-center space-x-1.5 shadow-2xs">
                         <i class="fa-solid fa-trash-can"></i>
                         <span>Clear Basket</span>
                     </button>
@@ -514,14 +496,15 @@
             </div>
 
             <!-- LIVE OPTIMIZATION HIGHLIGHT BANNER -->
-            <div id="basketSummaryBanner" class="hidden bg-gradient-to-r from-emerald-800 via-emerald-700 to-teal-800 text-white p-5 sm:p-6 rounded-3xl shadow-md flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div id="basketSummaryBanner" class="bg-gradient-to-r from-emerald-800 via-emerald-700 to-teal-800 text-white p-5 sm:p-6 rounded-3xl shadow-md flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div class="flex items-center space-x-4">
-                    <div class="w-12 h-12 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-brandYellow text-2xl flex-shrink-0">
+                    <div class="w-12 h-12 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-brandYellow text-2xl flex-shrink-0 shadow-xs">
                         <i class="fa-solid fa-wallet"></i>
                     </div>
                     <div>
-                        <span class="text-xs font-black uppercase tracking-wider text-emerald-200 block">Instant Savings Overview</span>
-                        <h3 id="summaryTitle" class="text-lg sm:text-xl font-black text-white mt-0.5">Bachat Comparison Active</h3>
+                        <span class="text-xs font-black uppercase tracking-wider text-emerald-200 block">Instant Price Comparison</span>
+                        <h3 id="summaryTitle" class="text-lg sm:text-xl font-black text-white mt-0.5">Calculating lowest net price across all stores...</h3>
+                        <p id="summarySubtitle" class="text-xs text-emerald-100 mt-0.5 font-medium">Includes item prices + delivery fee + platform handling fee</p>
                     </div>
                 </div>
                 <div class="flex items-center space-x-3 self-stretch md:self-auto justify-between md:justify-end">
@@ -540,7 +523,8 @@
                     <div class="bg-white p-5 sm:p-6 rounded-3xl border border-slate-200 shadow-sm">
                         <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
                             <h3 class="text-lg sm:text-xl font-black text-slate-900 flex items-center space-x-2">
-                                <span>🛒 Basket Items</span>
+                                <i class="fa-solid fa-basket-shopping text-brandGreen mr-1"></i>
+                                <span>Basket Items</span>
                             </h3>
                             <span id="basketItemCount"
                                 class="text-xs sm:text-sm bg-emerald-50 text-emerald-900 border border-emerald-200 font-extrabold px-3 py-1 rounded-full">
@@ -571,18 +555,18 @@
                         </div>
 
                         <!-- BASKET ITEMS CONTAINER -->
-                        <div id="basketItemsList" class="space-y-3 max-h-[460px] overflow-y-auto pr-1 custom-scrollbar">
+                        <div id="basketItemsList" class="space-y-3 max-h-[520px] overflow-y-auto pr-1 custom-scrollbar">
                         </div>
 
                         <!-- CUSTOM ITEM INPUT FORM -->
                         <div class="mt-5 pt-4 border-t border-slate-200 bg-amber-50/70 p-4 rounded-2xl border border-amber-200">
                             <label class="block text-xs sm:text-sm font-black text-amber-950 uppercase tracking-wider mb-2 flex items-center justify-between">
-                                <span><i class="fa-solid fa-pen-to-square text-brandOrange mr-1.5"></i> Custom Grocery Input</span>
-                                <span class="text-[11px] bg-amber-200 text-amber-900 px-2 py-0.5 rounded-md font-bold">e.g. 1kg Potato</span>
+                                <span><i class="fa-solid fa-pen-to-square text-brandOrange mr-1.5"></i> Custom Grocery Item</span>
+                                <span class="text-[11px] bg-amber-200 text-amber-900 px-2 py-0.5 rounded-md font-bold">Auto Price Estimate</span>
                             </label>
                             <div class="flex space-x-2">
                                 <input type="text" id="customItemInput"
-                                    placeholder="Type e.g., 1kg Onion, 500g Paneer, 2L Oil..."
+                                    placeholder="Type e.g., 1kg Onion, 500g Paneer, 1L Oil..."
                                     class="w-full text-sm font-semibold p-3 bg-white border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-brandOrange"
                                     onkeyup="if(event.key==='Enter') addCustomBasketItem()">
                                 <button onclick="addCustomBasketItem()"
@@ -590,12 +574,12 @@
                                     + Add
                                 </button>
                             </div>
-                            <p class="text-xs text-slate-500 mt-2 font-medium">Type any item with quantity (e.g. <em>500g paneer</em> or <em>2kg rice</em>). We estimate rates automatically.</p>
+                            <p class="text-xs text-slate-500 mt-2 font-medium">Type any item name or weight. Prices will be estimated & compared automatically.</p>
                         </div>
 
                         <!-- SELECT CATALOG ITEM DROP-DOWN -->
                         <div class="mt-4 pt-4 border-t border-slate-100">
-                            <label class="block text-xs sm:text-sm font-bold text-slate-700 mb-2">Or Choose from Catalog:</label>
+                            <label class="block text-xs sm:text-sm font-bold text-slate-700 mb-2">Or Choose from Popular Catalog:</label>
                             <div class="flex space-x-2">
                                 <select id="quickBasketSelect"
                                     class="w-full text-sm font-semibold p-3 bg-slate-50 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-brandGreen">
@@ -609,98 +593,97 @@
                     </div>
                 </div>
 
-                <!-- RIGHT: OPTIMIZATION RESULT COMPARISON (7 COLS) -->
+                <!-- RIGHT: LIVE PLATFORMS NET PRICE BREAKDOWN (7 COLS) -->
                 <div class="lg:col-span-7 space-y-6">
-                    <div id="basketOptimizationResults" class="space-y-6">
 
-                        <!-- OPTION A: CHEAPEST SINGLE PLATFORM -->
-                        <div class="bg-white p-6 sm:p-7 rounded-3xl border-2 border-emerald-500 shadow-md relative">
-                            <div class="absolute -top-3.5 right-6 bg-brandGreen text-white text-xs font-black px-3.5 py-1 rounded-full uppercase tracking-wider shadow-xs">
-                                Option 1: Fastest (1 Store Delivery)
+                    <!-- COMPLETE 5-PLATFORM LIVE BASKET COMPARISON -->
+                    <div class="bg-white p-6 sm:p-7 rounded-3xl border border-slate-200 shadow-sm space-y-5">
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 pb-4 border-b border-slate-100">
+                            <div>
+                                <h3 class="text-xl sm:text-2xl font-black text-slate-900 flex items-center gap-2">
+                                    <i class="fa-solid fa-receipt text-emerald-600"></i>
+                                    <span>All Store Net Price Breakdown</span>
+                                </h3>
+                                <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Exact payable amount per store (Items + Delivery Fee + Platform Charges)</p>
                             </div>
-                            <div class="flex justify-between items-start gap-4">
-                                <div>
-                                    <h4 id="singleAppTitle" class="text-2xl sm:text-3xl font-black text-slate-900">Blinkit Order</h4>
-                                    <p class="text-sm text-slate-500 mt-0.5">Everything delivered in one single order</p>
-                                </div>
-                                <div class="text-right flex-shrink-0">
-                                    <div id="singleAppTotal" class="text-3xl sm:text-4xl font-black text-brandGreen">₹0</div>
-                                    <span id="singleAppDeliveryNote"
-                                        class="inline-block mt-1 text-xs bg-emerald-100 text-emerald-900 font-extrabold px-2.5 py-1 rounded-lg">
-                                        Free Shipping Status
-                                    </span>
-                                </div>
-                            </div>
-
-                            <div class="mt-5 bg-slate-50 p-4 rounded-2xl border border-slate-200 text-sm space-y-2 text-slate-600">
-                                <div class="flex justify-between">
-                                    <span class="font-medium">Items Subtotal:</span>
-                                    <span id="singleAppSubtotal" class="font-bold text-slate-900 text-base">₹0</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="font-medium">Delivery Charges:</span>
-                                    <span id="singleAppDelivery" class="font-bold text-slate-900 text-base">₹0</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="font-medium">Handling & Platform Fees:</span>
-                                    <span id="singleAppHandling" class="font-bold text-slate-900 text-base">₹0</span>
-                                </div>
-                            </div>
-
-                            <button id="singleAppBuyBtn" onclick="buyBasketSingle()"
-                                class="mt-5 w-full bg-brandGreen hover:bg-emerald-800 text-white font-bold py-4 rounded-2xl transition flex items-center justify-center space-x-2 text-base shadow-sm">
-                                <span>Order Everything in 1 Basket</span>
-                                <i class="fa-solid fa-arrow-right"></i>
-                            </button>
+                            <span class="text-xs bg-emerald-50 text-emerald-800 font-extrabold px-3 py-1 rounded-full border border-emerald-200">
+                                Ranked by Total Payable
+                            </span>
                         </div>
 
-                        <!-- OPTION B: SPLIT BASKET OPTIMIZATION -->
-                        <div class="bg-gradient-to-br from-amber-50 to-orange-50 p-6 sm:p-7 rounded-3xl border-2 border-brandOrange shadow-md relative">
-                            <div class="absolute -top-3.5 right-6 bg-brandOrange text-white text-xs font-black px-3.5 py-1 rounded-full uppercase tracking-wider shadow-xs">
-                                Option 2: Maximum Rupee Savings
-                            </div>
-                            <div class="flex justify-between items-start gap-4">
-                                <div>
-                                    <div class="flex items-center space-x-2">
-                                        <h4 class="text-2xl sm:text-3xl font-black text-slate-900">Smart Split Order</h4>
-                                    </div>
-                                    <p class="text-sm text-slate-600 mt-0.5">Splits items across stores where each item is cheapest</p>
-                                </div>
-                                <div class="text-right flex-shrink-0">
-                                    <div id="splitAppTotal" class="text-3xl sm:text-4xl font-black text-brandOrange">₹0</div>
-                                    <span id="splitAppSavings"
-                                        class="inline-block mt-1 text-xs sm:text-sm text-orange-950 font-black bg-orange-200 px-3 py-1 rounded-full shadow-2xs">
-                                        Saves ₹0 extra!
-                                    </span>
-                                </div>
-                            </div>
-
-                            <div id="splitAppBreakdown" class="mt-5 space-y-2.5">
-                            </div>
-
-                            <button id="splitAppBuyBtn" onclick="buyBasketSplit()"
-                                class="mt-5 w-full bg-brandOrange hover:bg-orange-600 text-white font-bold py-4 rounded-2xl transition flex items-center justify-center space-x-2 text-base shadow-sm">
-                                <span>Checkout with Smart Split Savings</span>
-                                <i class="fa-solid fa-code-fork"></i>
-                            </button>
+                        <!-- DYNAMIC PLATFORM PRICE CARDS CONTAINER -->
+                        <div id="allPlatformsPriceCards" class="space-y-4">
                         </div>
-
-                        <!-- BACHAT PRO TIPS BANNER -->
-                        <div id="bachatTipsContainer"
-                            class="hidden bg-emerald-50 border-2 border-emerald-300 rounded-3xl p-5 flex items-start space-x-4 shadow-2xs">
-                            <div class="w-10 h-10 rounded-2xl bg-emerald-100 border border-emerald-200 flex items-center justify-center text-brandGreen font-bold text-xl flex-shrink-0">
-                                <i class="fa-solid fa-lightbulb"></i>
-                            </div>
-                            <div class="text-sm">
-                                <h5 class="font-extrabold text-emerald-950 text-base mb-1">💡 Bachat Pro Recommendation</h5>
-                                <p id="bachatTipsText" class="text-emerald-800 leading-relaxed font-medium"></p>
-                            </div>
-                        </div>
-
                     </div>
+
+                    <!-- OPTION 2: SMART SPLIT BASKET OPTIMIZATION -->
+                    <div id="splitSectionContainer" class="bg-gradient-to-br from-amber-50 to-orange-50 p-6 sm:p-7 rounded-3xl border-2 border-brandOrange shadow-md relative">
+                        <div class="absolute -top-3.5 right-6 bg-brandOrange text-white text-xs font-black px-3.5 py-1 rounded-full uppercase tracking-wider shadow-xs">
+                            Option 2: Smart Split Optimizer
+                        </div>
+                        <div class="flex justify-between items-start gap-4">
+                            <div>
+                                <div class="flex items-center space-x-2">
+                                    <h4 class="text-2xl sm:text-3xl font-black text-slate-900">Multi-Store Smart Split</h4>
+                                </div>
+                                <p class="text-sm text-slate-600 mt-0.5">Splits items across stores only when item discounts exceed extra delivery fees</p>
+                            </div>
+                            <div class="text-right flex-shrink-0">
+                                <div id="splitAppTotal" class="text-3xl sm:text-4xl font-black text-brandOrange">₹0</div>
+                                <span id="splitAppSavings"
+                                    class="inline-block mt-1 text-xs sm:text-sm text-orange-950 font-black bg-orange-200 px-3 py-1 rounded-full shadow-2xs">
+                                    Saves ₹0 extra!
+                                </span>
+                            </div>
+                        </div>
+
+                        <div id="splitAppBreakdown" class="mt-5 space-y-2.5">
+                        </div>
+
+                        <button id="splitAppBuyBtn" onclick="buyBasketSplit()"
+                            class="mt-5 w-full bg-brandOrange hover:bg-orange-600 text-white font-bold py-4 rounded-2xl transition flex items-center justify-center space-x-2 text-base shadow-sm">
+                            <span>Checkout with Smart Split Savings</span>
+                            <i class="fa-solid fa-code-fork"></i>
+                        </button>
+                    </div>
+
+                    <!-- BACHAT PRO TIPS BANNER -->
+                    <div id="bachatTipsContainer"
+                        class="bg-emerald-50 border-2 border-emerald-300 rounded-3xl p-5 flex items-start space-x-4 shadow-2xs">
+                        <div class="w-10 h-10 rounded-2xl bg-emerald-100 border border-emerald-200 flex items-center justify-center text-brandGreen font-bold text-xl flex-shrink-0">
+                            <i class="fa-solid fa-lightbulb"></i>
+                        </div>
+                        <div class="text-sm">
+                            <h5 class="font-extrabold text-emerald-950 text-base mb-1">💡 Bachat Pro Recommendation</h5>
+                            <p id="bachatTipsText" class="text-emerald-800 leading-relaxed font-medium"></p>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
+        </div>
+
+        <!-- FLOATING STICKY BOTTOM CART DRAWER (WHEN NOT IN BASKET VIEW) -->
+        <div id="floatingBasketBar"
+            class="hidden fixed bottom-5 left-4 right-4 max-w-3xl mx-auto bg-slate-900/95 backdrop-blur-md text-white p-4 rounded-3xl shadow-2xl border border-slate-700 z-40 flex items-center justify-between gap-4 animate-fadeIn">
+            <div class="flex items-center space-x-3.5 min-w-0">
+                <div class="w-12 h-12 rounded-2xl bg-brandGreen text-white flex items-center justify-center text-xl flex-shrink-0 shadow-sm">
+                    <i class="fa-solid fa-basket-shopping"></i>
+                </div>
+                <div class="min-w-0">
+                    <div class="flex items-center space-x-2">
+                        <span id="floatingItemCount" class="text-sm font-black text-brandYellow">0 items in Basket</span>
+                        <span id="floatingSavingsTag" class="text-xs bg-emerald-500/30 text-emerald-300 font-bold px-2 py-0.5 rounded-full border border-emerald-500/40">Saves ₹0</span>
+                    </div>
+                    <p id="floatingStoreTotal" class="text-xs text-slate-300 truncate font-semibold mt-0.5">Best: ₹0 on Blinkit</p>
+                </div>
+            </div>
+            <button onclick="showSection('basket')"
+                class="flex-shrink-0 bg-brandGreen hover:bg-emerald-600 text-white font-black text-sm px-5 py-3 rounded-2xl transition flex items-center space-x-2 shadow-md">
+                <span>View Bachat Basket</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
         </div>
 
     </main>
@@ -1028,28 +1011,56 @@
         let historyStack = ['home'];
 
         window.onload = function () {
-            // 1. Immediately render UI from local database so the site NEVER freezes
+            // 1. Restore persistent user and basket from localStorage
+            loadUserFromStorage();
+            loadBasketFromStorage();
+
+            // 2. Immediately render all UI components
+            renderAppFilterBar();
+            renderBrandFilterBar();
+            renderPopularGrid();
+            populateQuickBasketDropdown();
+            updateBasketCountBadge();
+            updateFloatingBasketBar();
+
+            // 3. Fetch background data updates (non-blocking)
+            fetchBackendPlatforms();
+            fetchBackendProducts();
+        };
+
+        function loadUserFromStorage() {
             const savedUser = localStorage.getItem('bachat_user');
             if (savedUser) {
                 try {
                     currentUser = JSON.parse(savedUser);
                     updateUserUI();
                     loadUserStats();
-                } catch(e) {}
+                } catch (e) {}
             } else {
                 fetchDefaultLocation();
             }
+        }
 
-            renderAppFilterBar();
-            renderBrandFilterBar();
-            renderPopularGrid();
-            populateQuickBasketDropdown();
+        function loadBasketFromStorage() {
+            const savedBasket = localStorage.getItem('bachat_basket');
+            if (savedBasket) {
+                try {
+                    const parsed = JSON.parse(savedBasket);
+                    if (Array.isArray(parsed)) {
+                        userBasket = parsed;
+                    }
+                } catch (e) {}
+            }
+        }
+
+        function saveBasketToStorage() {
+            try {
+                localStorage.setItem('bachat_basket', JSON.stringify(userBasket));
+            } catch (e) {}
             updateBasketCountBadge();
-
-            // 2. Fetch fresh database updates in the background (non-blocking)
-            fetchBackendPlatforms();
-            fetchBackendProducts();
-        };
+            updateFloatingBasketBar();
+            renderPopularGrid();
+        }
 
         async function fetchDefaultLocation() {
             const navAddr = document.getElementById('navUserAddress');
@@ -1077,6 +1088,9 @@
                     activeProduct = PRODUCTS_DB[0];
                     renderPopularGrid();
                     populateQuickBasketDropdown();
+                    if (!document.getElementById('basketSection').classList.contains('hidden')) {
+                        renderBasket();
+                    }
                 }
             } catch (err) {
                 console.log('Using local products DB fallback:', err.message);
@@ -1100,6 +1114,9 @@
                         };
                     });
                     renderAppFilterBar();
+                    if (!document.getElementById('basketSection').classList.contains('hidden')) {
+                        renderBasket();
+                    }
                 }
             } catch (err) {
                 console.log('Using local platforms fallback:', err.message);
@@ -1208,23 +1225,37 @@
                 }
             }
 
-            document.getElementById('homeSection').classList.add('hidden');
-            document.getElementById('basketSection').classList.add('hidden');
+            const homeSection = document.getElementById('homeSection');
+            const heroSearch = document.getElementById('heroSearchSection');
+            const quickApps = document.getElementById('quickAppsSection');
+            const brandFilter = document.getElementById('brandFilterSection');
+            const comparisonContainer = document.getElementById('comparisonContainer');
+            const basketSection = document.getElementById('basketSection');
+
+            homeSection.classList.add('hidden');
+            if (comparisonContainer) comparisonContainer.classList.add('hidden');
+            if (basketSection) basketSection.classList.add('hidden');
 
             if (sectionId === 'home') {
-                document.getElementById('homeSection').classList.remove('hidden');
-                document.getElementById('heroSearchSection').classList.remove('hidden');
-                document.getElementById('popularSection').classList.remove('hidden');
-                document.getElementById('comparisonContainer').classList.add('hidden');
+                homeSection.classList.remove('hidden');
+                if (heroSearch) heroSearch.classList.remove('hidden');
+                if (quickApps) quickApps.classList.remove('hidden');
+                if (brandFilter) brandFilter.classList.remove('hidden');
+                renderPopularGrid();
             } else if (sectionId === 'comparison') {
-                document.getElementById('homeSection').classList.remove('hidden');
-                document.getElementById('heroSearchSection').classList.add('hidden');
-                document.getElementById('popularSection').classList.add('hidden');
-                document.getElementById('comparisonContainer').classList.remove('hidden');
+                if (comparisonContainer) comparisonContainer.classList.remove('hidden');
+                if (heroSearch) heroSearch.classList.add('hidden');
+                if (quickApps) quickApps.classList.add('hidden');
+                if (brandFilter) brandFilter.classList.add('hidden');
             } else if (sectionId === 'basket') {
-                document.getElementById('basketSection').classList.remove('hidden');
+                if (basketSection) basketSection.classList.remove('hidden');
+                if (heroSearch) heroSearch.classList.add('hidden');
+                if (quickApps) quickApps.classList.add('hidden');
+                if (brandFilter) brandFilter.classList.add('hidden');
                 renderBasket();
             }
+
+            updateFloatingBasketBar();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -1240,6 +1271,7 @@
 
         function renderAppFilterBar() {
             const container = document.getElementById('appFilterContainer');
+            if (!container) return;
             container.innerHTML = Object.keys(PLATFORM_CONFIG).map(app => {
                 const isSelected = activeSelectedApp === app;
                 const config = PLATFORM_CONFIG[app];
@@ -1254,6 +1286,7 @@
 
         function renderBrandFilterBar() {
             const container = document.getElementById('brandFilterContainer');
+            if (!container) return;
             const brands = ['Amul', 'Nestle', 'Fortune', 'Eggoz', 'Aashirvaad', 'Coca-Cola', 'Farm Fresh'];
             container.innerHTML = brands.map(b => {
                 const isSelected = activeSelectedBrand === b;
@@ -1300,6 +1333,7 @@
 
         function renderPopularGrid() {
             const grid = document.getElementById('popularProductsGrid');
+            if (!grid) return;
             let filtered = PRODUCTS_DB.filter(p => {
                 if (activeSelectedBrand && p.brand !== activeSelectedBrand) return false;
                 return true;
@@ -1309,14 +1343,31 @@
                 let minPrice = Infinity;
                 let minApp = '';
                 Object.keys(p.prices).forEach(app => {
-                    if (p.prices[app].price < minPrice) {
+                    if (p.prices[app] && p.prices[app].price < minPrice) {
                         minPrice = p.prices[app].price;
                         minApp = app;
                     }
                 });
 
+                const inBasketItem = userBasket.find(b => b.id === p.id);
+                const currentQty = inBasketItem ? inBasketItem.qty : 0;
+
+                const actionHtml = currentQty > 0 ? `
+                    <div class="flex items-center space-x-1.5 bg-emerald-50 border border-emerald-300 p-1 rounded-xl">
+                        <button onclick="event.stopPropagation(); changeItemQtyById('${p.id}', -1)" class="w-7 h-7 flex items-center justify-center rounded-lg bg-white hover:bg-emerald-100 text-emerald-800 font-black text-sm shadow-2xs">-</button>
+                        <span class="text-sm font-black text-emerald-900 px-1 min-w-[20px] text-center">${currentQty}</span>
+                        <button onclick="event.stopPropagation(); changeItemQtyById('${p.id}', 1)" class="w-7 h-7 flex items-center justify-center rounded-lg bg-brandGreen hover:bg-emerald-800 text-white font-black text-sm shadow-2xs">+</button>
+                    </div>
+                ` : `
+                    <button onclick="event.stopPropagation(); addPlatformItemToBasket('${p.id}', '${minApp}')" class="bg-emerald-50 hover:bg-brandGreen hover:text-white text-brandGreen border border-emerald-200 font-extrabold px-4 py-2 rounded-xl text-sm transition flex items-center space-x-1.5 shadow-2xs">
+                        <i class="fa-solid fa-cart-plus text-xs"></i>
+                        <span>Add</span>
+                    </button>
+                `;
+
                 return `
-                    <div onclick="selectProduct('${p.id}')" class="bg-white rounded-3xl border border-slate-200/90 p-5 shadow-xs hover:shadow-lg transition cursor-pointer flex flex-col justify-between group">
+                    <div onclick="selectProduct('${p.id}')" class="bg-white rounded-3xl border border-slate-200/90 p-5 shadow-xs hover:shadow-lg transition cursor-pointer flex flex-col justify-between group relative">
+                        ${currentQty > 0 ? `<span class="absolute top-3 right-3 bg-emerald-600 text-white text-[11px] font-black px-2.5 py-0.5 rounded-full shadow-xs">In Basket: ${currentQty}</span>` : ''}
                         <div>
                             <div class="relative mb-3 bg-slate-50 rounded-2xl p-4 flex items-center justify-center h-40">
                                 <img src="${p.img}" alt="${p.name}" class="h-32 object-contain group-hover:scale-105 transition transform">
@@ -1328,13 +1379,10 @@
 
                         <div class="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between">
                             <div>
-                                <p class="text-xs text-slate-500 uppercase font-extrabold">Cheapest on ${minApp}</p>
+                                <p class="text-[11px] text-slate-500 uppercase font-extrabold">Cheapest on ${minApp}</p>
                                 <p class="text-2xl font-black text-brandGreen">₹${minPrice}</p>
                             </div>
-                            <button onclick="event.stopPropagation(); addPlatformItemToBasket('${p.id}', '${minApp}')" class="bg-emerald-50 hover:bg-brandGreen hover:text-white text-brandGreen border border-emerald-200 font-extrabold px-4 py-2.5 rounded-xl text-sm transition flex items-center space-x-1.5 shadow-2xs">
-                                <i class="fa-solid fa-cart-plus text-sm"></i>
-                                <span>Add</span>
-                            </button>
+                            ${actionHtml}
                         </div>
                     </div>
                 `;
@@ -1356,11 +1404,11 @@
 
             let comparisonData = [];
             let cheapestItemPrice = Infinity;
-            let cheapestItemApp = '';
+            let cheapestItemApp = 'Blinkit';
             let highestItemPrice = 0;
 
             let lowestEffectiveCost = Infinity;
-            let bestEffectiveApp = '';
+            let bestEffectiveApp = 'Blinkit';
             let bestEffectiveBreakdown = '';
 
             Object.keys(PLATFORM_CONFIG).forEach(platform => {
@@ -1417,7 +1465,7 @@
                 const isCheapestItem = c.platform === cheapestItemApp;
                 const isBestEffective = c.platform === bestEffectiveApp;
                 const isAppSelected = activeSelectedApp === c.platform;
-                const config = PLATFORM_CONFIG[c.platform];
+                const config = PLATFORM_CONFIG[c.platform] || { logoSvg: '', deliveryTime: '10 mins' };
 
                 return `
                     <tr onclick="addPlatformItemToBasket('${product.id}', '${c.platform}')" 
@@ -1488,19 +1536,20 @@
 
             // Free Delivery Add-on Box
             const smartBox = document.getElementById('smartAddonText');
-            const needed = PLATFORM_CONFIG[bestEffectiveApp].freeThreshold - cheapestItemPrice;
+            const targetConfig = PLATFORM_CONFIG[bestEffectiveApp] || { freeThreshold: 199 };
+            const needed = targetConfig.freeThreshold - cheapestItemPrice;
             if (needed > 0) {
-                smartBox.innerHTML = `On <span class="font-bold text-slate-900">${bestEffectiveApp}</span>, your item is ₹${cheapestItemPrice}. Add <span class="font-bold text-brandOrange">₹${needed} more</span> to hit ₹${PLATFORM_CONFIG[bestEffectiveApp].freeThreshold} for <span class="font-bold text-brandGreen">FREE Delivery</span>!`;
+                smartBox.innerHTML = `On <span class="font-bold text-slate-900">${bestEffectiveApp}</span>, your item is ₹${cheapestItemPrice}. Add <span class="font-bold text-brandOrange">₹${needed} more</span> to hit ₹${targetConfig.freeThreshold} for <span class="font-bold text-brandGreen">FREE Delivery</span>!`;
                 document.getElementById('smartAddonList').innerHTML = `
-                    <div onclick="addCustomBasketItemWithName('Maggi Single Pack', 14)" class="bg-white p-2.5 rounded-xl border border-amber-200 hover:border-brandOrange cursor-pointer text-xs flex justify-between items-center">
+                    <div onclick="addCustomBasketItemWithName('Maggi Single Pack', 14)" class="bg-white p-2.5 rounded-xl border border-amber-200 hover:border-brandOrange cursor-pointer text-xs flex justify-between items-center shadow-2xs">
                         <span class="font-bold text-slate-800">🍜 Maggi Single Pack</span>
                         <span class="font-extrabold text-brandGreen">₹14</span>
                     </div>
-                    <div onclick="addCustomBasketItemWithName('Amul Choco Milk', 25)" class="bg-white p-2.5 rounded-xl border border-amber-200 hover:border-brandOrange cursor-pointer text-xs flex justify-between items-center">
+                    <div onclick="addCustomBasketItemWithName('Amul Choco Milk', 25)" class="bg-white p-2.5 rounded-xl border border-amber-200 hover:border-brandOrange cursor-pointer text-xs flex justify-between items-center shadow-2xs">
                         <span class="font-bold text-slate-800">🥛 Amul Kool Can</span>
                         <span class="font-extrabold text-brandGreen">₹25</span>
                     </div>
-                    <div onclick="addCustomBasketItemWithName('Potato 500g', 15)" class="bg-white p-2.5 rounded-xl border border-amber-200 hover:border-brandOrange cursor-pointer text-xs flex justify-between items-center">
+                    <div onclick="addCustomBasketItemWithName('Potato 500g', 15)" class="bg-white p-2.5 rounded-xl border border-amber-200 hover:border-brandOrange cursor-pointer text-xs flex justify-between items-center shadow-2xs">
                         <span class="font-bold text-slate-800">🥔 Fresh Potato 500g</span>
                         <span class="font-extrabold text-brandGreen">₹15</span>
                     </div>
@@ -1515,7 +1564,7 @@
             let cheapestApp = 'Blinkit';
             let lowestPrice = Infinity;
             Object.keys(activeProduct.prices).forEach(app => {
-                if (activeProduct.prices[app].price < lowestPrice) {
+                if (activeProduct.prices[app] && activeProduct.prices[app].price < lowestPrice) {
                     lowestPrice = activeProduct.prices[app].price;
                     cheapestApp = app;
                 }
@@ -1529,7 +1578,7 @@
 
             const itemPrice = prod.prices[platform] ? prod.prices[platform].price : 50;
 
-            const existingIndex = userBasket.findIndex(b => b.id === prod.id && b.platform === platform);
+            const existingIndex = userBasket.findIndex(b => b.id === prod.id);
             if (existingIndex > -1) {
                 userBasket[existingIndex].qty += 1;
             } else {
@@ -1545,10 +1594,29 @@
                 });
             }
 
-            updateBasketCountBadge();
-            showToast(`Added ${prod.name} via ${platform} to Bachat Basket!`);
+            saveBasketToStorage();
+            showToast(`Added ${prod.name} to Bachat Basket!`);
             if (!document.getElementById('basketSection').classList.contains('hidden')) {
                 renderBasket();
+            }
+        }
+
+        function changeItemQtyById(productId, delta) {
+            const index = userBasket.findIndex(b => b.id === productId);
+            if (index > -1) {
+                userBasket[index].qty += delta;
+                if (userBasket[index].qty <= 0) {
+                    userBasket.splice(index, 1);
+                }
+                saveBasketToStorage();
+                if (!document.getElementById('basketSection').classList.contains('hidden')) {
+                    renderBasket();
+                }
+            } else if (delta > 0) {
+                const prod = PRODUCTS_DB.find(p => p.id === productId);
+                if (prod) {
+                    addPlatformItemToBasket(productId, 'Blinkit');
+                }
             }
         }
 
@@ -1566,13 +1634,19 @@
             else if (lower.includes('milk') || lower.includes('doodh')) estPrice = 54;
             else if (lower.includes('oil') || lower.includes('tel')) estPrice = 140;
             else if (lower.includes('paneer')) estPrice = 90;
-            else if (lower.includes('atta')) estPrice = 240;
+            else if (lower.includes('atta') || lower.includes('flour')) estPrice = 240;
+            else if (lower.includes('egg') || lower.includes('anda')) estPrice = 45;
+            else if (lower.includes('butter') || lower.includes('makhan')) estPrice = 56;
+            else if (lower.includes('bread')) estPrice = 35;
+            else if (lower.includes('sugar') || lower.includes('chini')) estPrice = 48;
+            else if (lower.includes('rice') || lower.includes('chawal')) estPrice = 75;
+            else if (lower.includes('tea') || lower.includes('chai')) estPrice = 120;
 
             userBasket.push({
                 id: 'custom_' + Date.now(),
                 name: rawText,
                 brand: 'Custom Input',
-                unit: 'User Input',
+                unit: '1 Unit',
                 platform: 'Blinkit',
                 price: estPrice,
                 qty: 1,
@@ -1580,9 +1654,9 @@
             });
 
             inputEl.value = '';
-            updateBasketCountBadge();
+            saveBasketToStorage();
             renderBasket();
-            showToast(`Added custom item "${rawText}" to your basket!`);
+            showToast(`Added custom item "${rawText}" (₹${estPrice}) to basket!`);
         }
 
         function addCustomBasketItemWithName(name, price) {
@@ -1596,7 +1670,7 @@
                 qty: 1,
                 isCustom: true
             });
-            updateBasketCountBadge();
+            saveBasketToStorage();
             showToast(`Added ${name} (₹${price}) to your basket!`);
             showSection('basket');
         }
@@ -1605,7 +1679,6 @@
             const selectEl = document.getElementById('quickBasketSelect');
             const prodId = selectEl.value;
             if (prodId) {
-                const prod = PRODUCTS_DB.find(p => p.id === prodId);
                 addPlatformItemToBasket(prodId, 'Blinkit');
             }
         }
@@ -1622,29 +1695,59 @@
             const totalQty = userBasket.reduce((sum, item) => sum + item.qty, 0);
             const badge = document.getElementById('basketCountBadge');
             if (badge) badge.innerText = totalQty;
+            const activeBadge = document.getElementById('basketActiveBadge');
+            if (activeBadge) activeBadge.innerText = `${totalQty} Item${totalQty === 1 ? '' : 's'}`;
             const countLabel = document.getElementById('basketItemCount');
             if (countLabel) countLabel.innerText = `${totalQty} item${totalQty === 1 ? '' : 's'}`;
         }
 
+        function updateFloatingBasketBar() {
+            const bar = document.getElementById('floatingBasketBar');
+            if (!bar) return;
+
+            const isBasketVisible = !document.getElementById('basketSection').classList.contains('hidden');
+            if (userBasket.length === 0 || isBasketVisible) {
+                bar.classList.add('hidden');
+                return;
+            }
+
+            const calc = calculateBasketTotals();
+            const totalQty = userBasket.reduce((sum, item) => sum + item.qty, 0);
+
+            document.getElementById('floatingItemCount').innerText = `${totalQty} item${totalQty === 1 ? '' : 's'} in Bachat Basket`;
+            document.getElementById('floatingStoreTotal').innerText = `Best: ₹${calc.bestSingle.grandTotal} on ${calc.bestSingle.platformName}`;
+            
+            const savingsTag = document.getElementById('floatingSavingsTag');
+            if (calc.savingsVsWorst > 0) {
+                savingsTag.innerText = `Saves ₹${calc.savingsVsWorst}`;
+                savingsTag.classList.remove('hidden');
+            } else {
+                savingsTag.classList.add('hidden');
+            }
+
+            bar.classList.remove('hidden');
+        }
+
         function updateBasketQty(index, delta) {
+            if (!userBasket[index]) return;
             userBasket[index].qty += delta;
             if (userBasket[index].qty <= 0) {
                 userBasket.splice(index, 1);
             }
-            updateBasketCountBadge();
+            saveBasketToStorage();
             renderBasket();
         }
 
         function removeBasketItem(index) {
             userBasket.splice(index, 1);
-            updateBasketCountBadge();
+            saveBasketToStorage();
             renderBasket();
             showToast('Item removed from basket');
         }
 
         function clearBasket() {
             userBasket = [];
-            updateBasketCountBadge();
+            saveBasketToStorage();
             renderBasket();
             showToast('Basket cleared');
         }
@@ -1674,9 +1777,180 @@
             }
         }
 
+        function calculateBasketTotals() {
+            const platforms = Object.keys(PLATFORM_CONFIG);
+            const resolvedItems = userBasket.map(bItem => {
+                const prod = !bItem.isCustom ? PRODUCTS_DB.find(p => p.id === bItem.id) : null;
+                const prices = {};
+                platforms.forEach(pId => {
+                    if (prod && prod.prices && prod.prices[pId] && prod.prices[pId].available) {
+                        prices[pId] = prod.prices[pId].price;
+                    } else {
+                        prices[pId] = bItem.price || 30;
+                    }
+                });
+
+                let minP = Infinity;
+                let minPlat = platforms[0];
+                platforms.forEach(pId => {
+                    if (prices[pId] < minP) {
+                        minP = prices[pId];
+                        minPlat = pId;
+                    }
+                });
+
+                return {
+                    ...bItem,
+                    prod,
+                    prices,
+                    cheapestPlatform: minPlat,
+                    cheapestPrice: minP
+                };
+            });
+
+            const platformResults = platforms.map(pId => {
+                const config = PLATFORM_CONFIG[pId];
+                let subtotal = 0;
+                const itemBreakdown = [];
+
+                resolvedItems.forEach(item => {
+                    const unitPrice = item.prices[pId] || 50;
+                    const total = unitPrice * item.qty;
+                    subtotal += total;
+                    itemBreakdown.push({
+                        name: item.name,
+                        qty: item.qty,
+                        unitPrice,
+                        total
+                    });
+                });
+
+                const deliveryFee = subtotal >= config.freeThreshold ? 0 : config.deliveryFee;
+                const grandTotal = subtotal + deliveryFee + config.handlingFee;
+                const freeDeliveryGap = Math.max(0, config.freeThreshold - subtotal);
+
+                return {
+                    platform: pId,
+                    platformName: pId,
+                    color: config.color,
+                    textColor: config.textColor,
+                    deliveryTime: config.deliveryTime,
+                    deliveryFee,
+                    handlingFee: config.handlingFee,
+                    freeThreshold: config.freeThreshold,
+                    freeDeliveryGap,
+                    subtotal,
+                    grandTotal,
+                    logoSvg: config.logoSvg,
+                    itemBreakdown
+                };
+            });
+
+            platformResults.sort((a, b) => a.grandTotal - b.grandTotal);
+            const bestSingle = platformResults[0];
+            const worstSingle = platformResults[platformResults.length - 1];
+            const savingsVsWorst = Math.max(0, worstSingle.grandTotal - bestSingle.grandTotal);
+
+            // Split Plan calculation
+            const splitGroups = {};
+            resolvedItems.forEach(item => {
+                const pId = item.cheapestPlatform;
+                if (!splitGroups[pId]) {
+                    splitGroups[pId] = {
+                        platform: pId,
+                        items: [],
+                        subtotal: 0
+                    };
+                }
+                const total = item.cheapestPrice * item.qty;
+                splitGroups[pId].items.push({
+                    name: item.name,
+                    qty: item.qty,
+                    unitPrice: item.cheapestPrice,
+                    total
+                });
+                splitGroups[pId].subtotal += total;
+            });
+
+            let combinedSplitSubtotal = 0;
+            let combinedSplitDelivery = 0;
+            let combinedSplitHandling = 0;
+            let combinedSplitGrandTotal = 0;
+            const splitOrders = [];
+
+            Object.keys(splitGroups).forEach(pId => {
+                const grp = splitGroups[pId];
+                const config = PLATFORM_CONFIG[pId];
+                const delivery = grp.subtotal >= config.freeThreshold ? 0 : config.deliveryFee;
+                const grand = grp.subtotal + delivery + config.handlingFee;
+
+                combinedSplitSubtotal += grp.subtotal;
+                combinedSplitDelivery += delivery;
+                combinedSplitHandling += config.handlingFee;
+                combinedSplitGrandTotal += grand;
+
+                splitOrders.push({
+                    platform: pId,
+                    platformName: pId,
+                    deliveryTime: config.deliveryTime,
+                    color: config.color,
+                    logoSvg: config.logoSvg,
+                    subtotal: grp.subtotal,
+                    deliveryFee: delivery,
+                    handlingFee: config.handlingFee,
+                    freeThreshold: config.freeThreshold,
+                    grandTotal: grand,
+                    items: grp.items
+                });
+            });
+
+            const splitSavingsVsBestSingle = bestSingle.grandTotal - combinedSplitGrandTotal;
+            const isSplitRecommended = splitSavingsVsBestSingle > 0 && splitOrders.length > 1;
+
+            const tips = [];
+            if (bestSingle.freeDeliveryGap > 0 && bestSingle.freeDeliveryGap <= 65) {
+                tips.push({
+                    type: 'free_delivery',
+                    message: `Add ₹${bestSingle.freeDeliveryGap} more on ${bestSingle.platformName} to unlock FREE Delivery and save ₹${bestSingle.deliveryFee}!`
+                });
+            }
+            if (isSplitRecommended) {
+                tips.push({
+                    type: 'split_win',
+                    message: `Smart Split saves ₹${splitSavingsVsBestSingle} extra across ${splitOrders.length} stores compared to ordering everything in 1 store!`
+                });
+            } else {
+                tips.push({
+                    type: 'single_win',
+                    message: `Consolidating your entire order on ${bestSingle.platformName} gives the lowest net price (₹${bestSingle.grandTotal}) because multi-store delivery charges would outweigh item discounts.`
+                });
+            }
+
+            return {
+                resolvedItems,
+                allSingleApps: platformResults,
+                bestSingle,
+                worstSingle,
+                savingsVsWorst,
+                splitPlan: {
+                    isSplitRecommended,
+                    combinedTotal: combinedSplitGrandTotal,
+                    combinedSubtotal: combinedSplitSubtotal,
+                    combinedDelivery: combinedSplitDelivery,
+                    combinedHandling: combinedSplitHandling,
+                    savingsVsBestSingle: Math.max(0, splitSavingsVsBestSingle),
+                    orders: splitOrders
+                },
+                tips
+            };
+        }
+
         async function renderBasket() {
             const listContainer = document.getElementById('basketItemsList');
             if (!listContainer) return;
+
+            updateBasketCountBadge();
+            updateFloatingBasketBar();
 
             if (userBasket.length === 0) {
                 listContainer.innerHTML = `
@@ -1700,243 +1974,256 @@
                     </div>
                 `;
 
-                const summaryTitle = document.getElementById('summaryTitle');
-                const summarySavingsAmount = document.getElementById('summarySavingsAmount');
-                if (summaryTitle) summaryTitle.innerText = "Add items to compare stores & calculate savings";
-                if (summarySavingsAmount) summarySavingsAmount.innerText = "₹0";
+                document.getElementById('summaryTitle').innerText = "Add items above to calculate live savings";
+                document.getElementById('summarySubtitle').innerText = "We scan Blinkit, Zepto, BigBasket, Flipkart Minutes & Instamart in real-time";
+                document.getElementById('summarySavingsAmount').innerText = "₹0";
 
-                document.getElementById('singleAppTitle').innerText = "No Items Selected";
-                document.getElementById('singleAppTotal').innerText = "₹0";
-                document.getElementById('singleAppSubtotal').innerText = "₹0";
-                document.getElementById('singleAppDelivery').innerText = "₹0";
-                document.getElementById('singleAppHandling').innerText = "₹0";
-                document.getElementById('singleAppDeliveryNote').innerText = "Add items to view status";
+                const platformsCards = document.getElementById('allPlatformsPriceCards');
+                if (platformsCards) {
+                    platformsCards.innerHTML = `
+                        <div class="text-center p-8 bg-slate-50 rounded-2xl border border-slate-200 text-slate-400">
+                            <i class="fa-solid fa-store text-3xl mb-2"></i>
+                            <p class="text-sm font-semibold">Store price comparison will appear here once items are added.</p>
+                        </div>
+                    `;
+                }
 
+                const splitBreakdown = document.getElementById('splitAppBreakdown');
+                if (splitBreakdown) {
+                    splitBreakdown.innerHTML = `<p class="text-sm text-slate-500 italic p-4 bg-white/80 rounded-2xl border border-amber-200 text-center font-medium">Add items to calculate smart split savings across multiple stores.</p>`;
+                }
                 document.getElementById('splitAppTotal').innerText = "₹0";
                 const savingsEl = document.getElementById('splitAppSavings');
                 if (savingsEl) {
                     savingsEl.className = "inline-block mt-1 text-sm text-slate-700 font-bold bg-slate-200 px-3 py-1 rounded-full shadow-2xs";
-                    savingsEl.innerText = "Saves ₹0 extra";
+                    savingsEl.innerText = "Saves ₹0";
                 }
-                document.getElementById('splitAppBreakdown').innerHTML = `<p class="text-sm text-slate-500 italic p-4 bg-white/80 rounded-2xl border border-amber-200 text-center font-medium">Add items above to calculate split savings across Blinkit, Zepto, and more.</p>`;
                 return;
             }
 
-            listContainer.innerHTML = userBasket.map((item, idx) => {
-                const prod = !item.isCustom ? PRODUCTS_DB.find(p => p.id === item.id) : null;
+            const calc = calculateBasketTotals();
+            latestOptimization = {
+                singleApp: calc.bestSingle,
+                allSingleApps: calc.allSingleApps,
+                splitPlan: calc.splitPlan,
+                tips: calc.tips
+            };
+
+            // 1. RENDER BASKET ITEMS (LEFT COLUMN)
+            listContainer.innerHTML = calc.resolvedItems.map((item, idx) => {
+                const prod = item.prod;
                 const imgHtml = prod && prod.img
-                    ? `<img src="${prod.img}" alt="${item.name}" class="w-12 h-12 sm:w-14 sm:h-14 object-contain bg-white rounded-2xl p-1 border border-slate-200 shadow-2xs flex-shrink-0">`
-                    : `<div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-brandGreen font-black text-2xl shadow-2xs flex-shrink-0">${item.isCustom ? '✍️' : '🛒'}</div>`;
+                    ? `<img src="${prod.img}" alt="${item.name}" class="w-14 h-14 object-contain bg-white rounded-2xl p-1 border border-slate-200 shadow-2xs flex-shrink-0">`
+                    : `<div class="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-brandGreen font-black text-2xl shadow-2xs flex-shrink-0">${item.isCustom ? '✍️' : '🛒'}</div>`;
+
+                const priceComparisonPills = Object.keys(PLATFORM_CONFIG).map(pId => {
+                    const price = item.prices[pId];
+                    const isMin = pId === item.cheapestPlatform;
+                    return `
+                        <span class="text-[11px] px-2 py-0.5 rounded-md font-bold ${isMin ? 'bg-emerald-100 text-brandGreen border border-emerald-300' : 'bg-slate-100 text-slate-600'}">
+                            ${pId}: ₹${price}
+                        </span>
+                    `;
+                }).join('');
+
+                const itemSubtotal = item.cheapestPrice * item.qty;
 
                 return `
-                    <div class="bg-white p-4 sm:p-5 rounded-2xl sm:rounded-3xl border border-slate-200/90 shadow-xs hover:border-emerald-300 transition flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                        <div class="flex items-center space-x-3.5 min-w-0">
-                            ${imgHtml}
-                            <div class="min-w-0">
-                                <h4 class="font-bold text-slate-900 text-base sm:text-lg leading-snug truncate">${item.name}</h4>
-                                <div class="flex items-center space-x-2 mt-1">
-                                    <span class="text-xs bg-slate-100 text-slate-700 px-2.5 py-0.5 rounded-lg font-bold border border-slate-200">${item.platform}</span>
-                                    <span class="text-xs sm:text-sm text-slate-500 font-semibold">₹${item.price} each</span>
+                    <div class="bg-white p-4 sm:p-5 rounded-2xl sm:rounded-3xl border border-slate-200/90 shadow-xs hover:border-emerald-300 transition space-y-3">
+                        <div class="flex items-start justify-between gap-3">
+                            <div class="flex items-center space-x-3.5 min-w-0">
+                                ${imgHtml}
+                                <div class="min-w-0">
+                                    <h4 class="font-bold text-slate-900 text-base leading-snug truncate">${item.name}</h4>
+                                    <div class="flex items-center space-x-2 mt-1">
+                                        <span class="text-xs bg-emerald-100 text-brandGreen px-2.5 py-0.5 rounded-lg font-black border border-emerald-200">
+                                            Cheapest on ${item.cheapestPlatform}: ₹${item.cheapestPrice}
+                                        </span>
+                                        <span class="text-xs text-slate-400 font-semibold">${item.unit || '1 Unit'}</span>
+                                    </div>
                                 </div>
                             </div>
+
+                            <button onclick="removeBasketItem(${idx})" class="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-xl transition flex-shrink-0" title="Remove item">
+                                <i class="fa-solid fa-trash-can text-sm"></i>
+                            </button>
                         </div>
 
-                        <div class="flex items-center justify-between sm:justify-end space-x-4 border-t sm:border-t-0 pt-2.5 sm:pt-0 border-slate-100">
+                        <div class="flex flex-wrap gap-1.5 pt-1 border-t border-slate-100">
+                            ${priceComparisonPills}
+                        </div>
+
+                        <div class="flex items-center justify-between pt-2 border-t border-slate-100">
                             <div class="flex items-center space-x-1.5 bg-slate-100 p-1 rounded-2xl border border-slate-300">
-                                <button onclick="updateBasketQty(${idx}, -1)" class="w-8 h-8 flex items-center justify-center rounded-xl bg-white hover:bg-slate-200 text-slate-800 font-black text-lg shadow-2xs transition" aria-label="Decrease quantity">-</button>
-                                <span class="text-base sm:text-lg font-black text-slate-900 px-2 min-w-[24px] text-center">${item.qty}</span>
-                                <button onclick="updateBasketQty(${idx}, 1)" class="w-8 h-8 flex items-center justify-center rounded-xl bg-white hover:bg-slate-200 text-slate-800 font-black text-lg shadow-2xs transition" aria-label="Increase quantity">+</button>
+                                <button onclick="updateBasketQty(${idx}, -1)" class="w-8 h-8 flex items-center justify-center rounded-xl bg-white hover:bg-slate-200 text-slate-800 font-black text-lg shadow-2xs transition">-</button>
+                                <span class="text-base font-black text-slate-900 px-2 min-w-[24px] text-center">${item.qty}</span>
+                                <button onclick="updateBasketQty(${idx}, 1)" class="w-8 h-8 flex items-center justify-center rounded-xl bg-white hover:bg-slate-200 text-slate-800 font-black text-lg shadow-2xs transition">+</button>
                             </div>
-                            <div class="text-right min-w-[75px]">
-                                <span class="font-black text-slate-900 text-lg sm:text-xl">₹${item.price * item.qty}</span>
+                            <div class="text-right">
+                                <span class="text-xs text-slate-400 block font-semibold">Subtotal</span>
+                                <span class="font-black text-slate-900 text-xl">₹${itemSubtotal}</span>
                             </div>
-                            <button onclick="removeBasketItem(${idx})" class="p-2.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-xl transition" title="Remove item">
-                                <i class="fa-solid fa-trash-can text-base"></i>
-                            </button>
                         </div>
                     </div>
                 `;
             }).join('');
 
-            // Call Backend Optimizer API
+            // 2. UPDATE TOP SAVINGS BANNER
+            document.getElementById('summaryTitle').innerText = `Cheapest Overall: ₹${calc.bestSingle.grandTotal} on ${calc.bestSingle.platformName}`;
+            document.getElementById('summarySubtitle').innerText = calc.savingsVsWorst > 0
+                ? `You save ₹${calc.savingsVsWorst} compared to ${calc.worstSingle.platformName} (₹${calc.worstSingle.grandTotal})`
+                : `All 5 platforms evaluated for delivery and platform fees`;
+            document.getElementById('summarySavingsAmount').innerText = `₹${calc.savingsVsWorst}`;
+
+            // 3. RENDER ALL 5 PLATFORMS PRICE BREAKDOWN CARDS
+            const platformsContainer = document.getElementById('allPlatformsPriceCards');
+            platformsContainer.innerHTML = calc.allSingleApps.map((p, rank) => {
+                const isBest = rank === 0;
+                const savingsVsThis = Math.max(0, p.grandTotal - calc.bestSingle.grandTotal);
+
+                const freeDeliveryHtml = p.deliveryFee === 0
+                    ? `<span class="inline-flex items-center space-x-1 text-xs bg-emerald-100 text-emerald-900 font-extrabold px-3 py-1 rounded-full border border-emerald-300">
+                         <i class="fa-solid fa-check text-brandGreen"></i>
+                         <span>FREE Delivery Unlocked</span>
+                       </span>`
+                    : `<span class="inline-flex items-center space-x-1 text-xs bg-amber-100 text-amber-900 font-bold px-3 py-1 rounded-full border border-amber-300">
+                         <i class="fa-solid fa-info-circle text-amber-600"></i>
+                         <span>Add ₹${p.freeDeliveryGap} for FREE Delivery (> ₹${p.freeThreshold})</span>
+                       </span>`;
+
+                return `
+                    <div class="p-5 sm:p-6 rounded-3xl border-2 transition relative ${isBest ? 'bg-gradient-to-br from-emerald-50/80 via-white to-teal-50/50 border-brandGreen shadow-md' : 'bg-white border-slate-200/90 shadow-xs hover:border-slate-300'}">
+                        ${isBest ? `
+                            <div class="absolute -top-3.5 right-6 bg-brandGreen text-white text-xs font-black px-4 py-1 rounded-full uppercase tracking-wider shadow-sm flex items-center gap-1.5">
+                                <i class="fa-solid fa-trophy text-brandYellow"></i>
+                                <span>#1 Best Single Store Total</span>
+                            </div>
+                        ` : ''}
+
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                            <div class="flex items-center space-x-3.5">
+                                ${p.logoSvg}
+                                <div>
+                                    <div class="flex items-center space-x-2">
+                                        <h4 class="text-xl sm:text-2xl font-black text-slate-900">${p.platformName}</h4>
+                                        <span class="text-xs bg-slate-100 text-slate-700 font-bold px-2.5 py-0.5 rounded-lg border border-slate-200">
+                                            <i class="fa-solid fa-bolt text-amber-500 mr-1"></i>${p.deliveryTime}
+                                        </span>
+                                    </div>
+                                    <div class="mt-1">
+                                        ${freeDeliveryHtml}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-left sm:text-right flex-shrink-0">
+                                <span class="text-xs text-slate-500 font-bold block uppercase tracking-wider">Net Total Payable</span>
+                                <div class="text-3xl font-black ${isBest ? 'text-brandGreen' : 'text-slate-900'}">₹${p.grandTotal}</div>
+                                ${!isBest && savingsVsThis > 0 ? `<span class="text-xs text-slate-500 font-semibold">+₹${savingsVsThis} vs best</span>` : ''}
+                            </div>
+                        </div>
+
+                        <!-- ITEMISED FEE BREAKDOWN -->
+                        <div class="mt-4 pt-3 border-t border-slate-200/70 grid grid-cols-3 gap-2 text-center sm:text-left text-xs sm:text-sm bg-slate-50/80 p-3 rounded-2xl border border-slate-200/60">
+                            <div>
+                                <span class="text-slate-500 font-medium block">Items Total</span>
+                                <strong class="text-slate-900 text-base font-extrabold">₹${p.subtotal}</strong>
+                            </div>
+                            <div>
+                                <span class="text-slate-500 font-medium block">Delivery Fee</span>
+                                <strong class="text-base font-extrabold ${p.deliveryFee === 0 ? 'text-brandGreen' : 'text-slate-900'}">
+                                    ${p.deliveryFee === 0 ? 'FREE' : '₹' + p.deliveryFee}
+                                </strong>
+                            </div>
+                            <div>
+                                <span class="text-slate-500 font-medium block">Handling / Platform</span>
+                                <strong class="text-slate-900 text-base font-extrabold">₹${p.handlingFee}</strong>
+                            </div>
+                        </div>
+
+                        <button onclick="buyBasketPlatform('${p.platform}')"
+                            class="mt-4 w-full font-bold py-3.5 rounded-2xl transition flex items-center justify-center space-x-2 text-sm sm:text-base shadow-sm ${isBest ? 'bg-brandGreen hover:bg-emerald-800 text-white' : 'bg-slate-800 hover:bg-slate-900 text-white'}">
+                            <span>Order via ${p.platformName} (₹${p.grandTotal})</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                `;
+            }).join('');
+
+            // 4. RENDER SMART SPLIT OPTIMIZER SECTION
+            const split = calc.splitPlan;
+            const splitTotalEl = document.getElementById('splitAppTotal');
+            const splitSavingsEl = document.getElementById('splitAppSavings');
+            const splitBreakdownEl = document.getElementById('splitAppBreakdown');
+
+            if (split && split.orders && split.orders.length > 0) {
+                splitTotalEl.innerText = `₹${split.combinedTotal}`;
+
+                if (split.isSplitRecommended) {
+                    splitSavingsEl.className = "inline-block mt-1 text-xs sm:text-sm text-emerald-950 font-black bg-emerald-300 px-3 py-1 rounded-full shadow-2xs";
+                    splitSavingsEl.innerText = `Saves ₹${split.savingsVsBestSingle} EXTRA over 1-Store!`;
+                } else {
+                    splitSavingsEl.className = "inline-block mt-1 text-xs sm:text-sm text-slate-800 font-bold bg-slate-200 px-3 py-1 rounded-full shadow-2xs";
+                    splitSavingsEl.innerText = `Consolidating in 1 store is cheaper`;
+                }
+
+                splitBreakdownEl.innerHTML = split.orders.map(ord => `
+                    <div class="bg-white p-4 rounded-2xl border border-orange-200 shadow-2xs space-y-2">
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-3 h-3 rounded-full bg-brandOrange"></span>
+                                <span class="font-extrabold text-slate-900 text-base">${ord.platformName}</span>
+                                <span class="text-xs bg-orange-100 text-brandOrange font-bold px-2 py-0.5 rounded-full">${ord.items.length} item${ord.items.length === 1 ? '' : 's'}</span>
+                            </div>
+                            <span class="font-black text-brandGreen text-lg">₹${ord.grandTotal}</span>
+                        </div>
+                        <div class="text-xs text-slate-600 flex flex-wrap justify-between gap-1 border-t border-slate-100 pt-2 font-medium">
+                            <span>Items: ₹${ord.subtotal} • Del: ${ord.deliveryFee === 0 ? '<strong class="text-brandGreen">FREE</strong>' : '₹' + ord.deliveryFee} • Fee: ₹${ord.handlingFee}</span>
+                            <span class="text-slate-500 font-bold">${ord.deliveryTime}</span>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5 pt-1">
+                            ${ord.items.map(i => `
+                                <span class="text-xs bg-slate-100 text-slate-800 px-2.5 py-1 rounded-lg font-bold border border-slate-200">
+                                    ${i.name} (x${i.qty}) - ₹${i.total}
+                                </span>
+                            `).join('')}
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // 5. RENDER BACHAT PRO TIPS
+            const tipsText = document.getElementById('bachatTipsText');
+            if (tipsText && calc.tips.length > 0) {
+                tipsText.innerHTML = calc.tips.map(t => `<span class="block mb-1">• ${t.message}</span>`).join('');
+            }
+
+            // Optional background sync with server
             try {
-                const response = await fetch(`${API_BASE}/api/basket/optimize`, {
+                fetch(`${API_BASE}/api/basket/optimize`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ items: userBasket })
-                });
-                const data = await response.json();
-                if (data.success && data.optimization) {
-                    applyOptimizationToUI(data.optimization);
-                    return;
-                }
-            } catch (err) {
-                console.warn('Backend optimizer offline, using client calculation', err);
-            }
-
-            // Fallback client calculation if backend is unreachable
-            applyClientOptimizationFallback();
+                }).catch(() => {});
+            } catch (e) {}
         }
 
-        function applyOptimizationToUI(opt) {
-            latestOptimization = opt;
-            const single = opt.singleApp;
-            const split = opt.splitPlan;
-
-            if (single) {
-                document.getElementById('singleAppTitle').innerText = `${single.platformName || single.platform} Single Order`;
-                document.getElementById('singleAppTotal').innerText = `₹${single.grandTotal}`;
-                document.getElementById('singleAppSubtotal').innerText = `₹${single.subtotal}`;
-                document.getElementById('singleAppDelivery').innerText = single.deliveryFee === 0 ? 'FREE' : `₹${single.deliveryFee}`;
-                document.getElementById('singleAppHandling').innerText = `₹${single.handlingFee}`;
-                document.getElementById('singleAppDeliveryNote').innerText = single.deliveryFee === 0
-                    ? '✓ Free Shipping Unlocked'
-                    : `Add ₹${single.freeDeliveryGap} for Free Shipping`;
-            }
-
-            if (split) {
-                document.getElementById('splitAppTotal').innerText = `₹${split.combinedTotal}`;
-                const extraSavings = split.savingsVsBestSingle;
-                const savingsEl = document.getElementById('splitAppSavings');
-                const summaryTitle = document.getElementById('summaryTitle');
-                const summarySavingsAmount = document.getElementById('summarySavingsAmount');
-
-                if (extraSavings > 0) {
-                    if (savingsEl) {
-                        savingsEl.className = "inline-block mt-1 text-xs sm:text-sm text-emerald-950 font-black bg-emerald-300 px-3 py-1 rounded-full shadow-2xs";
-                        savingsEl.innerText = `Saves ₹${extraSavings} extra vs single store!`;
-                    }
-                    if (summaryTitle) summaryTitle.innerText = `Smart Split saves you ₹${extraSavings} more than single store!`;
-                    if (summarySavingsAmount) summarySavingsAmount.innerText = `₹${extraSavings}`;
-                } else {
-                    if (savingsEl) {
-                        savingsEl.className = "inline-block mt-1 text-xs sm:text-sm text-slate-800 font-bold bg-slate-200 px-3 py-1 rounded-full shadow-2xs";
-                        savingsEl.innerText = `Best on single store`;
-                    }
-                    if (summaryTitle) summaryTitle.innerText = `Best overall price found on ${single ? single.platformName || single.platform : 'Single Store'}`;
-                    if (summarySavingsAmount) summarySavingsAmount.innerText = `₹0`;
-                }
-
-                if (split.orders && split.orders.length > 0) {
-                    document.getElementById('splitAppBreakdown').innerHTML = split.orders.map((ord, idx) => `
-                        <div class="bg-white p-4 rounded-2xl border border-orange-200 shadow-2xs space-y-2">
-                            <div class="flex justify-between items-center">
-                                <div class="flex items-center space-x-2">
-                                    <span class="w-3 h-3 rounded-full bg-brandOrange"></span>
-                                    <span class="font-extrabold text-slate-900 text-sm sm:text-base">${ord.platformName || ord.platform}</span>
-                                    <span class="text-xs bg-orange-100 text-brandOrange font-bold px-2 py-0.5 rounded-full">${ord.items.length} item${ord.items.length === 1 ? '' : 's'}</span>
-                                </div>
-                                <span class="font-black text-brandGreen text-base sm:text-lg">₹${ord.grandTotal}</span>
-                            </div>
-                            <div class="text-xs text-slate-600 flex flex-wrap justify-between gap-1 border-t border-slate-100 pt-2 font-medium">
-                                <span>Items: ₹${ord.subtotal} • Del: ${ord.deliveryFee === 0 ? '<strong class="text-brandGreen">FREE</strong>' : '₹' + ord.deliveryFee} • Fee: ₹${ord.handlingFee}</span>
-                                <span class="text-slate-500 font-bold">${ord.deliveryTime || '10-15 mins'}</span>
-                            </div>
-                            <div class="flex flex-wrap gap-1.5 pt-1">
-                                ${ord.items.map(i => `
-                                    <span class="text-xs bg-slate-100 text-slate-800 px-2.5 py-1 rounded-lg font-bold border border-slate-200">
-                                        ${i.name} (x${i.qty})
-                                    </span>
-                                `).join('')}
-                            </div>
-                        </div>
-                    `).join('');
-                }
-            }
-
-            // Bachat Pro Tips Banner
-            const tipsContainer = document.getElementById('bachatTipsContainer');
-            const tipsText = document.getElementById('bachatTipsText');
-            if (tipsContainer && tipsText) {
-                if (opt.tips && opt.tips.length > 0) {
-                    tipsText.innerHTML = opt.tips.map(t => `<span class="block">${t.message}</span>`).join('');
-                    tipsContainer.classList.remove('hidden');
-                } else {
-                    tipsContainer.classList.add('hidden');
-                }
-            }
-        }
-
-        function applyClientOptimizationFallback() {
-            let platformTotals = {};
-            Object.keys(PLATFORM_CONFIG).forEach(platform => {
-                const config = PLATFORM_CONFIG[platform];
-                let subtotal = 0;
-
-                userBasket.forEach(bItem => {
-                    let pPrice = bItem.price;
-                    if (!bItem.isCustom) {
-                        const prod = PRODUCTS_DB.find(p => p.id === bItem.id);
-                        if (prod && prod.prices[platform]) {
-                            pPrice = prod.prices[platform].price;
-                        }
-                    }
-                    subtotal += pPrice * bItem.qty;
-                });
-
-                const delivery = subtotal >= config.freeThreshold ? 0 : config.deliveryFee;
-                const grandTotal = subtotal + delivery + config.handlingFee;
-
-                platformTotals[platform] = {
-                    subtotal,
-                    delivery,
-                    handling: config.handlingFee,
-                    grandTotal,
-                    freeThreshold: config.freeThreshold
-                };
-            });
-
-            let bestSingleApp = 'Blinkit';
-            let minSingleTotal = Infinity;
-            Object.keys(platformTotals).forEach(app => {
-                if (platformTotals[app].grandTotal < minSingleTotal) {
-                    minSingleTotal = platformTotals[app].grandTotal;
-                    bestSingleApp = app;
-                }
-            });
-
-            const bestData = platformTotals[bestSingleApp];
-            document.getElementById('singleAppTitle').innerText = `${bestSingleApp} Single Order`;
-            document.getElementById('singleAppTotal').innerText = `₹${bestData.grandTotal}`;
-            document.getElementById('singleAppSubtotal').innerText = `₹${bestData.subtotal}`;
-            document.getElementById('singleAppDelivery').innerText = bestData.delivery === 0 ? 'FREE' : `₹${bestData.delivery}`;
-            document.getElementById('singleAppHandling').innerText = `₹${bestData.handling}`;
-            document.getElementById('singleAppDeliveryNote').innerText = bestData.delivery === 0 ? '✓ Free Shipping Unlocked' : `Add ₹${bestData.freeThreshold - bestData.subtotal} for Free Shipping`;
-
-            let splitTotal = Math.round(minSingleTotal * 0.93);
-            let splitExtraSavings = Math.max(0, minSingleTotal - splitTotal);
-
-            document.getElementById('splitAppTotal').innerText = `₹${splitTotal}`;
-            const savingsEl = document.getElementById('splitAppSavings');
-            if (savingsEl) savingsEl.innerText = `Saves ₹${splitExtraSavings} extra!`;
-
-            const summaryTitle = document.getElementById('summaryTitle');
-            const summarySavingsAmount = document.getElementById('summarySavingsAmount');
-            if (summaryTitle) summaryTitle.innerText = `Smart Split saves ₹${splitExtraSavings} vs single store!`;
-            if (summarySavingsAmount) summarySavingsAmount.innerText = `₹${splitExtraSavings}`;
-
-            document.getElementById('splitAppBreakdown').innerHTML = `
-                <div class="bg-white p-4 rounded-2xl border border-orange-200 text-sm space-y-2">
-                    <div class="flex justify-between items-center">
-                        <span class="font-extrabold text-slate-800">Smart Split Delivery Plan</span>
-                        <span class="font-black text-brandGreen text-base">₹${splitTotal}</span>
-                    </div>
-                    <p class="text-xs text-slate-500 font-medium">Items distributed optimally across platforms for lowest price.</p>
-                </div>
-            `;
-        }
-
-        async function buyBasketSingle() {
+        async function buyBasketPlatform(platformId) {
             if (userBasket.length === 0) {
                 showToast('Your basket is empty! Add items first.', 'warn');
                 return;
             }
-            const single = latestOptimization ? latestOptimization.singleApp : null;
-            const grandTotal = single ? single.grandTotal : userBasket.reduce((sum, i) => sum + (i.price * i.qty), 0);
-            const store = single ? (single.platformName || single.platform) : 'Blinkit';
+
+            const calc = calculateBasketTotals();
+            const targetPlatform = calc.allSingleApps.find(p => p.platform === platformId) || calc.bestSingle;
+            const grandTotal = targetPlatform.grandTotal;
+            const savings = Math.max(0, calc.worstSingle.grandTotal - grandTotal);
+            const store = targetPlatform.platformName;
+
+            const orderId = 'BB-' + Math.floor(100000 + Math.random() * 900000);
 
             try {
-                const res = await fetch(`${API_BASE}/api/orders`, {
+                fetch(`${API_BASE}/api/orders`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -1944,19 +2231,15 @@
                         singleAppName: store,
                         singleAppTotal: grandTotal,
                         splitAppTotal: grandTotal,
-                        totalSavings: 0,
+                        totalSavings: savings,
                         items: userBasket,
                         userName: currentUser ? currentUser.name : 'Guest Shopper',
                         userPhone: currentUser ? currentUser.phone : 'Guest'
                     })
-                });
-                const data = await res.json();
-                const orderId = data.orderId || (data.order ? data.order.id : null) || 'BB-' + Math.floor(100000 + Math.random() * 900000);
-                showOrderSuccessModal(orderId, `Single Store (${store})`, grandTotal, 0);
-            } catch (err) {
-                const fallbackId = 'BB-' + Math.floor(100000 + Math.random() * 900000);
-                showOrderSuccessModal(fallbackId, `Single Store (${store})`, grandTotal, 0);
-            }
+                }).catch(() => {});
+            } catch (err) {}
+
+            showOrderSuccessModal(orderId, `Store Order (${store})`, grandTotal, savings);
         }
 
         async function buyBasketSplit() {
@@ -1964,34 +2247,33 @@
                 showToast('Your basket is empty! Add items first.', 'warn');
                 return;
             }
-            const single = latestOptimization ? latestOptimization.singleApp : null;
-            const split = latestOptimization ? latestOptimization.splitPlan : null;
-            const grandTotal = split ? split.combinedTotal : userBasket.reduce((sum, i) => sum + (i.price * i.qty), 0);
-            const savings = split ? split.savingsVsBestSingle : 45;
+
+            const calc = calculateBasketTotals();
+            const split = calc.splitPlan;
+            const grandTotal = split.combinedTotal;
+            const savings = Math.max(0, calc.worstSingle.grandTotal - grandTotal);
+
+            const orderId = 'BB-' + Math.floor(100000 + Math.random() * 900000);
 
             try {
-                const res = await fetch(`${API_BASE}/api/orders`, {
+                fetch(`${API_BASE}/api/orders`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         strategy: 'split',
-                        singleAppName: single ? (single.platformName || single.platform) : 'Blinkit',
-                        singleAppTotal: single ? single.grandTotal : (grandTotal + savings),
+                        singleAppName: calc.bestSingle.platformName,
+                        singleAppTotal: calc.bestSingle.grandTotal,
                         splitAppTotal: grandTotal,
                         totalSavings: savings,
-                        breakdown: split ? split.orders : [],
+                        breakdown: split.orders,
                         items: userBasket,
                         userName: currentUser ? currentUser.name : 'Guest Shopper',
                         userPhone: currentUser ? currentUser.phone : 'Guest'
                     })
-                });
-                const data = await res.json();
-                const orderId = data.orderId || (data.order ? data.order.id : null) || 'BB-' + Math.floor(100000 + Math.random() * 900000);
-                showOrderSuccessModal(orderId, 'Smart Split (Multi-Store)', grandTotal, savings);
-            } catch (err) {
-                const fallbackId = 'BB-' + Math.floor(100000 + Math.random() * 900000);
-                showOrderSuccessModal(fallbackId, 'Smart Split (Multi-Store)', grandTotal, savings);
-            }
+                }).catch(() => {});
+            } catch (err) {}
+
+            showOrderSuccessModal(orderId, 'Smart Split (Multi-Store)', grandTotal, savings);
         }
 
         function showOrderSuccessModal(id, strategy, amount, savings) {
@@ -2029,18 +2311,21 @@
             );
 
             if (matches.length > 0) {
-                suggestionsEl.innerHTML = matches.map(m => `
-                    <div onclick="selectProduct('${m.id}'); document.getElementById('searchSuggestions').classList.add('hidden');" class="p-3 hover:bg-slate-50 border-b border-slate-100 flex items-center justify-between cursor-pointer">
-                        <div class="flex items-center space-x-3">
-                            <img src="${m.img}" class="w-8 h-8 object-contain">
-                            <div>
-                                <p class="font-bold text-xs text-slate-800">${m.name}</p>
-                                <span class="text-[10px] text-slate-400">${m.brand} • ${m.unit}</span>
+                suggestionsEl.innerHTML = matches.map(m => {
+                    const price = (m.prices && m.prices.Blinkit ? m.prices.Blinkit.price : (Object.values(m.prices || {})[0]?.price || 30));
+                    return `
+                        <div onclick="selectProduct('${m.id}'); document.getElementById('searchSuggestions').classList.add('hidden');" class="p-3 hover:bg-slate-50 border-b border-slate-100 flex items-center justify-between cursor-pointer">
+                            <div class="flex items-center space-x-3">
+                                <img src="${m.img}" class="w-8 h-8 object-contain">
+                                <div>
+                                    <p class="font-bold text-xs text-slate-800">${m.name}</p>
+                                    <span class="text-[10px] text-slate-400">${m.brand} • ${m.unit}</span>
+                                </div>
                             </div>
+                            <span class="text-xs font-black text-brandGreen">₹${price}</span>
                         </div>
-                        <span class="text-xs font-black text-brandGreen">₹${m.prices.Blinkit.price}</span>
-                    </div>
-                `).join('');
+                    `;
+                }).join('');
                 suggestionsEl.classList.remove('hidden');
             } else {
                 suggestionsEl.classList.add('hidden');

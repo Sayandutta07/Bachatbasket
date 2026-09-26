@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&amp;family=Plus+Jakarta+Sans:ital,wght@1,800&amp;display=swap');
+      .fk-title {
+        font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+        font-weight: 800;
+        font-style: italic;
+        fill: #FFFFFF;
+      }
+      .fk-sub {
+        font-family: 'Montserrat', 'Arial Black', Impact, sans-serif;
+        font-weight: 900;
+        font-style: italic;
+        fill: #FFE600;
+      }
+    </style>
+  </defs>
+  <!-- Background Card -->
+  <rect x="2" y="16" width="96" height="68" rx="16" fill="#9F123A" />
+  
+  <!-- Flipkart -->
+  <text x="50" y="42" text-anchor="middle" class="fk-title" font-size="14.5" letter-spacing="-0.2">Flipkart</text>
+  
+  <!-- MINUTES with stylized E -->
+  <g class="fk-sub">
+    <!-- MINUT -->
+    <text x="14" y="66" font-size="16.5" letter-spacing="-0.5">MINUT</text>
+    <!-- Stylized E (3 horizontal speed bars) -->
+    <g transform="skewX(-11)">
+      <rect x="78" y="52.5" width="10.5" height="3" rx="1.5" fill="#FFE600" />
+      <rect x="76" y="58" width="8.5" height="3" rx="1.5" fill="#FFE600" />
+      <rect x="78" y="63.5" width="10.5" height="3" rx="1.5" fill="#FFE600" />
+    </g>
+    <!-- S -->
+    <text x="82.5" y="66" font-size="16.5">S</text>
+  </g>
+</svg>

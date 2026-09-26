@@ -122,7 +122,7 @@ function seedInitialData() {
                 delivery_fee: 10,
                 handling_fee: 3,
                 free_threshold: 99,
-                logo_svg: `<div class="w-8 h-8 rounded-lg bg-[#2563EB] flex items-center justify-center font-black text-white text-xs shadow-xs">FK</div>`
+                logo_svg: `<img src="images/flipkart.svg" alt="Flipkart Minutes" class="w-8 h-8 rounded-lg object-contain shadow-xs">`
             },
             {
                 id: 'Instamart',

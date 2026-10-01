@@ -314,7 +314,7 @@ function seedInitialData() {
             brand: 'Tata',
             category: 'Staples',
             unit: '1 kg',
-            img: 'https://images.unsplash.com/photo-1518110925495-5fe2fda0442c?w=300&auto=format&fit=crop&q=80',
+            img: 'images/salt.jpg',
             prices: {
                 'Blinkit': { price: 28, available: true },
                 'Zepto': { price: 28, available: true },

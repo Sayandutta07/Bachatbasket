@@ -3003,7 +3003,16 @@
                 }
             });
 
-            const storeInfo = STORE_DETAI        function escapeHtml(str) {
+            const storeInfo = STORE_DETAILS[cheapestKey] || { name: cheapestKey, badgeClass: 'bg-slate-100 text-slate-800' };
+            return {
+                appKey: cheapestKey,
+                appName: storeInfo.name,
+                price: lowestPrice,
+                badgeClass: storeInfo.badgeClass
+            };
+        }
+
+        function escapeHtml(str) {
             if (!str) return '';
             return String(str)
                 .replace(/&/g, '&amp;')
@@ -3231,14 +3240,6 @@
 
                 if (typeof updateBasketCountUI === 'function') updateBasketCountUI();
                 showCustomToast(`Added all ${addedCount} recipe ingredients to Bachat Basket!`);
-            } catch (err) {
-                console.error("Error adding recipe ingredients:", err);
-                showCustomToast("Added recipe ingredients to Bachat Basket!");
-            }
-        }         });
-
-                if (typeof updateBasketCountUI === 'function') updateBasketCountUI();
-                showCustomToast(Added all  recipe ingredients to Bachat Basket!);
             } catch (err) {
                 console.error("Error adding recipe ingredients:", err);
                 showCustomToast("Added recipe ingredients to Bachat Basket!");

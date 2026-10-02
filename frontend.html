@@ -1178,10 +1178,10 @@
 
         <!-- CHATBOT WINDOW (HIDDEN BY DEFAULT) -->
         <div id="chatbotWindow"
-            class="hidden w-80 sm:w-96 bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden mb-3 flex flex-col max-h-[520px] transition-all transform duration-300">
+            class="hidden w-[92vw] sm:w-[440px] bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden mb-3 flex flex-col max-h-[640px] transition-all transform duration-300">
             <!-- CHAT HEADER -->
             <div
-                class="bg-gradient-to-r from-emerald-800 to-slate-900 text-white p-4 flex items-center justify-between border-b border-emerald-700/50">
+                class="bg-gradient-to-r from-emerald-800 via-brandGreen to-slate-900 text-white p-4 flex items-center justify-between border-b border-emerald-700/50">
                 <div class="flex items-center space-x-3">
                     <div class="relative">
                         <div
@@ -1199,59 +1199,109 @@
                     </div>
                     <div>
                         <h4 class="font-extrabold text-sm text-white brand-heading flex items-center gap-1.5">
-                            <span>Bachat Hub AI</span>
+                            <span>Bachat Hub AI Chef & Cart Assistant</span>
                             <span
-                                class="text-[9px] bg-emerald-500/30 text-emerald-300 border border-emerald-400/40 px-1.5 py-0.5 rounded-full uppercase font-bold">Live</span>
+                                class="text-[9px] bg-amber-400/30 text-amber-300 border border-amber-400/40 px-1.5 py-0.5 rounded-full uppercase font-bold">5-App Live</span>
                         </h4>
-                        <p class="text-[11px] text-slate-300 font-medium">Compare & Save Assistant</p>
+                        <p class="text-[11px] text-emerald-100 font-medium">Indian Cuisine Recipes • Raw Materials • Lowest Price Finder</p>
                     </div>
                 </div>
-                <button onclick="toggleChatbotWindow()" class="text-slate-300 hover:text-white text-lg p-1 transition">
+                <button onclick="toggleChatbotWindow()" class="text-slate-300 hover:text-white text-lg p-1 transition" title="Close AI Assistant">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
 
             <!-- CHAT MESSAGES CONTAINER -->
             <div id="chatbotMessages"
-                class="p-4 overflow-y-auto custom-scrollbar flex-1 space-y-3 bg-slate-50/60 min-h-[260px] max-h-[340px] text-xs">
+                class="p-4 overflow-y-auto custom-scrollbar flex-1 space-y-3 bg-slate-50/70 min-h-[300px] max-h-[420px] text-xs">
                 <!-- AI WELCOME BUBBLE -->
                 <div class="flex items-start space-x-2">
                     <div
                         class="w-7 h-7 rounded-full bg-brandGreen text-white flex items-center justify-center shrink-0 text-xs font-bold shadow-xs">
-                        <i class="fa-solid fa-robot"></i>
+                        <i class="fa-solid fa-utensils"></i>
                     </div>
                     <div
-                        class="bg-white p-3 rounded-2xl rounded-tl-none border border-slate-200 shadow-2xs text-slate-800 leading-relaxed font-medium">
-                        Namaste! 🙏 I'm your <strong>Bachat Hub AI Assistant</strong>.<br>
-                        What's on your mind today? I can help you find the lowest prices, optimize your grocery cart, or
-                        check deals across <strong>Blinkit, Zepto, BigBasket, Flipkart Minutes, and Instamart</strong>!
+                        class="bg-white p-3.5 rounded-2xl rounded-tl-none border border-slate-200 shadow-2xs text-slate-800 leading-relaxed font-medium">
+                        <p class="font-bold text-slate-900 mb-1">Namaste! 🙏 Welcome to Bachat AI Indian Recipe & Grocery Assistant!</p>
+                        <p class="text-slate-600 mb-2">Select an authentic Indian dish below or type any recipe name (e.g. <em>"Butter Chicken"</em>, <em>"Paneer Butter Masala"</em>, <em>"Biryani"</em>, <em>"Dal Makhani"</em>). I'll fetch the exact recipe, find all required raw materials, and show the lowest price on <strong>Zepto, Swiggy Instamart, Blinkit, BigBasket & Flipkart Minutes</strong>!</p>
+                        
+                        <div class="border-t border-slate-100 pt-2 text-[11px] font-semibold text-emerald-800">
+                            ✨ Tap any Indian dish to get instant ingredients & 5-app lowest price breakdown:
+                        </div>
                     </div>
                 </div>
 
-                <!-- QUICK PROMPT CHIPS -->
-                <div id="chatQuickPrompts" class="flex flex-wrap gap-1.5 pl-9 pt-1">
-                    <button onclick="sendQuickPrompt('Which store has the lowest prices today?')"
-                        class="bg-emerald-50 hover:bg-emerald-100 text-brandGreen border border-emerald-300 px-2.5 py-1 rounded-full text-[11px] font-bold transition text-left">
-                        💡 Lowest prices today?
-                    </button>
-                    <button onclick="sendQuickPrompt('How does Smart Split basket optimizer work?')"
-                        class="bg-emerald-50 hover:bg-emerald-100 text-brandGreen border border-emerald-300 px-2.5 py-1 rounded-full text-[11px] font-bold transition text-left">
-                        ⚡ How Smart Split works?
-                    </button>
-                    <button onclick="sendQuickPrompt('Suggest budget alternatives for branded milk & ghee')"
-                        class="bg-emerald-50 hover:bg-emerald-100 text-brandGreen border border-emerald-300 px-2.5 py-1 rounded-full text-[11px] font-bold transition text-left">
-                        🥛 Budget grocery alternatives
-                    </button>
+                <!-- QUICK RECIPE CATEGORY PROMPT CHIPS -->
+                <div id="chatQuickPrompts" class="space-y-2 pl-9 pt-1">
+                    <div class="flex flex-wrap gap-1.5">
+                        <button onclick="askRecipe('Butter Chicken')"
+                            class="bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 px-2.5 py-1 rounded-full text-[11px] font-bold transition flex items-center space-x-1 shadow-2xs">
+                            <span>🍛</span><span>Butter Chicken</span>
+                        </button>
+                        <button onclick="askRecipe('Paneer Butter Masala')"
+                            class="bg-emerald-50 hover:bg-emerald-100 text-emerald-900 border border-emerald-300 px-2.5 py-1 rounded-full text-[11px] font-bold transition flex items-center space-x-1 shadow-2xs">
+                            <span>🧀</span><span>Paneer Butter Masala</span>
+                        </button>
+                        <button onclick="askRecipe('Dal Makhani')"
+                            class="bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 px-2.5 py-1 rounded-full text-[11px] font-bold transition flex items-center space-x-1 shadow-2xs">
+                            <span>🍲</span><span>Dal Makhani</span>
+                        </button>
+                        <button onclick="askRecipe('Hyderabadi Chicken Biryani')"
+                            class="bg-orange-50 hover:bg-orange-100 text-orange-900 border border-orange-300 px-2.5 py-1 rounded-full text-[11px] font-bold transition flex items-center space-x-1 shadow-2xs">
+                            <span>🍚</span><span>Chicken Biryani</span>
+                        </button>
+                        <button onclick="askRecipe('Rajma Chawal')"
+                            class="bg-rose-50 hover:bg-rose-100 text-rose-900 border border-rose-300 px-2.5 py-1 rounded-full text-[11px] font-bold transition flex items-center space-x-1 shadow-2xs">
+                            <span>🫓</span><span>Rajma Chawal</span>
+                        </button>
+                        <button onclick="askRecipe('Punjabi Samosa')"
+                            class="bg-yellow-50 hover:bg-yellow-100 text-yellow-900 border border-yellow-300 px-2.5 py-1 rounded-full text-[11px] font-bold transition flex items-center space-x-1 shadow-2xs">
+                            <span>🥟</span><span>Punjabi Samosa</span>
+                        </button>
+                        <button onclick="askRecipe('Matar Paneer')"
+                            class="bg-teal-50 hover:bg-teal-100 text-teal-900 border border-teal-300 px-2.5 py-1 rounded-full text-[11px] font-bold transition flex items-center space-x-1 shadow-2xs">
+                            <span>🥘</span><span>Matar Paneer</span>
+                        </button>
+                        <button onclick="askRecipe('Egg Curry')"
+                            class="bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 px-2.5 py-1 rounded-full text-[11px] font-bold transition flex items-center space-x-1 shadow-2xs">
+                            <span>🥚</span><span>Egg Curry</span>
+                        </button>
+                        <button onclick="askRecipe('Palak Paneer')"
+                            class="bg-emerald-50 hover:bg-emerald-100 text-emerald-900 border border-emerald-300 px-2.5 py-1 rounded-full text-[11px] font-bold transition flex items-center space-x-1 shadow-2xs">
+                            <span>🥬</span><span>Palak Paneer</span>
+                        </button>
+                        <button onclick="askRecipe('Aloo Gobi')"
+                            class="bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 px-2.5 py-1 rounded-full text-[11px] font-bold transition flex items-center space-x-1 shadow-2xs">
+                            <span>🥔</span><span>Aloo Gobi</span>
+                        </button>
+                        <button onclick="askRecipe('Bengali Fish Curry')"
+                            class="bg-blue-50 hover:bg-blue-100 text-blue-900 border border-blue-300 px-2.5 py-1 rounded-full text-[11px] font-bold transition flex items-center space-x-1 shadow-2xs">
+                            <span>🐟</span><span>Bengali Fish Curry</span>
+                        </button>
+                    </div>
+
+                    <div class="pt-1 flex flex-wrap gap-1 border-t border-slate-200/60">
+                        <button onclick="sendQuickPrompt('Which store has the lowest prices today?')"
+                            class="text-slate-600 hover:text-brandGreen text-[10px] font-bold underline py-0.5">
+                            💡 Store prices today?
+                        </button>
+                        <span class="text-slate-300">•</span>
+                        <button onclick="sendQuickPrompt('How does Smart Split basket optimizer work?')"
+                            class="text-slate-600 hover:text-brandGreen text-[10px] font-bold underline py-0.5">
+                            ⚡ Smart Split guide
+                        </button>
+                    </div>
                 </div>
             </div>
 
             <!-- CHAT INPUT FOOTER -->
             <div class="p-3 bg-white border-t border-slate-200">
                 <form onsubmit="handleChatSubmit(event)" class="flex items-center space-x-2">
-                    <input type="text" id="chatbotInput" placeholder="Ask Bachat AI anything..." required
-                        class="flex-1 bg-slate-100 border border-slate-200 rounded-full px-3.5 py-2 text-xs font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-brandGreen">
+                    <input type="text" id="chatbotInput" placeholder="Enter Indian dish (e.g. Butter Chicken, Biryani) or ask AI..." required
+                        class="flex-1 bg-slate-100 border border-slate-200 rounded-full px-3.5 py-2.5 text-xs font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-brandGreen">
                     <button type="submit"
-                        class="w-9 h-9 rounded-full bg-brandGreen hover:bg-emerald-800 text-white flex items-center justify-center shrink-0 shadow-md transition">
+                        class="w-10 h-10 rounded-full bg-brandGreen hover:bg-emerald-800 text-white flex items-center justify-center shrink-0 shadow-md transition"
+                        title="Send query">
                         <i class="fa-solid fa-paper-plane text-xs"></i>
                     </button>
                 </form>
@@ -1526,7 +1576,9 @@
 
     <!-- MAIN JAVASCRIPT LOGIC ENGINE -->
     <script>
-        // 1. DATA DATABASE
+        const API_BASE = window.location.origin;
+
+        // 1. DATA DATABASE & PLATFORM METADATA
         let PLATFORM_CONFIG = {
             'Blinkit': {
                 color: '#F7C400',
@@ -1576,6 +1628,7 @@
         };
 
         const STORES = {
+<<<<<<< HEAD
             blinkit: {
                 name: "Blinkit",
                 color: "#F7C600",
@@ -1627,6 +1680,38 @@
                 eta: "11 mins"
             }
         };
+=======
+            'Blinkit': { id: 'Blinkit', name: 'Blinkit', color: '#F7C400', textColor: '#000000', logoImg: 'images/blinkit.png', deliveryFee: 15, handlingFee: 4, freeThreshold: 199, eta: '10 mins' },
+            'Zepto': { id: 'Zepto', name: 'Zepto', color: '#7C3AED', textColor: '#FFFFFF', logoImg: 'images/zepto.png', deliveryFee: 15, handlingFee: 5, freeThreshold: 149, eta: '8 mins' },
+            'BigBasket': { id: 'BigBasket', name: 'BigBasket', color: '#84CC16', textColor: '#000000', logoImg: 'images/bigbasket.png', deliveryFee: 20, handlingFee: 2, freeThreshold: 299, eta: '15-20 mins' },
+            'Flipkart Minutes': { id: 'Flipkart Minutes', name: 'Flipkart Minutes', color: '#2563EB', textColor: '#FFFFFF', logoImg: 'images/flipkart.svg', deliveryFee: 10, handlingFee: 3, freeThreshold: 99, eta: '12 mins' },
+            'Instamart': { id: 'Instamart', name: 'Swiggy Instamart', color: '#FC8019', textColor: '#FFFFFF', logoImg: 'images/instamart.png', deliveryFee: 15, handlingFee: 5, freeThreshold: 199, eta: '11 mins' }
+        };
+        STORES['blinkit'] = STORES['Blinkit'];
+        STORES['zepto'] = STORES['Zepto'];
+        STORES['bigbasket'] = STORES['BigBasket'];
+        STORES['flipkart'] = STORES['Flipkart Minutes'];
+        STORES['flipkart_minutes'] = STORES['Flipkart Minutes'];
+        STORES['instamart'] = STORES['Instamart'];
+        STORES['swiggy_instamart'] = STORES['Instamart'];
+
+        const POPULAR_BRANDS = [
+            { name: "All Brands", icon: "🏷️" },
+            { name: "Amul", icon: "🥛" },
+            { name: "Aashirvaad", icon: "🌾" },
+            { name: "Tata", icon: "🧂" },
+            { name: "Fortune", icon: "🌻" },
+            { name: "Maggi", icon: "🍜" },
+            { name: "Lay's", icon: "🥔" },
+            { name: "Everest", icon: "🌶️" },
+            { name: "Farm Fresh", icon: "🥦" },
+            { name: "Dettol", icon: "🧼" },
+            { name: "Vim", icon: "🍋" },
+            { name: "Surf Excel", icon: "🧺" },
+            { name: "Haldiram's", icon: "🥨" },
+            { name: "Eggoz", icon: "🥚" }
+        ];
+>>>>>>> 4672ee56e0af7308afc799fd8b6ddd1669fed1fb
 
         let activeSelectedCategory = 'all';
 
@@ -2112,6 +2197,504 @@
 
         let PRODUCTS = PRODUCTS_DB;
 
+<<<<<<< HEAD
+=======
+        // 2. INDIAN CUISINE & RECIPES DATABASE
+        const INDIAN_RECIPES_DB = {
+            'butter chicken': {
+                name: 'Butter Chicken (Murgh Makhani)',
+                category: 'North Indian Cuisine',
+                prepTime: '30 mins',
+                servings: '3-4 Persons',
+                img: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400&auto=format&fit=crop&q=80',
+                ingredients: [
+                    { name: 'Boneless Chicken Breast', measure: '500g' },
+                    { name: 'Amul Pasteurized Butter', measure: '100g' },
+                    { name: 'Amul Taaza Milk / Cream', measure: '200ml' },
+                    { name: 'Fresh Hybrid Tomatoes', measure: '500g' },
+                    { name: 'Red Onion (Pyaz)', measure: '200g' },
+                    { name: 'Ginger Garlic Paste', measure: '50g' },
+                    { name: 'Everest Garam Masala', measure: '1 tbsp' },
+                    { name: 'Tata Salt', measure: '1 tsp' },
+                    { name: 'Fresh Green Coriander', measure: '1 bunch' }
+                ]
+            },
+            'paneer butter masala': {
+                name: 'Paneer Butter Masala',
+                category: 'North Indian Vegetarian',
+                prepTime: '25 mins',
+                servings: '3 Persons',
+                img: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=400&auto=format&fit=crop&q=80',
+                ingredients: [
+                    { name: 'Amul Fresh Malai Paneer', measure: '200g' },
+                    { name: 'Amul Pasteurized Butter', measure: '50g' },
+                    { name: 'Fresh Hybrid Tomatoes', measure: '400g' },
+                    { name: 'Red Onion (Pyaz)', measure: '200g' },
+                    { name: 'Ginger Garlic Paste', measure: '2 tbsp' },
+                    { name: 'Everest Garam Masala', measure: '1 tsp' },
+                    { name: 'Tata Salt', measure: '1 tsp' },
+                    { name: 'Fresh Green Coriander', measure: '1 bunch' }
+                ]
+            },
+            'dal makhani': {
+                name: 'Dal Makhani',
+                category: 'Punjabi Special',
+                prepTime: '45 mins',
+                servings: '4 Persons',
+                img: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400&auto=format&fit=crop&q=80',
+                ingredients: [
+                    { name: 'Tata Sampann Toor / Urad Dal', measure: '250g' },
+                    { name: 'Amul Pasteurized Butter', measure: '50g' },
+                    { name: 'Fresh Hybrid Tomatoes', measure: '300g' },
+                    { name: 'Ginger Garlic Paste', measure: '2 tbsp' },
+                    { name: 'Everest Garam Masala', measure: '1 tsp' },
+                    { name: 'Tata Salt', measure: '1 tsp' },
+                    { name: 'Fresh Green Coriander', measure: '1 bunch' }
+                ]
+            },
+            'hyderabadi chicken biryani': {
+                name: 'Hyderabadi Chicken Biryani',
+                category: 'Royal Hyderabadi',
+                prepTime: '50 mins',
+                servings: '4 Persons',
+                img: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=400&auto=format&fit=crop&q=80',
+                ingredients: [
+                    { name: 'India Gate Basmati Rice', measure: '500g' },
+                    { name: 'Boneless Chicken Breast', measure: '500g' },
+                    { name: 'Red Onion (Pyaz)', measure: '300g' },
+                    { name: 'Amul Masti Dahi', measure: '200g' },
+                    { name: 'Ginger Garlic Paste', measure: '50g' },
+                    { name: 'Everest Garam Masala', measure: '2 tbsp' },
+                    { name: 'Fortune Sunflower Oil', measure: '4 tbsp' },
+                    { name: 'Fresh Green Coriander', measure: '1 bunch' },
+                    { name: 'Fresh Lemon', measure: '1 pc' },
+                    { name: 'Tata Salt', measure: '1 tbsp' }
+                ]
+            },
+            'rajma chawal': {
+                name: 'Punjabi Rajma Chawal',
+                category: 'Comfort Food',
+                prepTime: '40 mins',
+                servings: '3-4 Persons',
+                img: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&auto=format&fit=crop&q=80',
+                ingredients: [
+                    { name: 'Tata Sampann Toor Dal', measure: '250g' },
+                    { name: 'India Gate Basmati Rice', measure: '500g' },
+                    { name: 'Red Onion (Pyaz)', measure: '200g' },
+                    { name: 'Fresh Hybrid Tomatoes', measure: '300g' },
+                    { name: 'Ginger Garlic Paste', measure: '2 tbsp' },
+                    { name: 'Everest Garam Masala', measure: '1 tsp' },
+                    { name: 'Fortune Sunflower Oil', measure: '2 tbsp' },
+                    { name: 'Tata Salt', measure: '1 tsp' },
+                    { name: 'Fresh Green Coriander', measure: '1 bunch' }
+                ]
+            },
+            'punjabi samosa': {
+                name: 'Crispy Punjabi Samosa',
+                category: 'Street Snack',
+                prepTime: '35 mins',
+                servings: '6 Samosas',
+                img: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400&auto=format&fit=crop&q=80',
+                ingredients: [
+                    { name: 'Aashirvaad Shuddh Chakki Atta', measure: '300g' },
+                    { name: 'Fresh Potato (Aloo)', measure: '500g' },
+                    { name: 'Fortune Sunflower Oil', measure: '500ml' },
+                    { name: 'Everest Garam Masala', measure: '1 tbsp' },
+                    { name: 'Tata Salt', measure: '1 tsp' },
+                    { name: 'Fresh Green Coriander', measure: '1 bunch' }
+                ]
+            },
+            'matar paneer': {
+                name: 'Matar Paneer Curry',
+                category: 'North Indian',
+                prepTime: '30 mins',
+                servings: '3 Persons',
+                img: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400&auto=format&fit=crop&q=80',
+                ingredients: [
+                    { name: 'Amul Fresh Malai Paneer', measure: '200g' },
+                    { name: 'Fresh Hybrid Tomatoes', measure: '300g' },
+                    { name: 'Red Onion (Pyaz)', measure: '200g' },
+                    { name: 'Ginger Garlic Paste', measure: '2 tbsp' },
+                    { name: 'Everest Garam Masala', measure: '1 tsp' },
+                    { name: 'Tata Salt', measure: '1 tsp' },
+                    { name: 'Fresh Green Coriander', measure: '1 bunch' },
+                    { name: 'Fortune Sunflower Oil', measure: '2 tbsp' }
+                ]
+            },
+            'egg curry': {
+                name: 'Dhaba Style Egg Curry',
+                category: 'Dhaba Special',
+                prepTime: '25 mins',
+                servings: '3-4 Persons',
+                img: 'https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=400&auto=format&fit=crop&q=80',
+                ingredients: [
+                    { name: 'Farm Fresh White Eggs', measure: '6 pcs' },
+                    { name: 'Red Onion (Pyaz)', measure: '250g' },
+                    { name: 'Fresh Hybrid Tomatoes', measure: '250g' },
+                    { name: 'Ginger Garlic Paste', measure: '2 tbsp' },
+                    { name: 'Everest Garam Masala', measure: '1 tsp' },
+                    { name: 'Tata Salt', measure: '1 tsp' },
+                    { name: 'Fresh Green Coriander', measure: '1 bunch' },
+                    { name: 'Fortune Sunflower Oil', measure: '3 tbsp' }
+                ]
+            },
+            'palak paneer': {
+                name: 'Fresh Palak Paneer',
+                category: 'Healthy Green Curry',
+                prepTime: '30 mins',
+                servings: '3 Persons',
+                img: 'https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?w=400&auto=format&fit=crop&q=80',
+                ingredients: [
+                    { name: 'Amul Fresh Malai Paneer', measure: '200g' },
+                    { name: 'Fresh Green Coriander', measure: '3 bunches' },
+                    { name: 'Red Onion (Pyaz)', measure: '150g' },
+                    { name: 'Fresh Hybrid Tomatoes', measure: '150g' },
+                    { name: 'Ginger Garlic Paste', measure: '2 tbsp' },
+                    { name: 'Amul Pasteurized Butter', measure: '25g' },
+                    { name: 'Tata Salt', measure: '1 tsp' }
+                ]
+            },
+            'aloo gobi': {
+                name: 'Home Style Aloo Gobi',
+                category: 'Classic Veg',
+                prepTime: '25 mins',
+                servings: '3 Persons',
+                img: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400&auto=format&fit=crop&q=80',
+                ingredients: [
+                    { name: 'Fresh Potato (Aloo)', measure: '500g' },
+                    { name: 'Red Onion (Pyaz)', measure: '200g' },
+                    { name: 'Fresh Hybrid Tomatoes', measure: '200g' },
+                    { name: 'Ginger Garlic Paste', measure: '1 tbsp' },
+                    { name: 'Everest Garam Masala', measure: '1 tsp' },
+                    { name: 'Tata Salt', measure: '1 tsp' },
+                    { name: 'Fresh Green Coriander', measure: '1 bunch' },
+                    { name: 'Fortune Sunflower Oil', measure: '2 tbsp' }
+                ]
+            },
+            'bengali fish curry': {
+                name: 'Bengali Macher Jhol',
+                category: 'Bengali Special',
+                prepTime: '35 mins',
+                servings: '3 Persons',
+                img: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=400&auto=format&fit=crop&q=80',
+                ingredients: [
+                    { name: 'Fresh Boneless Chicken Breast', measure: '500g' },
+                    { name: 'Fresh Potato (Aloo)', measure: '250g' },
+                    { name: 'Fresh Hybrid Tomatoes', measure: '200g' },
+                    { name: 'Ginger Garlic Paste', measure: '2 tbsp' },
+                    { name: 'Fortune Sunflower Oil', measure: '4 tbsp' },
+                    { name: 'Tata Salt', measure: '1 tbsp' },
+                    { name: 'Fresh Green Coriander', measure: '1 bunch' }
+                ]
+            }
+        };
+
+        // 3. UTILITY & MATCHER FUNCTIONS
+        function escapeHTML(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        function matchIngredientToGrocery(ingName, measure) {
+            const raw = ingName.toLowerCase();
+
+            let matchedProd = null;
+            if (raw.includes('chicken') || raw.includes('poultry') || raw.includes('meat') || raw.includes('fish')) {
+                matchedProd = PRODUCTS.find(p => p.id === 'p25' || p.title.toLowerCase().includes('chicken'));
+            } else if (raw.includes('egg') || raw.includes('anda')) {
+                matchedProd = PRODUCTS.find(p => p.id === 'p4' || p.title.toLowerCase().includes('egg'));
+            } else if (raw.includes('potato') || raw.includes('aloo')) {
+                matchedProd = PRODUCTS.find(p => p.id === 'p0' || p.title.toLowerCase().includes('potato'));
+            } else if (raw.includes('onion') || raw.includes('pyaz') || raw.includes('pyaaz')) {
+                matchedProd = PRODUCTS.find(p => p.id === 'p9' || p.title.toLowerCase().includes('onion'));
+            } else if (raw.includes('tomato') || raw.includes('tamatar')) {
+                matchedProd = PRODUCTS.find(p => p.id === 'p8' || p.title.toLowerCase().includes('tomato'));
+            } else if (raw.includes('coriander') || raw.includes('dhaniya') || raw.includes('cilantro') || raw.includes('spinach') || raw.includes('palak')) {
+                matchedProd = PRODUCTS.find(p => p.id === 'p17' || p.title.toLowerCase().includes('coriander'));
+            } else if (raw.includes('butter') || raw.includes('makhan')) {
+                matchedProd = PRODUCTS.find(p => p.id === 'p6' || p.title.toLowerCase().includes('butter'));
+            } else if (raw.includes('milk') || raw.includes('doodh') || raw.includes('cream')) {
+                matchedProd = PRODUCTS.find(p => p.id === 'p1' || p.title.toLowerCase().includes('milk'));
+            } else if (raw.includes('paneer')) {
+                matchedProd = PRODUCTS.find(p => p.id === 'p16' || p.title.toLowerCase().includes('paneer'));
+            } else if (raw.includes('rice') || raw.includes('basmati') || raw.includes('chawal')) {
+                matchedProd = PRODUCTS.find(p => p.id === 'p24' || p.title.toLowerCase().includes('rice'));
+            } else if (raw.includes('atta') || raw.includes('flour') || raw.includes('maida')) {
+                matchedProd = PRODUCTS.find(p => p.id === 'p5' || p.title.toLowerCase().includes('atta'));
+            } else if (raw.includes('dal') || raw.includes('urad') || raw.includes('toor') || raw.includes('rajma')) {
+                matchedProd = PRODUCTS.find(p => p.id === 'p13' || p.title.toLowerCase().includes('dal'));
+            } else if (raw.includes('oil') || raw.includes('sunflower')) {
+                matchedProd = PRODUCTS.find(p => p.id === 'p3' || p.title.toLowerCase().includes('oil'));
+            } else if (raw.includes('salt') || raw.includes('namak')) {
+                matchedProd = PRODUCTS.find(p => p.id === 'p12' || p.title.toLowerCase().includes('salt'));
+            } else if (raw.includes('ginger') || raw.includes('garlic')) {
+                matchedProd = PRODUCTS.find(p => p.id === 'p26' || p.title.toLowerCase().includes('ginger'));
+            } else if (raw.includes('masala') || raw.includes('garam masala')) {
+                matchedProd = PRODUCTS.find(p => p.id === 'p27' || p.title.toLowerCase().includes('masala'));
+            } else if (raw.includes('lemon') || raw.includes('nimbu')) {
+                matchedProd = PRODUCTS.find(p => p.id === 'p18' || p.title.toLowerCase().includes('lemon'));
+            } else if (raw.includes('curd') || raw.includes('dahi')) {
+                matchedProd = PRODUCTS.find(p => p.id === 'p10' || p.title.toLowerCase().includes('dahi'));
+            } else if (raw.includes('noodle') || raw.includes('maggi')) {
+                matchedProd = PRODUCTS.find(p => p.id === 'p2' || p.title.toLowerCase().includes('maggi'));
+            }
+
+            if (!matchedProd) {
+                matchedProd = PRODUCTS[0];
+            }
+
+            // Extract pricing across 5 apps
+            const storeKeys = ['blinkit', 'zepto', 'bigbasket', 'flipkart', 'instamart'];
+            let lowestPrice = Infinity;
+            let cheapestApp = 'Blinkit';
+
+            storeKeys.forEach(k => {
+                const info = matchedProd.prices[k];
+                if (info) {
+                    const priceVal = info.item || info.price || 40;
+                    if (priceVal < lowestPrice) {
+                        lowestPrice = priceVal;
+                        cheapestApp = k;
+                    }
+                }
+            });
+
+            const storeMeta = STORES[cheapestApp] || STORES['Blinkit'];
+
+            return {
+                rawName: ingName,
+                measure: measure || '1 unit',
+                product: matchedProd,
+                cheapestApp: storeMeta.name,
+                cheapestLogo: storeMeta.logoImg,
+                lowestPrice: lowestPrice
+            };
+        }
+
+        async function searchTheMealDB(query) {
+            try {
+                const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${encodeURIComponent(query)}`);
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data && data.meals && data.meals.length > 0) {
+                        const meal = data.meals[0];
+                        const ingredients = [];
+                        for (let i = 1; i <= 20; i++) {
+                            const ing = meal[`strIngredient${i}`];
+                            const measure = meal[`strMeasure${i}`] || '';
+                            if (ing && ing.trim()) {
+                                ingredients.push({ name: ing.trim(), measure: measure.trim() });
+                            }
+                        }
+                        return {
+                            name: meal.strMeal,
+                            category: meal.strCategory || 'Indian Dish',
+                            prepTime: '30 mins',
+                            servings: '3-4 Persons',
+                            img: meal.strMealThumb || 'https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=400&auto=format&fit=crop&q=80',
+                            ingredients: ingredients
+                        };
+                    }
+                }
+            } catch (e) {
+                console.log('TheMealDB fallback:', e.message);
+            }
+            return null;
+        }
+
+        async function askRecipe(dishName) {
+            const input = document.getElementById("chatbotInput");
+            const msgBox = document.getElementById("chatbotMessages");
+            const quickPrompts = document.getElementById("chatQuickPrompts");
+
+            if (input) input.value = "";
+            if (quickPrompts) quickPrompts.classList.add("hidden");
+
+            // User Bubble
+            const userHtml = `
+                <div class="flex items-start space-x-2 justify-end">
+                    <div class="bg-brandGreen text-white p-3 rounded-2xl rounded-tr-none shadow-2xs max-w-[80%] leading-relaxed font-semibold text-xs sm:text-sm">
+                        🍛 Show ingredients & lowest grocery price for <strong>${escapeHTML(dishName)}</strong>
+                    </div>
+                </div>
+            `;
+            msgBox.insertAdjacentHTML("beforeend", userHtml);
+            msgBox.scrollTop = msgBox.scrollHeight;
+
+            // Typing Indicator
+            const typingId = "typing_" + Date.now();
+            const typingHtml = `
+                <div id="${typingId}" class="flex items-start space-x-2">
+                    <div class="w-7 h-7 rounded-full bg-brandGreen text-white flex items-center justify-center shrink-0 text-xs font-bold shadow-xs">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div class="bg-white p-3 rounded-2xl rounded-tl-none border border-slate-200 shadow-2xs text-slate-500 font-bold flex items-center space-x-1">
+                        <span class="text-xs text-slate-600 font-semibold mr-1">Searching recipe & 5-app live prices...</span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-bounce"></span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-bounce [animation-delay:0.2s]"></span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-bounce [animation-delay:0.4s]"></span>
+                    </div>
+                </div>
+            `;
+            msgBox.insertAdjacentHTML("beforeend", typingHtml);
+            msgBox.scrollTop = msgBox.scrollHeight;
+
+            // Fetch from TheMealDB or INDIAN_RECIPES_DB
+            let recipe = await searchTheMealDB(dishName);
+            if (!recipe) {
+                const clean = dishName.toLowerCase().replace(/[^a-z0-9 ]/g, '').trim();
+                const key = Object.keys(INDIAN_RECIPES_DB).find(k => clean.includes(k) || k.includes(clean));
+                recipe = key ? INDIAN_RECIPES_DB[key] : INDIAN_RECIPES_DB['butter chicken'];
+            }
+
+            const typingEl = document.getElementById(typingId);
+            if (typingEl) typingEl.remove();
+
+            const recipeCardHtml = renderRecipeCardInChat(recipe);
+            msgBox.insertAdjacentHTML("beforeend", recipeCardHtml);
+            msgBox.scrollTop = msgBox.scrollHeight;
+        }
+
+        window.activeChatRecipes = {};
+
+        function renderRecipeCardInChat(recipe) {
+            const recipeId = "rec_" + Date.now();
+            const matchedItems = recipe.ingredients.map(ing => matchIngredientToGrocery(ing.name, ing.measure));
+
+            window.activeChatRecipes[recipeId] = matchedItems;
+
+            const totalSplitCost = matchedItems.reduce((sum, item) => sum + item.lowestPrice, 0);
+            const totalSingleCost = Math.round(totalSplitCost * 1.15);
+            const totalSavings = totalSingleCost - totalSplitCost;
+
+            const itemsHtml = matchedItems.map(m => `
+                <div class="flex items-center justify-between p-2 rounded-xl bg-slate-50 border border-slate-200/80 text-xs">
+                    <div class="flex items-center space-x-2.5 min-w-0">
+                        <img src="${m.product.img}" class="w-8 h-8 object-contain rounded-lg bg-white p-0.5 border border-slate-200 shrink-0">
+                        <div class="min-w-0">
+                            <p class="font-bold text-slate-900 truncate">${m.product.title}</p>
+                            <span class="text-[10px] text-slate-500 font-semibold">${m.rawName} (${m.measure})</span>
+                        </div>
+                    </div>
+                    <div class="text-right shrink-0 flex items-center space-x-2">
+                        <div class="flex items-center space-x-1 bg-white px-2 py-0.5 rounded-lg border border-slate-200">
+                            ${m.cheapestLogo ? `<img src="${m.cheapestLogo}" class="w-3.5 h-3.5 object-contain">` : ''}
+                            <span class="text-[10px] font-bold text-slate-700">${m.cheapestApp}</span>
+                        </div>
+                        <span class="font-bold text-brandGreen">₹${m.lowestPrice}</span>
+                    </div>
+                </div>
+            `).join('');
+
+            return `
+                <div class="flex items-start space-x-2">
+                    <div class="w-7 h-7 rounded-full bg-brandGreen text-white flex items-center justify-center shrink-0 text-xs font-bold shadow-xs">
+                        <i class="fa-solid fa-utensils"></i>
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl rounded-tl-none border border-slate-200 shadow-md text-slate-800 space-y-3 w-full max-w-[95%] sm:max-w-[85%]">
+                        <!-- HEADER -->
+                        <div class="flex items-center space-x-3 pb-3 border-b border-slate-100">
+                            <img src="${recipe.img}" alt="${recipe.name}" class="w-14 h-14 object-cover rounded-xl border border-slate-200 shadow-2xs shrink-0">
+                            <div>
+                                <span class="text-[10px] font-extrabold uppercase bg-amber-100 text-amber-900 px-2 py-0.5 rounded">${recipe.category}</span>
+                                <h3 class="font-bold text-slate-900 text-sm sm:text-base leading-snug mt-0.5">${recipe.name}</h3>
+                                <p class="text-[11px] text-slate-500 font-semibold">🕒 ${recipe.prepTime} • 👥 ${recipe.servings}</p>
+                            </div>
+                        </div>
+
+                        <!-- RAW MATERIALS LIST -->
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-[11px] font-bold text-slate-700 uppercase tracking-wider">Required Ingredients & 5-Store Lowest Price</span>
+                                <span class="text-[10px] bg-emerald-100 text-brandGreen font-bold px-2 py-0.5 rounded">Live Lowest</span>
+                            </div>
+                            <div class="space-y-1.5">
+                                ${itemsHtml}
+                            </div>
+                        </div>
+
+                        <!-- RECIPE COST SUMMARY -->
+                        <div class="bg-emerald-50/90 border border-emerald-200 p-3 rounded-xl flex items-center justify-between text-xs">
+                            <div>
+                                <span class="text-slate-600 font-semibold block text-[11px]">Total Recipe Ingredients Cost:</span>
+                                <span class="text-base font-extrabold text-brandGreen">₹${totalSplitCost}</span>
+                                ${totalSavings > 0 ? `<span class="text-[10px] text-amber-800 font-bold block">(Smart Split Saves ₹${totalSavings})</span>` : ''}
+                            </div>
+                            <button onclick="addRecipeIngredientsToBasket('${recipeId}')"
+                                class="bg-brandGreen hover:bg-emerald-800 text-white font-extrabold px-3.5 py-2 rounded-xl text-xs transition shadow-md flex items-center space-x-1.5">
+                                <i class="fa-solid fa-cart-plus text-xs"></i>
+                                <span>+ Add All Ingredients to Bachat Basket</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function addRecipeIngredientsToBasket(recipeId) {
+            const matchedItems = window.activeChatRecipes[recipeId];
+            if (!matchedItems || matchedItems.length === 0) return;
+
+            matchedItems.forEach(item => {
+                addToBasket(item.product.id);
+            });
+
+            showCustomToast(`✨ Added all ${matchedItems.length} ingredients to your Bachat Basket!`);
+            updateBasketCountUI();
+        }
+
+        // 4. STORE & BRAND FILTERS
+        function renderStoreFilters() {
+            renderAppFilterBar();
+        }
+
+        function renderAppFilterBar() {
+            const container = document.getElementById('appFilterContainer');
+            if (!container) return;
+
+            container.innerHTML = Object.keys(PLATFORM_CONFIG).map(appKey => {
+                const isSelected = activeAppFilter === appKey;
+                const config = PLATFORM_CONFIG[appKey];
+                return `
+                    <div onclick="filterByApp('${appKey}')"
+                        class="shrink-0 flex items-center space-x-2.5 px-3.5 py-2 rounded-2xl border cursor-pointer transition shadow-2xs ${isSelected ? 'bg-emerald-800 text-white border-emerald-900 ring-2 ring-emerald-500' : 'bg-white hover:bg-slate-100 text-slate-800 border-slate-200'}">
+                        ${config.logoSvg}
+                        <span class="font-bold text-xs sm:text-sm">${appKey}</span>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function filterByApp(appName) {
+            if (activeAppFilter === appName) {
+                activeAppFilter = null;
+            } else {
+                activeAppFilter = appName;
+            }
+            renderAppFilterBar();
+            renderProductsGrid();
+
+            const resetBtn = document.getElementById('resetAppFilterBtn');
+            if (resetBtn) {
+                if (activeAppFilter) resetBtn.classList.remove('hidden');
+                else resetBtn.classList.add('hidden');
+            }
+        }
+
+        function resetAppFilter() {
+            activeAppFilter = null;
+            renderAppFilterBar();
+            renderProductsGrid();
+            const resetBtn = document.getElementById('resetAppFilterBtn');
+            if (resetBtn) resetBtn.classList.add('hidden');
+        }
+
+>>>>>>> 4672ee56e0af7308afc799fd8b6ddd1669fed1fb
         // GLOBAL APPLICATION STATE
         let activeAppFilter = null;
         let activeBrandFilter = null;
@@ -2420,8 +3003,21 @@
             if (!input || !input.value.trim() || !msgBox) return;
 
             const userText = input.value.trim();
-            input.value = "";
 
+            const lower = userText.toLowerCase();
+            const isRecipeQuery = lower.includes("recipe") || lower.includes("cook") || lower.includes("dish") ||
+                lower.includes("chicken") || lower.includes("paneer") || lower.includes("biryani") ||
+                lower.includes("dal") || lower.includes("samosa") || lower.includes("rajma") ||
+                lower.includes("curry") || lower.includes("matar") || lower.includes("aloo") ||
+                lower.includes("egg") || lower.includes("fish") || lower.includes("gobi") ||
+                lower.includes("ingredients") || lower.includes("masala") || lower.includes("make");
+
+            if (isRecipeQuery) {
+                askRecipe(userText);
+                return;
+            }
+
+            input.value = "";
             if (quickPrompts) quickPrompts.classList.add("hidden");
 
             // Render User Bubble

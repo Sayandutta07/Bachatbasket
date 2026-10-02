@@ -145,4 +145,111 @@ router.get('/:pincode', (req, res) => {
     }
 });
 
+// Haversine distance calculator in meters
+function getHaversineDistanceMeters(lat1, lon1, lat2, lon2) {
+    const R = 6371000;
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+    const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+        Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return Math.round(R * c);
+}
+
+// Quick-Commerce Dark Stores near Salt Lake Metro Station, Kolkata
+const SALT_LAKE_DARK_STORES = [
+    {
+        id: 'blinkit-sec2',
+        name: 'Blinkit Dark Store - Salt Lake Sector II',
+        brand: 'Blinkit',
+        address: 'AE Block, Near Karunamoyee, Salt Lake, Kolkata, West Bengal 700091',
+        lat: 22.5835,
+        lon: 88.4190,
+        estimatedDeliveryMins: 8,
+        status: 'Online',
+        logo: 'images/blinkit.png'
+    },
+    {
+        id: 'zepto-karunamoyee',
+        name: 'Zepto Express Hub - Karunamoyee Metro',
+        brand: 'Zepto',
+        address: 'BJ Block, Near Central Park Metro Gate 2, Salt Lake, Kolkata 700091',
+        lat: 22.5820,
+        lon: 88.4135,
+        estimatedDeliveryMins: 10,
+        status: 'Online',
+        logo: 'images/zepto.png'
+    },
+    {
+        id: 'bbnow-sec3',
+        name: 'BigBasket (BB Now) Dark Store - Salt Lake Sec-III',
+        brand: 'BigBasket',
+        address: 'Near IB Block & City Centre 1 Metro, Salt Lake, Kolkata 700064',
+        lat: 22.5862,
+        lon: 88.4095,
+        estimatedDeliveryMins: 12,
+        status: 'Online',
+        logo: 'images/bigbasket.png'
+    },
+    {
+        id: 'instamart-sec1',
+        name: 'Swiggy Instamart Pod - Salt Lake Sec-I',
+        brand: 'Instamart',
+        address: 'Labony Estate Road, EC Block, Salt Lake, Kolkata 700064',
+        lat: 22.5890,
+        lon: 88.4120,
+        estimatedDeliveryMins: 14,
+        status: 'Online',
+        logo: 'images/instamart.png'
+    },
+    {
+        id: 'flipkart-sec5',
+        name: 'Flipkart Minutes Hub - Bidhannagar Sec-V Gate',
+        brand: 'Flipkart Minutes',
+        address: 'Near SDF Building & Sector V Metro, Salt Lake, Kolkata 700091',
+        lat: 22.5745,
+        lon: 88.4310,
+        estimatedDeliveryMins: 15,
+        status: 'Online',
+        logo: 'images/flipkart.svg'
+    }
+];
+
+// GET /api/serviceability/dark-stores?lat=...&lon=...
+router.get('/dark-stores', (req, res) => {
+    try {
+        // Default reference location: Salt Lake Metro Station, Kolkata
+        const refLat = parseFloat(req.query.lat) || 22.5804;
+        const refLon = parseFloat(req.query.lon) || 88.4172;
+        const locationName = req.query.name || 'Salt Lake Metro Station, Kolkata';
+
+        const storesWithDistance = SALT_LAKE_DARK_STORES.map(store => {
+            const distanceMeters = getHaversineDistanceMeters(refLat, refLon, store.lat, store.lon);
+            const distanceKm = (distanceMeters / 1000).toFixed(2);
+            const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${refLat},${refLon}&destination=${store.lat},${store.lon}&travelmode=driving`;
+
+            return {
+                ...store,
+                distanceMeters,
+                distanceKm: parseFloat(distanceKm),
+                googleMapsUrl
+            };
+        }).sort((a, b) => a.distanceMeters - b.distanceMeters);
+
+        res.json({
+            success: true,
+            referenceLocation: {
+                name: locationName,
+                lat: refLat,
+                lon: refLon
+            },
+            totalDarkStores: storesWithDistance.length,
+            darkStores: storesWithDistance
+        });
+    } catch (err) {
+        res.status(500).json({ success: false, error: err.message });
+    }
+});
+
 module.exports = router;

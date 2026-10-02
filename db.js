@@ -98,8 +98,8 @@ function seedInitialData() {
                 text_color: '#FFFFFF',
                 delivery_time: '8 mins',
                 delivery_fee: 15,
-                handling_fee: 5,
-                free_threshold: 149,
+                handling_fee: 4,
+                free_threshold: 199,
                 logo_svg: `<img src="images/zepto.png" alt="Zepto" class="w-8 h-8 rounded-lg object-contain shadow-xs">`
             },
             {
@@ -107,10 +107,10 @@ function seedInitialData() {
                 name: 'BigBasket',
                 color: '#84CC16',
                 text_color: '#000000',
-                delivery_time: '15-20 mins',
-                delivery_fee: 20,
-                handling_fee: 2,
-                free_threshold: 299,
+                delivery_time: '15 mins',
+                delivery_fee: 15,
+                handling_fee: 3,
+                free_threshold: 199,
                 logo_svg: `<img src="images/bigbasket.png" alt="BigBasket" class="w-8 h-8 rounded-lg object-contain bg-white shadow-xs">`
             },
             {
@@ -119,9 +119,9 @@ function seedInitialData() {
                 color: '#2563EB',
                 text_color: '#FFFFFF',
                 delivery_time: '12 mins',
-                delivery_fee: 10,
+                delivery_fee: 15,
                 handling_fee: 3,
-                free_threshold: 99,
+                free_threshold: 199,
                 logo_svg: `<img src="images/flipkart.svg" alt="Flipkart Minutes" class="w-8 h-8 rounded-lg object-contain shadow-xs">`
             },
             {
@@ -131,7 +131,7 @@ function seedInitialData() {
                 text_color: '#FFFFFF',
                 delivery_time: '11 mins',
                 delivery_fee: 15,
-                handling_fee: 5,
+                handling_fee: 4,
                 free_threshold: 199,
                 logo_svg: `<img src="images/instamart.png" alt="Instamart" class="w-8 h-8 rounded-lg object-contain shadow-xs">`
             }

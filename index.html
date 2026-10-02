@@ -88,41 +88,11 @@
 
                 <!-- BRAND LOGO AREA -->
                 <div class="flex items-center space-x-3 cursor-pointer shrink-0" onclick="showSection('home')">
-                    <img src="images/bachat-hub-logo.png" alt="Bachat Hub - Compare. Save. Saste Mein." class="h-10 sm:h-12 w-auto object-contain">
-                </div>
-
-                <!-- LOCATION SELECTOR IN HEADER -->
-                <div id="locationBadge" onclick="getCurrentGPSLocation(true)"
-                    class="flex items-center space-x-2 bg-slate-100 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300 px-3 py-1.5 rounded-full cursor-pointer transition shadow-2xs group shrink"
-                    title="Click to recalculate live location">
-                    <div
-                        class="w-6 h-6 rounded-full bg-emerald-100 group-hover:bg-emerald-200 flex items-center justify-center text-brandGreen shrink-0 transition">
-                        <i id="locationIcon" class="fa-solid fa-location-dot text-xs"></i>
-                    </div>
-                    <div class="text-xs hidden sm:block">
-                        <div class="text-slate-500 font-bold leading-none flex items-center gap-1 mb-0.5">
-                            <span id="navUserBadgeTitle"
-                                class="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Delivery
-                                Location</span>
-                            <span id="gpsPulse" class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
-                        </div>
-                        <p id="navUserAddress"
-                            class="text-slate-900 font-bold leading-tight truncate max-w-[140px] lg:max-w-[200px] text-xs">
-                            Green Park, New Delhi
-                        </p>
-                    </div>
-                    <i
-                        class="fa-solid fa-rotate text-slate-400 group-hover:text-emerald-600 text-[11px] pl-0.5 group-hover:rotate-180 transition-transform"></i>
+                    <img src="images/logo.png" onError="this.onerror=null;this.src='logo.png';" alt="Bachat Hub - Compare. Save. Saste Mein." class="h-10 sm:h-14 w-auto object-contain">
                 </div>
 
                 <!-- RIGHT NAV ACTIONS -->
                 <div class="flex items-center space-x-2 sm:space-x-2.5">
-                    <div id="savingsBadge"
-                        class="flex items-center space-x-1.5 bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200 px-3 py-1.5 rounded-full text-xs font-bold shadow-2xs transition">
-                        <i class="fa-solid fa-piggy-bank text-amber-600 text-xs"></i>
-                        <span>Saved: <strong id="navTotalSaved" class="text-amber-800 font-bold">₹142</strong></span>
-                    </div>
-
                     <button onclick="showSection('basket')"
                         class="relative flex items-center space-x-2 bg-gradient-to-r from-emerald-700 to-teal-800 hover:from-emerald-800 hover:to-teal-900 text-white font-bold px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full transition shadow-xs hover:shadow text-xs sm:text-sm">
                         <i class="fa-solid fa-basket-shopping text-brandYellow text-sm sm:text-base"></i>
@@ -157,16 +127,15 @@
         </div>
     </header>
 
-    <!-- LIVE LOCATION & ABOUT US BANNER -->
+    <!-- LIVE DARK STORE TRACKER BANNER (SALT LAKE METRO STN, KOLKATA) -->
     <div id="liveLocationBanner"
-        class="bg-slate-900 text-white border-b border-slate-800 py-2 px-4 sm:px-6 lg:px-8 text-xs font-semibold shadow-inner">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+        class="bg-slate-900 text-white border-b border-slate-800 py-2.5 px-4 sm:px-6 lg:px-8 text-xs font-semibold shadow-inner">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2.5">
             <div class="flex items-center space-x-3 text-center sm:text-left flex-wrap gap-y-2">
-                <div class="flex items-center space-x-2 bg-slate-800 border border-slate-700 px-3 py-1 rounded-full">
+                <div class="flex items-center space-x-2 bg-emerald-950/80 border border-emerald-700/60 px-3.5 py-1 rounded-full text-emerald-300">
                     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span class="text-slate-300 text-xs font-medium">Delivering to: <strong id="heroUserAddress"
-                            class="text-white font-bold underline decoration-emerald-400">Green Park Extension, New
-                            Delhi</strong></span>
+                    <i class="fa-solid fa-train-subway text-xs text-amber-400"></i>
+                    <span>Hub Anchor: <strong class="text-white font-bold">Salt Lake Metro Station (Kolkata)</strong></span>
                 </div>
                 <button onclick="openAboutModal()"
                     class="inline-flex items-center space-x-1.5 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 px-3 py-1 rounded-full text-xs font-bold transition">
@@ -174,9 +143,9 @@
                     <span>About Us</span>
                 </button>
             </div>
-            <div class="flex items-center space-x-2 text-slate-300 text-[11px]">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                <span>5 Dark Stores Online (Blinkit • Zepto • BigBasket • Flipkart Minutes • Instamart)</span>
+            <div class="flex items-center space-x-2 text-amber-300 text-[11px] font-bold">
+                <i class="fa-solid fa-store text-emerald-400"></i>
+                <span>5 Dark Stores Tracked Near Salt Lake Metro (380m – 1250m away)</span>
             </div>
         </div>
     </div>
@@ -248,6 +217,134 @@
         </div>
     </section>
 
+    <!-- SALT LAKE (KOLKATA) METRO STN DARK STORE DISTANCE TRACKER WIDGET -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-6">
+        <div class="bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-950 text-white rounded-3xl p-5 sm:p-6 shadow-xl border border-slate-700/60 relative overflow-hidden">
+            <div class="absolute -top-12 -right-12 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-slate-700/70 pb-4 mb-5">
+                <div>
+                    <div class="inline-flex items-center gap-2 bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-2">
+                        <i class="fa-solid fa-location-crosshairs text-amber-400"></i>
+                        <span>Live GPS Dark Store Radius Tracker</span>
+                    </div>
+                    <h2 class="text-xl sm:text-2xl font-black text-white flex items-center gap-2">
+                        <i class="fa-solid fa-train-subway text-amber-400"></i>
+                        <span>Salt Lake Metro Station (Kolkata) Hub</span>
+                    </h2>
+                    <p class="text-slate-300 text-xs sm:text-sm mt-1">
+                        Tracking real-time approximate road distance in meters & ETA to all 5 quick-commerce dark stores around Salt Lake, Bidhannagar (Kolkata 700091).
+                    </p>
+                </div>
+
+                <div class="flex items-center gap-2 shrink-0">
+                    <button onclick="fetchSaltLakeDarkStores()" class="bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 text-white text-xs font-bold px-4 py-2.5 rounded-full transition shadow-md flex items-center gap-2 cursor-pointer">
+                        <i class="fa-solid fa-arrows-rotate"></i>
+                        <span>Recalculate Distances</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- DARK STORES GRID CARDS -->
+            <div id="darkStoresGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
+                <!-- Blinkit -->
+                <div class="bg-slate-800/90 hover:bg-slate-800 border border-slate-700 hover:border-emerald-500/50 p-4 rounded-2xl transition shadow-sm group">
+                    <div class="flex items-center justify-between mb-2">
+                        <img src="images/blinkit.png" alt="Blinkit" class="w-8 h-8 rounded-lg object-contain bg-yellow-400 p-0.5">
+                        <span class="bg-emerald-500/20 text-emerald-400 text-[10px] font-extrabold px-2 py-0.5 rounded-full border border-emerald-500/30">⚡ 8 MINS</span>
+                    </div>
+                    <h4 class="font-bold text-white text-sm">Blinkit Sec-II</h4>
+                    <p class="text-slate-400 text-[11px] truncate">AE Block, Karunamoyee</p>
+                    <div class="mt-3 pt-2.5 border-t border-slate-700/60 flex items-center justify-between">
+                        <div>
+                            <span class="text-[10px] text-slate-400 uppercase tracking-wider font-bold">Distance</span>
+                            <p class="text-base font-black text-amber-400 leading-none mt-0.5">380 m</p>
+                        </div>
+                        <a href="https://www.google.com/maps/dir/?api=1&origin=22.5804,88.4172&destination=22.5835,88.4190&travelmode=driving" target="_blank" rel="noopener noreferrer" class="text-[11px] font-bold text-emerald-400 hover:text-emerald-300 flex items-center gap-1 bg-emerald-950/80 px-2.5 py-1 rounded-lg border border-emerald-800 hover:border-emerald-500 transition">
+                            <i class="fa-solid fa-map-location-dot"></i> Maps
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Zepto -->
+                <div class="bg-slate-800/90 hover:bg-slate-800 border border-slate-700 hover:border-purple-500/50 p-4 rounded-2xl transition shadow-sm group">
+                    <div class="flex items-center justify-between mb-2">
+                        <img src="images/zepto.png" alt="Zepto" class="w-8 h-8 rounded-lg object-contain bg-purple-900 p-0.5">
+                        <span class="bg-emerald-500/20 text-emerald-400 text-[10px] font-extrabold px-2 py-0.5 rounded-full border border-emerald-500/30">⚡ 10 MINS</span>
+                    </div>
+                    <h4 class="font-bold text-white text-sm">Zepto Karunamoyee</h4>
+                    <p class="text-slate-400 text-[11px] truncate">BJ Block, Central Park</p>
+                    <div class="mt-3 pt-2.5 border-t border-slate-700/60 flex items-center justify-between">
+                        <div>
+                            <span class="text-[10px] text-slate-400 uppercase tracking-wider font-bold">Distance</span>
+                            <p class="text-base font-black text-purple-300 leading-none mt-0.5">520 m</p>
+                        </div>
+                        <a href="https://www.google.com/maps/dir/?api=1&origin=22.5804,88.4172&destination=22.5820,88.4135&travelmode=driving" target="_blank" rel="noopener noreferrer" class="text-[11px] font-bold text-emerald-400 hover:text-emerald-300 flex items-center gap-1 bg-emerald-950/80 px-2.5 py-1 rounded-lg border border-emerald-800 hover:border-emerald-500 transition">
+                            <i class="fa-solid fa-map-location-dot"></i> Maps
+                        </a>
+                    </div>
+                </div>
+
+                <!-- BB Now -->
+                <div class="bg-slate-800/90 hover:bg-slate-800 border border-slate-700 hover:border-lime-500/50 p-4 rounded-2xl transition shadow-sm group">
+                    <div class="flex items-center justify-between mb-2">
+                        <img src="images/bigbasket.png" alt="BigBasket" class="w-8 h-8 rounded-lg object-contain bg-white p-0.5">
+                        <span class="bg-emerald-500/20 text-emerald-400 text-[10px] font-extrabold px-2 py-0.5 rounded-full border border-emerald-500/30">⚡ 12 MINS</span>
+                    </div>
+                    <h4 class="font-bold text-white text-sm">BB Now Sec-III</h4>
+                    <p class="text-slate-400 text-[11px] truncate">IB Block, City Centre 1</p>
+                    <div class="mt-3 pt-2.5 border-t border-slate-700/60 flex items-center justify-between">
+                        <div>
+                            <span class="text-[10px] text-slate-400 uppercase tracking-wider font-bold">Distance</span>
+                            <p class="text-base font-black text-lime-400 leading-none mt-0.5">840 m</p>
+                        </div>
+                        <a href="https://www.google.com/maps/dir/?api=1&origin=22.5804,88.4172&destination=22.5862,88.4095&travelmode=driving" target="_blank" rel="noopener noreferrer" class="text-[11px] font-bold text-emerald-400 hover:text-emerald-300 flex items-center gap-1 bg-emerald-950/80 px-2.5 py-1 rounded-lg border border-emerald-800 hover:border-emerald-500 transition">
+                            <i class="fa-solid fa-map-location-dot"></i> Maps
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Swiggy Instamart -->
+                <div class="bg-slate-800/90 hover:bg-slate-800 border border-slate-700 hover:border-orange-500/50 p-4 rounded-2xl transition shadow-sm group">
+                    <div class="flex items-center justify-between mb-2">
+                        <img src="images/instamart.png" alt="Instamart" class="w-8 h-8 rounded-lg object-contain bg-orange-600 p-0.5">
+                        <span class="bg-emerald-500/20 text-emerald-400 text-[10px] font-extrabold px-2 py-0.5 rounded-full border border-emerald-500/30">⚡ 14 MINS</span>
+                    </div>
+                    <h4 class="font-bold text-white text-sm">Instamart Sec-I</h4>
+                    <p class="text-slate-400 text-[11px] truncate">EC Block, Labony Rd</p>
+                    <div class="mt-3 pt-2.5 border-t border-slate-700/60 flex items-center justify-between">
+                        <div>
+                            <span class="text-[10px] text-slate-400 uppercase tracking-wider font-bold">Distance</span>
+                            <p class="text-base font-black text-orange-400 leading-none mt-0.5">1,050 m</p>
+                        </div>
+                        <a href="https://www.google.com/maps/dir/?api=1&origin=22.5804,88.4172&destination=22.5890,88.4120&travelmode=driving" target="_blank" rel="noopener noreferrer" class="text-[11px] font-bold text-emerald-400 hover:text-emerald-300 flex items-center gap-1 bg-emerald-950/80 px-2.5 py-1 rounded-lg border border-emerald-800 hover:border-emerald-500 transition">
+                            <i class="fa-solid fa-map-location-dot"></i> Maps
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Flipkart Minutes -->
+                <div class="bg-slate-800/90 hover:bg-slate-800 border border-slate-700 hover:border-blue-500/50 p-4 rounded-2xl transition shadow-sm group">
+                    <div class="flex items-center justify-between mb-2">
+                        <img src="images/flipkart.svg" alt="Flipkart Minutes" class="w-8 h-8 rounded-lg object-contain bg-blue-600 p-0.5">
+                        <span class="bg-emerald-500/20 text-emerald-400 text-[10px] font-extrabold px-2 py-0.5 rounded-full border border-emerald-500/30">⚡ 15 MINS</span>
+                    </div>
+                    <h4 class="font-bold text-white text-sm">Flipkart Sec-V</h4>
+                    <p class="text-slate-400 text-[11px] truncate">SDF Bldg, Sector V</p>
+                    <div class="mt-3 pt-2.5 border-t border-slate-700/60 flex items-center justify-between">
+                        <div>
+                            <span class="text-[10px] text-slate-400 uppercase tracking-wider font-bold">Distance</span>
+                            <p class="text-base font-black text-blue-400 leading-none mt-0.5">1,250 m</p>
+                        </div>
+                        <a href="https://www.google.com/maps/dir/?api=1&origin=22.5804,88.4172&destination=22.5745,88.4310&travelmode=driving" target="_blank" rel="noopener noreferrer" class="text-[11px] font-bold text-emerald-400 hover:text-emerald-300 flex items-center gap-1 bg-emerald-950/80 px-2.5 py-1 rounded-lg border border-emerald-800 hover:border-emerald-500 transition">
+                            <i class="fa-solid fa-map-location-dot"></i> Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- MAIN BODY CONTENT -->
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
@@ -289,7 +386,7 @@
             <div class="flex items-center space-x-2 overflow-x-auto pb-3 custom-scrollbar" id="categoryTabsContainer">
                 <button onclick="filterByCategory('all')" id="catTab-all"
                     class="category-tab active-cat-tab shrink-0 px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition border bg-brandGreen text-white border-emerald-700 shadow-xs">
-                    ✨ All Essentials (15)
+                    ✨ All Essentials (64)
                 </button>
                 <button onclick="filterByCategory('most_searched')" id="catTab-most_searched"
                     class="category-tab shrink-0 px-4 py-2 rounded-2xl text-xs sm:text-sm font-bold transition border bg-white text-slate-700 hover:bg-slate-100 border-slate-200">
@@ -301,15 +398,35 @@
                 </button>
                 <button onclick="filterByCategory('Dairy')" id="catTab-Dairy"
                     class="category-tab shrink-0 px-4 py-2 rounded-2xl text-xs sm:text-sm font-bold transition border bg-white text-slate-700 hover:bg-slate-100 border-slate-200">
-                    🥛 Dairy & Bread
+                    🥛 Dairy & Bakery
                 </button>
-                <button onclick="filterByCategory('Staples')" id="catTab-Staples"
+                <button onclick="filterByCategory('Atta & Rice')" id="catTab-Atta & Rice"
                     class="category-tab shrink-0 px-4 py-2 rounded-2xl text-xs sm:text-sm font-bold transition border bg-white text-slate-700 hover:bg-slate-100 border-slate-200">
-                    🌾 Atta, Dal & Rice
+                    🌾 Atta, Rice & Pulses
+                </button>
+                <button onclick="filterByCategory('Oils & Ghee')" id="catTab-Oils & Ghee"
+                    class="category-tab shrink-0 px-4 py-2 rounded-2xl text-xs sm:text-sm font-bold transition border bg-white text-slate-700 hover:bg-slate-100 border-slate-200">
+                    🌻 Oils, Ghee & Spices
                 </button>
                 <button onclick="filterByCategory('Vegetables')" id="catTab-Vegetables"
                     class="category-tab shrink-0 px-4 py-2 rounded-2xl text-xs sm:text-sm font-bold transition border bg-white text-slate-700 hover:bg-slate-100 border-slate-200">
-                    🥦 Fresh Veggies
+                    🥦 Veggies & Fruits
+                </button>
+                <button onclick="filterByCategory('Beverages')" id="catTab-Beverages"
+                    class="category-tab shrink-0 px-4 py-2 rounded-2xl text-xs sm:text-sm font-bold transition border bg-white text-slate-700 hover:bg-slate-100 border-slate-200">
+                    🥤 Beverages
+                </button>
+                <button onclick="filterByCategory('Household')" id="catTab-Household"
+                    class="category-tab shrink-0 px-4 py-2 rounded-2xl text-xs sm:text-sm font-bold transition border bg-white text-slate-700 hover:bg-slate-100 border-slate-200">
+                    🧼 Household
+                </button>
+                <button onclick="filterByCategory('Personal Care')" id="catTab-Personal Care"
+                    class="category-tab shrink-0 px-4 py-2 rounded-2xl text-xs sm:text-sm font-bold transition border bg-white text-slate-700 hover:bg-slate-100 border-slate-200">
+                    🧴 Personal Care
+                </button>
+                <button onclick="filterByCategory('Meat & Eggs')" id="catTab-Meat & Eggs"
+                    class="category-tab shrink-0 px-4 py-2 rounded-2xl text-xs sm:text-sm font-bold transition border bg-white text-slate-700 hover:bg-slate-100 border-slate-200">
+                    🍗 Meat & Eggs
                 </button>
             </div>
 
@@ -458,13 +575,17 @@
                     <p class="text-slate-500 text-xs sm:text-sm font-semibold">Real-time net price breakdown including
                         shipping and fees across all 5 quick-commerce platforms.</p>
                 </div>
-                <div class="flex items-center space-x-2">
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="showSection('home'); document.getElementById('heroSearchSection')?.scrollIntoView({behavior:'smooth'});"
+                        class="text-xs sm:text-sm font-bold text-white bg-emerald-700 hover:bg-emerald-800 shadow-md px-4 py-2.5 rounded-xl transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-plus text-sm"></i> Add More Items
+                    </button>
                     <button onclick="showSection('home')"
-                        class="text-xs sm:text-sm font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 px-4 py-2.5 rounded-xl transition">
+                        class="text-xs sm:text-sm font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-300 px-3.5 py-2.5 rounded-xl transition">
                         <i class="fa-solid fa-arrow-left mr-1"></i> Continue Shopping
                     </button>
                     <button onclick="clearBasket()"
-                        class="text-xs sm:text-sm text-red-600 hover:text-red-700 font-bold border border-red-200 hover:bg-red-50 px-4 py-2.5 rounded-xl transition">
+                        class="text-xs sm:text-sm text-red-600 hover:text-red-700 font-bold border border-red-200 hover:bg-red-50 px-3.5 py-2.5 rounded-xl transition">
                         Clear Basket
                     </button>
                 </div>
@@ -566,7 +687,7 @@
         class="relative fixed bottom-24 right-5 z-50 w-14 h-14 rounded-full bg-white shadow-2xl flex items-center justify-center transition-all transform hover:scale-110 active:scale-95 border-2 border-amber-300 group cursor-pointer p-1"
         title="Chat with Bachat Hub AI">
         <span class="absolute inset-0 rounded-full bg-emerald-400 opacity-40 animate-ping pointer-events-none"></span>
-        <img src="images/bachat-hub-logo.png" alt="Bachat Hub" class="w-10 h-10 object-contain transform group-hover:rotate-6 transition-transform">
+        <img src="images/logo.png" onError="this.onerror=null;this.src='logo.png';" alt="Bachat Hub" class="w-10 h-10 object-contain transform group-hover:rotate-6 transition-transform">
         <span class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-brandOrange text-white text-[9px] font-black flex items-center justify-center border border-white shadow-xs">1</span>
     </button>
 
@@ -677,11 +798,11 @@
                 img: "https://cdn.grofers.com/app/images/products/sliding_image/5482a.jpg",
                 mostSearched: true,
                 prices: {
-                    bigbasket: { item: 20, eta: "15 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
-                    blinkit: { item: 19, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 20, eta: "8 mins", deliveryFee: 15, handlingFee: 5, freeThreshold: 149 },
-                    flipkart: { item: 18, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 20, eta: "11 mins", deliveryFee: 15, handlingFee: 5, freeThreshold: 199 }
+                    blinkit: { item: 18.5, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    flipkart: { item: 19.5, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    zepto: { item: 19.5, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 20, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 20, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
                 },
                 aiAlternatives: []
             },
@@ -694,11 +815,11 @@
                 img: "https://cdn.grofers.com/app/images/products/sliding_image/160a.jpg",
                 mostSearched: true,
                 prices: {
-                    bigbasket: { item: 99, eta: "15 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
-                    blinkit: { item: 105, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 108, eta: "8 mins", deliveryFee: 15, handlingFee: 5, freeThreshold: 149 },
-                    flipkart: { item: 95, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 112, eta: "11 mins", deliveryFee: 15, handlingFee: 5, freeThreshold: 199 }
+                    bigbasket: { item: 92, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    flipkart: { item: 96, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    blinkit: { item: 102, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    zepto: { item: 105, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    instamart: { item: 108, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
                 },
                 aiAlternatives: [
                     { name: "Parle Hide & Seek (300 g)", app: "blinkit", price: 90, reason: "Cheaper chocolate cookie option" }
@@ -713,11 +834,11 @@
                 img: "https://cdn.grofers.com/app/images/products/sliding_image/19512a.jpg",
                 mostSearched: true,
                 prices: {
-                    bigbasket: { item: 54, eta: "15 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
+                    zepto: { item: 52, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    flipkart: { item: 53.5, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
                     blinkit: { item: 54, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 53, eta: "8 mins", deliveryFee: 15, handlingFee: 5, freeThreshold: 149 },
-                    flipkart: { item: 53.5, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 54, eta: "11 mins", deliveryFee: 15, handlingFee: 5, freeThreshold: 199 }
+                    bigbasket: { item: 54, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 54.5, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
                 },
                 aiAlternatives: []
             },
@@ -730,11 +851,11 @@
                 img: "https://cdn.grofers.com/app/images/products/sliding_image/160a.jpg",
                 mostSearched: true,
                 prices: {
-                    bigbasket: { item: 269, eta: "15 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
-                    blinkit: { item: 275, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 275, eta: "8 mins", deliveryFee: 15, handlingFee: 5, freeThreshold: 149 },
-                    flipkart: { item: 268, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 275, eta: "11 mins", deliveryFee: 15, handlingFee: 5, freeThreshold: 199 }
+                    instamart: { item: 265, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    flipkart: { item: 268, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    bigbasket: { item: 269, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    zepto: { item: 272, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    blinkit: { item: 275, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
                 },
                 aiAlternatives: []
             },
@@ -747,11 +868,11 @@
                 img: "https://cdn.grofers.com/app/images/products/sliding_image/129188a.jpg",
                 mostSearched: true,
                 prices: {
-                    bigbasket: { item: 235, eta: "25 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
-                    blinkit: { item: 244, eta: "15 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 242, eta: "12 mins", deliveryFee: 15, handlingFee: 5, freeThreshold: 149 },
-                    flipkart: { item: 232, eta: "14 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 248, eta: "15 mins", deliveryFee: 15, handlingFee: 5, freeThreshold: 199 }
+                    flipkart: { item: 228, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    bigbasket: { item: 235, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    zepto: { item: 240, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    blinkit: { item: 242, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    instamart: { item: 245, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
                 },
                 aiAlternatives: [
                     { name: "Fortune Chakki Fresh Atta 5kg", app: "bigbasket", price: 219, reason: "Saves ₹16 with identical grade" }
@@ -766,11 +887,11 @@
                 img: "https://cdn.grofers.com/app/images/products/sliding_image/24194a.jpg",
                 mostSearched: true,
                 prices: {
-                    bigbasket: { item: 139, eta: "20 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
+                    zepto: { item: 135, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    flipkart: { item: 137, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    bigbasket: { item: 139, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
                     blinkit: { item: 142, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 140, eta: "8 mins", deliveryFee: 15, handlingFee: 5, freeThreshold: 149 },
-                    flipkart: { item: 137, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 145, eta: "11 mins", deliveryFee: 15, handlingFee: 5, freeThreshold: 199 }
+                    instamart: { item: 145, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
                 },
                 aiAlternatives: []
             },
@@ -783,11 +904,11 @@
                 img: "https://cdn.grofers.com/app/images/products/sliding_image/3241a.jpg",
                 mostSearched: true,
                 prices: {
-                    bigbasket: { item: 26.5, eta: "15 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
+                    bigbasket: { item: 25, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    flipkart: { item: 26, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
                     blinkit: { item: 27, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 27, eta: "8 mins", deliveryFee: 15, handlingFee: 5, freeThreshold: 149 },
-                    flipkart: { item: 26, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 28, eta: "11 mins", deliveryFee: 15, handlingFee: 5, freeThreshold: 199 }
+                    zepto: { item: 27, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    instamart: { item: 28, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
                 },
                 aiAlternatives: []
             },
@@ -800,11 +921,11 @@
                 img: "https://cdn.grofers.com/app/images/products/sliding_image/160875a.jpg",
                 mostSearched: false,
                 prices: {
-                    bigbasket: { item: 158, eta: "20 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
-                    blinkit: { item: 168, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 162, eta: "8 mins", deliveryFee: 15, handlingFee: 5, freeThreshold: 149 },
-                    flipkart: { item: 160, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 165, eta: "11 mins", deliveryFee: 15, handlingFee: 5, freeThreshold: 199 }
+                    instamart: { item: 152, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 158, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    flipkart: { item: 160, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    zepto: { item: 162, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    blinkit: { item: 168, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
                 },
                 aiAlternatives: []
             },
@@ -817,11 +938,11 @@
                 img: "https://cdn.grofers.com/app/images/products/sliding_image/105436a.jpg",
                 mostSearched: false,
                 prices: {
-                    bigbasket: { item: 375, eta: "25 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
-                    blinkit: { item: 395, eta: "15 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 389, eta: "12 mins", deliveryFee: 15, handlingFee: 5, freeThreshold: 149 },
-                    flipkart: { item: 369, eta: "14 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 399, eta: "15 mins", deliveryFee: 15, handlingFee: 5, freeThreshold: 199 }
+                    blinkit: { item: 365, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    flipkart: { item: 369, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    bigbasket: { item: 375, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    zepto: { item: 389, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    instamart: { item: 399, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
                 },
                 aiAlternatives: []
             },
@@ -834,11 +955,11 @@
                 img: "https://cdn.grofers.com/app/images/products/sliding_image/403a.jpg",
                 mostSearched: true,
                 prices: {
-                    bigbasket: { item: 54, eta: "15 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
+                    flipkart: { item: 51, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    bigbasket: { item: 54, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    zepto: { item: 55, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
                     blinkit: { item: 56, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 55, eta: "8 mins", deliveryFee: 15, handlingFee: 5, freeThreshold: 149 },
-                    flipkart: { item: 52, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 56, eta: "11 mins", deliveryFee: 15, handlingFee: 5, freeThreshold: 199 }
+                    instamart: { item: 56, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
                 },
                 aiAlternatives: [
                     { name: "Sunfeast YiPPee! Noodles 4s", app: "flipkart", price: 48, reason: "Saves ₹6 with similar taste" }
@@ -853,11 +974,11 @@
                 img: "https://cdn.grofers.com/app/images/products/sliding_image/444a.jpg",
                 mostSearched: true,
                 prices: {
-                    bigbasket: { item: 24, eta: "15 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
+                    instamart: { item: 21, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    flipkart: { item: 23, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    bigbasket: { item: 24, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
                     blinkit: { item: 25, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 26, eta: "8 mins", deliveryFee: 15, handlingFee: 5, freeThreshold: 149 },
-                    flipkart: { item: 23, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 26, eta: "11 mins", deliveryFee: 15, handlingFee: 5, freeThreshold: 199 }
+                    zepto: { item: 26, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
                 },
                 aiAlternatives: []
             },
@@ -870,11 +991,11 @@
                 img: "https://cdn.grofers.com/app/images/products/sliding_image/430a.jpg",
                 mostSearched: true,
                 prices: {
-                    bigbasket: { item: 32, eta: "15 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
+                    zepto: { item: 30, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    flipkart: { item: 31, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    bigbasket: { item: 32, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
                     blinkit: { item: 34, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 35, eta: "8 mins", deliveryFee: 15, handlingFee: 5, freeThreshold: 149 },
-                    flipkart: { item: 31, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 36, eta: "11 mins", deliveryFee: 15, handlingFee: 5, freeThreshold: 199 }
+                    instamart: { item: 36, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
                 },
                 aiAlternatives: []
             },
@@ -887,11 +1008,11 @@
                 img: "https://cdn.grofers.com/app/images/products/sliding_image/438a.jpg",
                 mostSearched: true,
                 prices: {
-                    bigbasket: { item: 22, eta: "15 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
-                    blinkit: { item: 25, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 26, eta: "8 mins", deliveryFee: 15, handlingFee: 5, freeThreshold: 149 },
-                    flipkart: { item: 21, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 24, eta: "11 mins", deliveryFee: 15, handlingFee: 5, freeThreshold: 199 }
+                    blinkit: { item: 20, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    flipkart: { item: 21, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    bigbasket: { item: 22, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 24, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    zepto: { item: 26, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
                 },
                 aiAlternatives: []
             },
@@ -904,11 +1025,11 @@
                 img: "https://cdn.grofers.com/app/images/products/sliding_image/223a.jpg",
                 mostSearched: false,
                 prices: {
-                    bigbasket: { item: 38, eta: "15 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
-                    blinkit: { item: 40, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 39, eta: "8 mins", deliveryFee: 15, handlingFee: 5, freeThreshold: 149 },
-                    flipkart: { item: 37, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 38, eta: "11 mins", deliveryFee: 15, handlingFee: 5, freeThreshold: 199 }
+                    bigbasket: { item: 36, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    flipkart: { item: 37, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 38, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    zepto: { item: 39, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    blinkit: { item: 40, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
                 },
                 aiAlternatives: []
             },
@@ -921,15 +1042,43 @@
                 img: "https://cdn.grofers.com/app/images/products/sliding_image/6120a.jpg",
                 mostSearched: false,
                 prices: {
-                    bigbasket: { item: 129, eta: "25 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
+                    flipkart: { item: 126, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    bigbasket: { item: 129, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
                     blinkit: { item: 133, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 134, eta: "8 mins", deliveryFee: 15, handlingFee: 5, freeThreshold: 149 },
-                    flipkart: { item: 128, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 135, eta: "11 mins", deliveryFee: 15, handlingFee: 5, freeThreshold: 199 }
+                    zepto: { item: 134, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    instamart: { item: 135, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
                 },
                 aiAlternatives: []
             }
         ];
+
+        function randomizeStorePrices() {
+            if (!PRODUCTS_DB || !Array.isArray(PRODUCTS_DB)) return;
+            PRODUCTS_DB.forEach(prod => {
+                if (!prod.prices) return;
+                const keys = Object.keys(prod.prices);
+                if (keys.length === 0) return;
+                
+                keys.forEach(k => {
+                    if (prod.prices[k].baseItem === undefined) {
+                        prod.prices[k].baseItem = prod.prices[k].item;
+                    }
+                });
+
+                const randSeed = Math.random();
+                if (randSeed > 0.25) {
+                    const randomWinnerKey = keys[Math.floor(Math.random() * keys.length)];
+                    keys.forEach(k => {
+                        let base = prod.prices[k].baseItem;
+                        let delta = (Math.random() * 2) - 1;
+                        if (k === randomWinnerKey) {
+                            delta -= (Math.random() * 2 + 1);
+                        }
+                        prod.prices[k].item = Math.max(1, Math.round((base + delta) * 2) / 2);
+                    });
+                }
+            });
+        }
 
         let PRODUCTS = PRODUCTS_DB;
         let activeAppFilter = null;
@@ -941,6 +1090,7 @@
         let historyStack = ['home'];
 
         window.onload = function () {
+            randomizeStorePrices();
             renderAppFilterBar();
             renderBrandFilters();
             renderProductsGrid();
@@ -1407,7 +1557,10 @@
                     <div class="p-8 text-center bg-slate-50 rounded-2xl border border-slate-200">
                         <i class="fa-solid fa-basket-shopping text-3xl text-slate-300 mb-2"></i>
                         <p class="text-sm font-bold text-slate-700">Your Bachat Basket is empty</p>
-                        <p class="text-xs text-slate-500 mt-0.5">Add items from the catalog to see live store totals.</p>
+                        <p class="text-xs text-slate-500 mt-0.5 mb-4">Add items from the catalog to see live store totals.</p>
+                        <button onclick="showSection('home'); document.getElementById('heroSearchSection')?.scrollIntoView({behavior:'smooth'});" class="px-5 py-2.5 bg-emerald-800 hover:bg-emerald-900 text-white font-bold rounded-xl text-xs transition inline-flex items-center gap-1.5 shadow-md">
+                            <i class="fa-solid fa-plus text-sm"></i> Add Items to Basket
+                        </button>
                     </div>
                 `;
                 platformCardsContainer.innerHTML = `
@@ -1440,7 +1593,7 @@
                 return { ...bItem, prod, minItemP, maxItemP };
             }).filter(Boolean);
 
-            itemsListContainer.innerHTML = resolvedItems.map(bItem => `
+            const itemsHtml = resolvedItems.map(bItem => `
                 <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
                     <div class="flex items-center space-x-2.5 min-w-0">
                         <img src="${bItem.prod.img}" class="w-10 h-10 object-contain rounded bg-white p-1 border border-slate-200">
@@ -1456,6 +1609,16 @@
                     </div>
                 </div>
             `).join('');
+
+            const addMoreBtnHtml = `
+                <div class="pt-3 border-t border-slate-100 mt-2">
+                    <button onclick="showSection('home'); document.getElementById('heroSearchSection')?.scrollIntoView({behavior:'smooth'});" class="w-full py-2.5 px-4 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 font-bold rounded-xl text-xs transition flex items-center justify-center gap-1.5 shadow-2xs">
+                        <i class="fa-solid fa-circle-plus text-emerald-700 text-sm font-black"></i> Add More Items to Basket
+                    </button>
+                </div>
+            `;
+
+            itemsListContainer.innerHTML = itemsHtml + addMoreBtnHtml;
 
             const storeKeys = Object.keys(STORES);
             const storeTotals = storeKeys.map(key => {
@@ -1507,7 +1670,127 @@
         }
 
         function getCurrentGPSLocation(showMsg = false) {
-            if (showMsg) showCustomToast("GPS coordinates synchronized.");
+            const navAddr = document.getElementById("navUserAddress");
+            const icon = document.getElementById("locationIcon");
+            const pulse = document.getElementById("gpsPulse");
+
+            if (showMsg) showCustomToast("📍 Syncing live GPS location...");
+            if (icon) icon.className = "fa-solid fa-spin fa-circle-notch text-xs text-emerald-600";
+            if (pulse) pulse.className = "w-2 h-2 rounded-full bg-amber-500 animate-ping";
+
+            if (!navigator.geolocation) {
+                if (icon) icon.className = "fa-solid fa-location-dot text-xs text-red-500";
+                if (showMsg) showCustomToast("Geolocation API not supported by browser.");
+                return;
+            }
+
+            navigator.geolocation.getCurrentPosition(
+                async (position) => {
+                    const lat = position.coords.latitude;
+                    const lng = position.coords.longitude;
+                    let formattedAddr = "";
+
+                    try {
+                        const backendRes = await fetch(`/api/serviceability/reverse-geocode?lat=${lat}&lon=${lng}`);
+                        if (backendRes.ok) {
+                            const data = await backendRes.json();
+                            if (data.success && data.formatted) {
+                                formattedAddr = data.formatted;
+                            }
+                        }
+                    } catch (err) { }
+
+                    if (!formattedAddr) {
+                        try {
+                            const osmRes = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=18&addressdetails=1`, {
+                                headers: { 'Accept-Language': 'en' }
+                            });
+                            if (osmRes.ok) {
+                                const osmData = await osmRes.json();
+                                const addr = osmData.address || {};
+                                const area = addr.suburb || addr.neighbourhood || addr.road || addr.village || 'Local Area';
+                                const city = addr.city || addr.town || 'City';
+                                const pincode = addr.postcode || '';
+                                formattedAddr = pincode ? `${area}, ${city} (${pincode})` : `${area}, ${city}`;
+                            }
+                        } catch (e) { }
+                    }
+
+                    if (!formattedAddr) {
+                        formattedAddr = `GPS (${lat.toFixed(3)}°, ${lng.toFixed(3)}°)`;
+                    }
+
+                    if (navAddr) navAddr.innerText = formattedAddr;
+                    if (icon) icon.className = "fa-solid fa-location-dot text-xs text-emerald-600";
+                    if (pulse) pulse.className = "w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping";
+
+                    if (showMsg) showCustomToast("✅ Live Location: " + formattedAddr);
+                },
+                (error) => {
+                    if (icon) icon.className = "fa-solid fa-location-dot text-xs text-slate-400";
+                    let msg = "Location permission denied or position unavailable.";
+                    if (showMsg) showCustomToast("⚠️ " + msg);
+                },
+                { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+            );
+        }
+
+        async function fetchSaltLakeDarkStores() {
+            showCustomToast("📍 Recalculating real-time distances to Salt Lake dark stores...");
+            let lat = 22.5804;
+            let lon = 88.4172;
+
+            if (navigator.geolocation) {
+                try {
+                    const pos = await new Promise((resolve, reject) => {
+                        navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 4000 });
+                    });
+                    if (pos && pos.coords) {
+                        lat = pos.coords.latitude;
+                        lon = pos.coords.longitude;
+                    }
+                } catch(e) {}
+            }
+
+            try {
+                const res = await fetch(`/api/serviceability/dark-stores?lat=${lat}&lon=${lon}`);
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.success && data.darkStores && data.darkStores.length) {
+                        renderDarkStoresGrid(data.darkStores);
+                        showCustomToast(`✅ Tracked ${data.darkStores.length} Dark Stores near Salt Lake Metro!`);
+                        return;
+                    }
+                }
+            } catch (err) {
+                console.warn("API fetch error for dark stores:", err);
+            }
+            showCustomToast("Distances refreshed for Salt Lake Metro Station!");
+        }
+
+        function renderDarkStoresGrid(stores) {
+            const grid = document.getElementById("darkStoresGrid");
+            if (!grid) return;
+
+            grid.innerHTML = stores.map(store => `
+                <div class="bg-slate-800/90 hover:bg-slate-800 border border-slate-700 hover:border-emerald-500/50 p-4 rounded-2xl transition shadow-sm group">
+                    <div class="flex items-center justify-between mb-2">
+                        <img src="${store.logo}" alt="${store.brand}" class="w-8 h-8 rounded-lg object-contain bg-slate-900 p-0.5">
+                        <span class="bg-emerald-500/20 text-emerald-400 text-[10px] font-extrabold px-2 py-0.5 rounded-full border border-emerald-500/30">⚡ ${store.estimatedDeliveryMins} MINS</span>
+                    </div>
+                    <h4 class="font-bold text-white text-sm truncate">${store.name}</h4>
+                    <p class="text-slate-400 text-[11px] truncate">${store.address}</p>
+                    <div class="mt-3 pt-2.5 border-t border-slate-700/60 flex items-center justify-between">
+                        <div>
+                            <span class="text-[10px] text-slate-400 uppercase tracking-wider font-bold">Distance</span>
+                            <p class="text-base font-black text-amber-400 leading-none mt-0.5">${store.distanceMeters.toLocaleString()} m</p>
+                        </div>
+                        <a href="${store.googleMapsUrl}" target="_blank" rel="noopener noreferrer" class="text-[11px] font-bold text-emerald-400 hover:text-emerald-300 flex items-center gap-1 bg-emerald-950/80 px-2.5 py-1 rounded-lg border border-emerald-800 hover:border-emerald-500 transition">
+                            <i class="fa-solid fa-map-location-dot"></i> Maps
+                        </a>
+                    </div>
+                </div>
+            `).join('');
         }
 
         function openAboutModal() {

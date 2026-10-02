@@ -35,6 +35,7 @@ app.get('/api/status', (req, res) => {
     });
 });
 
+app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use(express.static(path.join(__dirname)));
 
 app.use((req, res, next) => {

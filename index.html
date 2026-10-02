@@ -1575,6 +1575,59 @@
             }
         };
 
+        const STORES = {
+            blinkit: {
+                name: "Blinkit",
+                color: "#F7C600",
+                logoText: "Blinkit",
+                logoImg: "images/blinkit.png",
+                deliveryFee: 15,
+                handlingFee: 4,
+                freeThreshold: 199,
+                eta: "10 mins"
+            },
+            zepto: {
+                name: "Zepto",
+                color: "#A033FF",
+                logoText: "Zepto",
+                logoImg: "images/zepto.png",
+                deliveryFee: 12,
+                handlingFee: 5,
+                freeThreshold: 149,
+                eta: "8 mins"
+            },
+            bigbasket: {
+                name: "BigBasket",
+                color: "#84C225",
+                logoText: "BigBasket",
+                logoImg: "images/bigbasket.png",
+                deliveryFee: 20,
+                handlingFee: 2,
+                freeThreshold: 299,
+                eta: "15 mins"
+            },
+            flipkart: {
+                name: "Flipkart Minutes",
+                color: "#2874F0",
+                logoText: "Flipkart Minutes",
+                logoImg: "images/flipkart.svg",
+                deliveryFee: 10,
+                handlingFee: 3,
+                freeThreshold: 99,
+                eta: "12 mins"
+            },
+            instamart: {
+                name: "Swiggy Instamart",
+                color: "#FC8019",
+                logoText: "Instamart",
+                logoImg: "images/instamart.png",
+                deliveryFee: 15,
+                handlingFee: 4,
+                freeThreshold: 199,
+                eta: "11 mins"
+            }
+        };
+
         let activeSelectedCategory = 'all';
 
         let PRODUCTS_DB = [
@@ -2056,6 +2109,8 @@
                 aiAlternatives: []
             }
         ];
+
+        let PRODUCTS = PRODUCTS_DB;
 
         // GLOBAL APPLICATION STATE
         let activeAppFilter = null;

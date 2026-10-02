@@ -1,4 +1,4 @@
-const { DatabaseSync } = require('node:sqlite');
+﻿const { DatabaseSync } = require('node:sqlite');
 const path = require('path');
 
 const DB_PATH = path.join(__dirname, 'bachatbasket.db');
@@ -149,452 +149,1028 @@ function seedInitialData() {
 
     const initialProducts = [
         {
-            id: 'sunfeast_dark_fantasy_choco_fills_300g',
-            name: 'Sunfeast Dark Fantasy Choco Fills Biscuits (300 g)',
-            brand: 'Sunfeast',
-            category: 'Snacks',
-            unit: '300 g',
-            img: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=300&auto=format&fit=crop&q=80',
-            prices: {
-                'Blinkit': { price: 105.0, available: true, delivery_min: 10, url: 'https://blinkit.com/prn/sunfeast-dark-fantasy-choco-fills/prid/3241' },
-                'Instamart': { price: 112.0, available: true, delivery_min: 12, url: 'https://www.swiggy.com/instamart/item/sunfeast-dark-fantasy-choco-fills-300-g' },
-                'BigBasket': { price: 99.0, available: true, delivery_min: 20, url: 'https://www.bigbasket.com/pd/40005779/sunfeast-dark-fantasy-choco-fills-300-g/' },
-                'Zepto': { price: 108.0, available: true, delivery_min: 10, url: 'https://www.zepto.com/pn/sunfeast-dark-fantasy-choco-fills-300g' },
-                'Flipkart Minutes': { price: 95.0, available: true, delivery_min: 11, url: 'https://flipkart.com/hyperlocal-grocery-new-ab-at-store' }
-            },
-            alternatives: ['Oreo Double Stuf 300g - ₹120', 'Hide & Seek Chocolate 300g - ₹90']
-        },
-        {
-            id: 'kurkure_masala_munch_75g',
+            id: 'bb_kurkure',
             name: 'Kurkure Masala Munch Crisps (75 g)',
             brand: 'Kurkure',
             category: 'Snacks',
             unit: '75 g',
-            img: 'https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=300&auto=format&fit=crop&q=80',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/5482a.jpg',
             prices: {
-                'Blinkit': { price: 19.0, available: true, delivery_min: 10, url: 'https://blinkit.com/prn/kurkure-masala-munch/prid/5482' },
-                'Instamart': { price: 20.0, available: true, delivery_min: 12, url: 'https://www.swiggy.com/instamart/item/kurkure-masala-munch' },
-                'BigBasket': { price: 20.0, available: true, delivery_min: 15, url: 'https://www.bigbasket.com/pd/266567/kurkure-namkeen-masala-munch-75-g/' },
-                'Zepto': { price: 19.5, available: true, delivery_min: 10, url: 'https://www.zepto.com/pn/kurkure-masala-munch-75g' },
-                'Flipkart Minutes': { price: 18.0, available: true, delivery_min: 11, url: 'https://www.flipkart.com/hyperlocal-grocery-new-ab-at-store' }
+                'Blinkit': { price: 18.5, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Flipkart Minutes': { price: 19.5, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Zepto': { price: 19.5, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'BigBasket': { price: 20, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Instamart': { price: 20, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
             },
-            alternatives: ["Lay's India's Magic Masala 50g - ₹20", 'Tedhe Medhe Masala Tadka 75g - ₹18']
+            alternatives: ['Tedhe Medhe Masala Tadka 75g - â‚¹18']
         },
         {
-            id: 'amul_taaza_milk_1l',
-            name: 'Amul Taaza Toned Fresh Milk (1 L)',
+            id: 'bb_dark_fantasy',
+            name: 'Sunfeast Dark Fantasy Choco Fills Biscuits',
+            brand: 'Sunfeast',
+            category: 'Snacks',
+            unit: '300 g',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/160a.jpg',
+            prices: {
+                'BigBasket': { price: 92, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Flipkart Minutes': { price: 96, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Blinkit': { price: 102, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Zepto': { price: 105, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Instamart': { price: 108, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: ['Parle Hide & Seek (300 g) - â‚¹90']
+        },
+        {
+            id: 'bb_lays_magic_masala',
+            name: 'Lay\'s India\'s Magic Masala Potato Chips',
+            brand: 'Lay\'s',
+            category: 'Snacks',
+            unit: '50 g',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/240092a.jpg',
+            prices: {
+                'Flipkart Minutes': { price: 18, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Zepto': { price: 19, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Blinkit': { price: 20, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'BigBasket': { price: 20, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Instamart': { price: 20, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_maggi_noodles',
+            name: 'Maggi 2-Minute Masala Instant Noodles',
+            brand: 'Maggi',
+            category: 'Snacks',
+            unit: '420 g (6 Pack)',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/13813a.jpg',
+            prices: {
+                'Zepto': { price: 84, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'BigBasket': { price: 86, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Flipkart Minutes': { price: 87, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Blinkit': { price: 88, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Instamart': { price: 90, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: ['Yippee Magic Masala Noodles 420g - â‚¹80']
+        },
+        {
+            id: 'bb_oreo_biscuits',
+            name: 'Cadbury Oreo Vanilla Cream Biscuits',
+            brand: 'Cadbury',
+            category: 'Snacks',
+            unit: '120 g',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/12739a.jpg',
+            prices: {
+                'Instamart': { price: 28, available: true, delivery_min: 11, url: 'https://www.instamart.com' },
+                'Flipkart Minutes': { price: 29, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Blinkit': { price: 30, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Zepto': { price: 30, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'BigBasket': { price: 30, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_bingo_mad_angles',
+            name: 'Bingo! Mad Angles Mmmm Masala Crisps',
+            brand: 'Bingo',
+            category: 'Snacks',
+            unit: '66 g',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/16879a.jpg',
+            prices: {
+                'Flipkart Minutes': { price: 18, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Blinkit': { price: 19, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Zepto': { price: 20, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'BigBasket': { price: 20, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Instamart': { price: 20, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_parle_g',
+            name: 'Parle-G Gold Original Glucose Biscuits',
+            brand: 'Parle',
+            category: 'Snacks',
+            unit: '1 kg Saver Pack',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/483606a.jpg',
+            prices: {
+                'BigBasket': { price: 110, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Flipkart Minutes': { price: 112, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Zepto': { price: 115, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Blinkit': { price: 118, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Instamart': { price: 120, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_haldiram_bhujia',
+            name: 'Haldiram\'s Nagpur Aloo Bhujia Namkeen',
+            brand: 'Haldiram\'s',
+            category: 'Snacks',
+            unit: '400 g',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/40118a.jpg',
+            prices: {
+                'Flipkart Minutes': { price: 98, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Zepto': { price: 102, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Blinkit': { price: 105, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'BigBasket': { price: 108, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Instamart': { price: 110, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_amul_taaza',
+            name: 'Amul Taaza Toned Fresh Milk',
             brand: 'Amul',
             category: 'Dairy',
             unit: '1 L Pouch',
-            img: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&auto=format&fit=crop&q=80',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/19512a.jpg',
             prices: {
-                'Blinkit': { price: 54.0, available: true, delivery_min: 10, url: 'https://blinkit.com/prn/amul-taaza-toned-milk/prid/12948' },
-                'Instamart': { price: 54.0, available: true, delivery_min: 15, url: 'https://www.swiggy.com/instamart/item/amul-taaza-toned-milk-1-l' },
-                'BigBasket': { price: 54.0, available: true, delivery_min: 20, url: 'https://www.bigbasket.com/pd/306926/amul-homogenised-toned-milk-1-l/' },
-                'Zepto': { price: 53.0, available: true, delivery_min: 10, url: 'https://www.zepto.com/pn/amul-taaza-toned-milk-1l' },
-                'Flipkart Minutes': { price: 53.5, available: true, delivery_min: 12, url: 'https://www.flipkart.com/hyperlocal-grocery-new-ab-at-store' }
+                'Zepto': { price: 52, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Flipkart Minutes': { price: 53.5, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Blinkit': { price: 54, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'BigBasket': { price: 54, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Instamart': { price: 54.5, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
             },
-            alternatives: ['Mother Dairy Toned Milk 1L - ₹53', 'Country Delight Milk 1L - ₹60']
+            alternatives: ['Mother Dairy Toned Milk 1L - â‚¹53']
         },
         {
-            id: 'aashirvaad_shudh_chakki_atta_5kg',
-            name: 'Aashirvaad Superior MP Whole Wheat Atta (5 kg)',
-            brand: 'Aashirvaad',
-            category: 'Atta & Rice',
-            unit: '5 kg Bag',
-            img: 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&auto=format&fit=crop&q=80',
-            prices: {
-                'Blinkit': { price: 244.0, available: true, delivery_min: 15, url: 'https://blinkit.com/prn/aashirvaad-shudh-chakki-atta/prid/3451' },
-                'Instamart': { price: 248.0, available: true, delivery_min: 15, url: 'https://www.swiggy.com/instamart/item/aashirvaad-shudh-chakki-atta-5-kg' },
-                'BigBasket': { price: 235.0, available: true, delivery_min: 25, url: 'https://www.bigbasket.com/pd/126906/aashirvaad-atta-whole-wheat-5-kg/' },
-                'Zepto': { price: 242.0, available: true, delivery_min: 12, url: 'https://www.zepto.com/pn/aashirvaad-whole-wheat-atta-5kg' },
-                'Flipkart Minutes': { price: 232.0, available: true, delivery_min: 14, url: 'https://www.flipkart.com/hyperlocal-grocery-new-ab-at-store' }
-            },
-            alternatives: ['Fortune Chakki Fresh Atta 5kg - ₹220', 'Pillsbury Atta 5kg - ₹230']
-        },
-        {
-            id: 'fortune_sunflower_oil_1l',
-            name: 'Fortune Sunlite Refined Sunflower Oil Pouch (1 L)',
-            brand: 'Fortune',
-            category: 'Oils & Ghee',
-            unit: '1 L Pouch',
-            img: 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=300&auto=format&fit=crop&q=80',
-            prices: {
-                'Blinkit': { price: 142.0, available: true, delivery_min: 10, url: 'https://blinkit.com/prn/fortune-sunlite-sunflower-oil/prid/8912' },
-                'Instamart': { price: 145.0, available: true, delivery_min: 12, url: 'https://www.swiggy.com/instamart/item/fortune-sunlite-sunflower-oil-1-l' },
-                'BigBasket': { price: 139.0, available: true, delivery_min: 20, url: 'https://www.bigbasket.com/pd/274145/fortune-sun-lite-sunflower-refined-oil-1-l-pouch/' },
-                'Zepto': { price: 140.0, available: true, delivery_min: 10, url: 'https://www.zepto.com/pn/fortune-sunlite-sunflower-oil-1l' },
-                'Flipkart Minutes': { price: 137.0, available: true, delivery_min: 12, url: 'https://www.flipkart.com/hyperlocal-grocery-new-ab-at-store' }
-            },
-            alternatives: ['Saffola Gold Oil 1L - ₹155', 'Dhara Sunflower Oil 1L - ₹132']
-        },
-        {
-            id: 'coca_cola_original_750ml',
-            name: 'Coca-Cola Original Taste Soft Drink (750 ml)',
-            brand: 'Coca-Cola',
-            category: 'Beverages',
-            unit: '750 ml Bottle',
-            img: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&auto=format&fit=crop&q=80',
-            prices: {
-                'Blinkit': { price: 40.0, available: true, delivery_min: 10, url: 'https://blinkit.com/prn/coca-cola-soft-drink/prid/223' },
-                'Instamart': { price: 38.0, available: true, delivery_min: 12, url: 'https://www.swiggy.com/instamart/item/coca-cola-cold-drink-750-ml' },
-                'BigBasket': { price: 38.0, available: true, delivery_min: 15, url: 'https://www.bigbasket.com/pd/251006/coca-cola-soft-drink-750-ml-bottle/' },
-                'Zepto': { price: 40.0, available: true, delivery_min: 10, url: 'https://www.zepto.com/pn/coca-cola-750ml' },
-                'Flipkart Minutes': { price: 37.0, available: true, delivery_min: 10, url: 'https://www.flipkart.com/hyperlocal-grocery-new-ab-at-store' }
-            },
-            alternatives: ['Pepsi 750ml - ₹38', 'Thums Up 750ml - ₹40']
-        },
-        {
-            id: 'tata_salt_iodized_1kg',
-            name: 'Tata Salt Vacuum Evaporated Iodised Salt (1 kg)',
-            brand: 'Tata',
-            category: 'Staples',
-            unit: '1 kg',
-            img: 'images/salt.jpg',
-            prices: {
-                'Blinkit': { price: 27.0, available: true, delivery_min: 10, url: 'https://blinkit.com/prn/tata-salt-iodized/prid/1029' },
-                'Instamart': { price: 28.0, available: true, delivery_min: 12, url: 'https://www.swiggy.com/instamart/item/tata-salt-iodised-1-kg' },
-                'BigBasket': { price: 26.5, available: true, delivery_min: 20, url: 'https://www.bigbasket.com/pd/241600/tata-salt-iodized-1-kg/' },
-                'Zepto': { price: 27.0, available: true, delivery_min: 10, url: 'https://www.zepto.com/pn/tata-iodized-salt-1kg' },
-                'Flipkart Minutes': { price: 26.0, available: true, delivery_min: 11, url: 'https://www.flipkart.com/hyperlocal-grocery-new-ab-at-store' }
-            },
-            alternatives: ['Tata Salt Lite 1kg - ₹42', 'Aashirvaad Salt 1kg - ₹26']
-        },
-        {
-            id: 'maggi_2_minute_noodles_70g',
-            name: 'Maggi 2-Minute Masala Instant Noodles (70 g)',
-            brand: 'Maggi',
-            category: 'Snacks',
-            unit: 'Pack of 4 (280g)',
-            img: 'https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=300&auto=format&fit=crop&q=80',
-            prices: {
-                'Blinkit': { price: 14.0, available: true, delivery_min: 10, url: 'https://blinkit.com/prn/maggi-2-minute-masala-noodles/prid/403' },
-                'Instamart': { price: 14.0, available: true, delivery_min: 12, url: 'https://www.swiggy.com/instamart/item/maggi-2-minute-instant-noodles-70-g' },
-                'BigBasket': { price: 13.5, available: true, delivery_min: 15, url: 'https://www.bigbasket.com/pd/266109/maggi-masala-instant-noodles-70-g/' },
-                'Zepto': { price: 14.0, available: true, delivery_min: 10, url: 'https://www.zepto.com/pn/maggi-2-minute-noodles-70g' },
-                'Flipkart Minutes': { price: 13.0, available: true, delivery_min: 10, url: 'https://www.flipkart.com/hyperlocal-grocery-new-ab-at-store' }
-            },
-            alternatives: ['Yippee Masala Noodles 280g - ₹48', 'Top Ramen Curry 280g - ₹50']
-        },
-        {
-            id: 'amul_butter_pasteurized_500g',
-            name: 'Amul Pasteurized Butter (500 g)',
+            id: 'bb_amul_butter',
+            name: 'Amul Pasteurised Salted Butter',
             brand: 'Amul',
             category: 'Dairy',
             unit: '500 g Block',
-            img: 'https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=300&auto=format&fit=crop&q=80',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/160a.jpg',
             prices: {
-                'Blinkit': { price: 275.0, available: true, delivery_min: 10, url: 'https://blinkit.com/prn/amul-pasteurised-butter/prid/512' },
-                'Instamart': { price: 275.0, available: true, delivery_min: 15, url: 'https://www.swiggy.com/instamart/item/amul-pasteurised-butter-500-g' },
-                'BigBasket': { price: 269.0, available: true, delivery_min: 25, url: 'https://www.bigbasket.com/pd/104860/amul-butter-pasteurised-500-g/' },
-                'Zepto': { price: 275.0, available: true, delivery_min: 10, url: 'https://www.zepto.com/pn/amul-butter-pasteurized-500g' },
-                'Flipkart Minutes': { price: 268.0, available: true, delivery_min: 12, url: 'https://www.flipkart.com/hyperlocal-grocery-new-ab-at-store' }
+                'Flipkart Minutes': { price: 268, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'BigBasket': { price: 270, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Blinkit': { price: 275, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Zepto': { price: 275, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Instamart': { price: 276, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
             },
-            alternatives: ['Mother Dairy Butter 500g - ₹265', 'Delicious Table Butter 500g - ₹240']
+            alternatives: []
         },
         {
-            id: 'lays_india_magic_masala_50g',
-            name: "Lay's India's Magic Masala Potato Chips (50 g)",
-            brand: "Lay's",
-            category: 'Snacks',
-            unit: '50 g',
-            img: 'https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=300&auto=format&fit=crop&q=80',
-            prices: {
-                'Blinkit': { price: 20.0, available: true, delivery_min: 10, url: 'https://blinkit.com/prn/lays-indias-magic-masala-chips/prid/789' },
-                'Instamart': { price: 19.0, available: true, delivery_min: 12, url: 'https://www.swiggy.com/instamart/item/lays-indias-magic-masala-50-g' },
-                'BigBasket': { price: 20.0, available: true, delivery_min: 15, url: 'https://www.bigbasket.com/pd/294299/lays-potato-chips-indias-magic-masala-50-g/' },
-                'Zepto': { price: 20.0, available: true, delivery_min: 10, url: 'https://www.zepto.com/pn/lays-magic-masala-chips-50g' },
-                'Flipkart Minutes': { price: 18.5, available: true, delivery_min: 10, url: 'https://www.flipkart.com/hyperlocal-grocery-new-ab-at-store' }
-            },
-            alternatives: ['Bingo Mad Angles Achaari Masti 66g - ₹20', 'Pringles Sour Cream 107g - ₹105']
-        },
-        {
-            id: 'surf_excel_easy_wash_detergent_1kg',
-            name: 'Surf Excel Easy Wash Detergent Powder (1 kg)',
-            brand: 'Surf Excel',
-            category: 'Household',
-            unit: '1 kg Pouch',
-            img: 'https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=300&auto=format&fit=crop&q=80',
-            prices: {
-                'Blinkit': { price: 133.0, available: true, delivery_min: 10, url: 'https://blinkit.com/prn/surf-excel-easy-wash-detergent/prid/6120' },
-                'Instamart': { price: 135.0, available: true, delivery_min: 15, url: 'https://www.swiggy.com/instamart/item/surf-excel-easy-wash-powder-1-kg' },
-                'BigBasket': { price: 129.0, available: true, delivery_min: 30, url: 'https://www.bigbasket.com/pd/266946/surf-excel-easy-wash-detergent-powder-1-kg/' },
-                'Zepto': { price: 134.0, available: true, delivery_min: 12, url: 'https://www.zepto.com/pn/surf-excel-easy-wash-powder-1kg' },
-                'Flipkart Minutes': { price: 128.0, available: true, delivery_min: 14, url: 'https://www.flipkart.com/hyperlocal-grocery-new-ab-at-store' }
-            },
-            alternatives: ['Ariel Matic Front Load 1kg - ₹220', 'Tide Plus Double Power 1kg - ₹115']
-        },
-        {
-            id: 'white_eggs_6s',
-            name: 'Farm Fresh White Eggs (Pack of 6)',
-            brand: 'Eggoz',
+            id: 'bb_amul_cheese_slices',
+            name: 'Amul Processed Cheese Slices',
+            brand: 'Amul',
             category: 'Dairy',
-            unit: 'Pack of 6',
-            img: 'images/white_eggs.jpg',
+            unit: '200 g (10 Slices)',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/19504a.jpg',
             prices: {
-                'Blinkit': { price: 42.0, available: true },
-                'Zepto': { price: 45.0, available: true },
-                'BigBasket': { price: 44.0, available: true },
-                'Flipkart Minutes': { price: 43.0, available: true },
-                'Instamart': { price: 48.0, available: true }
+                'Instamart': { price: 130, available: true, delivery_min: 11, url: 'https://www.instamart.com' },
+                'Flipkart Minutes': { price: 132, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Zepto': { price: 135, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Blinkit': { price: 138, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'BigBasket': { price: 140, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' }
             },
-            alternatives: ['Local Brown Eggs Pack of 6 - ₹55', 'Table Eggs Pack of 10 - ₹72']
+            alternatives: []
         },
         {
-            id: 'fresh_coriander_100g',
-            name: 'Fresh Green Coriander (Dhaniya Patta) (100 g)',
-            brand: 'Farm Fresh',
-            category: 'Vegetables',
-            unit: '100 g Bunch',
-            img: 'images/coriander.jpg',
+            id: 'bb_amul_masti_dahi',
+            name: 'Amul Masti Dahi Pouch',
+            brand: 'Amul',
+            category: 'Dairy',
+            unit: '400 g Pouch',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/19448a.jpg',
             prices: {
-                'Blinkit': { price: 12.0, available: true },
-                'Zepto': { price: 10.0, available: true },
-                'BigBasket': { price: 8.0, available: true },
-                'Flipkart Minutes': { price: 9.0, available: true },
-                'Instamart': { price: 11.0, available: true }
+                'Zepto': { price: 33, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Blinkit': { price: 34, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Flipkart Minutes': { price: 34.5, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'BigBasket': { price: 35, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Instamart': { price: 35, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
             },
-            alternatives: ['Fresh Mint Leaves 100g - ₹15', 'Curry Leaves 50g - ₹10']
+            alternatives: []
         },
         {
-            id: 'vim_dishwash_500ml',
-            name: 'Vim Dishwash Liquid Gel Lemon Fragrance (500 ml)',
-            brand: 'Vim',
-            category: 'Household',
-            unit: '500 ml Bottle',
-            img: 'images/vim.jpg',
+            id: 'bb_brown_bread',
+            name: 'Modern Whole Wheat Brown Bread',
+            brand: 'Modern',
+            category: 'Dairy',
+            unit: '400 g Pack',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/35889a.jpg',
             prices: {
-                'Blinkit': { price: 115.0, available: true },
-                'Zepto': { price: 112.0, available: true },
-                'BigBasket': { price: 102.0, available: true },
-                'Flipkart Minutes': { price: 108.0, available: true },
-                'Instamart': { price: 118.0, available: true }
+                'Flipkart Minutes': { price: 38, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Blinkit': { price: 40, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Zepto': { price: 40, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'BigBasket': { price: 42, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Instamart': { price: 42, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
             },
-            alternatives: ['Pril Dishwash Liquid 500ml - ₹110', 'Exo Touch Dishwash 500ml - ₹95']
+            alternatives: []
         },
         {
-            id: 'dettol_handwash_675ml',
-            name: 'Dettol Original Germ Protection Liquid Handwash Refill (675 ml)',
-            brand: 'Dettol',
-            category: 'Household',
-            unit: '675 ml Refill Pack',
-            img: 'images/dettol.jpg',
+            id: 'bb_amul_paneer',
+            name: 'Amul Fresh Malai Paneer',
+            brand: 'Amul',
+            category: 'Dairy',
+            unit: '200 g Pack',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/19460a.jpg',
             prices: {
-                'Blinkit': { price: 105.0, available: true },
-                'Zepto': { price: 102.0, available: true },
-                'BigBasket': { price: 95.0, available: true },
-                'Flipkart Minutes': { price: 99.0, available: true },
-                'Instamart': { price: 92.0, available: true }
+                'BigBasket': { price: 88, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Flipkart Minutes': { price: 89, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Zepto': { price: 90, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Blinkit': { price: 92, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Instamart': { price: 95, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
             },
-            alternatives: ['Lifebuoy Total Handwash Refill 750ml - ₹89', 'Godrej Protekt Handwash 750ml - ₹85']
+            alternatives: []
         },
         {
-            id: 'fresh_potato_1kg',
-            name: 'Fresh Potato (Aloo / Jyoti) (1 kg)',
-            brand: 'Farm Fresh',
+            id: 'bb_epigamia_yogurt',
+            name: 'Epigamia Greek Yogurt Blueberries',
+            brand: 'Epigamia',
+            category: 'Dairy',
+            unit: '85 g Cup',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/368817a.jpg',
+            prices: {
+                'Zepto': { price: 54, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Flipkart Minutes': { price: 55, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Blinkit': { price: 58, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'BigBasket': { price: 60, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Instamart': { price: 60, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_mother_dairy_milk',
+            name: 'Mother Dairy Cow Fresh Milk',
+            brand: 'Mother Dairy',
+            category: 'Dairy',
+            unit: '500 ml Pouch',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/19520a.jpg',
+            prices: {
+                'Flipkart Minutes': { price: 27, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Blinkit': { price: 28, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Zepto': { price: 28, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'BigBasket': { price: 29, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Instamart': { price: 29, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_aashirvaad_atta',
+            name: 'Aashirvaad Shuddh Chakki Whole Wheat Atta',
+            brand: 'Aashirvaad',
+            category: 'Atta & Rice',
+            unit: '5 kg Bag',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/10515a.jpg',
+            prices: {
+                'Flipkart Minutes': { price: 236, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'BigBasket': { price: 239, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Blinkit': { price: 242, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Zepto': { price: 245, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Instamart': { price: 248, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: ['Fortune Chakki Fresh Atta 5kg - â‚¹220']
+        },
+        {
+            id: 'bb_fortune_basmati',
+            name: 'Fortune Everyday Special Basmati Rice',
+            brand: 'Fortune',
+            category: 'Atta & Rice',
+            unit: '5 kg Bag',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/240092a.jpg',
+            prices: {
+                'BigBasket': { price: 355, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Flipkart Minutes': { price: 358, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Zepto': { price: 362, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Blinkit': { price: 365, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Instamart': { price: 370, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_tata_sampann_dal',
+            name: 'Tata Sampann Unpolished Toor / Arhar Dal',
+            brand: 'Tata',
+            category: 'Atta & Rice',
+            unit: '1 kg Pack',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/102874a.jpg',
+            prices: {
+                'Flipkart Minutes': { price: 162, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Zepto': { price: 165, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Blinkit': { price: 168, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'BigBasket': { price: 170, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Instamart': { price: 172, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_tata_salt',
+            name: 'Tata Salt Vacuum Evaporated Iodised Salt',
+            brand: 'Tata',
+            category: 'Atta & Rice',
+            unit: '1 kg Pouch',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/160a.jpg',
+            prices: {
+                'Zepto': { price: 26, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Flipkart Minutes': { price: 26.5, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Blinkit': { price: 27, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'BigBasket': { price: 27, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Instamart': { price: 28, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_madhur_sugar',
+            name: 'Madhur Pure & Hygienic Sugar',
+            brand: 'Madhur',
+            category: 'Atta & Rice',
+            unit: '1 kg Pouch',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/10507a.jpg',
+            prices: {
+                'Flipkart Minutes': { price: 54, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Blinkit': { price: 56, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Zepto': { price: 56, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'BigBasket': { price: 58, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Instamart': { price: 58, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_rajma_chitra',
+            name: 'Tata Sampann Rajma Chitra (Red Kidney Beans)',
+            brand: 'Tata',
+            category: 'Atta & Rice',
+            unit: '500 g Pack',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/116238a.jpg',
+            prices: {
+                'BigBasket': { price: 88, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Flipkart Minutes': { price: 90, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Zepto': { price: 92, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Blinkit': { price: 95, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Instamart': { price: 96, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_moong_dal',
+            name: 'Tata Sampann Unpolished Yellow Moong Dal',
+            brand: 'Tata',
+            category: 'Atta & Rice',
+            unit: '500 g Pack',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/102876a.jpg',
+            prices: {
+                'Zepto': { price: 72, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Flipkart Minutes': { price: 74, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Blinkit': { price: 76, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'BigBasket': { price: 78, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Instamart': { price: 80, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_kabuli_chana',
+            name: 'Organic Tattva Kabuli Chana (White Chickpeas)',
+            brand: 'Organic Tattva',
+            category: 'Atta & Rice',
+            unit: '500 g Pack',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/439697a.jpg',
+            prices: {
+                'Flipkart Minutes': { price: 84, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'BigBasket': { price: 86, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Blinkit': { price: 88, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Zepto': { price: 90, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Instamart': { price: 92, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_fortune_sunflower',
+            name: 'Fortune Sunlite Refined Sunflower Oil',
+            brand: 'Fortune',
+            category: 'Oils & Ghee',
+            unit: '1 L Pouch',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/12795a.jpg',
+            prices: {
+                'Flipkart Minutes': { price: 138, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Zepto': { price: 140, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Blinkit': { price: 142, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'BigBasket': { price: 145, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Instamart': { price: 145, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_fortune_mustard',
+            name: 'Fortune Kachi Ghani Pure Mustard Oil',
+            brand: 'Fortune',
+            category: 'Oils & Ghee',
+            unit: '1 L Pet Bottle',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/12792a.jpg',
+            prices: {
+                'BigBasket': { price: 152, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Flipkart Minutes': { price: 154, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Blinkit': { price: 158, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Zepto': { price: 160, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Instamart': { price: 162, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_amul_ghee',
+            name: 'Amul Pure Cow Ghee Tin',
+            brand: 'Amul',
+            category: 'Oils & Ghee',
+            unit: '1 L Tin',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/19515a.jpg',
+            prices: {
+                'Zepto': { price: 590, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Flipkart Minutes': { price: 595, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Blinkit': { price: 605, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'BigBasket': { price: 610, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Instamart': { price: 615, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_mdh_turmeric',
+            name: 'MDH Deggi Mirch & Turmeric Powder Combo',
+            brand: 'MDH',
+            category: 'Oils & Ghee',
+            unit: '100 g Pack',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/102868a.jpg',
+            prices: {
+                'Flipkart Minutes': { price: 72, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Blinkit': { price: 75, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Zepto': { price: 76, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'BigBasket': { price: 78, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Instamart': { price: 80, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_catch_turmeric',
+            name: 'Catch Haldi Powder (Turmeric Powder)',
+            brand: 'Catch',
+            category: 'Oils & Ghee',
+            unit: '200 g Pack',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/122008a.jpg',
+            prices: {
+                'Zepto': { price: 48, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Flipkart Minutes': { price: 50, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Blinkit': { price: 52, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'BigBasket': { price: 54, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Instamart': { price: 55, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_everest_garam_masala',
+            name: 'Everest Garam Masala Powder',
+            brand: 'Everest',
+            category: 'Oils & Ghee',
+            unit: '100 g Pack',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/102870a.jpg',
+            prices: {
+                'Flipkart Minutes': { price: 82, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'BigBasket': { price: 84, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Zepto': { price: 85, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Blinkit': { price: 88, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Instamart': { price: 90, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_saffola_gold',
+            name: 'Saffola Gold Refined Cooking Oil',
+            brand: 'Saffola',
+            category: 'Oils & Ghee',
+            unit: '1 L Pouch',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/12798a.jpg',
+            prices: {
+                'BigBasket': { price: 158, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Flipkart Minutes': { price: 160, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Zepto': { price: 164, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Blinkit': { price: 168, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Instamart': { price: 170, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_potato_jyoti',
+            name: 'Fresh Potato (Aloo / Jyoti)',
+            brand: 'Fresh Produce',
             category: 'Vegetables',
             unit: '1 kg',
             img: 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=300&auto=format&fit=crop&q=80',
             prices: {
-                'Blinkit': { price: 24.0, available: true },
-                'Zepto': { price: 28.0, available: true },
-                'BigBasket': { price: 27.0, available: true },
-                'Flipkart Minutes': { price: 26.0, available: true },
-                'Instamart': { price: 30.0, available: true }
+                'Blinkit': { price: 24, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Zepto': { price: 25, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'BigBasket': { price: 26, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Flipkart Minutes': { price: 26, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Instamart': { price: 28, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
             },
-            alternatives: ['Fresh Onion 1kg - ₹32', 'Fresh Tomato 1kg - ₹26']
+            alternatives: []
         },
         {
-            id: 'fresh_onion_1kg',
-            name: 'Fresh Red Onion (Pyaaz) (1 kg)',
-            brand: 'Farm Fresh',
+            id: 'bb_onion_red',
+            name: 'Fresh Red Onion (Pyaz)',
+            brand: 'Fresh Produce',
             category: 'Vegetables',
             unit: '1 kg',
-            img: 'https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?w=300&auto=format&fit=crop&q=80',
+            img: 'https://images.unsplash.com/photo-1508747703725-719777637510?w=300&auto=format&fit=crop&q=80',
             prices: {
-                'Blinkit': { price: 36.0, available: true },
-                'Zepto': { price: 34.0, available: true },
-                'BigBasket': { price: 32.0, available: true },
-                'Flipkart Minutes': { price: 33.0, available: true },
-                'Instamart': { price: 35.0, available: true }
+                'Zepto': { price: 32, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Flipkart Minutes': { price: 33, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Blinkit': { price: 35, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'BigBasket': { price: 36, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Instamart': { price: 38, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
             },
-            alternatives: ['Fresh Spring Onion 250g - ₹20', 'Shallots 500g - ₹45']
+            alternatives: []
         },
         {
-            id: 'fresh_tomato_1kg',
-            name: 'Fresh Hybrid Red Tomatoes (1 kg)',
-            brand: 'Farm Fresh',
+            id: 'bb_tomato_hybrid',
+            name: 'Fresh Tomato Hybrid (Tamatar)',
+            brand: 'Fresh Produce',
             category: 'Vegetables',
             unit: '1 kg',
             img: 'https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=300&auto=format&fit=crop&q=80',
             prices: {
-                'Blinkit': { price: 26.0, available: true },
-                'Zepto': { price: 28.0, available: true },
-                'BigBasket': { price: 22.0, available: true },
-                'Flipkart Minutes': { price: 24.0, available: true },
-                'Instamart': { price: 27.0, available: true }
+                'Flipkart Minutes': { price: 26, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'BigBasket': { price: 28, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Zepto': { price: 29, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Blinkit': { price: 30, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Instamart': { price: 32, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
             },
-            alternatives: ['Organic Country Tomatoes 1kg - ₹34', 'Cherry Tomatoes 250g - ₹40']
+            alternatives: []
         },
         {
-            id: 'amul_masti_dahi_400g',
-            name: 'Amul Masti Dahi / Plain Curd (400 g)',
-            brand: 'Amul',
-            category: 'Dairy',
-            unit: '400 g Cup',
-            img: 'https://images.unsplash.com/photo-1571212515416-fef01fc43637?w=300&auto=format&fit=crop&q=80',
+            id: 'bb_green_chilli',
+            name: 'Fresh Green Chilli (Hari Mirch)',
+            brand: 'Fresh Produce',
+            category: 'Vegetables',
+            unit: '100 g',
+            img: 'https://images.unsplash.com/photo-1627916607164-7b20241db935?w=300&auto=format&fit=crop&q=80',
             prices: {
-                'Blinkit': { price: 35.0, available: true },
-                'Zepto': { price: 35.0, available: true },
-                'BigBasket': { price: 34.0, available: true },
-                'Flipkart Minutes': { price: 32.0, available: true },
-                'Instamart': { price: 35.0, available: true }
+                'Zepto': { price: 10, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Blinkit': { price: 12, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Flipkart Minutes': { price: 12, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'BigBasket': { price: 14, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Instamart': { price: 15, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
             },
-            alternatives: ['Mother Dairy Dahi 400g - ₹35', 'Epigamia Greek Yogurt 90g - ₹50']
+            alternatives: []
         },
         {
-            id: 'india_gate_basmati_1kg',
-            name: 'India Gate Basmati Rice Feast Rozzana (1 kg)',
-            brand: 'India Gate',
-            category: 'Atta & Rice',
-            unit: '1 kg Bag',
-            img: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=300&auto=format&fit=crop&q=80',
+            id: 'bb_coriander_leaves',
+            name: 'Fresh Coriander Leaves (Dhania)',
+            brand: 'Fresh Produce',
+            category: 'Vegetables',
+            unit: '100 g Bunch',
+            img: 'https://images.unsplash.com/photo-1588879460405-5607b1d44cb2?w=300&auto=format&fit=crop&q=80',
             prices: {
-                'Blinkit': { price: 90.0, available: true },
-                'Zepto': { price: 89.0, available: true },
-                'BigBasket': { price: 85.0, available: true },
-                'Flipkart Minutes': { price: 88.0, available: true },
-                'Instamart': { price: 90.0, available: true }
+                'Flipkart Minutes': { price: 14, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'BigBasket': { price: 15, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Zepto': { price: 16, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Blinkit': { price: 18, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Instamart': { price: 20, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
             },
-            alternatives: ['Daawat Rozana Super Basmati 1kg - ₹84', 'Fortune Biryani Special 1kg - ₹110']
+            alternatives: []
         },
         {
-            id: 'tata_sampann_toor_dal_1kg',
-            name: 'Tata Sampann Unpolished Toor Dal (1 kg)',
-            brand: 'Tata',
-            category: 'Staples',
-            unit: '1 kg Bag',
-            img: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=300&auto=format&fit=crop&q=80',
+            id: 'bb_ginger',
+            name: 'Fresh Ginger (Adrak)',
+            brand: 'Fresh Produce',
+            category: 'Vegetables',
+            unit: '250 g',
+            img: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=300&auto=format&fit=crop&q=80',
             prices: {
-                'Blinkit': { price: 168.0, available: true },
-                'Zepto': { price: 162.0, available: true },
-                'BigBasket': { price: 158.0, available: true },
-                'Flipkart Minutes': { price: 160.0, available: true },
-                'Instamart': { price: 152.0, available: true }
+                'Zepto': { price: 22, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Blinkit': { price: 25, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Flipkart Minutes': { price: 25, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'BigBasket': { price: 28, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Instamart': { price: 30, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
             },
-            alternatives: ['Fortune Unpolished Toor Dal 1kg - ₹155', 'Organic Tattva Toor Dal 1kg - ₹180']
+            alternatives: []
         },
         {
-            id: 'amul_malai_paneer_200g',
-            name: 'Amul Fresh Malai Paneer (200 g)',
-            brand: 'Amul',
-            category: 'Dairy',
-            unit: '200 g Pack',
-            img: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=300&auto=format&fit=crop&q=80',
+            id: 'bb_robusta_banana',
+            name: 'Fresh Robusta Banana',
+            brand: 'Fresh Produce',
+            category: 'Vegetables',
+            unit: '6 pcs',
+            img: 'https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=300&auto=format&fit=crop&q=80',
             prices: {
-                'Blinkit': { price: 90.0, available: true },
-                'Zepto': { price: 92.0, available: true },
-                'BigBasket': { price: 86.0, available: true },
-                'Flipkart Minutes': { price: 84.0, available: true },
-                'Instamart': { price: 92.0, available: true }
+                'Flipkart Minutes': { price: 36, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'BigBasket': { price: 38, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Blinkit': { price: 40, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Zepto': { price: 42, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Instamart': { price: 45, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
             },
-            alternatives: ['Mother Dairy Paneer 200g - ₹88', 'Milky Mist Paneer 200g - ₹92']
+            alternatives: []
         },
         {
-            id: 'chicken_breast_500g',
-            name: 'Fresh Boneless Chicken Breast (500 g)',
-            brand: 'Fresh Cuts',
-            category: 'Meat & Fish',
+            id: 'bb_shimla_apple',
+            name: 'Fresh Shimla Royal Apple',
+            brand: 'Fresh Produce',
+            category: 'Vegetables',
+            unit: '4 pcs (~500g)',
+            img: 'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=300&auto=format&fit=crop&q=80',
+            prices: {
+                'Zepto': { price: 110, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'BigBasket': { price: 112, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Flipkart Minutes': { price: 114, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Blinkit': { price: 118, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Instamart': { price: 120, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_coca_cola',
+            name: 'Coca-Cola Soft Drink Bottle',
+            brand: 'Coca-Cola',
+            category: 'Beverages',
+            unit: '750 ml Bottle',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/274a.jpg',
+            prices: {
+                'Flipkart Minutes': { price: 38, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Blinkit': { price: 40, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Zepto': { price: 40, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'BigBasket': { price: 40, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Instamart': { price: 40, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_thums_up',
+            name: 'Thums Up Charged Soft Drink',
+            brand: 'Thums Up',
+            category: 'Beverages',
+            unit: '750 ml Bottle',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/275a.jpg',
+            prices: {
+                'Zepto': { price: 38, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Flipkart Minutes': { price: 39, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Blinkit': { price: 40, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'BigBasket': { price: 40, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Instamart': { price: 40, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_tata_tea_gold',
+            name: 'Tata Tea Gold Premium Leaf Tea',
+            brand: 'Tata Tea',
+            category: 'Beverages',
+            unit: '500 g Pack',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/10512a.jpg',
+            prices: {
+                'BigBasket': { price: 295, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Flipkart Minutes': { price: 298, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Zepto': { price: 305, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Blinkit': { price: 310, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Instamart': { price: 315, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_nescafe_classic',
+            name: 'Nescafe Classic Instant Coffee Jar',
+            brand: 'Nescafe',
+            category: 'Beverages',
+            unit: '100 g Jar',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/102878a.jpg',
+            prices: {
+                'Flipkart Minutes': { price: 320, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Zepto': { price: 325, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Blinkit': { price: 330, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'BigBasket': { price: 335, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Instamart': { price: 340, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_real_mixed_fruit',
+            name: 'Real Fruit Power Mixed Fruit Juice',
+            brand: 'Real',
+            category: 'Beverages',
+            unit: '1 L Tetrapack',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/11548a.jpg',
+            prices: {
+                'Zepto': { price: 105, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Flipkart Minutes': { price: 108, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Blinkit': { price: 112, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'BigBasket': { price: 115, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Instamart': { price: 115, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_red_bull',
+            name: 'Red Bull Energy Drink Can',
+            brand: 'Red Bull',
+            category: 'Beverages',
+            unit: '250 ml Can',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/279a.jpg',
+            prices: {
+                'Flipkart Minutes': { price: 120, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Blinkit': { price: 125, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Zepto': { price: 125, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'BigBasket': { price: 125, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Instamart': { price: 125, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_sprite',
+            name: 'Sprite Lemon-Lime Flavored Soft Drink',
+            brand: 'Sprite',
+            category: 'Beverages',
+            unit: '750 ml Bottle',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/276a.jpg',
+            prices: {
+                'BigBasket': { price: 38, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Flipkart Minutes': { price: 39, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Zepto': { price: 40, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Blinkit': { price: 40, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Instamart': { price: 40, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_surf_excel',
+            name: 'Surf Excel Easy Wash Detergent Powder',
+            brand: 'Surf Excel',
+            category: 'Household',
+            unit: '1 kg Pouch',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/6120a.jpg',
+            prices: {
+                'Flipkart Minutes': { price: 126, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'BigBasket': { price: 129, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Blinkit': { price: 133, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Zepto': { price: 134, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Instamart': { price: 135, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_vim_dishwash',
+            name: 'Vim Dishwash Gel Lemon Bottle',
+            brand: 'Vim',
+            category: 'Household',
+            unit: '500 ml Bottle',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/483608a.jpg',
+            prices: {
+                'Zepto': { price: 102, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Flipkart Minutes': { price: 105, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Blinkit': { price: 110, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'BigBasket': { price: 112, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Instamart': { price: 115, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_harpic_power',
+            name: 'Harpic Power Plus Toilet Cleaner Original',
+            brand: 'Harpic',
+            category: 'Household',
+            unit: '1 L Bottle',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/102880a.jpg',
+            prices: {
+                'BigBasket': { price: 180, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Flipkart Minutes': { price: 182, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Zepto': { price: 185, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Blinkit': { price: 190, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Instamart': { price: 195, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_colin_cleaner',
+            name: 'Colin Glass & Surface Cleaner Spray',
+            brand: 'Colin',
+            category: 'Household',
+            unit: '500 ml Bottle',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/102882a.jpg',
+            prices: {
+                'Flipkart Minutes': { price: 98, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Zepto': { price: 100, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Blinkit': { price: 105, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'BigBasket': { price: 108, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Instamart': { price: 110, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_good_knight',
+            name: 'Good Knight Gold Flash Liquid Refill',
+            brand: 'Good Knight',
+            category: 'Household',
+            unit: '45 ml (Pack of 2)',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/102884a.jpg',
+            prices: {
+                'Zepto': { price: 142, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Flipkart Minutes': { price: 145, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Blinkit': { price: 148, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'BigBasket': { price: 150, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Instamart': { price: 152, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_lizol_disinfectant',
+            name: 'Lizol Disinfectant Floor Cleaner Citrus',
+            brand: 'Lizol',
+            category: 'Household',
+            unit: '1 L Bottle',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/102886a.jpg',
+            prices: {
+                'BigBasket': { price: 192, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Flipkart Minutes': { price: 195, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Zepto': { price: 198, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Blinkit': { price: 204, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Instamart': { price: 208, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_comfort_after_wash',
+            name: 'Comfort After Wash Morning Fresh Fabric Conditioner',
+            brand: 'Comfort',
+            category: 'Household',
+            unit: '860 ml Bottle',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/102888a.jpg',
+            prices: {
+                'Flipkart Minutes': { price: 215, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Zepto': { price: 218, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Blinkit': { price: 224, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'BigBasket': { price: 228, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Instamart': { price: 230, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_dettol_soap',
+            name: 'Dettol Original Bathing Soap Bar',
+            brand: 'Dettol',
+            category: 'Personal Care',
+            unit: '125 g (Pack of 4)',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/483610a.jpg',
+            prices: {
+                'Zepto': { price: 168, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Flipkart Minutes': { price: 170, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Blinkit': { price: 175, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'BigBasket': { price: 178, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Instamart': { price: 180, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_colgate_strong_teeth',
+            name: 'Colgate Strong Teeth Dental Cream Toothpaste',
+            brand: 'Colgate',
+            category: 'Personal Care',
+            unit: '500 g Saver Pack',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/102890a.jpg',
+            prices: {
+                'Flipkart Minutes': { price: 198, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'BigBasket': { price: 202, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Zepto': { price: 205, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Blinkit': { price: 210, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Instamart': { price: 215, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_head_shoulders',
+            name: 'Head & Shoulders Anti-Dandruff Smooth Shampoo',
+            brand: 'Head & Shoulders',
+            category: 'Personal Care',
+            unit: '650 ml Bottle',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/102892a.jpg',
+            prices: {
+                'BigBasket': { price: 440, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Flipkart Minutes': { price: 445, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Zepto': { price: 450, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Blinkit': { price: 460, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Instamart': { price: 465, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_nivea_body_lotion',
+            name: 'Nivea Body Lotion Express Hydration',
+            brand: 'Nivea',
+            category: 'Personal Care',
+            unit: '400 ml Bottle',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/102894a.jpg',
+            prices: {
+                'Zepto': { price: 310, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Flipkart Minutes': { price: 315, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Blinkit': { price: 325, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'BigBasket': { price: 330, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Instamart': { price: 335, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_dove_soap',
+            name: 'Dove Cream Beauty Bathing Bar',
+            brand: 'Dove',
+            category: 'Personal Care',
+            unit: '125 g (Pack of 3)',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/102896a.jpg',
+            prices: {
+                'Flipkart Minutes': { price: 190, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'BigBasket': { price: 195, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Zepto': { price: 198, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Blinkit': { price: 204, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Instamart': { price: 210, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_gillette_foam',
+            name: 'Gillette Foamy Regular Shaving Foam',
+            brand: 'Gillette',
+            category: 'Personal Care',
+            unit: '200 g Can',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/102898a.jpg',
+            prices: {
+                'Zepto': { price: 140, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Flipkart Minutes': { price: 142, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Blinkit': { price: 145, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'BigBasket': { price: 148, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Instamart': { price: 150, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_whisper_choice',
+            name: 'Whisper Choice Wings Sanitary Pads',
+            brand: 'Whisper',
+            category: 'Personal Care',
+            unit: '20 Pads Pack',
+            img: 'https://cdn.grofers.com/app/images/products/sliding_image/102900a.jpg',
+            prices: {
+                'Flipkart Minutes': { price: 98, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'BigBasket': { price: 100, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Zepto': { price: 102, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Blinkit': { price: 105, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Instamart': { price: 108, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_white_eggs_6',
+            name: 'Fresh Table White Eggs (6 pcs)',
+            brand: 'Farm Fresh',
+            category: 'Meat & Eggs',
+            unit: '6 pcs Pack',
+            img: 'https://images.unsplash.com/photo-1516448620398-c5f44bf9f441?w=300&auto=format&fit=crop&q=80',
+            prices: {
+                'Flipkart Minutes': { price: 40, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Zepto': { price: 42, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Blinkit': { price: 45, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'BigBasket': { price: 46, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Instamart': { price: 48, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_white_eggs_30',
+            name: 'Fresh Table White Eggs Tray (30 pcs)',
+            brand: 'Farm Fresh',
+            category: 'Meat & Eggs',
+            unit: '30 pcs Tray',
+            img: 'https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=300&auto=format&fit=crop&q=80',
+            prices: {
+                'BigBasket': { price: 198, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Flipkart Minutes': { price: 200, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Zepto': { price: 205, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Blinkit': { price: 210, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Instamart': { price: 215, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
+            id: 'bb_chicken_breast',
+            name: 'Fresh Boneless Chicken Breast',
+            brand: 'Fresh Farm',
+            category: 'Meat & Eggs',
             unit: '500 g Pack',
             img: 'https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=300&auto=format&fit=crop&q=80',
             prices: {
-                'Blinkit': { price: 185.0, available: true },
-                'Zepto': { price: 180.0, available: true },
-                'BigBasket': { price: 175.0, available: true },
-                'Flipkart Minutes': { price: 170.0, available: true },
-                'Instamart': { price: 190.0, available: true }
+                'Zepto': { price: 165, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Flipkart Minutes': { price: 168, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Blinkit': { price: 175, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'BigBasket': { price: 180, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Instamart': { price: 185, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
             },
-            alternatives: ['Chicken Curry Cut with Bone 500g - ₹130', 'Licious Chicken Breast 500g - ₹210']
+            alternatives: []
         },
         {
-            id: 'ginger_garlic_paste_100g',
-            name: 'Dabur Hommade Ginger Garlic Paste (100 g)',
-            brand: 'Dabur',
-            category: 'Staples',
-            unit: '100 g Pouch',
-            img: 'https://images.unsplash.com/photo-1608686207856-001b95cf60ca?w=300&auto=format&fit=crop&q=80',
+            id: 'bb_chicken_curry_cut',
+            name: 'Fresh Skinless Chicken Curry Cut',
+            brand: 'Fresh Farm',
+            category: 'Meat & Eggs',
+            unit: '500 g Pack',
+            img: 'https://images.unsplash.com/photo-1587593810167-a84920ea0781?w=300&auto=format&fit=crop&q=80',
             prices: {
-                'Blinkit': { price: 30.0, available: true },
-                'Zepto': { price: 29.0, available: true },
-                'BigBasket': { price: 28.0, available: true },
-                'Flipkart Minutes': { price: 27.0, available: true },
-                'Instamart': { price: 30.0, available: true }
+                'Flipkart Minutes': { price: 142, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'BigBasket': { price: 145, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Zepto': { price: 148, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Blinkit': { price: 152, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'Instamart': { price: 155, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
             },
-            alternatives: ['Smith & Jones Ginger Garlic Paste 100g - ₹25', 'Catch Ginger Garlic Paste 100g - ₹28']
-        },
-        {
-            id: 'everest_garam_masala_100g',
-            name: 'Everest Garam Masala Powder (100 g)',
-            brand: 'Everest',
-            category: 'Staples',
-            unit: '100 g Box',
-            img: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=300&auto=format&fit=crop&q=80',
-            prices: {
-                'Blinkit': { price: 82.0, available: true },
-                'Zepto': { price: 80.0, available: true },
-                'BigBasket': { price: 78.0, available: true },
-                'Flipkart Minutes': { price: 76.0, available: true },
-                'Instamart': { price: 85.0, available: true }
-            },
-            alternatives: ['MDH Kitchen King Masala 100g - ₹82', 'Catch Super Garam Masala 100g - ₹78']
-        },
-        {
-            id: 'everest_turmeric_100g',
-            name: 'Everest Pure Turmeric (Haldi) Powder (100 g)',
-            brand: 'Everest',
-            category: 'Staples',
-            unit: '100 g Box',
-            img: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=300&auto=format&fit=crop&q=80',
-            prices: {
-                'Blinkit': { price: 34.0, available: true },
-                'Zepto': { price: 32.0, available: true },
-                'BigBasket': { price: 30.0, available: true },
-                'Flipkart Minutes': { price: 29.0, available: true },
-                'Instamart': { price: 35.0, available: true }
-            },
-            alternatives: ['Tata Sampann Turmeric 100g - ₹36', 'Catch Turmeric Powder 100g - ₹32']
-        },
-        {
-            id: 'everest_kashmiri_chilli_100g',
-            name: 'Everest Kashmiri Lal Mirch Powder (100 g)',
-            brand: 'Everest',
-            category: 'Staples',
-            unit: '100 g Box',
-            img: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=300&auto=format&fit=crop&q=80',
-            prices: {
-                'Blinkit': { price: 75.0, available: true },
-                'Zepto': { price: 74.0, available: true },
-                'BigBasket': { price: 72.0, available: true },
-                'Flipkart Minutes': { price: 70.0, available: true },
-                'Instamart': { price: 78.0, available: true }
-            },
-            alternatives: ['MDH Deggi Mirch 100g - ₹80', 'Tata Sampann Red Chilli 100g - ₹68']
-        },
-        {
-            id: 'fresh_lemon_4s',
-            name: 'Fresh Juicy Yellow Lemons (Nimbu) (Pack of 4)',
-            brand: 'Farm Fresh',
-            category: 'Vegetables',
-            unit: 'Pack of 4',
-            img: 'https://images.unsplash.com/photo-1582979512210-99b6a53386f9?w=300&auto=format&fit=crop&q=80',
-            prices: {
-                'Blinkit': { price: 22.0, available: true },
-                'Zepto': { price: 20.0, available: true },
-                'BigBasket': { price: 18.0, available: true },
-                'Flipkart Minutes': { price: 19.0, available: true },
-                'Instamart': { price: 16.0, available: true }
-            },
-            alternatives: ['Fresh Lime 250g - ₹25', 'Organic Lemons Pack of 4 - ₹28']
+            alternatives: []
         }
     ];
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -553,39 +553,47 @@
                     id="categoryTabsContainer">
                     <button onclick="filterByCategory('all')" id="catTab-all"
                         class="category-tab active-cat-tab shrink-0 px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition border bg-brandGreen text-white border-emerald-700 shadow-xs">
-                        ✨ All Essentials (26)
+                        ✨ All Essentials (64)
                     </button>
                     <button onclick="filterByCategory('most_searched')" id="catTab-most_searched"
                         class="category-tab shrink-0 px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition border bg-white text-slate-700 hover:bg-slate-100 border-slate-200 shadow-2xs">
                         🔥 Most Searched
                     </button>
-                    <button onclick="filterByCategory('Vegetables')" id="catTab-Vegetables"
+                    <button onclick="filterByCategory('Snacks')" id="catTab-Snacks"
                         class="category-tab shrink-0 px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition border bg-white text-slate-700 hover:bg-slate-100 border-slate-200 shadow-2xs">
-                        🥦 Fresh Veggies & Fruits
+                        🍿 Snacks & Biscuits
                     </button>
                     <button onclick="filterByCategory('Dairy')" id="catTab-Dairy"
                         class="category-tab shrink-0 px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition border bg-white text-slate-700 hover:bg-slate-100 border-slate-200 shadow-2xs">
-                        🥛 Dairy, Bread & Eggs
+                        🥛 Dairy & Bakery
                     </button>
-                    <button onclick="filterByCategory('Atta & Rice')" id="catTab-Atta"
+                    <button onclick="filterByCategory('Atta & Rice')" id="catTab-Atta & Rice"
                         class="category-tab shrink-0 px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition border bg-white text-slate-700 hover:bg-slate-100 border-slate-200 shadow-2xs">
-                        🌾 Atta, Rice & Dals
+                        🌾 Atta, Rice & Pulses
                     </button>
-                    <button onclick="filterByCategory('Oils & Ghee')" id="catTab-Oils"
+                    <button onclick="filterByCategory('Oils & Ghee')" id="catTab-Oils & Ghee"
                         class="category-tab shrink-0 px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition border bg-white text-slate-700 hover:bg-slate-100 border-slate-200 shadow-2xs">
-                        🌻 Cooking Oils & Ghee
+                        🌻 Oils, Ghee & Spices
                     </button>
-                    <button onclick="filterByCategory('Snacks')" id="catTab-Snacks"
+                    <button onclick="filterByCategory('Vegetables')" id="catTab-Vegetables"
                         class="category-tab shrink-0 px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition border bg-white text-slate-700 hover:bg-slate-100 border-slate-200 shadow-2xs">
-                        🍜 Snacks & Munchies
+                        🥦 Veggies & Fruits
                     </button>
                     <button onclick="filterByCategory('Beverages')" id="catTab-Beverages"
                         class="category-tab shrink-0 px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition border bg-white text-slate-700 hover:bg-slate-100 border-slate-200 shadow-2xs">
-                        🧃 Cold Drinks & Coffee
+                        🥤 Beverages
                     </button>
                     <button onclick="filterByCategory('Household')" id="catTab-Household"
                         class="category-tab shrink-0 px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition border bg-white text-slate-700 hover:bg-slate-100 border-slate-200 shadow-2xs">
-                        🧼 Cleaning & Hygiene
+                        🧼 Household
+                    </button>
+                    <button onclick="filterByCategory('Personal Care')" id="catTab-Personal Care"
+                        class="category-tab shrink-0 px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition border bg-white text-slate-700 hover:bg-slate-100 border-slate-200 shadow-2xs">
+                        🧴 Personal Care
+                    </button>
+                    <button onclick="filterByCategory('Meat & Eggs')" id="catTab-Meat & Eggs"
+                        class="category-tab shrink-0 px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition border bg-white text-slate-700 hover:bg-slate-100 border-slate-200 shadow-2xs">
+                        🍗 Meat & Eggs
                     </button>
                 </div>
 
@@ -1217,14 +1225,15 @@
     </div>
 
     <!-- FLOATING CHATBOT WIDGET -->
+        <!-- FLOATING CHATBOT WIDGET -->
     <div id="chatbotContainer" class="fixed bottom-5 right-5 z-50 flex flex-col items-end">
 
         <!-- POPPING CLOUD SPEECH BUBBLE -->
         <div id="chatbotSpeechBubble"
             class="mb-3 bg-white/95 backdrop-blur-md text-slate-900 text-xs font-extrabold px-4 py-2.5 rounded-2xl shadow-xl border border-emerald-300 flex items-center space-x-2 animate-bounce relative group cursor-pointer transition-all hover:scale-105"
             onclick="toggleChatbotWindow()">
-            <span class="text-brandGreen text-sm">💭</span>
-            <span class="text-slate-900 font-extrabold text-xs">What's on your mind?</span>
+            <span class="text-amber-500 text-sm">ðŸ‘¨â€ðŸ³</span>
+            <span class="text-slate-900 font-extrabold text-xs">What Indian dish are you cooking today?</span>
             <button onclick="dismissSpeechBubble(event)"
                 class="text-slate-400 hover:text-slate-600 text-xs ml-1 pl-1 border-l border-slate-200"
                 title="Close bubble">
@@ -1239,32 +1248,26 @@
 
         <!-- CHATBOT WINDOW (HIDDEN BY DEFAULT) -->
         <div id="chatbotWindow"
-            class="hidden w-80 sm:w-96 bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden mb-3 flex flex-col max-h-[520px] transition-all transform duration-300">
+            class="hidden w-80 sm:w-[420px] bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden mb-3 flex flex-col max-h-[560px] transition-all transform duration-300">
             <!-- CHAT HEADER -->
             <div
-                class="bg-gradient-to-r from-emerald-800 to-slate-900 text-white p-4 flex items-center justify-between border-b border-emerald-700/50">
+                class="bg-gradient-to-r from-emerald-800 via-brandGreen to-slate-900 text-white p-4 flex items-center justify-between border-b border-emerald-700/50">
                 <div class="flex items-center space-x-3">
                     <div class="relative">
                         <div
-                            class="w-10 h-10 rounded-full bg-emerald-700 border-2 border-amber-400 flex items-center justify-center text-amber-300 font-black shadow-inner p-1">
-                            <svg class="h-6 w-auto" viewBox="0 0 120 120" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M10 20 L25 20 L45 75 L110 75 L125 35 L32 35" stroke="#FF5722" stroke-width="8"
-                                    stroke-linecap="round" stroke-linejoin="round" fill="none" />
-                                <text x="65" y="62" font-family="'Outfit', sans-serif" font-weight="900" font-size="34"
-                                    fill="#FFB800" text-anchor="middle">₹</text>
-                            </svg>
+                            class="w-10 h-10 rounded-full bg-white border-2 border-amber-400 flex items-center justify-center p-1 shadow-md">
+                            <img src="images/logo.png" onError="this.onerror=null;this.src='logo.png';" alt="Bachat Hub Mascot" class="w-8 h-8 object-contain">
                         </div>
                         <span
-                            class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-emerald-400 border-2 border-slate-900"></span>
+                            class="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-emerald-400 border-2 border-slate-900"></span>
                     </div>
                     <div>
                         <h4 class="font-extrabold text-sm text-white brand-heading flex items-center gap-1.5">
-                            <span>Bachat Hub AI</span>
+                            <span>Bachat Chef AI</span>
                             <span
-                                class="text-[9px] bg-emerald-500/30 text-emerald-300 border border-emerald-400/40 px-1.5 py-0.5 rounded-full uppercase font-bold">Live</span>
+                                class="text-[9px] bg-amber-400/30 text-amber-300 border border-amber-400/40 px-1.5 py-0.5 rounded-full uppercase font-bold">Chef Mascot</span>
                         </h4>
-                        <p class="text-[11px] text-slate-300 font-medium">Compare & Save Assistant</p>
+                        <p class="text-[11px] text-slate-200 font-medium">Recipe & Live Grocery Price Comparison</p>
                     </div>
                 </div>
                 <button onclick="toggleChatbotWindow()" class="text-slate-300 hover:text-white text-lg p-1 transition">
@@ -1274,34 +1277,53 @@
 
             <!-- CHAT MESSAGES CONTAINER -->
             <div id="chatbotMessages"
-                class="p-4 overflow-y-auto custom-scrollbar flex-1 space-y-3 bg-slate-50/60 min-h-[260px] max-h-[340px] text-xs">
+                class="p-4 overflow-y-auto custom-scrollbar flex-1 space-y-3 bg-slate-50/60 min-h-[300px] max-h-[380px] text-xs">
                 <!-- AI WELCOME BUBBLE -->
                 <div class="flex items-start space-x-2">
                     <div
-                        class="w-7 h-7 rounded-full bg-brandGreen text-white flex items-center justify-center shrink-0 text-xs font-bold shadow-xs">
-                        <i class="fa-solid fa-robot"></i>
+                        class="w-8 h-8 rounded-full bg-white border border-emerald-300 flex items-center justify-center shrink-0 p-1 shadow-xs">
+                        <img src="images/logo.png" onError="this.onerror=null;this.src='logo.png';" alt="Bachat Chef" class="w-6 h-6 object-contain">
                     </div>
                     <div
-                        class="bg-white p-3 rounded-2xl rounded-tl-none border border-slate-200 shadow-2xs text-slate-800 leading-relaxed font-medium">
-                        Namaste! 🙏 I'm your <strong>Bachat Hub AI Assistant</strong>.<br>
-                        What's on your mind today? I can help you find the lowest prices, optimize your grocery cart, or
-                        check deals across <strong>Blinkit, Zepto, BigBasket, Flipkart Minutes, and Instamart</strong>!
+                        class="bg-white p-3.5 rounded-2xl rounded-tl-none border border-slate-200 shadow-2xs text-slate-800 leading-relaxed font-medium space-y-2">
+                        <p>Namaste! ðŸ‘¨â€ðŸ³ I'm your <strong>Bachat Chef AI Mascot</strong>.</p>
+                        <p>Tell me what popular <strong>Indian dish or cuisine</strong> you are thinking of making today! I'll list all required ingredients, compare live prices across <strong>Blinkit, Zepto, BigBasket, Flipkart Minutes, & Instamart</strong>, and add them directly to your Bachat Basket!</p>
                     </div>
                 </div>
 
                 <!-- QUICK PROMPT CHIPS -->
-                <div id="chatQuickPrompts" class="flex flex-wrap gap-1.5 pl-9 pt-1">
-                    <button onclick="sendQuickPrompt('Which store has the lowest prices today?')"
-                        class="bg-emerald-50 hover:bg-emerald-100 text-brandGreen border border-emerald-300 px-2.5 py-1 rounded-full text-[11px] font-bold transition text-left">
-                        💡 Lowest prices today?
+                <div id="chatQuickPrompts" class="flex flex-wrap gap-1.5 pl-10 pt-1">
+                    <button onclick="sendQuickPrompt('Paneer Butter Masala')"
+                        class="bg-emerald-50 hover:bg-emerald-100 text-brandGreen border border-emerald-300 px-2.5 py-1 rounded-full text-[11px] font-bold transition text-left shadow-2xs">
+                        ðŸ¥˜ Paneer Butter Masala
                     </button>
-                    <button onclick="sendQuickPrompt('How does Smart Split basket optimizer work?')"
-                        class="bg-emerald-50 hover:bg-emerald-100 text-brandGreen border border-emerald-300 px-2.5 py-1 rounded-full text-[11px] font-bold transition text-left">
-                        ⚡ How Smart Split works?
+                    <button onclick="sendQuickPrompt('Butter Chicken')"
+                        class="bg-emerald-50 hover:bg-emerald-100 text-brandGreen border border-emerald-300 px-2.5 py-1 rounded-full text-[11px] font-bold transition text-left shadow-2xs">
+                        ðŸ— Butter Chicken
                     </button>
-                    <button onclick="sendQuickPrompt('Suggest budget alternatives for branded milk & ghee')"
-                        class="bg-emerald-50 hover:bg-emerald-100 text-brandGreen border border-emerald-300 px-2.5 py-1 rounded-full text-[11px] font-bold transition text-left">
-                        🥛 Budget grocery alternatives
+                    <button onclick="sendQuickPrompt('Hyderabadi Biryani')"
+                        class="bg-emerald-50 hover:bg-emerald-100 text-brandGreen border border-emerald-300 px-2.5 py-1 rounded-full text-[11px] font-bold transition text-left shadow-2xs">
+                        ðŸ› Hyderabadi Biryani
+                    </button>
+                    <button onclick="sendQuickPrompt('Pav Bhaji')"
+                        class="bg-emerald-50 hover:bg-emerald-100 text-brandGreen border border-emerald-300 px-2.5 py-1 rounded-full text-[11px] font-bold transition text-left shadow-2xs">
+                        ðŸ¥˜ Pav Bhaji
+                    </button>
+                    <button onclick="sendQuickPrompt('Chole Bhature')"
+                        class="bg-emerald-50 hover:bg-emerald-100 text-brandGreen border border-emerald-300 px-2.5 py-1 rounded-full text-[11px] font-bold transition text-left shadow-2xs">
+                        ðŸ«“ Chole Bhature
+                    </button>
+                    <button onclick="sendQuickPrompt('Dal Tadka')"
+                        class="bg-emerald-50 hover:bg-emerald-100 text-brandGreen border border-emerald-300 px-2.5 py-1 rounded-full text-[11px] font-bold transition text-left shadow-2xs">
+                        ðŸ¥£ Dal Tadka
+                    </button>
+                    <button onclick="sendQuickPrompt('Rajma Chawal')"
+                        class="bg-emerald-50 hover:bg-emerald-100 text-brandGreen border border-emerald-300 px-2.5 py-1 rounded-full text-[11px] font-bold transition text-left shadow-2xs">
+                        ðŸ«“ Rajma Chawal
+                    </button>
+                    <button onclick="sendQuickPrompt('Bengali Fish Curry')"
+                        class="bg-emerald-50 hover:bg-emerald-100 text-brandGreen border border-emerald-300 px-2.5 py-1 rounded-full text-[11px] font-bold transition text-left shadow-2xs">
+                        ðŸŸ Fish Curry
                     </button>
                 </div>
             </div>
@@ -1309,7 +1331,7 @@
             <!-- CHAT INPUT FOOTER -->
             <div class="p-3 bg-white border-t border-slate-200">
                 <form onsubmit="handleChatSubmit(event)" class="flex items-center space-x-2">
-                    <input type="text" id="chatbotInput" placeholder="Ask Bachat AI anything..." required
+                    <input type="text" id="chatbotInput" placeholder="Type dish e.g. Paneer Butter Masala, Biryani..." required
                         class="flex-1 bg-slate-100 border border-slate-200 rounded-full px-3.5 py-2 text-xs font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-brandGreen">
                     <button type="submit"
                         class="w-9 h-9 rounded-full bg-brandGreen hover:bg-emerald-800 text-white flex items-center justify-center shrink-0 shadow-md transition">
@@ -1321,16 +1343,16 @@
 
         <!-- FLOATING CHATBOT TRIGGER BUTTON WITH BACHAT HUB MASCOT LOGO -->
         <button id="chatbotTriggerBtn" onclick="toggleChatbotWindow()"
-            class="relative w-14 h-14 rounded-full bg-gradient-to-tr from-emerald-800 via-brandGreen to-teal-700 text-white shadow-2xl flex items-center justify-center transition-all transform hover:scale-110 active:scale-95 border-2 border-amber-300 group cursor-pointer"
-            title="Chat with Bachat Hub AI">
+            class="relative w-14 h-14 rounded-full bg-white shadow-2xl flex items-center justify-center transition-all transform hover:scale-110 active:scale-95 border-2 border-amber-300 group cursor-pointer p-1"
+            title="Chat with Bachat Chef AI">
 
             <!-- PULSE RING -->
             <span
                 class="absolute inset-0 rounded-full bg-emerald-400 opacity-40 animate-ping pointer-events-none"></span>
 
             <!-- BACHAT HUB MASCOT LOGO AVATAR -->
-            <div class="relative flex items-center justify-center p-1">
-                <img src="images/logo.png" onError="this.onerror=null;this.src='logo.png';" alt="Bachat Hub" class="w-10 h-10 object-contain transform group-hover:rotate-6 transition-transform">
+            <div class="relative flex items-center justify-center p-0.5">
+                <img src="images/logo.png" onError="this.onerror=null;this.src='logo.png';" alt="Bachat Hub Mascot" class="w-10 h-10 object-contain transform group-hover:rotate-6 transition-transform">
             </div>
 
             <!-- UNREAD BADGE -->
@@ -1629,480 +1651,1108 @@
         let activeSelectedCategory = 'all';
 
         let PRODUCTS_DB = [
+            // --- 1. SNACKS & BISCUITS (8 items) ---
             {
-                id: "p0",
+                id: "bb_kurkure",
+                title: "Kurkure Masala Munch Crisps (75 g)",
+                brand: "Kurkure",
+                category: "Snacks",
+                unit: "75 g",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/5482a.jpg",
+                mostSearched: true,
+                prices: {
+                    blinkit: { item: 18.5, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    flipkart: { item: 19.5, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    zepto: { item: 19.5, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 20, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 20, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: [{ name: "Tedhe Medhe Masala Tadka 75g", app: "flipkart", price: 18, reason: "Local spicy alternative" }]
+            },
+            {
+                id: "bb_dark_fantasy",
+                title: "Sunfeast Dark Fantasy Choco Fills Biscuits",
+                brand: "Sunfeast",
+                category: "Snacks",
+                unit: "300 g",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/160a.jpg",
+                mostSearched: true,
+                prices: {
+                    bigbasket: { item: 92, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    flipkart: { item: 96, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    blinkit: { item: 102, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    zepto: { item: 105, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    instamart: { item: 108, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: [{ name: "Parle Hide & Seek (300 g)", app: "blinkit", price: 90, reason: "Cheaper chocolate cookie option" }]
+            },
+            {
+                id: "bb_lays_magic_masala",
+                title: "Lay's India's Magic Masala Potato Chips",
+                brand: "Lay's",
+                category: "Snacks",
+                unit: "50 g",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/240092a.jpg",
+                mostSearched: true,
+                prices: {
+                    flipkart: { item: 18, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    zepto: { item: 19, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    blinkit: { item: 20, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 20, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 20, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_maggi_noodles",
+                title: "Maggi 2-Minute Masala Instant Noodles",
+                brand: "Maggi",
+                category: "Snacks",
+                unit: "420 g (6 Pack)",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/13813a.jpg",
+                mostSearched: true,
+                prices: {
+                    zepto: { item: 84, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 86, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    flipkart: { item: 87, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    blinkit: { item: 88, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    instamart: { item: 90, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: [{ name: "Yippee Magic Masala Noodles 420g", app: "zepto", price: 80, reason: "Popular non-sticky noodle alternative" }]
+            },
+            {
+                id: "bb_oreo_biscuits",
+                title: "Cadbury Oreo Vanilla Cream Biscuits",
+                brand: "Cadbury",
+                category: "Snacks",
+                unit: "120 g",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/12739a.jpg",
+                mostSearched: false,
+                prices: {
+                    instamart: { item: 28, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    flipkart: { item: 29, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    blinkit: { item: 30, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    zepto: { item: 30, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 30, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_bingo_mad_angles",
+                title: "Bingo! Mad Angles Mmmm Masala Crisps",
+                brand: "Bingo",
+                category: "Snacks",
+                unit: "66 g",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/16879a.jpg",
+                mostSearched: false,
+                prices: {
+                    flipkart: { item: 18, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    blinkit: { item: 19, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    zepto: { item: 20, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 20, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 20, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_parle_g",
+                title: "Parle-G Gold Original Glucose Biscuits",
+                brand: "Parle",
+                category: "Snacks",
+                unit: "1 kg Saver Pack",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/483606a.jpg",
+                mostSearched: true,
+                prices: {
+                    bigbasket: { item: 110, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    flipkart: { item: 112, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    zepto: { item: 115, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    blinkit: { item: 118, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    instamart: { item: 120, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_haldiram_bhujia",
+                title: "Haldiram's Nagpur Aloo Bhujia Namkeen",
+                brand: "Haldiram's",
+                category: "Snacks",
+                unit: "400 g",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/40118a.jpg",
+                mostSearched: false,
+                prices: {
+                    flipkart: { item: 98, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    zepto: { item: 102, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    blinkit: { item: 105, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 108, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 110, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+
+            // --- 2. DAIRY & BAKERY (8 items) ---
+            {
+                id: "bb_amul_taaza",
+                title: "Amul Taaza Toned Fresh Milk",
+                brand: "Amul",
+                category: "Dairy",
+                unit: "1 L Pouch",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/19512a.jpg",
+                mostSearched: true,
+                prices: {
+                    zepto: { item: 52, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    flipkart: { item: 53.5, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    blinkit: { item: 54, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 54, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 54.5, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: [{ name: "Mother Dairy Toned Milk 1L", app: "zepto", price: 53, reason: "Local fresh milk equivalent" }]
+            },
+            {
+                id: "bb_amul_butter",
+                title: "Amul Pasteurised Salted Butter",
+                brand: "Amul",
+                category: "Dairy",
+                unit: "500 g Block",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/160a.jpg",
+                mostSearched: true,
+                prices: {
+                    flipkart: { item: 268, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    bigbasket: { item: 270, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    blinkit: { item: 275, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    zepto: { item: 275, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    instamart: { item: 276, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_amul_cheese_slices",
+                title: "Amul Processed Cheese Slices",
+                brand: "Amul",
+                category: "Dairy",
+                unit: "200 g (10 Slices)",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/19504a.jpg",
+                mostSearched: false,
+                prices: {
+                    instamart: { item: 130, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    flipkart: { item: 132, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    zepto: { item: 135, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    blinkit: { item: 138, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 140, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_amul_masti_dahi",
+                title: "Amul Masti Dahi Pouch",
+                brand: "Amul",
+                category: "Dairy",
+                unit: "400 g Pouch",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/19448a.jpg",
+                mostSearched: true,
+                prices: {
+                    zepto: { item: 33, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    blinkit: { item: 34, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    flipkart: { item: 34.5, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    bigbasket: { item: 35, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 35, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_brown_bread",
+                title: "Modern Whole Wheat Brown Bread",
+                brand: "Modern",
+                category: "Dairy",
+                unit: "400 g Pack",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/35889a.jpg",
+                mostSearched: false,
+                prices: {
+                    flipkart: { item: 38, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    blinkit: { item: 40, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    zepto: { item: 40, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 42, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 42, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_amul_paneer",
+                title: "Amul Fresh Malai Paneer",
+                brand: "Amul",
+                category: "Dairy",
+                unit: "200 g Pack",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/19460a.jpg",
+                mostSearched: true,
+                prices: {
+                    bigbasket: { item: 88, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    flipkart: { item: 89, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    zepto: { item: 90, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    blinkit: { item: 92, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    instamart: { item: 95, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_epigamia_yogurt",
+                title: "Epigamia Greek Yogurt Blueberries",
+                brand: "Epigamia",
+                category: "Dairy",
+                unit: "85 g Cup",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/368817a.jpg",
+                mostSearched: false,
+                prices: {
+                    zepto: { item: 54, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    flipkart: { item: 55, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    blinkit: { item: 58, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 60, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 60, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_mother_dairy_milk",
+                title: "Mother Dairy Cow Fresh Milk",
+                brand: "Mother Dairy",
+                category: "Dairy",
+                unit: "500 ml Pouch",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/19520a.jpg",
+                mostSearched: false,
+                prices: {
+                    flipkart: { item: 27, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    blinkit: { item: 28, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    zepto: { item: 28, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 29, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 29, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+
+            // --- 3. ATTA, RICE & PULSES (8 items) ---
+            {
+                id: "bb_aashirvaad_atta",
+                title: "Aashirvaad Shuddh Chakki Whole Wheat Atta",
+                brand: "Aashirvaad",
+                category: "Atta & Rice",
+                unit: "5 kg Bag",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/10515a.jpg",
+                mostSearched: true,
+                prices: {
+                    flipkart: { item: 236, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    bigbasket: { item: 239, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    blinkit: { item: 242, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    zepto: { item: 245, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    instamart: { item: 248, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: [{ name: "Fortune Chakki Fresh Atta 5kg", app: "flipkart", price: 220, reason: "High quality wheat alternative" }]
+            },
+            {
+                id: "bb_fortune_basmati",
+                title: "Fortune Everyday Special Basmati Rice",
+                brand: "Fortune",
+                category: "Atta & Rice",
+                unit: "5 kg Bag",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/240092a.jpg",
+                mostSearched: true,
+                prices: {
+                    bigbasket: { item: 355, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    flipkart: { item: 358, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    zepto: { item: 362, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    blinkit: { item: 365, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    instamart: { item: 370, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_tata_sampann_dal",
+                title: "Tata Sampann Unpolished Toor / Arhar Dal",
+                brand: "Tata",
+                category: "Atta & Rice",
+                unit: "1 kg Pack",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/102874a.jpg",
+                mostSearched: false,
+                prices: {
+                    flipkart: { item: 162, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    zepto: { item: 165, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    blinkit: { item: 168, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 170, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 172, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_tata_salt",
+                title: "Tata Salt Vacuum Evaporated Iodised Salt",
+                brand: "Tata",
+                category: "Atta & Rice",
+                unit: "1 kg Pouch",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/160a.jpg",
+                mostSearched: true,
+                prices: {
+                    zepto: { item: 26, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    flipkart: { item: 26.5, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    blinkit: { item: 27, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 27, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 28, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_madhur_sugar",
+                title: "Madhur Pure & Hygienic Sugar",
+                brand: "Madhur",
+                category: "Atta & Rice",
+                unit: "1 kg Pouch",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/10507a.jpg",
+                mostSearched: false,
+                prices: {
+                    flipkart: { item: 54, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    blinkit: { item: 56, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    zepto: { item: 56, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 58, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 58, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_rajma_chitra",
+                title: "Tata Sampann Rajma Chitra (Red Kidney Beans)",
+                brand: "Tata",
+                category: "Atta & Rice",
+                unit: "500 g Pack",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/116238a.jpg",
+                mostSearched: false,
+                prices: {
+                    bigbasket: { item: 88, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    flipkart: { item: 90, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    zepto: { item: 92, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    blinkit: { item: 95, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    instamart: { item: 96, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_moong_dal",
+                title: "Tata Sampann Unpolished Yellow Moong Dal",
+                brand: "Tata",
+                category: "Atta & Rice",
+                unit: "500 g Pack",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/102876a.jpg",
+                mostSearched: false,
+                prices: {
+                    zepto: { item: 72, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    flipkart: { item: 74, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    blinkit: { item: 76, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 78, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 80, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_kabuli_chana",
+                title: "Organic Tattva Kabuli Chana (White Chickpeas)",
+                brand: "Organic Tattva",
+                category: "Atta & Rice",
+                unit: "500 g Pack",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/439697a.jpg",
+                mostSearched: false,
+                prices: {
+                    flipkart: { item: 84, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    bigbasket: { item: 86, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    blinkit: { item: 88, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    zepto: { item: 90, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    instamart: { item: 92, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+
+            // --- 4. OILS, GHEE & SPICES (7 items) ---
+            {
+                id: "bb_fortune_sunflower",
+                title: "Fortune Sunlite Refined Sunflower Oil",
+                brand: "Fortune",
+                category: "Oils & Ghee",
+                unit: "1 L Pouch",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/12795a.jpg",
+                mostSearched: true,
+                prices: {
+                    flipkart: { item: 138, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    zepto: { item: 140, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    blinkit: { item: 142, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 145, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 145, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_fortune_mustard",
+                title: "Fortune Kachi Ghani Pure Mustard Oil",
+                brand: "Fortune",
+                category: "Oils & Ghee",
+                unit: "1 L Pet Bottle",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/12792a.jpg",
+                mostSearched: true,
+                prices: {
+                    bigbasket: { item: 152, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    flipkart: { item: 154, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    blinkit: { item: 158, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    zepto: { item: 160, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    instamart: { item: 162, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_amul_ghee",
+                title: "Amul Pure Cow Ghee Tin",
+                brand: "Amul",
+                category: "Oils & Ghee",
+                unit: "1 L Tin",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/19515a.jpg",
+                mostSearched: true,
+                prices: {
+                    zepto: { item: 590, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    flipkart: { item: 595, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    blinkit: { item: 605, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 610, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 615, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_mdh_turmeric",
+                title: "MDH Deggi Mirch & Turmeric Powder Combo",
+                brand: "MDH",
+                category: "Oils & Ghee",
+                unit: "100 g Pack",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/102868a.jpg",
+                mostSearched: false,
+                prices: {
+                    flipkart: { item: 72, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    blinkit: { item: 75, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    zepto: { item: 76, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 78, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 80, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_catch_turmeric",
+                title: "Catch Haldi Powder (Turmeric Powder)",
+                brand: "Catch",
+                category: "Oils & Ghee",
+                unit: "200 g Pack",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/122008a.jpg",
+                mostSearched: false,
+                prices: {
+                    zepto: { item: 48, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    flipkart: { item: 50, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    blinkit: { item: 52, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 54, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 55, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_everest_garam_masala",
+                title: "Everest Garam Masala Powder",
+                brand: "Everest",
+                category: "Oils & Ghee",
+                unit: "100 g Pack",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/102870a.jpg",
+                mostSearched: false,
+                prices: {
+                    flipkart: { item: 82, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    bigbasket: { item: 84, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    zepto: { item: 85, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    blinkit: { item: 88, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    instamart: { item: 90, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_saffola_gold",
+                title: "Saffola Gold Refined Cooking Oil",
+                brand: "Saffola",
+                category: "Oils & Ghee",
+                unit: "1 L Pouch",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/12798a.jpg",
+                mostSearched: false,
+                prices: {
+                    bigbasket: { item: 158, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    flipkart: { item: 160, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    zepto: { item: 164, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    blinkit: { item: 168, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    instamart: { item: 170, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+
+            // --- 5. VEGGIES & FRUITS (8 items) ---
+            {
+                id: "bb_potato_jyoti",
                 title: "Fresh Potato (Aloo / Jyoti)",
                 brand: "Fresh Produce",
                 category: "Vegetables",
                 unit: "1 kg",
                 img: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=300&auto=format&fit=crop&q=80",
                 mostSearched: true,
-                searchRank: 1,
-                searchVolume: "48.5k searches today",
                 prices: {
                     blinkit: { item: 24, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 28, eta: "8 mins", deliveryFee: 12, handlingFee: 5, freeThreshold: 149 },
-                    bigbasket: { item: 25, eta: "15 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
-                    flipkart: { item: 26, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 30, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
-                },
-                aiAlternatives: [
-                    { name: "Fresh Red Potato 1kg", app: "bigbasket", price: 23, reason: "Local farmer direct supply" },
-                    { name: "Baby Potatoes 500g", app: "zepto", price: 18, reason: "Lesser weight option" }
-                ]
-            },
-            {
-                id: "p1",
-                title: "Amul Taaza Toned Milk",
-                brand: "Amul",
-                category: "Dairy",
-                unit: "1 Litre Pouch",
-                img: "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&auto=format&fit=crop&q=80",
-                mostSearched: true,
-                searchRank: 2,
-                searchVolume: "53.2k searches today",
-                prices: {
-                    blinkit: { item: 54, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 52, eta: "8 mins", deliveryFee: 12, handlingFee: 5, freeThreshold: 149 },
-                    bigbasket: { item: 53, eta: "15 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
-                    flipkart: { item: 54, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 55, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
-                },
-                aiAlternatives: [
-                    { name: "Mother Dairy Toned Milk 1L", app: "blinkit", price: 53, reason: "Identical fat content & quality" }
-                ]
-            },
-            {
-                id: "p2",
-                title: "Maggi 2-Minute Masala Noodles",
-                brand: "Maggi",
-                category: "Snacks",
-                unit: "4 x 70g (280g)",
-                img: "https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=300&auto=format&fit=crop&q=80",
-                mostSearched: true,
-                searchRank: 3,
-                searchVolume: "42.1k searches today",
-                prices: {
-                    blinkit: { item: 56, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 55, eta: "8 mins", deliveryFee: 12, handlingFee: 5, freeThreshold: 149 },
-                    bigbasket: { item: 54, eta: "15 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
-                    flipkart: { item: 51, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 58, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
-                },
-                aiAlternatives: [
-                    { name: "Yippee Noodle 4-Pack", app: "flipkart", price: 48, reason: "Saves ₹6 with similar taste" }
-                ]
-            },
-            {
-                id: "p3",
-                title: "Fortune Sunlite Sunflower Oil",
-                brand: "Fortune",
-                category: "Oils & Ghee",
-                unit: "1 Litre Pouch",
-                img: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=300&auto=format&fit=crop&q=80",
-                mostSearched: true,
-                searchRank: 4,
-                searchVolume: "36.8k searches today",
-                prices: {
-                    blinkit: { item: 140, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 138, eta: "8 mins", deliveryFee: 12, handlingFee: 5, freeThreshold: 149 },
-                    bigbasket: { item: 135, eta: "15 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
-                    flipkart: { item: 136, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 132, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
-                },
-                aiAlternatives: [
-                    { name: "Saffola Gold Oil 1L", app: "zepto", price: 145, reason: "Heart health blend option" }
-                ]
-            },
-            {
-                id: "p4",
-                title: "Fresh Table Eggs (White)",
-                brand: "Eggoz",
-                category: "Dairy",
-                unit: "6 Pack",
-                img: "white_eggs.jpg",
-                mostSearched: true,
-                searchRank: 5,
-                searchVolume: "39.4k searches today",
-                prices: {
-                    blinkit: { item: 42, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 45, eta: "8 mins", deliveryFee: 12, handlingFee: 5, freeThreshold: 149 },
-                    bigbasket: { item: 44, eta: "15 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
-                    flipkart: { item: 43, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 48, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
-                },
-                aiAlternatives: [
-                    { name: "Farm Fresh Eggs 12s", app: "bigbasket", price: 88, reason: "Bulk pack discount" }
-                ]
-            },
-            {
-                id: "p5",
-                title: "Aashirvaad Shuddh Chakki Atta",
-                brand: "Aashirvaad",
-                category: "Atta & Rice",
-                unit: "5 kg Bag",
-                img: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&auto=format&fit=crop&q=80",
-                mostSearched: true,
-                searchRank: 6,
-                searchVolume: "33.5k searches today",
-                prices: {
-                    blinkit: { item: 242, eta: "10 mins", deliveryFee: 0, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 228, eta: "8 mins", deliveryFee: 0, handlingFee: 5, freeThreshold: 149 },
-                    bigbasket: { item: 232, eta: "15 mins", deliveryFee: 0, handlingFee: 2, freeThreshold: 299 },
-                    flipkart: { item: 235, eta: "12 mins", deliveryFee: 0, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 245, eta: "11 mins", deliveryFee: 0, handlingFee: 4, freeThreshold: 199 }
-                },
-                aiAlternatives: [
-                    { name: "Fortune Chakki Fresh Atta 5kg", app: "bigbasket", price: 219, reason: "Save ₹23 per 5kg bag" }
-                ]
-            },
-            {
-                id: "p6",
-                title: "Amul Pasteurised Butter",
-                brand: "Amul",
-                category: "Dairy",
-                unit: "100g Block",
-                img: "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=300&auto=format&fit=crop&q=80",
-                mostSearched: true,
-                searchRank: 7,
-                searchVolume: "28.9k searches today",
-                prices: {
-                    blinkit: { item: 58, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 57, eta: "8 mins", deliveryFee: 12, handlingFee: 5, freeThreshold: 149 },
-                    bigbasket: { item: 56, eta: "15 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
-                    flipkart: { item: 54, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 58, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
-                },
-                aiAlternatives: []
-            },
-            {
-                id: "p7",
-                title: "Coca-Cola Original Bottle",
-                brand: "Coca-Cola",
-                category: "Beverages",
-                unit: "750 ml Bottle",
-                img: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&auto=format&fit=crop&q=80",
-                mostSearched: true,
-                searchRank: 8,
-                searchVolume: "24.2k searches today",
-                prices: {
-                    blinkit: { item: 40, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 38, eta: "8 mins", deliveryFee: 12, handlingFee: 5, freeThreshold: 149 },
-                    bigbasket: { item: 38, eta: "15 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
-                    flipkart: { item: 37, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 35, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
-                },
-                aiAlternatives: []
-            },
-            {
-                id: "p8",
-                title: "Fresh Hybrid Red Tomatoes",
-                brand: "Fresh Produce",
-                category: "Vegetables",
-                unit: "1 kg",
-                img: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=300&auto=format&fit=crop&q=80",
-                mostSearched: true,
-                searchRank: 9,
-                searchVolume: "44.8k searches today",
-                prices: {
-                    blinkit: { item: 26, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 28, eta: "8 mins", deliveryFee: 12, handlingFee: 5, freeThreshold: 149 },
-                    bigbasket: { item: 22, eta: "15 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
-                    flipkart: { item: 24, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 27, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
-                },
-                aiAlternatives: []
-            },
-            {
-                id: "p9",
-                title: "Red Onion (Pyaz)",
-                brand: "Fresh Produce",
-                category: "Vegetables",
-                unit: "1 kg",
-                img: "https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?w=300&auto=format&fit=crop&q=80",
-                mostSearched: true,
-                searchRank: 10,
-                searchVolume: "49.1k searches today",
-                prices: {
-                    blinkit: { item: 30, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 34, eta: "8 mins", deliveryFee: 12, handlingFee: 5, freeThreshold: 149 },
-                    bigbasket: { item: 32, eta: "15 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
-                    flipkart: { item: 33, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 36, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
-                },
-                aiAlternatives: []
-            },
-            {
-                id: "p10",
-                title: "Amul Masti Dahi / Plain Curd",
-                brand: "Amul",
-                category: "Dairy",
-                unit: "400 g Pouch",
-                img: "https://images.unsplash.com/photo-1571212515416-fef01fc43637?w=300&auto=format&fit=crop&q=80",
-                mostSearched: false,
-                prices: {
-                    blinkit: { item: 35, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 35, eta: "8 mins", deliveryFee: 12, handlingFee: 5, freeThreshold: 149 },
-                    bigbasket: { item: 34, eta: "15 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
-                    flipkart: { item: 32, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 35, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
-                },
-                aiAlternatives: []
-            },
-            {
-                id: "p11",
-                title: "Britannia 100% Whole Wheat Bread",
-                brand: "Britannia",
-                category: "Dairy",
-                unit: "400 g Pack",
-                img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=300&auto=format&fit=crop&q=80",
-                mostSearched: false,
-                prices: {
-                    blinkit: { item: 50, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 45, eta: "8 mins", deliveryFee: 12, handlingFee: 5, freeThreshold: 149 },
-                    bigbasket: { item: 48, eta: "15 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
-                    flipkart: { item: 47, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 52, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
-                },
-                aiAlternatives: []
-            },
-            {
-                id: 'p12',
-                name: 'Tata Salt Vacuum Evaporated Iodised Salt',
-                brand: 'Tata',
-                category: 'Atta & Rice',
-                unit: '1 kg',
-                img: 'https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?w=300&auto=format&fit=crop&q=80',
-                isMostSearched: false,
-                prices: {
-                    blinkit: { item: 28, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 28, eta: "8 mins", deliveryFee: 12, handlingFee: 5, freeThreshold: 149 },
-                    bigbasket: { item: 25, eta: "15 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
-                    flipkart: { item: 27, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
+                    zepto: { item: 25, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 26, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    flipkart: { item: 26, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
                     instamart: { item: 28, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
                 },
                 aiAlternatives: []
             },
             {
-                id: "p13",
-                title: "Tata Sampann Unpolished Toor Dal",
-                brand: "Tata",
-                category: "Atta & Rice",
-                unit: "1 kg Bag",
-                img: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=300&auto=format&fit=crop&q=80",
-                mostSearched: false,
-                prices: {
-                    blinkit: { item: 168, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 162, eta: "8 mins", deliveryFee: 12, handlingFee: 5, freeThreshold: 149 },
-                    bigbasket: { item: 158, eta: "15 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
-                    flipkart: { item: 160, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 152, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
-                },
-                aiAlternatives: []
-            },
-            {
-                id: "p14",
-                title: "Lay's Magic Masala Chips",
-                brand: "Lay's",
-                category: "Snacks",
-                unit: "50 g Pack",
-                img: "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=300&auto=format&fit=crop&q=80",
-                mostSearched: false,
-                prices: {
-                    blinkit: { item: 18, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 20, eta: "8 mins", deliveryFee: 12, handlingFee: 5, freeThreshold: 149 },
-                    bigbasket: { item: 19, eta: "15 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
-                    flipkart: { item: 19, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 20, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
-                },
-                aiAlternatives: []
-            },
-            {
-                id: "p15",
-                title: "Haldiram's Bhujia Sev",
-                brand: "Haldiram's",
-                category: "Snacks",
-                unit: "400 g Pack",
-                img: "https://images.unsplash.com/photo-1599490659213-e2b9527bd087?w=300&auto=format&fit=crop&q=80",
-                mostSearched: false,
-                prices: {
-                    blinkit: { item: 115, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 102, eta: "8 mins", deliveryFee: 12, handlingFee: 5, freeThreshold: 149 },
-                    bigbasket: { item: 105, eta: "15 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
-                    flipkart: { item: 108, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 115, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
-                },
-                aiAlternatives: []
-            },
-            {
-                id: "p16",
-                title: "Amul Fresh Malai Paneer",
-                brand: "Amul",
-                category: "Dairy",
-                unit: "200 g Pack",
-                img: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=300&auto=format&fit=crop&q=80",
-                mostSearched: false,
-                prices: {
-                    blinkit: { item: 90, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 92, eta: "8 mins", deliveryFee: 12, handlingFee: 5, freeThreshold: 149 },
-                    bigbasket: { item: 86, eta: "15 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
-                    flipkart: { item: 84, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 92, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
-                },
-                aiAlternatives: []
-            },
-            {
-                id: 'p17',
-                name: 'Fresh Green Coriander (Dhaniya Patta)',
-                brand: 'Farm Fresh',
-                category: 'Vegetables',
-                unit: '100 g Bunch',
-                img: 'https://images.unsplash.com/photo-1589634749258-294b46c65e8d?w=300&auto=format&fit=crop&q=80',
-                isMostSearched: false,
-                prices: {
-                    blinkit: { item: 12, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 10, eta: "8 mins", deliveryFee: 12, handlingFee: 5, freeThreshold: 149 },
-                    bigbasket: { item: 8, eta: "15 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
-                    flipkart: { item: 9, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 11, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
-                },
-                aiAlternatives: []
-            },
-            {
-                id: "p18",
-                title: "Fresh Juicy Yellow Lemon",
+                id: "bb_onion_red",
+                title: "Fresh Red Onion (Pyaz)",
                 brand: "Fresh Produce",
                 category: "Vegetables",
-                unit: "Pack of 4",
-                img: "https://images.unsplash.com/photo-1582979512210-99b6a53386f9?w=300&auto=format&fit=crop&q=80",
-                mostSearched: false,
+                unit: "1 kg",
+                img: "https://images.unsplash.com/photo-1508747703725-719777637510?w=300&auto=format&fit=crop&q=80",
+                mostSearched: true,
                 prices: {
-                    blinkit: { item: 22, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 20, eta: "8 mins", deliveryFee: 12, handlingFee: 5, freeThreshold: 149 },
-                    bigbasket: { item: 18, eta: "15 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
-                    flipkart: { item: 19, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 16, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
-                },
-                aiAlternatives: []
-            },
-            {
-                id: "p19",
-                title: "Fresh Robusta Bananas (Kela)",
-                brand: "Fresh Produce",
-                category: "Vegetables",
-                unit: "500 g",
-                img: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=300&auto=format&fit=crop&q=80",
-                mostSearched: false,
-                prices: {
-                    blinkit: { item: 30, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 35, eta: "8 mins", deliveryFee: 12, handlingFee: 5, freeThreshold: 149 },
-                    bigbasket: { item: 32, eta: "15 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
-                    flipkart: { item: 34, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
+                    zepto: { item: 32, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    flipkart: { item: 33, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    blinkit: { item: 35, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 36, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
                     instamart: { item: 38, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
                 },
                 aiAlternatives: []
             },
             {
-                id: "p20",
-                title: "Nescafé Classic Instant Coffee",
-                brand: "Nescafé",
-                category: "Beverages",
-                unit: "50g Glass Jar",
-                img: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=300&auto=format&fit=crop&q=80",
-                mostSearched: false,
+                id: "bb_tomato_hybrid",
+                title: "Fresh Tomato Hybrid (Tamatar)",
+                brand: "Fresh Produce",
+                category: "Vegetables",
+                unit: "1 kg",
+                img: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=300&auto=format&fit=crop&q=80",
+                mostSearched: true,
                 prices: {
-                    blinkit: { item: 175, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 160, eta: "8 mins", deliveryFee: 12, handlingFee: 5, freeThreshold: 149 },
-                    bigbasket: { item: 165, eta: "15 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
-                    flipkart: { item: 168, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 175, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                    flipkart: { item: 26, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    bigbasket: { item: 28, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    zepto: { item: 29, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    blinkit: { item: 30, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    instamart: { item: 32, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
                 },
-                aiAlternatives: [
-                    { name: "Continental Xtra Coffee 50g", app: "flipkart", price: 140, reason: "Save ₹35 with rich aroma blend" }
-                ]
+                aiAlternatives: []
             },
             {
-                id: "p21",
-                title: "Surf Excel Easy Wash Detergent",
+                id: "bb_green_chilli",
+                title: "Fresh Green Chilli (Hari Mirch)",
+                brand: "Fresh Produce",
+                category: "Vegetables",
+                unit: "100 g",
+                img: "https://images.unsplash.com/photo-1627916607164-7b20241db935?w=300&auto=format&fit=crop&q=80",
+                mostSearched: false,
+                prices: {
+                    zepto: { item: 10, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    blinkit: { item: 12, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    flipkart: { item: 12, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    bigbasket: { item: 14, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 15, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_coriander_leaves",
+                title: "Fresh Coriander Leaves (Dhania)",
+                brand: "Fresh Produce",
+                category: "Vegetables",
+                unit: "100 g Bunch",
+                img: "https://images.unsplash.com/photo-1588879460405-5607b1d44cb2?w=300&auto=format&fit=crop&q=80",
+                mostSearched: false,
+                prices: {
+                    flipkart: { item: 14, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    bigbasket: { item: 15, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    zepto: { item: 16, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    blinkit: { item: 18, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    instamart: { item: 20, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_ginger",
+                title: "Fresh Ginger (Adrak)",
+                brand: "Fresh Produce",
+                category: "Vegetables",
+                unit: "250 g",
+                img: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=300&auto=format&fit=crop&q=80",
+                mostSearched: false,
+                prices: {
+                    zepto: { item: 22, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    blinkit: { item: 25, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    flipkart: { item: 25, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    bigbasket: { item: 28, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 30, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_robusta_banana",
+                title: "Fresh Robusta Banana",
+                brand: "Fresh Produce",
+                category: "Vegetables",
+                unit: "6 pcs",
+                img: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=300&auto=format&fit=crop&q=80",
+                mostSearched: true,
+                prices: {
+                    flipkart: { item: 36, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    bigbasket: { item: 38, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    blinkit: { item: 40, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    zepto: { item: 42, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    instamart: { item: 45, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_shimla_apple",
+                title: "Fresh Shimla Royal Apple",
+                brand: "Fresh Produce",
+                category: "Vegetables",
+                unit: "4 pcs (~500g)",
+                img: "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=300&auto=format&fit=crop&q=80",
+                mostSearched: false,
+                prices: {
+                    zepto: { item: 110, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 112, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    flipkart: { item: 114, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    blinkit: { item: 118, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    instamart: { item: 120, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+
+            // --- 6. BEVERAGES (7 items) ---
+            {
+                id: "bb_coca_cola",
+                title: "Coca-Cola Soft Drink Bottle",
+                brand: "Coca-Cola",
+                category: "Beverages",
+                unit: "750 ml Bottle",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/274a.jpg",
+                mostSearched: true,
+                prices: {
+                    flipkart: { item: 38, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    blinkit: { item: 40, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    zepto: { item: 40, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 40, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 40, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_thums_up",
+                title: "Thums Up Charged Soft Drink",
+                brand: "Thums Up",
+                category: "Beverages",
+                unit: "750 ml Bottle",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/275a.jpg",
+                mostSearched: true,
+                prices: {
+                    zepto: { item: 38, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    flipkart: { item: 39, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    blinkit: { item: 40, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 40, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 40, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_tata_tea_gold",
+                title: "Tata Tea Gold Premium Leaf Tea",
+                brand: "Tata Tea",
+                category: "Beverages",
+                unit: "500 g Pack",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/10512a.jpg",
+                mostSearched: true,
+                prices: {
+                    bigbasket: { item: 295, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    flipkart: { item: 298, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    zepto: { item: 305, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    blinkit: { item: 310, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    instamart: { item: 315, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_nescafe_classic",
+                title: "Nescafe Classic Instant Coffee Jar",
+                brand: "Nescafe",
+                category: "Beverages",
+                unit: "100 g Jar",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/102878a.jpg",
+                mostSearched: false,
+                prices: {
+                    flipkart: { item: 320, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    zepto: { item: 325, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    blinkit: { item: 330, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 335, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 340, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_real_mixed_fruit",
+                title: "Real Fruit Power Mixed Fruit Juice",
+                brand: "Real",
+                category: "Beverages",
+                unit: "1 L Tetrapack",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/11548a.jpg",
+                mostSearched: false,
+                prices: {
+                    zepto: { item: 105, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    flipkart: { item: 108, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    blinkit: { item: 112, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 115, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 115, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_red_bull",
+                title: "Red Bull Energy Drink Can",
+                brand: "Red Bull",
+                category: "Beverages",
+                unit: "250 ml Can",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/279a.jpg",
+                mostSearched: false,
+                prices: {
+                    flipkart: { item: 120, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    blinkit: { item: 125, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    zepto: { item: 125, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 125, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 125, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_sprite",
+                title: "Sprite Lemon-Lime Flavored Soft Drink",
+                brand: "Sprite",
+                category: "Beverages",
+                unit: "750 ml Bottle",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/276a.jpg",
+                mostSearched: false,
+                prices: {
+                    bigbasket: { item: 38, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    flipkart: { item: 39, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    zepto: { item: 40, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    blinkit: { item: 40, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    instamart: { item: 40, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+
+            // --- 7. HOUSEHOLD (7 items) ---
+            {
+                id: "bb_surf_excel",
+                title: "Surf Excel Easy Wash Detergent Powder",
                 brand: "Surf Excel",
                 category: "Household",
                 unit: "1 kg Pouch",
-                img: "https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=300&auto=format&fit=crop&q=80",
-                mostSearched: false,
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/6120a.jpg",
+                mostSearched: true,
                 prices: {
-                    blinkit: { item: 145, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 142, eta: "8 mins", deliveryFee: 12, handlingFee: 5, freeThreshold: 149 },
-                    bigbasket: { item: 136, eta: "15 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
-                    flipkart: { item: 132, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 148, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                    flipkart: { item: 126, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    bigbasket: { item: 129, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    blinkit: { item: 133, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    zepto: { item: 134, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    instamart: { item: 135, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
                 },
                 aiAlternatives: []
             },
             {
-                id: 'p22',
-                name: 'Vim Dishwash Liquid Gel Lemon Fragrance',
-                brand: 'Vim',
-                category: 'Household',
-                unit: '500 ml Bottle',
-                img: 'https://images.unsplash.com/photo-1585670270608-b4b1a43a6d25?w=300&auto=format&fit=crop&q=80',
-                isMostSearched: false,
-                prices: {
-                    blinkit: { item: 115, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 112, eta: "8 mins", deliveryFee: 12, handlingFee: 5, freeThreshold: 149 },
-                    bigbasket: { item: 102, eta: "15 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
-                    flipkart: { item: 108, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 118, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
-                },
-                aiAlternatives: []
-            },
-            {
-                id: 'p23',
-                name: 'Dettol Original Germ Protection Handwash',
-                brand: 'Dettol',
-                category: 'Household',
-                unit: '675 ml Refill Pack',
-                img: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=300&auto=format&fit=crop&q=80',
-                isMostSearched: false,
-                prices: {
-                    blinkit: { item: 105, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 102, eta: "8 mins", deliveryFee: 12, handlingFee: 5, freeThreshold: 149 },
-                    bigbasket: { item: 95, eta: "15 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
-                    flipkart: { item: 99, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 92, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
-                },
-                aiAlternatives: []
-            },
-            {
-                id: "p24",
-                title: "Colgate MaxFresh Spicy Red Gel",
-                brand: "Colgate",
+                id: "bb_vim_dishwash",
+                title: "Vim Dishwash Gel Lemon Bottle",
+                brand: "Vim",
                 category: "Household",
-                unit: "150 g Tube",
-                img: "https://images.unsplash.com/photo-1559591937-e1032d665b17?w=300&auto=format&fit=crop&q=80",
-                mostSearched: false,
+                unit: "500 ml Bottle",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/483608a.jpg",
+                mostSearched: true,
                 prices: {
-                    blinkit: { item: 92, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 100, eta: "8 mins", deliveryFee: 12, handlingFee: 5, freeThreshold: 149 },
-                    bigbasket: { item: 95, eta: "15 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
-                    flipkart: { item: 98, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 105, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                    zepto: { item: 102, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    flipkart: { item: 105, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    blinkit: { item: 110, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 112, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 115, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
                 },
                 aiAlternatives: []
             },
             {
-                id: "p25",
-                title: "Mother Dairy Pasteurized Cow Milk",
-                brand: "Mother Dairy",
-                category: "Dairy",
-                unit: "1 L Pouch",
-                img: "https://images.unsplash.com/photo-1527153857715-3908f2ae5e81?w=300&auto=format&fit=crop&q=80",
+                id: "bb_harpic_power",
+                title: "Harpic Power Plus Toilet Cleaner Original",
+                brand: "Harpic",
+                category: "Household",
+                unit: "1 L Bottle",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/102880a.jpg",
                 mostSearched: false,
                 prices: {
-                    blinkit: { item: 56, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
-                    zepto: { item: 56, eta: "8 mins", deliveryFee: 12, handlingFee: 5, freeThreshold: 149 },
-                    bigbasket: { item: 54, eta: "15 mins", deliveryFee: 20, handlingFee: 2, freeThreshold: 299 },
-                    flipkart: { item: 53, eta: "12 mins", deliveryFee: 10, handlingFee: 3, freeThreshold: 99 },
-                    instamart: { item: 57, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                    bigbasket: { item: 180, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    flipkart: { item: 182, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    zepto: { item: 185, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    blinkit: { item: 190, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    instamart: { item: 195, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_colin_cleaner",
+                title: "Colin Glass & Surface Cleaner Spray",
+                brand: "Colin",
+                category: "Household",
+                unit: "500 ml Bottle",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/102882a.jpg",
+                mostSearched: false,
+                prices: {
+                    flipkart: { item: 98, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    zepto: { item: 100, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    blinkit: { item: 105, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 108, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 110, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_good_knight",
+                title: "Good Knight Gold Flash Liquid Refill",
+                brand: "Good Knight",
+                category: "Household",
+                unit: "45 ml (Pack of 2)",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/102884a.jpg",
+                mostSearched: false,
+                prices: {
+                    zepto: { item: 142, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    flipkart: { item: 145, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    blinkit: { item: 148, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 150, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 152, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_lizol_disinfectant",
+                title: "Lizol Disinfectant Floor Cleaner Citrus",
+                brand: "Lizol",
+                category: "Household",
+                unit: "1 L Bottle",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/102886a.jpg",
+                mostSearched: false,
+                prices: {
+                    bigbasket: { item: 192, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    flipkart: { item: 195, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    zepto: { item: 198, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    blinkit: { item: 204, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    instamart: { item: 208, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_comfort_after_wash",
+                title: "Comfort After Wash Morning Fresh Fabric Conditioner",
+                brand: "Comfort",
+                category: "Household",
+                unit: "860 ml Bottle",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/102888a.jpg",
+                mostSearched: false,
+                prices: {
+                    flipkart: { item: 215, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    zepto: { item: 218, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    blinkit: { item: 224, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 228, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 230, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+
+            // --- 8. PERSONAL CARE (7 items) ---
+            {
+                id: "bb_dettol_soap",
+                title: "Dettol Original Bathing Soap Bar",
+                brand: "Dettol",
+                category: "Personal Care",
+                unit: "125 g (Pack of 4)",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/483610a.jpg",
+                mostSearched: true,
+                prices: {
+                    zepto: { item: 168, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    flipkart: { item: 170, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    blinkit: { item: 175, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 178, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 180, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_colgate_strong_teeth",
+                title: "Colgate Strong Teeth Dental Cream Toothpaste",
+                brand: "Colgate",
+                category: "Personal Care",
+                unit: "500 g Saver Pack",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/102890a.jpg",
+                mostSearched: true,
+                prices: {
+                    flipkart: { item: 198, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    bigbasket: { item: 202, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    zepto: { item: 205, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    blinkit: { item: 210, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    instamart: { item: 215, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_head_shoulders",
+                title: "Head & Shoulders Anti-Dandruff Smooth Shampoo",
+                brand: "Head & Shoulders",
+                category: "Personal Care",
+                unit: "650 ml Bottle",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/102892a.jpg",
+                mostSearched: false,
+                prices: {
+                    bigbasket: { item: 440, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    flipkart: { item: 445, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    zepto: { item: 450, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    blinkit: { item: 460, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    instamart: { item: 465, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_nivea_body_lotion",
+                title: "Nivea Body Lotion Express Hydration",
+                brand: "Nivea",
+                category: "Personal Care",
+                unit: "400 ml Bottle",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/102894a.jpg",
+                mostSearched: false,
+                prices: {
+                    zepto: { item: 310, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    flipkart: { item: 315, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    blinkit: { item: 325, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 330, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 335, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_dove_soap",
+                title: "Dove Cream Beauty Bathing Bar",
+                brand: "Dove",
+                category: "Personal Care",
+                unit: "125 g (Pack of 3)",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/102896a.jpg",
+                mostSearched: false,
+                prices: {
+                    flipkart: { item: 190, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    bigbasket: { item: 195, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    zepto: { item: 198, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    blinkit: { item: 204, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    instamart: { item: 210, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_gillette_foam",
+                title: "Gillette Foamy Regular Shaving Foam",
+                brand: "Gillette",
+                category: "Personal Care",
+                unit: "200 g Can",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/102898a.jpg",
+                mostSearched: false,
+                prices: {
+                    zepto: { item: 140, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    flipkart: { item: 142, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    blinkit: { item: 145, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 148, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 150, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_whisper_choice",
+                title: "Whisper Choice Wings Sanitary Pads",
+                brand: "Whisper",
+                category: "Personal Care",
+                unit: "20 Pads Pack",
+                img: "https://cdn.grofers.com/app/images/products/sliding_image/102900a.jpg",
+                mostSearched: false,
+                prices: {
+                    flipkart: { item: 98, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    bigbasket: { item: 100, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    zepto: { item: 102, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    blinkit: { item: 105, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    instamart: { item: 108, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+
+            // --- 9. MEAT & EGGS (4 items) ---
+            {
+                id: "bb_white_eggs_6",
+                title: "Fresh Table White Eggs (6 pcs)",
+                brand: "Farm Fresh",
+                category: "Meat & Eggs",
+                unit: "6 pcs Pack",
+                img: "https://images.unsplash.com/photo-1516448620398-c5f44bf9f441?w=300&auto=format&fit=crop&q=80",
+                mostSearched: true,
+                prices: {
+                    flipkart: { item: 40, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    zepto: { item: 42, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    blinkit: { item: 45, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 46, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 48, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_white_eggs_30",
+                title: "Fresh Table White Eggs Tray (30 pcs)",
+                brand: "Farm Fresh",
+                category: "Meat & Eggs",
+                unit: "30 pcs Tray",
+                img: "https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=300&auto=format&fit=crop&q=80",
+                mostSearched: true,
+                prices: {
+                    bigbasket: { item: 198, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    flipkart: { item: 200, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    zepto: { item: 205, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    blinkit: { item: 210, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    instamart: { item: 215, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_chicken_breast",
+                title: "Fresh Boneless Chicken Breast",
+                brand: "Fresh Farm",
+                category: "Meat & Eggs",
+                unit: "500 g Pack",
+                img: "https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=300&auto=format&fit=crop&q=80",
+                mostSearched: false,
+                prices: {
+                    zepto: { item: 165, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    flipkart: { item: 168, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    blinkit: { item: 175, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 180, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 185, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                id: "bb_chicken_curry_cut",
+                title: "Fresh Skinless Chicken Curry Cut",
+                brand: "Fresh Farm",
+                category: "Meat & Eggs",
+                unit: "500 g Pack",
+                img: "https://images.unsplash.com/photo-1587593810167-a84920ea0781?w=300&auto=format&fit=crop&q=80",
+                mostSearched: false,
+                prices: {
+                    flipkart: { item: 142, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    bigbasket: { item: 145, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    zepto: { item: 148, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    blinkit: { item: 152, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    instamart: { item: 155, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
                 },
                 aiAlternatives: []
             }
@@ -2545,83 +3195,6 @@
             }
         }
 
-        function handleChatSubmit(e) {
-            if (e) e.preventDefault();
-            const input = document.getElementById("chatbotInput");
-            const msgBox = document.getElementById("chatbotMessages");
-            const quickPrompts = document.getElementById("chatQuickPrompts");
-
-            if (!input || !input.value.trim() || !msgBox) return;
-
-            const userText = input.value.trim();
-            input.value = "";
-
-            if (quickPrompts) quickPrompts.classList.add("hidden");
-
-            // Render User Bubble
-            const userHtml = `
-                <div class="flex items-start space-x-2 justify-end">
-                    <div class="bg-brandGreen text-white p-3 rounded-2xl rounded-tr-none shadow-2xs max-w-[80%] leading-relaxed font-semibold">
-                        ${escapeHTML(userText)}
-                    </div>
-                </div>
-            `;
-            msgBox.insertAdjacentHTML("beforeend", userHtml);
-            msgBox.scrollTop = msgBox.scrollHeight;
-
-            // Render Typing Indicator
-            const typingId = "typing_" + Date.now();
-            const typingHtml = `
-                <div id="${typingId}" class="flex items-start space-x-2">
-                    <div class="w-7 h-7 rounded-full bg-brandGreen text-white flex items-center justify-center shrink-0 text-xs font-bold shadow-xs">
-                        <i class="fa-solid fa-robot"></i>
-                    </div>
-                    <div class="bg-white p-3 rounded-2xl rounded-tl-none border border-slate-200 shadow-2xs text-slate-500 font-bold flex items-center space-x-1">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-bounce"></span>
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-bounce [animation-delay:0.2s]"></span>
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-bounce [animation-delay:0.4s]"></span>
-                    </div>
-                </div>
-            `;
-            msgBox.insertAdjacentHTML("beforeend", typingHtml);
-            msgBox.scrollTop = msgBox.scrollHeight;
-
-            // Generate AI Response
-            setTimeout(() => {
-                const typingEl = document.getElementById(typingId);
-                if (typingEl) typingEl.remove();
-
-                const aiReply = generateAIResponse(userText);
-                const aiHtml = `
-                    <div class="flex items-start space-x-2">
-                        <div class="w-7 h-7 rounded-full bg-brandGreen text-white flex items-center justify-center shrink-0 text-xs font-bold shadow-xs">
-                            <i class="fa-solid fa-robot"></i>
-                        </div>
-                        <div class="bg-white p-3 rounded-2xl rounded-tl-none border border-slate-200 shadow-2xs text-slate-800 leading-relaxed font-medium">
-                            ${aiReply}
-                        </div>
-                    </div>
-                `;
-                msgBox.insertAdjacentHTML("beforeend", aiHtml);
-                msgBox.scrollTop = msgBox.scrollHeight;
-            }, 600);
-        }
-
-        function generateAIResponse(query) {
-            const q = query.toLowerCase();
-            if (q.includes("lowest") || q.includes("cheapest") || q.includes("price") || q.includes("store")) {
-                return "Our live comparison engine monitors <strong>Blinkit, Zepto, BigBasket, Flipkart Minutes, and Instamart</strong> every 60 seconds! Right now, <strong>Blinkit & Zepto</strong> offer the lowest cart total for single-item quick orders, while <strong>BigBasket</strong> offers higher discounts on bulk grocery bundles.";
-            } else if (q.includes("smart split") || q.includes("optimizer") || q.includes("basket") || q.includes("split")) {
-                return "⚡ <strong>Smart Split</strong> breaks down your basket items across multiple dark stores to minimize total spend! If item A is ₹20 cheaper on Zepto and item B is ₹35 cheaper on Blinkit, Smart Split calculates the exact platform fees and splits your order for maximum savings!";
-            } else if (q.includes("milk") || q.includes("ghee") || q.includes("brand") || q.includes("alternative")) {
-                return "🥛 For daily staples like Milk & Ghee, check out our <strong>Brand Alternatives</strong> feature! Switching to quality local or store-brand alternatives (like Mother Dairy or Nandini) can save you <strong>15% to 25%</strong> per month without compromising quality.";
-            } else if (q.includes("login") || q.includes("account") || q.includes("address")) {
-                return "🔑 You can log in using the <strong>LOGIN</strong> button in the top header! Logging in saves your primary delivery address, order history, and total savings tracked over time.";
-            } else {
-                return "That's a great question! 🛒 Bachat Hub helps you save 15% to 30% on every quick-commerce grocery order by dynamically comparing base prices, surge fees, and delivery thresholds across 5 major dark store platforms in real time!";
-            }
-        }
-
         function openAuthModal(tab = 'login') {
             switchAuthTab(tab);
             document.getElementById("authModal").classList.remove("hidden");
@@ -2797,7 +3370,7 @@
             document.querySelectorAll(".category-tab").forEach(tab => {
                 tab.className = "category-tab shrink-0 px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition border bg-white text-slate-700 hover:bg-slate-100 border-slate-200 shadow-2xs";
             });
-            const activeTabId = "catTab-" + (cat === 'Atta & Rice' ? 'Atta' : cat);
+            const activeTabId = "catTab-" + cat;
             const activeTab = document.getElementById(activeTabId);
             if (activeTab) {
                 activeTab.className = "category-tab active-cat-tab shrink-0 px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition border bg-brandGreen text-white border-emerald-700 shadow-xs";
@@ -3645,6 +4218,449 @@
 
         function showToast(msg, type = 'success') {
             showCustomToast(msg, type);
+        }
+    
+        // --- BACHAT CHEF AI MASCOT & RECIPE LIVE GROCERY FINDER ---
+        const INDIAN_RECIPES_DB = [
+            {
+                id: "paneer_butter_masala",
+                name: "Paneer Butter Masala",
+                category: "North Indian â€¢ Veg",
+                icon: "ðŸ¥˜",
+                prepTime: "25 mins",
+                servings: "3-4 persons",
+                keywords: ["paneer", "butter masala", "paneer butter masala", "paneer makhani", "paneer curry", "shahi paneer"],
+                description: "Rich and creamy cottage cheese cubes cooked in a velvety tomato, butter, and cashew gravy.",
+                ingredients: [
+                    { name: "Amul Malai Paneer", qty: "200 g", catalogId: "bb_amul_paneer", approxPrice: 90 },
+                    { name: "Amul Pasteurised Butter", qty: "100 g", catalogId: "bb_amul_butter", approxPrice: 56 },
+                    { name: "Fresh Hybrid Tomatoes", qty: "500 g", catalogId: "bb_tomato_hybrid", approxPrice: 20 },
+                    { name: "Fresh Red Onions", qty: "250 g", catalogId: "bb_onion_red", approxPrice: 15 },
+                    { name: "Everest Royal Garam Masala", qty: "50 g", catalogId: "bb_everest_garam_masala", approxPrice: 78 },
+                    { name: "Amul Taaza Milk/Cream", qty: "500 ml", catalogId: "bb_amul_taaza", approxPrice: 28 }
+                ]
+            },
+            {
+                id: "butter_chicken",
+                name: "Butter Chicken (Murgh Makhani)",
+                category: "North Indian â€¢ Non-Veg",
+                icon: "ðŸ—",
+                prepTime: "35 mins",
+                servings: "3-4 persons",
+                keywords: ["butter chicken", "chicken", "makhani", "murgh makhani", "chicken curry"],
+                description: "Tender chicken cooked in a rich, buttery tomato gravy spiced with aromatic Garam Masala.",
+                ingredients: [
+                    { name: "Fresh Chicken Breast / Curry Cut", qty: "500 g", catalogId: "bb_fresh_chicken", approxPrice: 150 },
+                    { name: "Amul Pasteurised Butter", qty: "100 g", catalogId: "bb_amul_butter", approxPrice: 56 },
+                    { name: "Fresh Hybrid Tomatoes", qty: "500 g", catalogId: "bb_tomato_hybrid", approxPrice: 20 },
+                    { name: "Fresh Red Onions", qty: "250 g", catalogId: "bb_onion_red", approxPrice: 15 },
+                    { name: "Amul Masti Dahi (Curd)", qty: "200 g", catalogId: "bb_amul_masti_dahi", approxPrice: 25 },
+                    { name: "Everest Royal Garam Masala", qty: "50 g", catalogId: "bb_everest_garam_masala", approxPrice: 78 }
+                ]
+            },
+            {
+                id: "hyderabadi_biryani",
+                name: "Hyderabadi Biryani (Chicken/Veg)",
+                category: "Hyderabadi â€¢ Royal",
+                icon: "ðŸ›",
+                prepTime: "45 mins",
+                servings: "4 persons",
+                keywords: ["biryani", "chicken biryani", "hyderabadi biryani", "veg biryani", "rice"],
+                description: "Fragrant long-grain basmati rice layered with spiced chicken/veggies, mint, and pure ghee.",
+                ingredients: [
+                    { name: "Fortune Everyday Basmati Rice", qty: "1 kg", catalogId: "bb_fortune_basmati", approxPrice: 135 },
+                    { name: "Amul Pure Cow Ghee", qty: "200 ml", catalogId: "bb_amul_ghee", approxPrice: 165 },
+                    { name: "Fresh Red Onions (for Birista)", qty: "500 g", catalogId: "bb_onion_red", approxPrice: 28 },
+                    { name: "Fresh Chicken Breast / Veggies", qty: "500 g", catalogId: "bb_fresh_chicken", approxPrice: 150 },
+                    { name: "Amul Masti Dahi", qty: "200 g", catalogId: "bb_amul_masti_dahi", approxPrice: 25 },
+                    { name: "Everest Garam Masala", qty: "50 g", catalogId: "bb_everest_garam_masala", approxPrice: 78 }
+                ]
+            },
+            {
+                id: "pav_bhaji",
+                name: "Mumbai Pav Bhaji",
+                category: "Street Food â€¢ Veg",
+                icon: "ðŸ¥˜",
+                prepTime: "20 mins",
+                servings: "3 persons",
+                keywords: ["pav bhaji", "pav", "bhaji", "mumbai pav bhaji", "street food"],
+                description: "Spiced mashed vegetable curry served piping hot with butter-toasted Ladi Pav buns.",
+                ingredients: [
+                    { name: "Fresh Potato (Aloo)", qty: "500 g", catalogId: "bb_potato_jyoti", approxPrice: 18 },
+                    { name: "Fresh Hybrid Tomatoes", qty: "300 g", catalogId: "bb_tomato_hybrid", approxPrice: 14 },
+                    { name: "Fresh Red Onions", qty: "250 g", catalogId: "bb_onion_red", approxPrice: 15 },
+                    { name: "Amul Pasteurised Butter", qty: "100 g", catalogId: "bb_amul_butter", approxPrice: 56 },
+                    { name: "Fresh Coriander Leaves", qty: "100 g", catalogId: "bb_coriander_leaves", approxPrice: 15 },
+                    { name: "Britannia Fresh Pav / Bread", qty: "400 g", catalogId: "bb_brown_bread", approxPrice: 42 }
+                ]
+            },
+            {
+                id: "chole_bhature",
+                name: "Punjabi Chole Bhature",
+                category: "Punjabi â€¢ Veg",
+                icon: "ðŸ«“",
+                prepTime: "35 mins",
+                servings: "3-4 persons",
+                keywords: ["chole", "chole bhature", "chana", "punjabi chole"],
+                description: "Spicy chickpea curry cooked with tea infusion and spices, served with fluffy deep-fried bhaturas.",
+                ingredients: [
+                    { name: "Rajdhani Kabuli Chana", qty: "500 g", catalogId: "bb_kabuli_chana", approxPrice: 85 },
+                    { name: "Aashirvaad Shudh Chakki Atta / Maida", qty: "1 kg", catalogId: "bb_aashirvaad_atta", approxPrice: 220 },
+                    { name: "Fresh Red Onions", qty: "300 g", catalogId: "bb_onion_red", approxPrice: 18 },
+                    { name: "Fresh Hybrid Tomatoes", qty: "300 g", catalogId: "bb_tomato_hybrid", approxPrice: 14 },
+                    { name: "Fortune Sunlite Sunflower Oil", qty: "1 L", catalogId: "bb_fortune_sunflower", approxPrice: 135 },
+                    { name: "Everest Garam Masala", qty: "50 g", catalogId: "bb_everest_garam_masala", approxPrice: 78 }
+                ]
+            },
+            {
+                id: "dal_tadka",
+                name: "Dal Tadka / Dal Makhani",
+                category: "Classic Indian â€¢ Veg",
+                icon: "ðŸ¥£",
+                prepTime: "25 mins",
+                servings: "3-4 persons",
+                keywords: ["dal", "dal tadka", "dal makhani", "yellow dal", "toor dal", "moong dal"],
+                description: "Yellow lentils tempered with ghee, cumin, garlic, and red chillies, garnished with coriander.",
+                ingredients: [
+                    { name: "Tata Sampann Unpolished Toor Dal", qty: "500 g", catalogId: "bb_tata_sampann_dal", approxPrice: 105 },
+                    { name: "Amul Pure Cow Ghee", qty: "100 ml", catalogId: "bb_amul_ghee", approxPrice: 90 },
+                    { name: "Fresh Hybrid Tomatoes", qty: "250 g", catalogId: "bb_tomato_hybrid", approxPrice: 12 },
+                    { name: "Fresh Red Onions", qty: "200 g", catalogId: "bb_onion_red", approxPrice: 12 },
+                    { name: "Fresh Green Chilli & Garlic", qty: "100 g", catalogId: "bb_green_chilli", approxPrice: 15 },
+                    { name: "Tata Salt", qty: "1 kg", catalogId: "bb_tata_salt", approxPrice: 25 }
+                ]
+            },
+            {
+                id: "rajma_chawal",
+                name: "Dilli Wali Rajma Chawal",
+                category: "North Indian â€¢ Comfort Food",
+                icon: "ðŸ«“",
+                prepTime: "40 mins",
+                servings: "4 persons",
+                keywords: ["rajma", "rajma chawal", "rajma masala", "kidney beans"],
+                description: "Red kidney beans slow-cooked in spicy tomato onion gravy, served over steaming hot Basmati rice.",
+                ingredients: [
+                    { name: "Rajdhani Rajma Chitra", qty: "500 g", catalogId: "bb_rajma_chitra", approxPrice: 98 },
+                    { name: "Fortune Everyday Basmati Rice", qty: "1 kg", catalogId: "bb_fortune_basmati", approxPrice: 135 },
+                    { name: "Fresh Red Onions", qty: "300 g", catalogId: "bb_onion_red", approxPrice: 18 },
+                    { name: "Fresh Hybrid Tomatoes", qty: "300 g", catalogId: "bb_tomato_hybrid", approxPrice: 14 },
+                    { name: "Everest Royal Garam Masala", qty: "50 g", catalogId: "bb_everest_garam_masala", approxPrice: 78 }
+                ]
+            },
+            {
+                id: "fish_curry",
+                name: "Bengali Fish Curry (Maacher Jhol)",
+                category: "East Indian â€¢ Non-Veg",
+                icon: "ðŸŸ",
+                prepTime: "30 mins",
+                servings: "3 persons",
+                keywords: ["fish", "fish curry", "maacher jhol", "rohu", "bengali fish"],
+                description: "Fresh Rohu fish steaks fried in mustard oil and simmered with potato, cumin, and turmeric.",
+                ingredients: [
+                    { name: "Fresh Bengalee Rohu Fish Cuts", qty: "500 g", catalogId: "bb_rohu_fish", approxPrice: 195 },
+                    { name: "Fortune Kachi Ghani Mustard Oil", qty: "1 L", catalogId: "bb_fortune_mustard", approxPrice: 145 },
+                    { name: "Fresh Potato (Aloo)", qty: "300 g", catalogId: "bb_potato_jyoti", approxPrice: 12 },
+                    { name: "Catch Turmeric Powder (Haldi)", qty: "100 g", catalogId: "bb_catch_turmeric", approxPrice: 32 },
+                    { name: "Fresh Green Chilli", qty: "100 g", catalogId: "bb_green_chilli", approxPrice: 15 }
+                ]
+            },
+            {
+                id: "egg_curry",
+                name: "Dhaba Style Egg Curry",
+                category: "Indian â€¢ Non-Veg",
+                icon: "ðŸ¥š",
+                prepTime: "20 mins",
+                servings: "3 persons",
+                keywords: ["egg curry", "egg", "anda curry", "anda masala"],
+                description: "Hard-boiled eggs pan-seared till golden and cooked in a spicy dhaba-style onion tomato gravy.",
+                ingredients: [
+                    { name: "Farm Fresh White Eggs", qty: "6 pcs", catalogId: "bb_farm_fresh_eggs", approxPrice: 42 },
+                    { name: "Fresh Red Onions", qty: "300 g", catalogId: "bb_onion_red", approxPrice: 18 },
+                    { name: "Fresh Hybrid Tomatoes", qty: "300 g", catalogId: "bb_tomato_hybrid", approxPrice: 14 },
+                    { name: "Fortune Kachi Ghani Mustard Oil", qty: "500 ml", catalogId: "bb_fortune_mustard", approxPrice: 78 },
+                    { name: "Everest Garam Masala", qty: "50 g", catalogId: "bb_everest_garam_masala", approxPrice: 78 }
+                ]
+            }
+        ];
+
+        const STORE_DETAILS = {
+            'blinkit': { name: 'Blinkit', color: '#F7C400', textColor: '#000000', badgeClass: 'bg-amber-100 text-amber-900 border-amber-300' },
+            'zepto': { name: 'Zepto', color: '#7C3AED', textColor: '#FFFFFF', badgeClass: 'bg-purple-100 text-purple-900 border-purple-300' },
+            'bigbasket': { name: 'BigBasket', color: '#84CC16', textColor: '#000000', badgeClass: 'bg-lime-100 text-lime-900 border-lime-300' },
+            'flipkart': { name: 'Flipkart Minutes', color: '#2563EB', textColor: '#FFFFFF', badgeClass: 'bg-blue-100 text-blue-900 border-blue-300' },
+            'instamart': { name: 'Swiggy Instamart', color: '#FC8019', textColor: '#FFFFFF', badgeClass: 'bg-orange-100 text-orange-900 border-orange-300' }
+        };
+
+        function toggleChatbotWindow() {
+            const win = document.getElementById("chatbotWindow");
+            if (win) {
+                win.classList.toggle("hidden");
+                if (!win.classList.contains("hidden")) {
+                    const input = document.getElementById("chatbotInput");
+                    if (input) input.focus();
+                }
+            }
+        }
+
+        function dismissSpeechBubble(e) {
+            if (e) e.stopPropagation();
+            const bubble = document.getElementById("chatbotSpeechBubble");
+            if (bubble) bubble.classList.add("hidden");
+        }
+
+        function sendQuickPrompt(promptText) {
+            const input = document.getElementById("chatbotInput");
+            if (input) {
+                input.value = promptText;
+                handleChatSubmit(new Event('submit'));
+            }
+        }
+
+        function getCheapestAppForProduct(productObj) {
+            if (!productObj || !productObj.prices) return { appKey: 'blinkit', appName: 'Blinkit', price: 0 };
+            
+            let cheapestKey = null;
+            let lowestPrice = Infinity;
+
+            Object.keys(productObj.prices).forEach(key => {
+                const pData = productObj.prices[key];
+                const priceVal = typeof pData === 'number' ? pData : (pData.item || pData.price || Infinity);
+                if (priceVal < lowestPrice) {
+                    lowestPrice = priceVal;
+                    cheapestKey = key.toLowerCase();
+                }
+            });
+
+            const storeInfo = STORE_DETAILS[cheapestKey] || { name: cheapestKey, badgeClass: 'bg-slate-100 text-slate-800' };
+            return {
+                appKey: cheapestKey,
+                appName: storeInfo.name,
+                price: lowestPrice === Infinity ? 50 : lowestPrice,
+                badgeClass: storeInfo.badgeClass
+            };
+        }
+
+        function handleChatSubmit(e) {
+            if (e) e.preventDefault();
+            const input = document.getElementById("chatbotInput");
+            const msgBox = document.getElementById("chatbotMessages");
+            const quickPrompts = document.getElementById("chatQuickPrompts");
+
+            if (!input || !input.value.trim() || !msgBox) return;
+
+            const userText = input.value.trim();
+            input.value = "";
+
+            if (quickPrompts) quickPrompts.classList.add("hidden");
+
+            // Render User Bubble
+            const userHtml = 
+                <div class="flex items-start space-x-2 justify-end">
+                    <div class="bg-brandGreen text-white p-3 rounded-2xl rounded-tr-none shadow-2xs max-w-[85%] leading-relaxed font-semibold">
+                        
+                    </div>
+                </div>
+            ;
+            msgBox.insertAdjacentHTML("beforeend", userHtml);
+            msgBox.scrollTop = msgBox.scrollHeight;
+
+            // Render Typing Indicator
+            const typingId = "typing_" + Date.now();
+            const typingHtml = 
+                <div id="" class="flex items-start space-x-2">
+                    <div class="w-8 h-8 rounded-full bg-white border border-emerald-300 flex items-center justify-center shrink-0 p-1 shadow-xs">
+                        <img src="images/logo.png" onError="this.onerror=null;this.src='logo.png';" alt="Chef Mascot" class="w-6 h-6 object-contain">
+                    </div>
+                    <div class="bg-white p-3 rounded-2xl rounded-tl-none border border-slate-200 shadow-2xs text-slate-500 font-bold flex items-center space-x-1.5">
+                        <span class="text-xs text-emerald-800 font-bold">Chef is searching live store prices...</span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-bounce"></span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-bounce [animation-delay:0.2s]"></span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-bounce [animation-delay:0.4s]"></span>
+                    </div>
+                </div>
+            ;
+            msgBox.insertAdjacentHTML("beforeend", typingHtml);
+            msgBox.scrollTop = msgBox.scrollHeight;
+
+            // Generate AI Recipe Response
+            setTimeout(() => {
+                const typingEl = document.getElementById(typingId);
+                if (typingEl) typingEl.remove();
+
+                const aiReplyHtml = generateRecipeAIResponse(userText);
+                const aiHtml = 
+                    <div class="flex items-start space-x-2">
+                        <div class="w-8 h-8 rounded-full bg-white border border-emerald-300 flex items-center justify-center shrink-0 p-1 shadow-xs mt-1">
+                            <img src="images/logo.png" onError="this.onerror=null;this.src='logo.png';" alt="Chef Mascot" class="w-6 h-6 object-contain">
+                        </div>
+                        <div class="bg-white p-3.5 rounded-2xl rounded-tl-none border border-slate-200 shadow-sm text-slate-800 leading-relaxed font-medium w-full max-w-[95%] space-y-2">
+                            
+                        </div>
+                    </div>
+                ;
+                msgBox.insertAdjacentHTML("beforeend", aiHtml);
+                msgBox.scrollTop = msgBox.scrollHeight;
+            }, 600);
+        }
+
+        function generateRecipeAIResponse(query) {
+            const q = query.toLowerCase().trim();
+
+            // Match query in INDIAN_RECIPES_DB
+            let matchedRecipe = INDIAN_RECIPES_DB.find(r => 
+                r.name.toLowerCase().includes(q) || 
+                r.keywords.some(k => q.includes(k) || k.includes(q))
+            );
+
+            // If query is generic greeting or question
+            if (!matchedRecipe) {
+                if (q.includes("hi") || q.includes("hello") || q.includes("namaste") || q.includes("help")) {
+                    return 
+                        <p class="font-bold text-slate-900">Namaste! ðŸ‘¨â€ðŸ³ What delicious Indian dish are you planning to make?</p>
+                        <p class="text-xs text-slate-600">Try typing a dish like <strong>Paneer Butter Masala, Chicken Biryani, Pav Bhaji, Chole Bhature, Dal Tadka, Rajma Chawal</strong> or any recipe!</p>
+                    ;
+                }
+
+                // Dynamically construct recipe for custom dish query
+                const formattedTitle = query.charAt(0).toUpperCase() + query.slice(1);
+                matchedRecipe = {
+                    id: "custom_" + Date.now(),
+                    name: formattedTitle,
+                    category: "Custom Recipe â€¢ Authentic Indian",
+                    icon: "ðŸ›",
+                    prepTime: "25-35 mins",
+                    servings: "3-4 persons",
+                    description: Custom Indian recipe for  with live ingredient price comparison across all quick-commerce dark stores.,
+                    ingredients: [
+                        { name: "Fresh Hybrid Tomatoes / Puree", qty: "500 g", catalogId: "bb_tomato_hybrid", approxPrice: 20 },
+                        { name: "Fresh Red Onions", qty: "300 g", catalogId: "bb_onion_red", approxPrice: 18 },
+                        { name: "Amul Pure Cow Ghee / Butter", qty: "100 g", catalogId: "bb_amul_butter", approxPrice: 56 },
+                        { name: "Everest Royal Garam Masala", qty: "50 g", catalogId: "bb_everest_garam_masala", approxPrice: 78 },
+                        { name: "Catch Turmeric Powder / Spices", qty: "100 g", catalogId: "bb_catch_turmeric", approxPrice: 32 }
+                    ]
+                };
+            }
+
+            // Calculate live prices for recipe ingredients
+            let totalRecipeCost = 0;
+            let itemsToCartArray = [];
+
+            const ingredientRows = matchedRecipe.ingredients.map((ing, idx) => {
+                let prod = PRODUCTS.find(p => p.id === ing.catalogId);
+                let bestInfo;
+
+                if (prod) {
+                    bestInfo = getCheapestAppForProduct(prod);
+                } else {
+                    const keys = ['blinkit', 'zepto', 'flipkart', 'instamart', 'bigbasket'];
+                    const chosenKey = keys[idx % 5];
+                    bestInfo = {
+                        appKey: chosenKey,
+                        appName: STORE_DETAILS[chosenKey].name,
+                        price: ing.approxPrice || 45,
+                        badgeClass: STORE_DETAILS[chosenKey].badgeClass
+                    };
+                }
+
+                totalRecipeCost += bestInfo.price;
+                itemsToCartArray.push({
+                    catalogId: ing.catalogId || null,
+                    name: ing.name,
+                    price: bestInfo.price,
+                    store: bestInfo.appName
+                });
+
+                const catalogBtnHtml = ing.catalogId ? 
+                    <button onclick="addToBasket('')" class="bg-emerald-600 hover:bg-emerald-700 text-white text-[10px] font-bold px-2 py-1 rounded-lg transition shrink-0">+ Add</button> :
+                    <button onclick="showCustomToast('Added  to Bachat Basket!')" class="bg-emerald-600 hover:bg-emerald-700 text-white text-[10px] font-bold px-2 py-1 rounded-lg transition shrink-0">+ Add</button>;
+
+                return 
+                    <div class="flex items-center justify-between p-2 rounded-xl bg-slate-50 border border-slate-200/70 hover:border-emerald-300 transition text-[11px]">
+                        <div class="flex-1 pr-2">
+                            <div class="font-bold text-slate-800"></div>
+                            <div class="text-[10px] text-slate-500 font-medium">Qty: </div>
+                        </div>
+                        <div class="text-right pr-2">
+                            <span class="inline-block text-[10px] font-bold px-1.5 py-0.5 rounded-md border ">
+                                : â‚¹
+                            </span>
+                        </div>
+                        
+                    </div>
+                ;
+            }).join('');
+
+            const encodedRecipeData = btoa(encodeURIComponent(JSON.stringify(itemsToCartArray)));
+
+            return 
+                <div class="space-y-2.5">
+                    <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                        <div>
+                            <span class="text-xs font-black text-emerald-800 uppercase tracking-wide bg-emerald-100 px-2 py-0.5 rounded-full"></span>
+                            <h4 class="text-base font-extrabold text-slate-900 mt-1 flex items-center gap-1.5">
+                                <span></span>
+                                <span></span>
+                            </h4>
+                        </div>
+                        <div class="text-right text-[10px] font-bold text-slate-500">
+                            <div>â±ï¸ </div>
+                            <div>ðŸ‘¥ </div>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-slate-600 leading-relaxed font-normal"></p>
+
+                    <div class="space-y-1.5">
+                        <div class="text-[11px] font-extrabold text-slate-700 flex items-center justify-between">
+                            <span>ðŸ›’ Required Ingredients & Cheapest Apps:</span>
+                            <span class="text-brandGreen font-bold">Live Sync</span>
+                        </div>
+                        <div class="space-y-1.5 max-h-[190px] overflow-y-auto custom-scrollbar pr-0.5">
+                            
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-emerald-900 to-slate-900 text-white p-3 rounded-2xl shadow-md space-y-2">
+                        <div class="flex items-center justify-between text-xs">
+                            <span class="text-emerald-200 font-medium">Total Recipe Ingredients Cost:</span>
+                            <span class="text-base font-black text-amber-300">â‚¹</span>
+                        </div>
+                        <button onclick="addAllRecipeIngredients('')" class="w-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-slate-950 font-black py-2 rounded-xl text-xs shadow-md transition flex items-center justify-center space-x-1.5">
+                            <span>ðŸ›’ Add All Ingredients to Bachat Basket (â‚¹)</span>
+                        </button>
+                    </div>
+                </div>
+            ;
+        }
+
+        function addAllRecipeIngredients(encodedData) {
+            try {
+                const items = JSON.parse(decodeURIComponent(atob(encodedData)));
+                let addedCount = 0;
+
+                items.forEach(item => {
+                    if (item.catalogId) {
+                        addToBasket(item.catalogId);
+                        addedCount++;
+                    } else {
+                        if (typeof userBasket !== 'undefined') {
+                            const existing = userBasket.find(i => i.productId === item.name);
+                            if (existing) {
+                                existing.qty++;
+                            } else {
+                                userBasket.push({ productId: item.name, qty: 1, customItem: true, price: item.price });
+                            }
+                            addedCount++;
+                        }
+                    }
+                });
+
+                if (typeof updateBasketCountUI === 'function') updateBasketCountUI();
+                showCustomToast(Added all  recipe ingredients to Bachat Basket!);
+            } catch (err) {
+                console.error("Error adding recipe ingredients:", err);
+                showCustomToast("Added recipe ingredients to Bachat Basket!");
+            }
         }
     </script>
 </body>

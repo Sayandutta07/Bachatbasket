@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -111,15 +111,68 @@
                     </button>
 
                     <div id="loggedInUserMenu" class="relative hidden">
-                        <button onclick="toggleUserDropdown()"
-                            class="flex items-center space-x-2 bg-emerald-50 hover:bg-emerald-100 text-brandGreen border border-emerald-300 font-bold px-3.5 py-1.5 rounded-full transition shadow-2xs text-xs sm:text-sm focus:outline-none">
-                            <div
+                        <button id="userDropdownBtn" onclick="toggleUserDropdown()"
+                            class="flex items-center space-x-2 bg-emerald-50 hover:bg-emerald-100 text-brandGreen border border-emerald-300 font-bold px-3.5 py-1.5 rounded-full transition shadow-2xs text-xs sm:text-sm focus:outline-none cursor-pointer">
+                            <div id="userNavAvatar"
                                 class="w-7 h-7 rounded-full bg-brandGreen text-white flex items-center justify-center font-bold text-xs shadow-2xs">
                                 <i class="fa-solid fa-user"></i>
                             </div>
                             <span id="navUserName"
                                 class="font-bold text-emerald-950 uppercase tracking-wide">USER</span>
+                            <i id="userDropdownChevron" class="fa-solid fa-chevron-down text-[11px] text-emerald-700 transition-transform"></i>
                         </button>
+
+                        <!-- USER / ADMIN DROPDOWN MENU -->
+                        <div id="userDropdownMenu"
+                            class="hidden absolute right-0 mt-2 w-64 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 py-2 divide-y divide-slate-100">
+                            <div class="px-4 py-3 bg-emerald-50/60 rounded-t-2xl">
+                                <p class="text-[11px] text-slate-500 font-bold uppercase tracking-wider">Signed in as</p>
+                                <p id="dropdownUserEmail" class="text-xs font-extrabold text-slate-900 truncate">user@bachatbasket.com</p>
+                                <span id="dropdownRoleBadge"
+                                    class="inline-block mt-1 text-[10px] font-black px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 uppercase">
+                                    User Account
+                                </span>
+                            </div>
+
+                            <div id="userMenuOptions" class="py-1.5">
+                                <button onclick="openUserProfileModal(); toggleUserDropdown(false);"
+                                    class="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-emerald-50 hover:text-brandGreen flex items-center gap-2.5 transition cursor-pointer">
+                                    <i class="fa-solid fa-user-gear text-emerald-600 text-sm w-4 text-center"></i>
+                                    <span>Profile & Account Details</span>
+                                </button>
+                                <button onclick="openOrderHistoryModal(); toggleUserDropdown(false);"
+                                    class="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-emerald-50 hover:text-brandGreen flex items-center gap-2.5 transition cursor-pointer">
+                                    <i class="fa-solid fa-box-open text-amber-500 text-sm w-4 text-center"></i>
+                                    <span>Order History & Tracking</span>
+                                </button>
+                                <button onclick="openComplaintModal(); toggleUserDropdown(false);"
+                                    class="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-emerald-50 hover:text-brandGreen flex items-center gap-2.5 transition cursor-pointer">
+                                    <i class="fa-solid fa-headset text-teal-600 text-sm w-4 text-center"></i>
+                                    <span>Raise Query / Complaint</span>
+                                </button>
+                            </div>
+
+                            <div id="adminMenuOptions" class="py-1.5 hidden">
+                                <button onclick="openAdminModal(); toggleUserDropdown(false);"
+                                    class="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-purple-50 hover:text-purple-700 flex items-center gap-2.5 transition cursor-pointer">
+                                    <i class="fa-solid fa-shield-halved text-purple-600 text-sm w-4 text-center"></i>
+                                    <span>Admin Dashboard</span>
+                                </button>
+                                <button onclick="openAdminModal('complaints'); toggleUserDropdown(false);"
+                                    class="w-full text-left px-4 py-2.5 text-xs font-bold text-slate-700 hover:bg-purple-50 hover:text-purple-700 flex items-center gap-2.5 transition cursor-pointer">
+                                    <i class="fa-solid fa-list-check text-purple-600 text-sm w-4 text-center"></i>
+                                    <span>Manage User Complaints</span>
+                                </button>
+                            </div>
+
+                            <div class="py-1.5">
+                                <button onclick="logoutUser(); toggleUserDropdown(false);"
+                                    class="w-full text-left px-4 py-2.5 text-xs font-bold text-red-600 hover:bg-red-50 flex items-center gap-2.5 transition cursor-pointer">
+                                    <i class="fa-solid fa-right-from-bracket text-red-500 text-sm w-4 text-center"></i>
+                                    <span>Logout</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -844,6 +897,341 @@
             </p>
             <button onclick="closeAboutModal()"
                 class="w-full bg-brandGreen text-white font-bold py-2.5 rounded-xl text-xs">Got It</button>
+        </div>
+    </div>
+
+    <!-- AUTHENTICATION MODAL (USER & ADMIN LOGIN) -->
+    <div id="authModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 z-50 hidden">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 border border-slate-100 relative max-h-[90vh] overflow-y-auto custom-scrollbar">
+            <button onclick="closeAuthModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 text-lg cursor-pointer">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div class="text-center mb-5">
+                <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-brandGreen flex items-center justify-center text-xl font-bold mx-auto mb-2 shadow-xs">
+                    <i class="fa-solid fa-user-lock"></i>
+                </div>
+                <h3 class="text-xl font-extrabold text-slate-900">Welcome to Bachat Hub</h3>
+                <p class="text-xs text-slate-500 font-medium mt-0.5">Select login type to access your account</p>
+            </div>
+
+            <!-- LOGIN TYPE SELECTOR (USER vs ADMIN) -->
+            <div class="grid grid-cols-2 gap-2 p-1 bg-slate-100 rounded-2xl mb-5 text-xs font-bold">
+                <button id="authTypeUserBtn" onclick="switchAuthType('user')" class="py-2.5 rounded-xl transition bg-white text-emerald-950 shadow-xs flex items-center justify-center gap-1.5 cursor-pointer">
+                    <i class="fa-solid fa-user text-emerald-600"></i>
+                    <span>User Login</span>
+                </button>
+                <button id="authTypeAdminBtn" onclick="switchAuthType('admin')" class="py-2.5 rounded-xl transition text-slate-600 hover:text-slate-900 flex items-center justify-center gap-1.5 cursor-pointer">
+                    <i class="fa-solid fa-shield-halved text-purple-600"></i>
+                    <span>Admin Login</span>
+                </button>
+            </div>
+
+            <!-- USER LOGIN / REGISTER CONTAINER -->
+            <div id="userAuthContainer" class="space-y-4">
+                <!-- User Sub Mode Toggle: Login vs Register -->
+                <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+                    <div class="flex gap-4 text-xs font-bold">
+                        <button id="userSubTabLogin" type="button" onclick="switchUserSubTab('login')" class="text-brandGreen border-b-2 border-brandGreen pb-1 cursor-pointer">Login</button>
+                        <button id="userSubTabRegister" type="button" onclick="switchUserSubTab('register')" class="text-slate-400 hover:text-slate-700 pb-1 cursor-pointer">Register New Account</button>
+                    </div>
+                </div>
+
+                <!-- USER LOGIN FORM -->
+                <form id="userLoginForm" onsubmit="handleUserLogin(event)" class="space-y-3">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Email or Phone Number</label>
+                        <input type="text" id="userLoginEmail" required placeholder="e.g. rahul@example.com or 9876543210" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Password</label>
+                        <input type="password" id="userLoginPassword" required placeholder="••••••••" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    </div>
+                    <button type="submit" class="w-full bg-brandGreen hover:bg-emerald-800 text-white font-bold py-2.5 rounded-xl text-xs shadow-md transition cursor-pointer">
+                        Log In as User
+                    </button>
+                    <div class="text-center pt-2">
+                        <button type="button" onclick="fillDemoUserCredentials()" class="text-[11px] font-bold text-emerald-700 hover:underline cursor-pointer">
+                            ⚡ Quick Fill Demo User Credentials
+                        </button>
+                    </div>
+                </form>
+
+                <!-- USER REGISTER FORM -->
+                <form id="userRegisterForm" onsubmit="handleUserRegister(event)" class="space-y-3 hidden">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Full Name *</label>
+                        <input type="text" id="regName" required placeholder="e.g. Rahul Sharma" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-900">
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Email *</label>
+                            <input type="email" id="regEmail" required placeholder="rahul@example.com" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-900">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Phone Number *</label>
+                            <input type="tel" id="regPhone" required placeholder="9876543210" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-900">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Delivery Address *</label>
+                        <input type="text" id="regAddress" required placeholder="FLAT 4B, Salt Lake Sector 1" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-900">
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">City *</label>
+                            <input type="text" id="regCity" required value="Kolkata" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-900">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Pincode *</label>
+                            <input type="text" id="regPincode" required value="700064" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-900">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Create Password *</label>
+                        <input type="password" id="regPassword" required placeholder="••••••••" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-900">
+                    </div>
+                    <button type="submit" class="w-full bg-brandGreen hover:bg-emerald-800 text-white font-bold py-2.5 rounded-xl text-xs shadow-md transition cursor-pointer">
+                        Register & Log In
+                    </button>
+                </form>
+            </div>
+
+            <!-- ADMIN LOGIN CONTAINER -->
+            <div id="adminAuthContainer" class="space-y-4 hidden">
+                <div class="p-3 bg-purple-50 border border-purple-200 rounded-2xl text-xs text-purple-900 flex items-center gap-2">
+                    <i class="fa-solid fa-shield-halved text-purple-600 text-base shrink-0"></i>
+                    <span>Administrator access portal for Bachat Hub platform control & support.</span>
+                </div>
+                <form id="adminLoginForm" onsubmit="handleAdminLogin(event)" class="space-y-3">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Admin Username / Email</label>
+                        <input type="text" id="adminLoginUser" required placeholder="admin@bachatbasket.com" value="admin@bachatbasket.com" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Admin Password</label>
+                        <input type="password" id="adminLoginPass" required placeholder="••••••••" value="admin123" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    </div>
+                    <button type="submit" class="w-full bg-purple-700 hover:bg-purple-800 text-white font-bold py-2.5 rounded-xl text-xs shadow-md transition cursor-pointer">
+                        Log In as Administrator
+                    </button>
+                    <div class="text-center pt-1">
+                        <span class="text-[11px] text-slate-400 font-medium">Default Credentials: admin@bachatbasket.com / admin123</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- USER PROFILE MODAL (VIEW & EDIT DETAILS) -->
+    <div id="userProfileModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 z-50 hidden">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-lg w-full p-6 border border-slate-100 relative max-h-[90vh] overflow-y-auto custom-scrollbar">
+            <button onclick="closeUserProfileModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 text-lg cursor-pointer">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="flex items-center space-x-3 mb-5 border-b border-slate-200 pb-4">
+                <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-brandGreen flex items-center justify-center text-xl font-bold shrink-0">
+                    <i class="fa-solid fa-user-gear"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-extrabold text-slate-900">User Profile Details</h3>
+                    <p class="text-xs text-slate-500 font-medium">View and edit your registered account details</p>
+                </div>
+            </div>
+
+            <form id="profileEditForm" onsubmit="handleSaveProfile(event)" class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Full Name *</label>
+                        <input type="text" id="profName" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Email Address (Account ID)</label>
+                        <input type="email" id="profEmail" readonly class="w-full px-3.5 py-2.5 bg-slate-100 border border-slate-200 rounded-xl text-xs font-bold text-slate-500 cursor-not-allowed">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Phone Number *</label>
+                        <input type="tel" id="profPhone" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">City *</label>
+                        <input type="text" id="profCity" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Delivery Address *</label>
+                    <textarea id="profAddress" rows="2" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500"></textarea>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Pincode *</label>
+                        <input type="text" id="profPincode" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Dark Store Hub Anchor</label>
+                        <input type="text" readonly value="Salt Lake Metro (Kolkata)" class="w-full px-3.5 py-2.5 bg-emerald-50 border border-emerald-200 text-brandGreen rounded-xl text-xs font-bold">
+                    </div>
+                </div>
+
+                <div class="pt-3 border-t border-slate-200 flex justify-end gap-2">
+                    <button type="button" onclick="closeUserProfileModal()" class="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs transition cursor-pointer">
+                        Cancel
+                    </button>
+                    <button type="submit" class="px-5 py-2.5 bg-brandGreen hover:bg-emerald-800 text-white font-bold rounded-xl text-xs shadow-md transition flex items-center gap-1.5 cursor-pointer">
+                        <i class="fa-solid fa-floppy-disk"></i>
+                        <span>Save Profile Changes</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ORDER HISTORY & SHIPMENT TRACKING MODAL -->
+    <div id="orderHistoryModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 z-50 hidden">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-2xl w-full p-6 border border-slate-100 relative max-h-[90vh] overflow-y-auto custom-scrollbar">
+            <button onclick="closeOrderHistoryModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 text-lg cursor-pointer">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="flex items-center justify-between mb-5 border-b border-slate-200 pb-4">
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-xl font-bold shrink-0">
+                        <i class="fa-solid fa-box-open"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-extrabold text-slate-900">Order History & Delivery Tracking</h3>
+                        <p class="text-xs text-slate-500 font-medium">View previous orders, reorder the same list, and track delivery status</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Orders Container List -->
+            <div id="orderHistoryListContainer" class="space-y-4">
+                <!-- Dynamically Rendered Order Cards -->
+            </div>
+        </div>
+    </div>
+
+    <!-- RAISE COMPLAINT / QUERY MODAL -->
+    <div id="complaintModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 z-50 hidden">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-xl w-full p-6 border border-slate-100 relative max-h-[90vh] overflow-y-auto custom-scrollbar">
+            <button onclick="closeComplaintModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 text-lg cursor-pointer">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="flex items-center space-x-3 mb-5 border-b border-slate-200 pb-4">
+                <div class="w-12 h-12 rounded-2xl bg-teal-100 text-teal-700 flex items-center justify-center text-xl font-bold shrink-0">
+                    <i class="fa-solid fa-headset"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-extrabold text-slate-900">Raise Complaint / Query</h3>
+                    <p class="text-xs text-slate-500 font-medium">Raise any query or issue regarding orders, prices, or app performance</p>
+                </div>
+            </div>
+
+            <!-- Complaint Tabs: Raise New vs My Complaints -->
+            <div class="flex border-b border-slate-200 mb-4 text-xs font-bold gap-4">
+                <button id="tabRaiseComplaintBtn" onclick="switchComplaintTab('raise')" class="text-brandGreen border-b-2 border-brandGreen pb-2 cursor-pointer">
+                    <i class="fa-solid fa-pen-to-square mr-1"></i> Raise New Complaint
+                </button>
+                <button id="tabMyComplaintsBtn" onclick="switchComplaintTab('list')" class="text-slate-400 hover:text-slate-700 pb-2 cursor-pointer">
+                    <i class="fa-solid fa-rectangle-list mr-1"></i> My Raised Queries (<span id="myComplaintCount">0</span>)
+                </button>
+            </div>
+
+            <!-- Raise Complaint Form -->
+            <form id="raiseComplaintForm" onsubmit="handleRaiseComplaint(event)" class="space-y-3.5">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Query Category *</label>
+                        <select id="compCategory" required class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500">
+                            <option value="Delivery Issue">Delivery / Shipment Delay</option>
+                            <option value="Price Mismatch">Live Store Price Mismatch</option>
+                            <option value="Damaged / Missing Item">Damaged or Missing Grocery Item</option>
+                            <option value="Payment & Bill">Payment & Bill Query</option>
+                            <option value="General Suggestion">App Suggestion / General Query</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Related Order ID (Optional)</label>
+                        <select id="compOrderId" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500">
+                            <!-- Populated dynamically -->
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Subject / Summary *</label>
+                    <input type="text" id="compSubject" required placeholder="e.g. Price difference query for Salt Lake store" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Detailed Complaint / Query *</label>
+                    <textarea id="compMessage" rows="4" required placeholder="Describe your complaint or query in detail so our support team can assist you..." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500"></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-teal-700 hover:bg-teal-800 text-white font-bold py-2.5 rounded-xl text-xs shadow-md transition flex items-center justify-center gap-1.5 cursor-pointer">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span>Submit Complaint Ticket</span>
+                </button>
+            </form>
+
+            <!-- My Raised Complaints List -->
+            <div id="myComplaintsListContainer" class="space-y-3 hidden max-h-72 overflow-y-auto custom-scrollbar">
+                <!-- Rendered dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN DASHBOARD MODAL -->
+    <div id="adminModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 z-50 hidden">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-2xl w-full p-6 border border-slate-100 relative max-h-[90vh] overflow-y-auto custom-scrollbar">
+            <button onclick="closeAdminModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 text-lg cursor-pointer">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="flex items-center space-x-3 mb-5 border-b border-slate-200 pb-4">
+                <div class="w-12 h-12 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center text-xl font-bold shrink-0">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-extrabold text-slate-900">Admin Control Panel</h3>
+                    <p class="text-xs text-slate-500 font-medium">Bachat Hub platform oversight & user complaint management</p>
+                </div>
+            </div>
+
+            <!-- Admin Stats Summary Cards -->
+            <div class="grid grid-cols-3 gap-3 mb-5">
+                <div class="bg-purple-50 border border-purple-200 p-3 rounded-2xl">
+                    <span class="text-[10px] font-bold text-purple-700 uppercase">System Dark Stores</span>
+                    <p class="text-lg font-black text-purple-950 mt-0.5">5 Active</p>
+                </div>
+                <div class="bg-emerald-50 border border-emerald-200 p-3 rounded-2xl">
+                    <span class="text-[10px] font-bold text-emerald-700 uppercase">Tracked Products</span>
+                    <p class="text-lg font-black text-emerald-950 mt-0.5">1,240</p>
+                </div>
+                <div class="bg-amber-50 border border-amber-200 p-3 rounded-2xl">
+                    <span class="text-[10px] font-bold text-amber-700 uppercase">User Queries</span>
+                    <p id="adminTicketCount" class="text-lg font-black text-amber-950 mt-0.5">0 Active</p>
+                </div>
+            </div>
+
+            <!-- Admin Complaints List -->
+            <div class="space-y-3">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
+                    <i class="fa-solid fa-list-check text-purple-600"></i>
+                    <span>User Raised Complaints & Queries</span>
+                </h4>
+                <div id="adminComplaintsList" class="space-y-3 max-h-72 overflow-y-auto custom-scrollbar pr-1">
+                    <!-- Rendered dynamically -->
+                </div>
+            </div>
         </div>
     </div>
 
@@ -2086,12 +2474,18 @@
             renderBrandFilters();
             renderProductsGrid();
             updateBasketCountUI();
+            initUserSession();
 
             document.addEventListener('click', function (e) {
                 const searchContainer = document.getElementById('heroSearchSection');
                 if (searchContainer && !searchContainer.contains(e.target)) {
                     const suggestionsEl = document.getElementById('searchSuggestions');
                     if (suggestionsEl) suggestionsEl.classList.add('hidden');
+                }
+
+                const userMenuContainer = document.getElementById('loggedInUserMenu');
+                if (userMenuContainer && !userMenuContainer.contains(e.target)) {
+                    toggleUserDropdown(false);
                 }
             });
         };
@@ -2356,9 +2750,17 @@
             addonBox.innerHTML = cheapItems.map(item => `
                 <div class="bg-white p-2.5 rounded-xl border border-amber-200 flex items-center justify-between">
                     <span class="text-xs font-bold text-slate-800 truncate max-w-[120px]">${item.title}</span>
-                    <button onclick="addToBasket('${item.id}')" class="text-xs font-bold text-brandOrange hover:underline">+ Add</button>
+                    <button onclick="addToBasket('${item.id}')" class="text-xs font-bold text-brandOrange hover:underline cursor-pointer">+ Add</button>
                 </div>
             `).join('');
+
+            // Direct user to comparison table section with smooth scrolling
+            setTimeout(() => {
+                const compSection = document.getElementById("comparisonContainer");
+                if (compSection) {
+                    compSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 50);
         }
 
         function performSearchAndRedirect() {
@@ -2367,20 +2769,31 @@
             if (suggestions) suggestions.classList.add("hidden");
 
             if (!query) {
-                showCustomToast("Please enter a grocery item to compare!");
+                const targetProduct = (PRODUCTS && PRODUCTS.length > 0) ? PRODUCTS[0] : (PRODUCTS_DB && PRODUCTS_DB[0]);
+                if (targetProduct) {
+                    openProductDetail(targetProduct.id);
+                    showCustomToast("Directed to Live Platform Comparison Table!");
+                } else {
+                    showCustomToast("Please enter a grocery item to compare!");
+                }
                 return;
             }
 
             const match = PRODUCTS.find(p =>
                 p.title.toLowerCase().includes(query) ||
                 p.category.toLowerCase().includes(query) ||
-                p.brand.toLowerCase().includes(query)
+                p.brand.toLowerCase().includes(query) ||
+                p.id.toLowerCase().includes(query)
             );
 
             if (match) {
                 openProductDetail(match.id);
             } else {
-                showCustomToast(`No exact match for "${query}". Showing catalog.`);
+                const fallback = (PRODUCTS && PRODUCTS.length > 0) ? PRODUCTS[0] : (PRODUCTS_DB && PRODUCTS_DB[0]);
+                if (fallback) {
+                    openProductDetail(fallback.id);
+                    showCustomToast(`Showing Live Comparison Table for "${query}".`);
+                }
             }
         }
 
@@ -2792,11 +3205,639 @@
             document.getElementById("aboutModal").classList.add("hidden");
         }
 
-        function openAuthModal() {
-            showCustomToast("Login modal placeholder.");
+        // --- USER & ADMIN ACCOUNT, SESSION, PROFILE, ORDERS & COMPLAINTS ENGINE ---
+        let currentUser = null;
+        try {
+            currentUser = JSON.parse(localStorage.getItem('bachat_current_user'));
+        } catch (e) { }
+
+        if (!currentUser) {
+            currentUser = {
+                role: 'user',
+                name: 'Rahul Sharma',
+                email: 'rahul@example.com',
+                phone: '+91 98765 43210',
+                address: 'FLAT 4B, Salt Lake Sector 1',
+                city: 'Kolkata',
+                pincode: '700064'
+            };
+            localStorage.setItem('bachat_current_user', JSON.stringify(currentUser));
         }
 
-        function toggleUserDropdown() { }
+        let userOrders = [
+            {
+                id: "BB-2026-9104",
+                date: "02 Oct 2026, 02:45 PM",
+                status: "Out for Delivery",
+                statusStep: 3,
+                store: "Salt Lake Metro Dark Store (Blinkit)",
+                eta: "6-8 Mins",
+                rider: { name: "Rajesh Verma", phone: "+91 98310 98765", vehicle: "WB 02 AX 4920" },
+                items: [
+                    { productId: "p_kurkure", name: "Kurkure Masala Munch 75g", qty: 2, price: 20 },
+                    { productId: "p_amul_butter", name: "Amul Pasteurised Butter 100g", qty: 1, price: 56 },
+                    { productId: "p_amul_taaza", name: "Amul Taaza Toned Milk 500ml", qty: 2, price: 27 }
+                ],
+                total: 150
+            },
+            {
+                id: "BB-2026-8812",
+                date: "28 Sep 2026, 11:20 AM",
+                status: "Delivered",
+                statusStep: 4,
+                store: "Salt Lake Sector 1 Dark Store (Zepto)",
+                eta: "Delivered at 11:32 AM",
+                rider: { name: "Subhash Mondal", phone: "+91 98301 44521", vehicle: "WB 04 B 1092" },
+                items: [
+                    { productId: "p_aashirvaad_atta", name: "Aashirvaad Shudh Chakki Atta 5kg", qty: 1, price: 245 },
+                    { productId: "p_fortune_oil", name: "Fortune Sunlite Sunflower Oil 1L", qty: 1, price: 135 }
+                ],
+                total: 380
+            }
+        ];
+
+        try {
+            const savedOrders = localStorage.getItem('bachat_orders');
+            if (savedOrders) userOrders = JSON.parse(savedOrders);
+        } catch (e) { }
+
+        let userComplaints = [
+            {
+                ticketId: "TKT-8921",
+                date: "01 Oct 2026, 05:10 PM",
+                category: "Price Mismatch",
+                subject: "Price difference in Kurkure offer",
+                orderId: "BB-2026-9104",
+                message: "The offer showed Rs 18 on Blinkit but cart charged Rs 20.",
+                status: "Under Review by Support Team",
+                reply: "Hello Rahul! We are verifying the live store cache with Blinkit Salt Lake store."
+            }
+        ];
+
+        try {
+            const savedComplaints = localStorage.getItem('bachat_complaints');
+            if (savedComplaints) userComplaints = JSON.parse(savedComplaints);
+        } catch (e) { }
+
+        function initUserSession() {
+            const loggedOutBtn = document.getElementById("loggedOutBtn");
+            const loggedInUserMenu = document.getElementById("loggedInUserMenu");
+            const navUserName = document.getElementById("navUserName");
+            const navUserAddress = document.getElementById("navUserAddress");
+            const dropdownUserEmail = document.getElementById("dropdownUserEmail");
+            const dropdownRoleBadge = document.getElementById("dropdownRoleBadge");
+            const userMenuOptions = document.getElementById("userMenuOptions");
+            const adminMenuOptions = document.getElementById("adminMenuOptions");
+            const userNavAvatar = document.getElementById("userNavAvatar");
+
+            if (!currentUser) {
+                if (loggedOutBtn) loggedOutBtn.classList.remove("hidden");
+                if (loggedInUserMenu) loggedInUserMenu.classList.add("hidden");
+                return;
+            }
+
+            if (loggedOutBtn) loggedOutBtn.classList.add("hidden");
+            if (loggedInUserMenu) loggedInUserMenu.classList.remove("hidden");
+
+            if (currentUser.role === 'admin') {
+                if (navUserName) navUserName.innerText = "ADMIN";
+                if (dropdownUserEmail) dropdownUserEmail.innerText = currentUser.email || "admin@bachatbasket.com";
+                if (dropdownRoleBadge) {
+                    dropdownRoleBadge.innerText = "System Administrator";
+                    dropdownRoleBadge.className = "inline-block mt-1 text-[10px] font-black px-2 py-0.5 rounded-full bg-purple-100 text-purple-800 uppercase";
+                }
+                if (userNavAvatar) userNavAvatar.className = "w-7 h-7 rounded-full bg-purple-700 text-white flex items-center justify-center font-bold text-xs shadow-2xs";
+                if (userMenuOptions) userMenuOptions.classList.add("hidden");
+                if (adminMenuOptions) adminMenuOptions.classList.remove("hidden");
+            } else {
+                const firstName = currentUser.name ? currentUser.name.split(' ')[0] : 'USER';
+                if (navUserName) navUserName.innerText = firstName.toUpperCase();
+                if (dropdownUserEmail) dropdownUserEmail.innerText = currentUser.email || "user@bachatbasket.com";
+                if (dropdownRoleBadge) {
+                    dropdownRoleBadge.innerText = "User Account";
+                    dropdownRoleBadge.className = "inline-block mt-1 text-[10px] font-black px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 uppercase";
+                }
+                if (userNavAvatar) userNavAvatar.className = "w-7 h-7 rounded-full bg-brandGreen text-white flex items-center justify-center font-bold text-xs shadow-2xs";
+                if (userMenuOptions) userMenuOptions.classList.remove("hidden");
+                if (adminMenuOptions) adminMenuOptions.classList.add("hidden");
+                if (navUserAddress && currentUser.city && currentUser.pincode) {
+                    navUserAddress.innerText = `${currentUser.city} (${currentUser.pincode})`;
+                }
+            }
+        }
+
+        function toggleUserDropdown(forceState) {
+            const menu = document.getElementById("userDropdownMenu");
+            const chevron = document.getElementById("userDropdownChevron");
+            if (!menu) return;
+
+            const shouldShow = (typeof forceState === 'boolean') ? forceState : menu.classList.contains("hidden");
+
+            if (shouldShow) {
+                menu.classList.remove("hidden");
+                if (chevron) chevron.style.transform = "rotate(180deg)";
+            } else {
+                menu.classList.add("hidden");
+                if (chevron) chevron.style.transform = "rotate(0deg)";
+            }
+        }
+
+        function openAuthModal(defaultType = 'user') {
+            const modal = document.getElementById("authModal");
+            if (!modal) return;
+            switchAuthType(defaultType);
+            modal.classList.remove("hidden");
+        }
+
+        function closeAuthModal() {
+            const modal = document.getElementById("authModal");
+            if (modal) modal.classList.add("hidden");
+        }
+
+        function switchAuthType(type) {
+            const userBtn = document.getElementById("authTypeUserBtn");
+            const adminBtn = document.getElementById("authTypeAdminBtn");
+            const userContainer = document.getElementById("userAuthContainer");
+            const adminContainer = document.getElementById("adminAuthContainer");
+
+            if (type === 'admin') {
+                if (userBtn) userBtn.className = "py-2.5 rounded-xl transition text-slate-600 hover:text-slate-900 flex items-center justify-center gap-1.5 cursor-pointer";
+                if (adminBtn) adminBtn.className = "py-2.5 rounded-xl transition bg-white text-purple-950 shadow-xs flex items-center justify-center gap-1.5 cursor-pointer";
+                if (userContainer) userContainer.classList.add("hidden");
+                if (adminContainer) adminContainer.classList.remove("hidden");
+            } else {
+                if (userBtn) userBtn.className = "py-2.5 rounded-xl transition bg-white text-emerald-950 shadow-xs flex items-center justify-center gap-1.5 cursor-pointer";
+                if (adminBtn) adminBtn.className = "py-2.5 rounded-xl transition text-slate-600 hover:text-slate-900 flex items-center justify-center gap-1.5 cursor-pointer";
+                if (userContainer) userContainer.classList.remove("hidden");
+                if (adminContainer) adminContainer.classList.add("hidden");
+                switchUserSubTab('login');
+            }
+        }
+
+        function switchUserSubTab(subTab) {
+            const loginTabBtn = document.getElementById("userSubTabLogin");
+            const regTabBtn = document.getElementById("userSubTabRegister");
+            const loginForm = document.getElementById("userLoginForm");
+            const regForm = document.getElementById("userRegisterForm");
+
+            if (subTab === 'register') {
+                if (loginTabBtn) loginTabBtn.className = "text-slate-400 hover:text-slate-700 pb-1 cursor-pointer";
+                if (regTabBtn) regTabBtn.className = "text-brandGreen border-b-2 border-brandGreen pb-1 cursor-pointer";
+                if (loginForm) loginForm.classList.add("hidden");
+                if (regForm) regForm.classList.remove("hidden");
+            } else {
+                if (loginTabBtn) loginTabBtn.className = "text-brandGreen border-b-2 border-brandGreen pb-1 cursor-pointer";
+                if (regTabBtn) regTabBtn.className = "text-slate-400 hover:text-slate-700 pb-1 cursor-pointer";
+                if (loginForm) loginForm.classList.remove("hidden");
+                if (regForm) regForm.classList.add("hidden");
+            }
+        }
+
+        function fillDemoUserCredentials() {
+            const emailInput = document.getElementById("userLoginEmail");
+            const passInput = document.getElementById("userLoginPassword");
+            if (emailInput) emailInput.value = "rahul@example.com";
+            if (passInput) passInput.value = "user123";
+            showCustomToast("Filled Demo User credentials!");
+        }
+
+        function handleUserLogin(e) {
+            if (e) e.preventDefault();
+            const emailInput = document.getElementById("userLoginEmail");
+            const val = emailInput ? emailInput.value.trim() : "rahul@example.com";
+
+            currentUser = {
+                role: 'user',
+                name: 'Rahul Sharma',
+                email: val.includes('@') ? val : 'rahul@example.com',
+                phone: val.match(/^\d+$/) ? val : '+91 98765 43210',
+                address: 'FLAT 4B, Salt Lake Sector 1',
+                city: 'Kolkata',
+                pincode: '700064'
+            };
+
+            localStorage.setItem('bachat_current_user', JSON.stringify(currentUser));
+            initUserSession();
+            closeAuthModal();
+            showCustomToast(`🎉 Logged in successfully as ${currentUser.name}!`);
+        }
+
+        function handleUserRegister(e) {
+            if (e) e.preventDefault();
+            const name = document.getElementById("regName")?.value.trim() || "New User";
+            const email = document.getElementById("regEmail")?.value.trim() || "user@example.com";
+            const phone = document.getElementById("regPhone")?.value.trim() || "+91 98765 43210";
+            const address = document.getElementById("regAddress")?.value.trim() || "Salt Lake";
+            const city = document.getElementById("regCity")?.value.trim() || "Kolkata";
+            const pincode = document.getElementById("regPincode")?.value.trim() || "700064";
+
+            currentUser = {
+                role: 'user',
+                name,
+                email,
+                phone,
+                address,
+                city,
+                pincode
+            };
+
+            localStorage.setItem('bachat_current_user', JSON.stringify(currentUser));
+            initUserSession();
+            closeAuthModal();
+            showCustomToast(`🎉 Registration successful! Welcome, ${name}!`);
+        }
+
+        function handleAdminLogin(e) {
+            if (e) e.preventDefault();
+            const userVal = document.getElementById("adminLoginUser")?.value.trim() || "admin@bachatbasket.com";
+
+            currentUser = {
+                role: 'admin',
+                name: 'System Admin',
+                email: userVal,
+                phone: '+91 99000 00000',
+                address: 'Bachat Hub HQ, Salt Lake Metro Station',
+                city: 'Kolkata',
+                pincode: '700064'
+            };
+
+            localStorage.setItem('bachat_current_user', JSON.stringify(currentUser));
+            initUserSession();
+            closeAuthModal();
+            showCustomToast("🛡️ Logged in as System Administrator!");
+            openAdminModal();
+        }
+
+        function logoutUser() {
+            currentUser = null;
+            localStorage.removeItem('bachat_current_user');
+            initUserSession();
+            showCustomToast("Logged out successfully.");
+        }
+
+        function openUserProfileModal() {
+            if (!currentUser) {
+                openAuthModal('user');
+                return;
+            }
+            const modal = document.getElementById("userProfileModal");
+            if (!modal) return;
+
+            document.getElementById("profName").value = currentUser.name || "";
+            document.getElementById("profEmail").value = currentUser.email || "";
+            document.getElementById("profPhone").value = currentUser.phone || "";
+            document.getElementById("profAddress").value = currentUser.address || "";
+            document.getElementById("profCity").value = currentUser.city || "Kolkata";
+            document.getElementById("profPincode").value = currentUser.pincode || "700064";
+
+            modal.classList.remove("hidden");
+        }
+
+        function closeUserProfileModal() {
+            const modal = document.getElementById("userProfileModal");
+            if (modal) modal.classList.add("hidden");
+        }
+
+        function handleSaveProfile(e) {
+            if (e) e.preventDefault();
+            if (!currentUser) return;
+
+            currentUser.name = document.getElementById("profName").value.trim();
+            currentUser.phone = document.getElementById("profPhone").value.trim();
+            currentUser.address = document.getElementById("profAddress").value.trim();
+            currentUser.city = document.getElementById("profCity").value.trim();
+            currentUser.pincode = document.getElementById("profPincode").value.trim();
+
+            localStorage.setItem('bachat_current_user', JSON.stringify(currentUser));
+            initUserSession();
+            closeUserProfileModal();
+            showCustomToast("✅ Profile details updated successfully!");
+        }
+
+        function openOrderHistoryModal() {
+            if (!currentUser) {
+                openAuthModal('user');
+                return;
+            }
+            const modal = document.getElementById("orderHistoryModal");
+            if (!modal) return;
+            renderOrderHistoryList();
+            modal.classList.remove("hidden");
+        }
+
+        function closeOrderHistoryModal() {
+            const modal = document.getElementById("orderHistoryModal");
+            if (modal) modal.classList.add("hidden");
+        }
+
+        function renderOrderHistoryList() {
+            const container = document.getElementById("orderHistoryListContainer");
+            if (!container) return;
+
+            if (!userOrders || userOrders.length === 0) {
+                container.innerHTML = `
+                    <div class="p-8 text-center bg-slate-50 rounded-2xl border border-slate-200 text-slate-500 font-bold text-xs">
+                        <i class="fa-solid fa-box-open text-3xl text-slate-300 mb-2 block"></i>
+                        No previous orders found. Start saving with Bachat Basket!
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = userOrders.map(order => {
+                const itemsHtml = order.items.map(it => `
+                    <div class="flex items-center justify-between text-xs py-1 border-b border-slate-100">
+                        <span class="font-bold text-slate-800">${escapeHtml(it.name)} <span class="text-slate-400 font-normal">x${it.qty}</span></span>
+                        <span class="font-bold text-slate-900">₹${it.price * it.qty}</span>
+                    </div>
+                `).join('');
+
+                const isDelivered = order.status === "Delivered";
+
+                return `
+                    <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 space-y-3 hover:border-emerald-300 transition shadow-2xs">
+                        <div class="flex items-center justify-between border-b border-slate-200/70 pb-2.5">
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <span class="font-extrabold text-sm text-slate-900">${order.id}</span>
+                                    <span class="text-[10px] font-black px-2 py-0.5 rounded-full ${isDelivered ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800 animate-pulse'}">
+                                        ${order.status}
+                                    </span>
+                                </div>
+                                <p class="text-[11px] text-slate-500 font-medium mt-0.5">Order Placed: ${order.date} • ${order.store}</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-xs text-slate-500 block font-bold">Total Amount</span>
+                                <span class="text-base font-black text-emerald-800">₹${order.total}</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-3 rounded-xl border border-slate-200/60 space-y-1">
+                            <p class="text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1">Purchased Grocery Items</p>
+                            ${itemsHtml}
+                        </div>
+
+                        <!-- Shipment Tracking Accordion -->
+                        <div id="shipmentTracking_${order.id}" class="hidden bg-emerald-950 text-white p-4 rounded-2xl space-y-3">
+                            <div class="flex items-center justify-between text-xs font-bold border-b border-emerald-800/80 pb-2">
+                                <span class="text-emerald-300 flex items-center gap-1.5">
+                                    <i class="fa-solid fa-truck-fast"></i>
+                                    <span>Live Delivery Shipment Tracking</span>
+                                </span>
+                                <span class="text-amber-400 font-extrabold">ETA: ${order.eta}</span>
+                            </div>
+
+                            <!-- Tracking Timeline Steps -->
+                            <div class="space-y-2 text-xs">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-6 h-6 rounded-full bg-emerald-500 text-slate-950 flex items-center justify-center font-bold text-[11px] shrink-0">1</div>
+                                    <div class="flex-1">
+                                        <p class="font-bold text-white">Order Confirmed & Placed</p>
+                                        <p class="text-[10px] text-emerald-300">Hub Anchor: Salt Lake Metro Station</p>
+                                    </div>
+                                    <i class="fa-solid fa-circle-check text-emerald-400"></i>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-6 h-6 rounded-full ${order.statusStep >= 2 ? 'bg-emerald-500 text-slate-950' : 'bg-slate-700 text-slate-400'} flex items-center justify-center font-bold text-[11px] shrink-0">2</div>
+                                    <div class="flex-1">
+                                        <p class="font-bold ${order.statusStep >= 2 ? 'text-white' : 'text-slate-400'}">Packed at Dark Store</p>
+                                        <p class="text-[10px] text-slate-400">${order.store}</p>
+                                    </div>
+                                    ${order.statusStep >= 2 ? '<i class="fa-solid fa-circle-check text-emerald-400"></i>' : '<i class="fa-solid fa-clock text-slate-500"></i>'}
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-6 h-6 rounded-full ${order.statusStep >= 3 ? 'bg-amber-400 text-slate-950 animate-bounce' : 'bg-slate-700 text-slate-400'} flex items-center justify-center font-bold text-[11px] shrink-0">3</div>
+                                    <div class="flex-1">
+                                        <p class="font-bold ${order.statusStep >= 3 ? 'text-white' : 'text-slate-400'}">Out for Delivery with Partner</p>
+                                        ${order.rider ? `<p class="text-[10px] text-amber-300">Rider: ${order.rider.name} (${order.rider.phone}) • ${order.rider.vehicle}</p>` : ''}
+                                    </div>
+                                    ${order.statusStep >= 3 ? '<i class="fa-solid fa-truck-ramp-box text-amber-400"></i>' : '<i class="fa-solid fa-clock text-slate-500"></i>'}
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-6 h-6 rounded-full ${order.statusStep >= 4 ? 'bg-emerald-500 text-slate-950' : 'bg-slate-700 text-slate-400'} flex items-center justify-center font-bold text-[11px] shrink-0">4</div>
+                                    <div class="flex-1">
+                                        <p class="font-bold ${order.statusStep >= 4 ? 'text-white' : 'text-slate-400'}">Delivered to Address</p>
+                                        <p class="text-[10px] text-slate-400">${currentUser.address || 'Salt Lake Sector 1'}</p>
+                                    </div>
+                                    ${order.statusStep >= 4 ? '<i class="fa-solid fa-house-circle-check text-emerald-400"></i>' : '<i class="fa-solid fa-clock text-slate-500"></i>'}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons: Reorder & Track -->
+                        <div class="flex items-center justify-between pt-1 gap-2">
+                            <button onclick="toggleOrderTracking('${order.id}')" class="bg-emerald-50 hover:bg-emerald-100 text-brandGreen border border-emerald-300 font-bold px-3.5 py-2 rounded-xl text-xs transition flex items-center gap-1.5 cursor-pointer">
+                                <i class="fa-solid fa-location-crosshairs"></i>
+                                <span>Track Delivery & Shipment Details</span>
+                            </button>
+                            <button onclick="reorderOrderList('${order.id}')" class="bg-brandOrange hover:bg-orange-600 text-white font-bold px-4 py-2 rounded-xl text-xs transition shadow-xs flex items-center gap-1.5 cursor-pointer">
+                                <i class="fa-solid fa-rotate-right"></i>
+                                <span>Reorder Same List</span>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function toggleOrderTracking(orderId) {
+            const trackingBox = document.getElementById(`shipmentTracking_${orderId}`);
+            if (trackingBox) {
+                trackingBox.classList.toggle("hidden");
+            }
+        }
+
+        function reorderOrderList(orderId) {
+            const order = userOrders.find(o => o.id === orderId);
+            if (!order) return;
+
+            let addedCount = 0;
+            order.items.forEach(item => {
+                const prod = PRODUCTS_DB.find(p => p.id === item.productId);
+                if (prod) {
+                    const existing = userBasket.find(b => b.productId === prod.id);
+                    if (existing) {
+                        existing.qty += item.qty;
+                    } else {
+                        userBasket.push({ productId: prod.id, qty: item.qty });
+                    }
+                    addedCount++;
+                }
+            });
+
+            if (typeof updateBasketCountUI === 'function') updateBasketCountUI();
+            closeOrderHistoryModal();
+            showSection('basket');
+            showCustomToast(`🛒 Reordered! Loaded ${addedCount} items into Bachat Basket.`);
+        }
+
+        function openComplaintModal() {
+            if (!currentUser) {
+                openAuthModal('user');
+                return;
+            }
+            const modal = document.getElementById("complaintModal");
+            if (!modal) return;
+
+            const orderSelect = document.getElementById("compOrderId");
+            if (orderSelect) {
+                orderSelect.innerHTML = `<option value="">General Query (No Order ID)</option>` + 
+                    userOrders.map(o => `<option value="${o.id}">${o.id} - ₹${o.total} (${o.date})</option>`).join('');
+            }
+
+            renderUserComplaintsList();
+            switchComplaintTab('raise');
+            modal.classList.remove("hidden");
+        }
+
+        function closeComplaintModal() {
+            const modal = document.getElementById("complaintModal");
+            if (modal) modal.classList.add("hidden");
+        }
+
+        function switchComplaintTab(tab) {
+            const raiseBtn = document.getElementById("tabRaiseComplaintBtn");
+            const listBtn = document.getElementById("tabMyComplaintsBtn");
+            const raiseForm = document.getElementById("raiseComplaintForm");
+            const listContainer = document.getElementById("myComplaintsListContainer");
+
+            if (tab === 'list') {
+                if (raiseBtn) raiseBtn.className = "text-slate-400 hover:text-slate-700 pb-2 cursor-pointer";
+                if (listBtn) listBtn.className = "text-brandGreen border-b-2 border-brandGreen pb-2 cursor-pointer";
+                if (raiseForm) raiseForm.classList.add("hidden");
+                if (listContainer) listContainer.classList.remove("hidden");
+                renderUserComplaintsList();
+            } else {
+                if (raiseBtn) raiseBtn.className = "text-brandGreen border-b-2 border-brandGreen pb-2 cursor-pointer";
+                if (listBtn) listBtn.className = "text-slate-400 hover:text-slate-700 pb-2 cursor-pointer";
+                if (raiseForm) raiseForm.classList.remove("hidden");
+                if (listContainer) listContainer.classList.add("hidden");
+            }
+        }
+
+        function handleRaiseComplaint(e) {
+            if (e) e.preventDefault();
+            const category = document.getElementById("compCategory")?.value || "General";
+            const orderId = document.getElementById("compOrderId")?.value || "";
+            const subject = document.getElementById("compSubject")?.value.trim() || "Query";
+            const message = document.getElementById("compMessage")?.value.trim() || "";
+
+            const ticketId = "TKT-" + Math.floor(1000 + Math.random() * 9000);
+            const dateStr = new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+
+            const newTicket = {
+                ticketId,
+                date: dateStr,
+                category,
+                subject,
+                orderId,
+                message,
+                status: "Under Review by Support Team",
+                reply: "Thank you for reaching out. Support ticket is registered. Our dark store anchor team will review shortly."
+            };
+
+            userComplaints.unshift(newTicket);
+            localStorage.setItem('bachat_complaints', JSON.stringify(userComplaints));
+
+            if (document.getElementById("compSubject")) document.getElementById("compSubject").value = "";
+            if (document.getElementById("compMessage")) document.getElementById("compMessage").value = "";
+
+            showCustomToast(`📩 Complaint Ticket ${ticketId} submitted successfully!`);
+            switchComplaintTab('list');
+        }
+
+        function renderUserComplaintsList() {
+            const container = document.getElementById("myComplaintsListContainer");
+            const countBadge = document.getElementById("myComplaintCount");
+            if (countBadge) countBadge.innerText = userComplaints.length;
+            if (!container) return;
+
+            if (!userComplaints || userComplaints.length === 0) {
+                container.innerHTML = `
+                    <div class="p-6 text-center bg-slate-50 rounded-2xl border border-slate-200 text-slate-500 font-bold text-xs">
+                        No complaints or queries raised yet.
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = userComplaints.map(comp => `
+                <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 space-y-2 text-xs">
+                    <div class="flex items-center justify-between border-b border-slate-200/60 pb-2">
+                        <div class="flex items-center gap-2">
+                            <span class="font-black text-brandGreen">${comp.ticketId}</span>
+                            <span class="bg-teal-100 text-teal-800 font-extrabold text-[10px] px-2 py-0.5 rounded-full">${comp.category}</span>
+                        </div>
+                        <span class="text-[10px] font-bold text-slate-400">${comp.date}</span>
+                    </div>
+                    <h5 class="font-extrabold text-slate-900">${escapeHtml(comp.subject)}</h5>
+                    ${comp.orderId ? `<p class="text-[11px] text-slate-500 font-bold">Related Order: ${comp.orderId}</p>` : ''}
+                    <p class="text-slate-600 leading-relaxed font-normal bg-white p-2.5 rounded-xl border border-slate-200/60">${escapeHtml(comp.message)}</p>
+                    <div class="bg-emerald-50 border border-emerald-200 p-2.5 rounded-xl space-y-1">
+                        <span class="text-[10px] font-extrabold text-emerald-800 uppercase block">Support Status: ${comp.status}</span>
+                        <p class="text-[11px] text-emerald-950 font-medium">${escapeHtml(comp.reply)}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openAdminModal(sub) {
+            if (!currentUser || currentUser.role !== 'admin') {
+                openAuthModal('admin');
+                return;
+            }
+            const modal = document.getElementById("adminModal");
+            if (!modal) return;
+            renderAdminComplaintsList();
+            modal.classList.remove("hidden");
+        }
+
+        function closeAdminModal() {
+            const modal = document.getElementById("adminModal");
+            if (modal) modal.classList.add("hidden");
+        }
+
+        function renderAdminComplaintsList() {
+            const container = document.getElementById("adminComplaintsList");
+            const countBadge = document.getElementById("adminTicketCount");
+            if (countBadge) countBadge.innerText = userComplaints.length + " Total";
+            if (!container) return;
+
+            if (!userComplaints || userComplaints.length === 0) {
+                container.innerHTML = `<div class="p-4 text-center text-xs text-slate-400 font-bold">No user complaints in system.</div>`;
+                return;
+            }
+
+            container.innerHTML = userComplaints.map(comp => `
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-3.5 space-y-2 text-xs">
+                    <div class="flex items-center justify-between">
+                        <span class="font-black text-purple-800">${comp.ticketId} • ${comp.category}</span>
+                        <span class="text-[10px] font-bold text-slate-400">${comp.date}</span>
+                    </div>
+                    <p class="font-bold text-slate-900">${escapeHtml(comp.subject)}</p>
+                    <p class="text-slate-600 bg-white p-2 rounded-xl border border-slate-200">${escapeHtml(comp.message)}</p>
+                    <div class="flex items-center justify-between pt-1">
+                        <span class="text-[11px] font-extrabold ${comp.status.includes('Resolved') ? 'text-emerald-700' : 'text-amber-700'}">Status: ${comp.status}</span>
+                        ${!comp.status.includes('Resolved') ? `
+                            <button onclick="resolveComplaintByAdmin('${comp.ticketId}')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-3 py-1 rounded-lg text-[11px] transition cursor-pointer">
+                                Mark Resolved
+                            </button>
+                        ` : `<span class="text-emerald-600 font-bold text-[11px]"><i class="fa-solid fa-circle-check"></i> Resolved</span>`}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function resolveComplaintByAdmin(ticketId) {
+            const comp = userComplaints.find(c => c.ticketId === ticketId);
+            if (comp) {
+                comp.status = "✅ Resolved by Admin Support";
+                comp.reply = "Issue has been verified and resolved by Bachat Hub Administration team.";
+                localStorage.setItem('bachat_complaints', JSON.stringify(userComplaints));
+                renderAdminComplaintsList();
+                showCustomToast(`Ticket ${ticketId} marked as Resolved!`);
+            }
+        }
 
         function showCustomToast(msg) {
             const toast = document.getElementById("customToast");

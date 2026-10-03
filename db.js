@@ -1,4 +1,4 @@
-﻿const { DatabaseSync } = require('node:sqlite');
+const { DatabaseSync } = require('node:sqlite');
 const path = require('path');
 
 const DB_PATH = path.join(__dirname, 'bachatbasket.db');
@@ -86,8 +86,8 @@ function seedInitialData() {
                 color: '#F7C400',
                 text_color: '#000000',
                 delivery_time: '10 mins',
-                delivery_fee: 15,
-                handling_fee: 4,
+                delivery_fee: 30,
+                handling_fee: 25,
                 free_threshold: 199,
                 logo_svg: `<img src="images/blinkit.png" alt="Blinkit" class="w-8 h-8 rounded-lg object-contain shadow-xs">`
             },
@@ -97,9 +97,9 @@ function seedInitialData() {
                 color: '#7C3AED',
                 text_color: '#FFFFFF',
                 delivery_time: '8 mins',
-                delivery_fee: 15,
-                handling_fee: 4,
-                free_threshold: 199,
+                delivery_fee: 30,
+                handling_fee: 15,
+                free_threshold: 49,
                 logo_svg: `<img src="images/zepto.png" alt="Zepto" class="w-8 h-8 rounded-lg object-contain shadow-xs">`
             },
             {
@@ -108,9 +108,9 @@ function seedInitialData() {
                 color: '#84CC16',
                 text_color: '#000000',
                 delivery_time: '15 mins',
-                delivery_fee: 15,
-                handling_fee: 3,
-                free_threshold: 199,
+                delivery_fee: 35,
+                handling_fee: 23,
+                free_threshold: 99,
                 logo_svg: `<img src="images/bigbasket.png" alt="BigBasket" class="w-8 h-8 rounded-lg object-contain bg-white shadow-xs">`
             },
             {
@@ -119,9 +119,9 @@ function seedInitialData() {
                 color: '#2563EB',
                 text_color: '#FFFFFF',
                 delivery_time: '12 mins',
-                delivery_fee: 15,
-                handling_fee: 3,
-                free_threshold: 199,
+                delivery_fee: 30,
+                handling_fee: 19,
+                free_threshold: 49,
                 logo_svg: `<img src="images/flipkart.svg" alt="Flipkart Minutes" class="w-8 h-8 rounded-lg object-contain shadow-xs">`
             },
             {
@@ -130,9 +130,9 @@ function seedInitialData() {
                 color: '#FC8019',
                 text_color: '#FFFFFF',
                 delivery_time: '11 mins',
-                delivery_fee: 15,
-                handling_fee: 4,
-                free_threshold: 199,
+                delivery_fee: 20,
+                handling_fee: 10,
+                free_threshold: 99,
                 logo_svg: `<img src="images/instamart.png" alt="Instamart" class="w-8 h-8 rounded-lg object-contain shadow-xs">`
             }
         ];
@@ -141,6 +141,15 @@ function seedInitialData() {
             insertPlatform.run(p.id, p.name, p.color, p.text_color, p.delivery_time, p.delivery_fee, p.handling_fee, p.free_threshold, p.logo_svg);
         }
     }
+
+    const updatePlatform = db.prepare(`
+        UPDATE platforms SET delivery_fee = ?, handling_fee = ?, free_threshold = ? WHERE id = ?
+    `);
+    updatePlatform.run(30, 25, 199, 'Blinkit');
+    updatePlatform.run(30, 15, 49, 'Zepto');
+    updatePlatform.run(35, 23, 99, 'BigBasket');
+    updatePlatform.run(30, 19, 49, 'Flipkart Minutes');
+    updatePlatform.run(20, 10, 99, 'Instamart');
 
     const insertProduct = db.prepare(`
         INSERT OR REPLACE INTO products (id, name, brand, category, unit, img, prices, alternatives)

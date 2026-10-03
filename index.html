@@ -1243,8 +1243,8 @@
                 color: '#F7C400',
                 deliveryTime: '10 mins',
                 eta: '10 mins',
-                deliveryFee: 15,
-                handlingFee: 4,
+                deliveryFee: 30,
+                handlingFee: 25,
                 freeThreshold: 199,
                 badge: 'Fastest',
                 logoImg: 'https://placehold.co/40x40/f7c400/000000?text=BL'
@@ -1254,9 +1254,9 @@
                 color: '#7C3AED',
                 deliveryTime: '8 mins',
                 eta: '8 mins',
-                deliveryFee: 15,
-                handlingFee: 5,
-                freeThreshold: 149,
+                deliveryFee: 30,
+                handlingFee: 15,
+                freeThreshold: 49,
                 badge: 'Quickest',
                 logoImg: 'https://placehold.co/40x40/7c3aed/ffffff?text=ZP'
             },
@@ -1265,9 +1265,9 @@
                 color: '#84CC16',
                 deliveryTime: '15-20 mins',
                 eta: '15 mins',
-                deliveryFee: 20,
-                handlingFee: 2,
-                freeThreshold: 299,
+                deliveryFee: 35,
+                handlingFee: 23,
+                freeThreshold: 99,
                 badge: 'Bulk Deals',
                 logoImg: 'https://placehold.co/40x40/84cc16/000000?text=BB'
             },
@@ -1276,9 +1276,9 @@
                 color: '#2563EB',
                 deliveryTime: '12 mins',
                 eta: '12 mins',
-                deliveryFee: 10,
-                handlingFee: 3,
-                freeThreshold: 99,
+                deliveryFee: 30,
+                handlingFee: 19,
+                freeThreshold: 49,
                 badge: 'Lowest Shipping',
                 logoImg: 'https://placehold.co/40x40/2563eb/ffffff?text=FK'
             },
@@ -1287,9 +1287,9 @@
                 color: '#FC8019',
                 deliveryTime: '11 mins',
                 eta: '11 mins',
-                deliveryFee: 15,
-                handlingFee: 5,
-                freeThreshold: 199,
+                deliveryFee: 20,
+                handlingFee: 10,
+                freeThreshold: 99,
                 badge: 'Wide Selection',
                 logoImg: 'https://placehold.co/40x40/fc8019/ffffff?text=IM'
             }
@@ -2591,8 +2591,8 @@
                 const priceArr = storeKeys.map(key => {
                     const info = product.prices[key];
                     const item = info.item || info.price || 40;
-                    const del = info.deliveryFee !== undefined ? info.deliveryFee : (STORES[key]?.deliveryFee || 15);
-                    const hand = info.handlingFee !== undefined ? info.handlingFee : (STORES[key]?.handlingFee || 4);
+                    const del = (STORES[key] && STORES[key].deliveryFee !== undefined) ? STORES[key].deliveryFee : (info.deliveryFee !== undefined ? info.deliveryFee : 15);
+                    const hand = (STORES[key] && STORES[key].handlingFee !== undefined) ? STORES[key].handlingFee : (info.handlingFee !== undefined ? info.handlingFee : 4);
                     return { app: key, item: item, total: item + del + hand };
                 });
 
@@ -2667,9 +2667,9 @@
             const storesArr = storeKeys.map(key => {
                 const info = product.prices[key];
                 const item = info.item || info.price || 40;
-                const deliveryFee = info.deliveryFee !== undefined ? info.deliveryFee : (STORES[key]?.deliveryFee || 15);
-                const handlingFee = info.handlingFee !== undefined ? info.handlingFee : (STORES[key]?.handlingFee || 4);
-                const freeThreshold = info.freeThreshold !== undefined ? info.freeThreshold : (STORES[key]?.freeThreshold || 199);
+                const deliveryFee = (STORES[key] && STORES[key].deliveryFee !== undefined) ? STORES[key].deliveryFee : (info.deliveryFee !== undefined ? info.deliveryFee : 15);
+                const handlingFee = (STORES[key] && STORES[key].handlingFee !== undefined) ? STORES[key].handlingFee : (info.handlingFee !== undefined ? info.handlingFee : 4);
+                const freeThreshold = (STORES[key] && STORES[key].freeThreshold !== undefined) ? STORES[key].freeThreshold : (info.freeThreshold !== undefined ? info.freeThreshold : 199);
                 const eta = info.eta || STORES[key]?.eta || "10 mins";
                 const total = item + deliveryFee + handlingFee;
                 return { key, item, deliveryFee, handlingFee, freeThreshold, eta, total };

@@ -565,6 +565,22 @@ function seedInitialData() {
             alternatives: []
         },
         {
+            id: 'bb_amul_ghee_100ml',
+            name: 'Amul Pure Cow Ghee (Jar)',
+            brand: 'Amul',
+            category: 'Oils & Ghee',
+            unit: '100 ml Jar',
+            img: 'images/amul_ghee.jpg',
+            prices: {
+                'Zepto': { price: 80, available: true, delivery_min: 8, url: 'https://www.zepto.com' },
+                'Flipkart Minutes': { price: 81, available: true, delivery_min: 12, url: 'https://www.flipkart.com' },
+                'Blinkit': { price: 82, available: true, delivery_min: 10, url: 'https://www.blinkit.com' },
+                'BigBasket': { price: 83, available: true, delivery_min: 15, url: 'https://www.bigbasket.com' },
+                'Instamart': { price: 85, available: true, delivery_min: 11, url: 'https://www.instamart.com' }
+            },
+            alternatives: []
+        },
+        {
             id: 'bb_amul_ghee',
             name: 'Amul Pure Cow Ghee Tin',
             brand: 'Amul',

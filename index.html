@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -1365,6 +1365,23 @@
                     blinkit: { item: 158, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
                     zepto: { item: 160, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
                     instamart: { item: 162, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
+                },
+                aiAlternatives: []
+            },
+            {
+                            id: "bb_amul_ghee_100ml",
+                title: "Amul Pure Cow Ghee (Jar)",
+                brand: "Amul",
+                category: "Oils & Ghee",
+                unit: "100 ml Jar",
+                img: "images/amul_ghee.jpg",
+                mostSearched: true,
+                prices: {
+                    zepto: { item: 80, eta: "8 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    flipkart: { item: 81, eta: "12 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    blinkit: { item: 82, eta: "10 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 },
+                    bigbasket: { item: 83, eta: "15 mins", deliveryFee: 15, handlingFee: 3, freeThreshold: 199 },
+                    instamart: { item: 85, eta: "11 mins", deliveryFee: 15, handlingFee: 4, freeThreshold: 199 }
                 },
                 aiAlternatives: []
             },
@@ -2841,7 +2858,7 @@
                 description: "Fragrant long-grain basmati rice layered with spiced chicken/veggies, mint, and pure ghee.",
                 ingredients: [
                     { name: "Fortune Everyday Basmati Rice", qty: "1 kg", catalogId: "bb_fortune_basmati", approxPrice: 135 },
-                    { name: "Amul Pure Cow Ghee", qty: "200 ml", catalogId: "bb_amul_ghee", approxPrice: 165 },
+                    { name: "Amul Pure Cow Ghee", qty: "200 ml", catalogId: "bb_amul_ghee_100ml", approxPrice: 160 },
                     { name: "Fresh Red Onions (for Birista)", qty: "500 g", catalogId: "bb_onion_red", approxPrice: 28 },
                     { name: "Fresh Chicken Breast / Veggies", qty: "500 g", catalogId: "bb_fresh_chicken", approxPrice: 150 },
                     { name: "Amul Masti Dahi", qty: "200 g", catalogId: "bb_amul_masti_dahi", approxPrice: 25 },
@@ -2895,7 +2912,7 @@
                 description: "Yellow lentils tempered with ghee, cumin, garlic, and red chillies, garnished with coriander.",
                 ingredients: [
                     { name: "Tata Sampann Unpolished Toor Dal", qty: "500 g", catalogId: "bb_tata_sampann_dal", approxPrice: 105 },
-                    { name: "Amul Pure Cow Ghee", qty: "100 ml", catalogId: "bb_amul_ghee", approxPrice: 90 },
+                    { name: "Amul Pure Cow Ghee", qty: "100 ml", catalogId: "bb_amul_ghee_100ml", approxPrice: 80 },
                     { name: "Fresh Hybrid Tomatoes", qty: "250 g", catalogId: "bb_tomato_hybrid", approxPrice: 12 },
                     { name: "Fresh Red Onions", qty: "200 g", catalogId: "bb_onion_red", approxPrice: 12 },
                     { name: "Fresh Green Chilli & Garlic", qty: "100 g", catalogId: "bb_green_chilli", approxPrice: 15 },
@@ -3133,7 +3150,34 @@
                 let bestInfo;
 
                 if (prod && typeof getCheapestAppForProduct === 'function') {
-                    bestInfo = getCheapestAppForProduct(prod);
+                    const rawBest = getCheapestAppForProduct(prod);
+                    let finalPrice = rawBest.price;
+
+                    const ingQtyMatch = ing.qty ? ing.qty.match(/([\d.]+)\s*(g|kg|ml|l)/i) : null;
+                    const prodUnitMatch = prod.unit ? prod.unit.match(/([\d.]+)\s*(g|kg|ml|l)/i) : null;
+
+                    if (ingQtyMatch && prodUnitMatch) {
+                        let ingVal = parseFloat(ingQtyMatch[1]);
+                        if (ingQtyMatch[2].toLowerCase() === 'kg' || ingQtyMatch[2].toLowerCase() === 'l') ingVal *= 1000;
+
+                        let prodVal = parseFloat(prodUnitMatch[1]);
+                        if (prodUnitMatch[2].toLowerCase() === 'kg' || prodUnitMatch[2].toLowerCase() === 'l') prodVal *= 1000;
+
+                        if (prodVal > 0 && ingVal > 0 && prodVal > ingVal) {
+                            finalPrice = Math.round(rawBest.price * (ingVal / prodVal));
+                        }
+                    }
+
+                    if (ing.approxPrice && (finalPrice > ing.approxPrice * 1.6 || finalPrice < ing.approxPrice * 0.4)) {
+                        finalPrice = ing.approxPrice;
+                    }
+
+                    bestInfo = {
+                        appKey: rawBest.appKey,
+                        appName: rawBest.appName,
+                        price: Math.max(5, finalPrice),
+                        badgeClass: rawBest.badgeClass
+                    };
                 } else {
                     const keys = ['blinkit', 'zepto', 'flipkart', 'instamart', 'bigbasket'];
                     const chosenKey = keys[idx % 5];

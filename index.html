@@ -690,7 +690,7 @@
         <div id="chatbotSpeechBubble"
             class="mb-3 bg-white/95 backdrop-blur-md text-slate-900 text-xs font-extrabold px-4 py-2.5 rounded-2xl shadow-xl border border-emerald-300 flex items-center space-x-2 animate-bounce relative group cursor-pointer transition-all hover:scale-105"
             onclick="toggleChatbotWindow()">
-            <span class="text-amber-500 text-sm">ðŸ‘¨â€ðŸ³</span>
+            <i class="fa-solid fa-utensils text-amber-500 text-xs"></i>
             <span class="text-slate-900 font-extrabold text-xs">What Indian dish are you cooking today?</span>
             <button onclick="dismissSpeechBubble(event)"
                 class="text-slate-400 hover:text-slate-600 text-xs ml-1 pl-1 border-l border-slate-200"
@@ -744,7 +744,7 @@
                     </div>
                     <div
                         class="bg-white p-3.5 rounded-2xl rounded-tl-none border border-slate-200 shadow-2xs text-slate-800 leading-relaxed font-medium space-y-2">
-                        <p>Namaste! ðŸ‘¨â€ðŸ³ I'm your <strong>Bachat Chef AI Mascot</strong>.</p>
+                        <p>Namaste user! I'm your <strong>Bachat Chef AI Mascot</strong>.</p>
                         <p>Tell me what popular <strong>Indian dish or cuisine</strong> you are thinking of making today! I'll list all required ingredients, compare live prices across <strong>Blinkit, Zepto, BigBasket, Flipkart Minutes, & Instamart</strong>, and add them directly to your Bachat Basket!</p>
                     </div>
                 </div>
@@ -753,35 +753,35 @@
                 <div id="chatQuickPrompts" class="flex flex-wrap gap-1.5 pl-10 pt-1">
                     <button onclick="sendQuickPrompt('Paneer Butter Masala')"
                         class="bg-emerald-50 hover:bg-emerald-100 text-brandGreen border border-emerald-300 px-2.5 py-1 rounded-full text-[11px] font-bold transition text-left shadow-2xs">
-                        ðŸ¥˜ Paneer Butter Masala
+                        Paneer Butter Masala
                     </button>
                     <button onclick="sendQuickPrompt('Butter Chicken')"
                         class="bg-emerald-50 hover:bg-emerald-100 text-brandGreen border border-emerald-300 px-2.5 py-1 rounded-full text-[11px] font-bold transition text-left shadow-2xs">
-                        ðŸ— Butter Chicken
+                        Butter Chicken
                     </button>
                     <button onclick="sendQuickPrompt('Hyderabadi Biryani')"
                         class="bg-emerald-50 hover:bg-emerald-100 text-brandGreen border border-emerald-300 px-2.5 py-1 rounded-full text-[11px] font-bold transition text-left shadow-2xs">
-                        ðŸ› Hyderabadi Biryani
+                        Hyderabadi Biryani
                     </button>
                     <button onclick="sendQuickPrompt('Pav Bhaji')"
                         class="bg-emerald-50 hover:bg-emerald-100 text-brandGreen border border-emerald-300 px-2.5 py-1 rounded-full text-[11px] font-bold transition text-left shadow-2xs">
-                        ðŸ¥˜ Pav Bhaji
+                        Pav Bhaji
                     </button>
                     <button onclick="sendQuickPrompt('Chole Bhature')"
                         class="bg-emerald-50 hover:bg-emerald-100 text-brandGreen border border-emerald-300 px-2.5 py-1 rounded-full text-[11px] font-bold transition text-left shadow-2xs">
-                        ðŸ«“ Chole Bhature
+                        Chole Bhature
                     </button>
                     <button onclick="sendQuickPrompt('Dal Tadka')"
                         class="bg-emerald-50 hover:bg-emerald-100 text-brandGreen border border-emerald-300 px-2.5 py-1 rounded-full text-[11px] font-bold transition text-left shadow-2xs">
-                        ðŸ¥£ Dal Tadka
+                        Dal Tadka
                     </button>
                     <button onclick="sendQuickPrompt('Rajma Chawal')"
                         class="bg-emerald-50 hover:bg-emerald-100 text-brandGreen border border-emerald-300 px-2.5 py-1 rounded-full text-[11px] font-bold transition text-left shadow-2xs">
-                        ðŸ«“ Rajma Chawal
+                        Rajma Chawal
                     </button>
                     <button onclick="sendQuickPrompt('Bengali Fish Curry')"
                         class="bg-emerald-50 hover:bg-emerald-100 text-brandGreen border border-emerald-300 px-2.5 py-1 rounded-full text-[11px] font-bold transition text-left shadow-2xs">
-                        ðŸŸ Fish Curry
+                        Fish Curry
                     </button>
                 </div>
             </div>
@@ -3098,7 +3098,7 @@
             if (!matchedRecipe) {
                 if (q.includes("hi") || q.includes("hello") || q.includes("namaste") || q.includes("help")) {
                     return `
-                        <p class="font-bold text-slate-900">Namaste! 👨‍🍳 What delicious Indian dish are you planning to make?</p>
+                        <p class="font-bold text-slate-900">Namaste user! What delicious Indian dish are you planning to make?</p>
                         <p class="text-xs text-slate-600">Try typing a dish like <strong>Paneer Butter Masala, Chicken Biryani, Pav Bhaji, Chole Bhature, Dal Tadka, Rajma Chawal</strong> or any recipe!</p>
                     `;
                 }
